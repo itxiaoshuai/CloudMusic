@@ -10,39 +10,104 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
       home: HomePage(),
-
     );
   }
 }
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       drawer: HomeDrawer(),
+      body: ReadLayout(),
     );
   }
-
 }
 
+class ReadLayout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Widget tabBarContainer = new TabBar(
+      //创建TabBar实例
+      isScrollable: true,
+      //这个属性是导航栏是否支持滚动，false则会挤在一起了
+      unselectedLabelColor: Colors.grey,
+      //未选标签标签的颜色(这里定义为灰色)
+      labelColor: Colors.black,
+      //选中的颜色（黑色）
+      indicatorColor: Colors.transparent,
+      //指示器颜色
+      indicatorWeight: 2,
+      //指示器厚度
+      tabs: choices.map((Choice choice) {
+        //选项卡
+        return new Tab(
+          text: choice.title,
+        );
+      }).toList(),
+    );
+
+    Widget tabContainer = new DefaultTabController(
+      length: choices.length,
+      initialIndex: 0, //初始索引
+      child: new Column(
+        children: <Widget>[
+          new Container(
+//            constraints: new BoxConstraints.expand(
+//              height:
+//                  Theme.of(context).textTheme.display1.fontSize * 1.1 + 50.0,
+//            ),
+            padding: const EdgeInsets.all(8.0),
+            color: Colors.teal.shade700,
+            alignment: Alignment.center,
+            child: tabBarContainer,
+          ),
+          new Expanded(
+            child: new TabBarView(
+              children: choices.map((Choice choice) {
+                return Text('xxxxxx',
+                    style: TextStyle(color: Colors.black, fontSize: 12));
+              }).toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    return tabContainer;
+  }
+}
+
+class Choice {
+  const Choice({this.title, this.categoryId});
+
+  final String title; //这个参数是分类名称
+  final int categoryId; //这个适用于网络请求的参数，获取不同分类列表
+}
+
+const List<Choice> choices = const <Choice>[
+  const Choice(
+    title: '我的',
+    categoryId: 1,
+  ),
+  const Choice(
+    title: '发现',
+    categoryId: 2,
+  ),
+  const Choice(
+    title: '朋友',
+    categoryId: 3,
+  ),
+  const Choice(
+    title: '视频',
+    categoryId: 4,
+  ),
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+];
 
 //class MyHomePage extends StatefulWidget {
 //  MyHomePage({Key key, this.title}) : super(key: key);

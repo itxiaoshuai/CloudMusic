@@ -103,7 +103,6 @@ class Head extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 14),
             child: OutlineButton(
-              highlightColor: Colors.black,
               onPressed: _log,
 
               padding: EdgeInsets.only(left: 45, right: 45),
@@ -114,10 +113,10 @@ class Head extends StatelessWidget {
                 ),
               ),
               shape: StadiumBorder(
-                side: BorderSide(width: 16.0, color: Colors.lightBlue.shade900),
+                side: BorderSide(width: 16.0, color: Colors.grey),
               ),
               //一个边框，适合体育场形状的边框（两端有半圆的框），适用于它所应用的小部件的矩形
-//              borderSide: BorderSide(color: Colors.grey), //默认边框颜色
+              borderSide: BorderSide(color: Colors.grey), //默认边框颜色
             ),
           )
         ],
