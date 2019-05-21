@@ -43,7 +43,23 @@ flutter:
 #   To add assets to your application, add an assets section, like this:
   assets:
     - images/location.png
-    - images/clock.png
+    - images/timing.png
+    - images/alarm.png
+    - images/ticket.png
+    - images/shopping_cart.png
+    - images/coupon.png
+    - images/game.png
+    - images/broadcast.png
+    - images/music_free_flow.png
+    - images/drawer_message.png
+    - images/drawer_friend.png
+    - images/drawer_skin.png
+    - images/drawer_music.png
+
+
+
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

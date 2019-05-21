@@ -10,14 +10,13 @@ class DrawerListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 10, right: 10),
-      color: Colors.blueGrey,
       height: 45.0,
       child: Row(
         children: <Widget>[
           Image.asset(
             image,
-            width: 15,
-            height: 40,
+            width: 18,
+            height: 18,
             color: Colors.black,
           ),
           Container(
