@@ -17,67 +17,88 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+
+
+  TabController _tabController;
+  int _tabControllerIndex = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(
+      length: choices.length,
+      vsync: this,
+    );
+    _tabController.index = _tabControllerIndex;
+    _tabController.addListener(() {
+      if (_tabController.indexIsChanging) {
+        setState(() {
+          _tabControllerIndex = _tabController.index;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        title: ReadLayout(),
+      ),
+      body: TabBarView(
+        children: choices.map((Choice choice) {
+          //选项卡
+          return new Tab(
+            text: choice.title,
+          );
+        }).toList(),
+        controller: _tabController,
+      ),
       drawer: HomeDrawer(),
-      body: ReadLayout(),
     );
   }
 }
 
 class ReadLayout extends StatelessWidget {
+  TabController _tabController;
   @override
   Widget build(BuildContext context) {
-    Widget tabBarContainer = new TabBar(
-      //创建TabBar实例
-      isScrollable: true,
-      //这个属性是导航栏是否支持滚动，false则会挤在一起了
-      unselectedLabelColor: Colors.grey,
-      //未选标签标签的颜色(这里定义为灰色)
-      labelColor: Colors.black,
-      //选中的颜色（黑色）
-      indicatorColor: Colors.transparent,
-      //指示器颜色
-      indicatorWeight: 2,
-      //指示器厚度
-      tabs: choices.map((Choice choice) {
-        //选项卡
-        return new Tab(
-          text: choice.title,
-        );
-      }).toList(),
-    );
+    return Container(
+      child: DefaultTabController(
+        length: choices.length,
+        child: TabBar(
+          //创建TabBar实例
+          isScrollable: false,
+          //这个属性是导航栏是否支持滚动，false则会挤在一起了
+//              unselectedLabelColor: Colors.grey,
+          //未选标签标签的颜色(这里定义为灰色)
+//              labelColor: Colors.black,
+          //选中的颜色（黑色）
+          indicatorColor: Colors.transparent,
+          //指示器颜色
+          indicatorWeight: 2,
+          controller: _tabController,
+          tabs: choices.map((Choice choice) {
+            //选项卡
+            return new Tab(
+              text: choice.title,
+            );
+          }).toList(),
 
-    Widget tabContainer = new DefaultTabController(
-      length: choices.length,
-      initialIndex: 0, //初始索引
-      child: new Column(
-        children: <Widget>[
-          new Container(
-//            constraints: new BoxConstraints.expand(
-//              height:
-//                  Theme.of(context).textTheme.display1.fontSize * 1.1 + 50.0,
-//            ),
-            padding: const EdgeInsets.all(8.0),
-            color: Colors.teal.shade700,
-            alignment: Alignment.center,
-            child: tabBarContainer,
-          ),
-          new Expanded(
-            child: new TabBarView(
-              children: choices.map((Choice choice) {
-                return Text('xxxxxx',
-                    style: TextStyle(color: Colors.black, fontSize: 12));
-              }).toList(),
-            ),
-          ),
-        ],
+          // isScrollable: true,
+          // labelPadding: EdgeInsets.only(left: 5, right: 5),
+        ),
       ),
     );
-
-    return tabContainer;
   }
 }
 
@@ -105,8 +126,6 @@ const List<Choice> choices = const <Choice>[
     title: '视频',
     categoryId: 4,
   ),
-
-
 ];
 
 //class MyHomePage extends StatefulWidget {
