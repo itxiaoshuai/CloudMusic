@@ -4,21 +4,19 @@ import 'package:flutter_app/widget/HomeDrawer.dart';
 
 void main() => runApp(MyApp());
 
-//class MyApp extends StatelessWidget {
-//  // This widget is the root of your application.
-//  @override
-//  Widget build(BuildContext context) {
-////    return MaterialApp(
-////      title: 'Flutter Demo',
-////      theme: ThemeData(
-////        primarySwatch: Colors.blue,
-////      ),
-//////      home: HomePage(),
-////      home: MyPage(),
-////    );
-//    return MyApp();
-//  }
-//}
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: HomePage(),
+    );
+  }
+}
 
 class HomePage extends StatefulWidget {
   @override
@@ -28,7 +26,90 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
-  int _tabControllerIndex = 1;
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  void initState() {
+    super.initState();
+    _tabController = new TabController(vsync: this, length: 4);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+//        title: TabContainerState(),
+        title: TabBar(
+          indicatorSize: TabBarIndicatorSize.tab,
+          isScrollable: true,
+          tabs: <Widget>[
+            new Tab(
+              text: '我的',
+            ),
+            new Tab(
+              text: '发现',
+            ),
+            new Tab(
+              text: '朋友',
+            ),
+            new Tab(
+              text: '视频',
+            ),
+          ],
+          controller: _tabController,
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.search,
+              color: Colors.white,
+            ),
+            onPressed: null,
+          )
+        ],
+      ),
+      body: new TabBarView(
+        controller: _tabController,
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              MyPage(),
+            ],
+          ),
+          Center(child: Text('发现')),
+          Center(child: Text('朋友')),
+          Center(child: Text('视频')),
+        ],
+      ),
+//      body: TabBarView(
+//        children: choices.map((Choice choice) {
+//          //选项卡
+//          return new Tab(
+//            text: choice.title,
+//          );
+//        }).toList(),
+//        controller: _tabController,
+//      ),
+      drawer: HomeDrawer(),
+    );
+  }
+}
+
+class TabContainerState extends StatefulWidget {
+  @override
+  _TabContainerState createState() => _TabContainerState();
+}
+
+class _TabContainerState extends State<TabContainerState>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+  int _tabControllerIndex = 0;
 
   @override
   void initState() {
@@ -49,46 +130,23 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        title: ReadLayout(),
-      ),
-      body: TabBarView(
-        children: choices.map((Choice choice) {
-          //选项卡
-          return new Tab(
-            text: choice.title,
-          );
-        }).toList(),
-        controller: _tabController,
-      ),
-      drawer: HomeDrawer(),
-    );
-  }
-}
-
-class ReadLayout extends StatelessWidget {
-  TabController _tabController;
-
-  @override
-  Widget build(BuildContext context) {
     return Container(
       child: DefaultTabController(
         length: choices.length,
+        initialIndex: _tabControllerIndex,
         child: TabBar(
           //创建TabBar实例
-          isScrollable: false,
+          isScrollable: true,
           //这个属性是导航栏是否支持滚动，false则会挤在一起了
-//              unselectedLabelColor: Colors.grey,
+          unselectedLabelColor: Colors.grey,
           //未选标签标签的颜色(这里定义为灰色)
-//              labelColor: Colors.black,
-          //选中的颜色（黑色）
-          indicatorColor: Colors.transparent,
+          labelColor: Colors.black,
+//          选中的颜色（黑色）
+          indicatorColor: Colors.red,
           //指示器颜色
           indicatorWeight: 2,
           controller: _tabController,
+
           tabs: choices.map((Choice choice) {
             //选项卡
             return new Tab(
