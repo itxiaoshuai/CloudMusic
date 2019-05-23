@@ -56,6 +56,10 @@ flutter:
     - images/drawer_skin.png
     - images/drawer_music.png
 
+  # 我的页面图片资源
+    - images/my/shortcut_fm.png
+
+
 
 
 

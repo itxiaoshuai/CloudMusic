@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/my/page_my.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
-    );
-  }
-}
+//class MyApp extends StatelessWidget {
+//  // This widget is the root of your application.
+//  @override
+//  Widget build(BuildContext context) {
+////    return MaterialApp(
+////      title: 'Flutter Demo',
+////      theme: ThemeData(
+////        primarySwatch: Colors.blue,
+////      ),
+//////      home: HomePage(),
+////      home: MyPage(),
+////    );
+//    return MyApp();
+//  }
+//}
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,8 +27,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-
-
   TabController _tabController;
   int _tabControllerIndex = 1;
 
@@ -70,6 +71,7 @@ class _HomePageState extends State<HomePage>
 
 class ReadLayout extends StatelessWidget {
   TabController _tabController;
+
   @override
   Widget build(BuildContext context) {
     return Container(
