@@ -58,6 +58,7 @@ flutter:
 
   # 我的页面图片资源
     - images/my/shortcut_fm.png
+    - images/my/download_manager.png
 
 
 

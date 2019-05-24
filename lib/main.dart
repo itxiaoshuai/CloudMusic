@@ -77,11 +77,7 @@ class _HomePageState extends State<HomePage>
       body: new TabBarView(
         controller: _tabController,
         children: <Widget>[
-          Column(
-            children: <Widget>[
-              MyPage(),
-            ],
-          ),
+          MyPage(),
           Center(child: Text('发现')),
           Center(child: Text('朋友')),
           Center(child: Text('视频')),
