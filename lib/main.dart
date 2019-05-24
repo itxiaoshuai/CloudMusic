@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/find/page_find.dart';
 import 'package:flutter_app/pages/my/page_my.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
 
@@ -78,7 +79,7 @@ class _HomePageState extends State<HomePage>
         controller: _tabController,
         children: <Widget>[
           MyPage(),
-          Center(child: Text('发现')),
+          FindPage(),
           Center(child: Text('朋友')),
           Center(child: Text('视频')),
         ],

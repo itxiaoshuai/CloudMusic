@@ -60,6 +60,12 @@ flutter:
     - images/my/shortcut_fm.png
     - images/my/download_manager.png
 
+  # 发现页面图片资源
+    - images/find/t_dragonball_icn_look.png
+    - images/find/t_dragonball_icn_playlist.png
+    - images/find/t_dragonball_icn_radio.png
+    - images/find/t_dragonball_icn_rank.png
+
 
 
 
