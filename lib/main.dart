@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/find/page_find.dart';
-import 'package:flutter_app/pages/my/page_my.dart';
+import 'package:flutter_app/pages/find/PageFind.dart';
+import 'package:flutter_app/pages/my/PageMy.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
 
 void main() => runApp(MyApp());
