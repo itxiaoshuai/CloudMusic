@@ -1,9 +1,12 @@
 import 'dart:async';
 
+
+
 import 'BlocProvider.dart';
 
 class FindBloc implements BlocBase {
-  StreamController<int> _BannerStreamController = StreamController<int>();
+  StreamController<List<BannerModel>> _BannerStreamController =
+      StreamController<List<BannerModel>>();
 
   get _bannerSink => _BannerStreamController.sink;
 

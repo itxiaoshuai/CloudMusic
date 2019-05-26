@@ -25,7 +25,11 @@ dependencies:
   cupertino_icons: ^0.1.2
   # 轮播控件
   flutter_swiper: ^1.1.6
-
+  # dio是一个强大的Dart Http请求库
+  dio: ^2.1.5
+  event_bus: ^1.0.1
+  build_runner: ^1.4.0
+  json_serializable: ^3.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
