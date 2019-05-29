@@ -30,6 +30,8 @@ dependencies:
   event_bus: ^1.0.1
   build_runner: ^1.4.0
   json_serializable: ^3.0.0
+  cached_network_image: ^0.8.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

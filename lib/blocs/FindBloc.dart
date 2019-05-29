@@ -1,6 +1,7 @@
 import 'dart:async';
 
 
+import 'package:flutter_app/data/protocol/banner_model.dart';
 
 import 'BlocProvider.dart';
 

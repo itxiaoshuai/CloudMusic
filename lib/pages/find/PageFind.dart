@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/banner_model.dart';
 import 'package:flutter_app/pages/find/widget/FindBanner.dart';
+import 'package:flutter_app/pages/find/widget/SwiperAndMenu.dart';
 
 class FindPage extends StatefulWidget {
   @override
@@ -27,7 +28,9 @@ class _FindPageState extends State {
   }
 
   Future getHttp() async {
-    var response = await Http().get("/banner");
+//    var response = await Http().get("/banner");
+    var response =
+        await Http().get("http://www.mocky.io/v2/5cee0154300000592c6e9825");
     print(response);
     List<Banners> banners = BannerModel.fromJson(response).banners;
     print(banners.length);
@@ -62,26 +65,12 @@ class _FindPageState extends State {
   Widget build(BuildContext context) {
     int _counter = 0;
     return RefreshIndicator(
-      onRefresh: () {
-        print('xxxxx');
+      onRefresh: () async {
+        getHttp();
       },
-      child: ListView(
-        children: _bannerData.map((Banners banner) {
-            return Text(banner.imageUrl);
-        }).toList(),
-//        children: <Widget>[
-//          StreamBuilder<int>(
-//              initialData: _counter,
-//              stream: _BannerstreamController.stream,
-//              builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-//                return Text('You hit me: ${snapshot.data} times');
-//              }),
-//        ],
-      ),
-//      child: Center(
-//        child: Text('xx'),
-//
-//      ),
+      child: CustomScrollView(
+          cacheExtent: 2000, slivers: _listWidget()),
+//      child: FindBanner(bannerData: _bannerData),
     );
 //    return ListView(
 //      children: <Widget>[
@@ -107,6 +96,32 @@ class _FindPageState extends State {
 //            ]),
 //      ],
 //    );
+  }
+
+  _listWidget() {
+    List<Widget> list = <Widget>[
+      SwiperAndMenu(
+        bannerData: _bannerData,
+      ),
+    ];
+
+//    if (_songSheet.length != 0 &&
+//        _newsong.length != 0 &&
+//        _djprogram.length != 0) {
+//
+//    } else {
+//      list.add(SliverList(
+//        delegate: SliverChildListDelegate([
+//          const Text('D'),
+//        ]),
+//      ));
+//    }
+      list.add(SliverList(
+        delegate: SliverChildListDelegate([
+          const Text('D'),
+        ]),
+      ));
+    return list;
   }
 }
 
