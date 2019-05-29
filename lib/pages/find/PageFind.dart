@@ -68,8 +68,7 @@ class _FindPageState extends State {
       onRefresh: () async {
         getHttp();
       },
-      child: CustomScrollView(
-          cacheExtent: 2000, slivers: _listWidget()),
+      child: CustomScrollView(slivers: _listWidget()),
 //      child: FindBanner(bannerData: _bannerData),
     );
 //    return ListView(
@@ -100,9 +99,7 @@ class _FindPageState extends State {
 
   _listWidget() {
     List<Widget> list = <Widget>[
-      SwiperAndMenu(
-        bannerData: _bannerData,
-      ),
+      FindBanner(bannerData: _bannerData),
     ];
 
 //    if (_songSheet.length != 0 &&
@@ -116,11 +113,7 @@ class _FindPageState extends State {
 //        ]),
 //      ));
 //    }
-      list.add(SliverList(
-        delegate: SliverChildListDelegate([
-          const Text('D'),
-        ]),
-      ));
+
     return list;
   }
 }
