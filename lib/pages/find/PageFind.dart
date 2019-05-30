@@ -78,24 +78,30 @@ class _FindPageState extends State {
       FindBanner(bannerData: _bannerData),
       SliverList(
         delegate: SliverChildListDelegate([
-          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
-              children: [
-                ListItem(
-                    image: "images/find/t_dragonball_icn_look.png",
-                    text: "每日推荐"),
-                ListItem(
-                    image: "images/find/t_dragonball_icn_playlist.png",
-                    text: "歌单"),
-                ListItem(
-                    image: "images/find/t_dragonball_icn_rank.png",
-                    text: "排行榜"),
-                ListItem(
-                    image: "images/find/t_dragonball_icn_radio.png",
-                    text: "电台"),
-                ListItem(
-                    image: "images/find/t_dragonball_icn_look.png", text: "直播"),
-              ]),
+          Container(
+            padding: EdgeInsets.only(top: 15, bottom: 15),
+//            color: Colors.green,
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
+                children: [
+                  ListItem(
+                      image: "images/find/t_dragonball_icn_daily.png",
+                      text: "每日推荐"),
+                  ListItem(
+                      image: "images/find/t_dragonball_icn_playlist.png",
+                      text: "歌单"),
+                  ListItem(
+                      image: "images/find/t_dragonball_icn_rank.png",
+                      text: "排行榜"),
+                  ListItem(
+                      image: "images/find/t_dragonball_icn_radio.png",
+                      text: "电台"),
+                  ListItem(
+                      image: "images/find/t_dragonball_icn_look.png",
+                      text: "直播"),
+                ]),
+          ),
+          Divider(height: 1),
         ]),
       ),
     ];
@@ -126,10 +132,22 @@ class ListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Image.asset(
-          image,
-          color: Colors.red,
-          width: 50,
+        Container(
+          width: 40.0,
+          decoration: BoxDecoration(
+            //圆形渐变
+            color: Colors.white,
+            shape: BoxShape.circle,
+            gradient: const LinearGradient(colors: [
+              Colors.redAccent,
+              Colors.red,
+            ]),
+          ),
+          child: Image.asset(
+            image,
+            color: Colors.white,
+            width: 50,
+          ),
         ),
         Container(
             margin: EdgeInsets.only(top: 5), //上边距

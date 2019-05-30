@@ -69,6 +69,8 @@ flutter:
     - images/my/download_manager.png
 
   # 发现页面图片资源
+
+    - images/find/t_dragonball_icn_daily.png
     - images/find/t_dragonball_icn_look.png
     - images/find/t_dragonball_icn_playlist.png
     - images/find/t_dragonball_icn_radio.png
