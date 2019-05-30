@@ -14,8 +14,7 @@ class FindBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildListDelegate([
-        BannerParent(bannerData),
-        Divider(height: 1),
+        BannerParent(bannerData, context),
       ]),
     );
   }
@@ -23,8 +22,9 @@ class FindBanner extends StatelessWidget {
 
 class BannerParent extends StatelessWidget {
   final List<Banners> bannerData;
+  final BuildContext context;
 
-  BannerParent(this.bannerData);
+  BannerParent(this.bannerData, this.context);
 
   _buildSwipe() {
     Widget widget;
@@ -36,7 +36,13 @@ class BannerParent extends StatelessWidget {
         },
         layout: SwiperLayout.DEFAULT,
         itemCount: bannerData.length,
-        pagination: SwiperPagination(),
+        pagination: SwiperPagination(
+            builder: DotSwiperPaginationBuilder(
+          size: 6,
+          activeSize: 6,
+          color: Theme.of(context).primaryColor,
+          activeColor: Colors.grey[500],
+        )),
         autoplay: true,
       );
     } else {
@@ -56,8 +62,7 @@ class BannerParent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 150,
-        color: Colors.blue,
+        height: 120,
         child: Stack(
           children: <Widget>[_background(context), _buildSwipe()],
         ));
@@ -68,7 +73,7 @@ class BannerParent extends StatelessWidget {
 _background(BuildContext context) {
   return Positioned(
     child: Container(
-      height: 110,
+      height: 90,
       child: Row(
         children: <Widget>[
           Expanded(
@@ -95,6 +100,12 @@ class BannerItem extends StatelessWidget {
           margin: EdgeInsets.only(left: 16, right: 16),
           child: Stack(
             children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  color: Color(0xffd6d8da),
+                ),
+              ),
               Positioned(
                   left: 0,
                   top: 0,
@@ -110,7 +121,8 @@ class BannerItem extends StatelessWidget {
                         fit: BoxFit.fill,
                         imageUrl: banner.imageUrl,
                         placeholder: (context, url) => ProgressView(),
-                        errorWidget: (context, url, error) => new Icon(Icons.error),
+                        errorWidget: (context, url, error) =>
+                            new Icon(Icons.error),
                       ),
                     ),
                   ))),

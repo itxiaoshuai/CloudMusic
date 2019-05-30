@@ -71,35 +71,33 @@ class _FindPageState extends State {
       child: CustomScrollView(slivers: _listWidget()),
 //      child: FindBanner(bannerData: _bannerData),
     );
-//    return ListView(
-//      children: <Widget>[
-//        Container(
-//          height: 500,
-//          child: FindBanner(),
-//        )
-////        FindBanner(),
-//        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//            //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
-//            children: [
-//              ListItem(
-//                  image: "images/find/t_dragonball_icn_look.png", text: "每日推荐"),
-//              ListItem(
-//                  image: "images/find/t_dragonball_icn_playlist.png",
-//                  text: "歌单"),
-//              ListItem(
-//                  image: "images/find/t_dragonball_icn_rank.png", text: "排行榜"),
-//              ListItem(
-//                  image: "images/find/t_dragonball_icn_radio.png", text: "电台"),
-//              ListItem(
-//                  image: "images/find/t_dragonball_icn_look.png", text: "直播"),
-//            ]),
-//      ],
-//    );
   }
 
   _listWidget() {
     List<Widget> list = <Widget>[
       FindBanner(bannerData: _bannerData),
+      SliverList(
+        delegate: SliverChildListDelegate([
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
+              children: [
+                ListItem(
+                    image: "images/find/t_dragonball_icn_look.png",
+                    text: "每日推荐"),
+                ListItem(
+                    image: "images/find/t_dragonball_icn_playlist.png",
+                    text: "歌单"),
+                ListItem(
+                    image: "images/find/t_dragonball_icn_rank.png",
+                    text: "排行榜"),
+                ListItem(
+                    image: "images/find/t_dragonball_icn_radio.png",
+                    text: "电台"),
+                ListItem(
+                    image: "images/find/t_dragonball_icn_look.png", text: "直播"),
+              ]),
+        ]),
+      ),
     ];
 
 //    if (_songSheet.length != 0 &&
