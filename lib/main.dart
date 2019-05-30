@@ -84,15 +84,6 @@ class _HomePageState extends State<HomePage>
           Center(child: Text('视频')),
         ],
       ),
-//      body: TabBarView(
-//        children: choices.map((Choice choice) {
-//          //选项卡
-//          return new Tab(
-//            text: choice.title,
-//          );
-//        }).toList(),
-//        controller: _tabController,
-//      ),
       drawer: HomeDrawer(),
     );
   }
