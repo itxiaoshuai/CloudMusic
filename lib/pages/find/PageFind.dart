@@ -106,17 +106,6 @@ class _FindPageState extends State {
       ),
     ];
 
-//    if (_songSheet.length != 0 &&
-//        _newsong.length != 0 &&
-//        _djprogram.length != 0) {
-//
-//    } else {
-//      list.add(SliverList(
-//        delegate: SliverChildListDelegate([
-//          const Text('D'),
-//        ]),
-//      ));
-//    }
 
     return list;
   }
@@ -139,6 +128,7 @@ class ListItem extends StatelessWidget {
             color: Colors.white,
             shape: BoxShape.circle,
             gradient: const LinearGradient(colors: [
+              Colors.redAccent,
               Colors.redAccent,
               Colors.red,
             ]),

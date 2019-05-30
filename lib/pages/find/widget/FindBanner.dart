@@ -4,6 +4,8 @@ import 'package:flutter_app/base/CommonLoading.dart';
 import 'package:flutter_app/data/protocol/banner_model.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
+double circular = 6;
+
 // 轮播图
 class FindBanner extends StatelessWidget {
   final List<Banners> bannerData;
@@ -50,7 +52,7 @@ class BannerParent extends StatelessWidget {
       widget = Container(
         margin: EdgeInsets.only(left: 16, right: 16),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: BorderRadius.all(Radius.circular(circular)),
           color: Color(0xffd6d8da),
         ),
       );
@@ -102,7 +104,7 @@ class BannerItem extends StatelessWidget {
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderRadius: BorderRadius.all(Radius.circular(circular)),
                   color: Color(0xffd6d8da),
                 ),
               ),
@@ -116,7 +118,7 @@ class BannerItem extends StatelessWidget {
                     width: 600,
                     height: 150,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(circular),
                       child: CachedNetworkImage(
                         fit: BoxFit.fill,
                         imageUrl: banner.imageUrl,
@@ -127,19 +129,21 @@ class BannerItem extends StatelessWidget {
                     ),
                   ))),
               Positioned(
+                //右下角的类型标签
                 right: 0,
                 bottom: 0,
                 child: Container(
                   padding:
                       EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
                   decoration: BoxDecoration(
+                      color: _getTitleColor(banner.titleColor),
                       borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(4),
-                    topLeft: Radius.circular(4),
-                  )),
+                        bottomRight: Radius.circular(circular),
+                        topLeft: Radius.circular(circular),
+                      )),
                   child: Text(
                     banner.typeTitle,
-                    style: TextStyle(color: Colors.white, fontSize: 10),
+                    style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ),
               )
@@ -147,5 +151,22 @@ class BannerItem extends StatelessWidget {
           )),
       onTap: () {},
     );
+  }
+
+  _getTitleColor(String titleColor) {
+    Color color;
+    switch (titleColor) {
+      case 'red':
+        color = Colors.red;
+        break;
+      case 'green':
+        color = Colors.green;
+        break;
+      case 'blue':
+        color = Colors.blue;
+        break;
+    }
+
+    return color;
   }
 }
