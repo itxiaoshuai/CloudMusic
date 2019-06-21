@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/login/LoginMainPage.dart';
 import 'item/DrawerListItem.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -77,8 +78,11 @@ class ListItem extends StatelessWidget {
 class Head extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    _log() {
-      print("点击了边线按钮");
+    _login() {
+      print("点击了登入按钮");
+      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+        return LoginMainPage();
+      }));
     }
 
     return Container(
@@ -103,7 +107,7 @@ class Head extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 14),
             child: OutlineButton(
-              onPressed: _log,
+              onPressed: _login,
 
               padding: EdgeInsets.only(left: 45, right: 45),
               child: Text(

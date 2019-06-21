@@ -31,7 +31,8 @@ dependencies:
   build_runner: ^1.4.0
   json_serializable: ^3.0.0
   cached_network_image: ^0.8.0
-
+  fluttertoast: ^3.1.0
+  flutter_webview_plugin: ^0.3.5
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -77,6 +78,11 @@ flutter:
     - images/find/t_dragonball_icn_rank.png
     - images/find/bg_song_list.9.png
 
+    # 登入页
+    - images/wx.png
+    - images/qq.png
+    - images/weibo.png
+    - images/wangyi.png
 
 
 

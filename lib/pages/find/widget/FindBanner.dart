@@ -4,6 +4,8 @@ import 'package:flutter_app/base/CommonLoading.dart';
 import 'package:flutter_app/data/protocol/banner_model.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
+import '../../WebViewPage.dart';
+
 double circular = 6;
 
 // 轮播图
@@ -98,6 +100,7 @@ class BannerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+
       child: Container(
           margin: EdgeInsets.only(left: 16, right: 16),
           child: Stack(
@@ -149,7 +152,15 @@ class BannerItem extends StatelessWidget {
               )
             ],
           )),
-      onTap: () {},
+      onTap: () {
+        if (banner.url != null) {
+
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (BuildContext context) {
+            return WebViewPage(banner.url,);
+          }));
+        }
+      },
     );
   }
 
