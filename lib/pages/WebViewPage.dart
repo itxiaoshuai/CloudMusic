@@ -33,7 +33,7 @@ class _WebViewPage extends State<WebViewPage> {
     return WebviewScaffold(
       url: widget.url,
       appBar: AppBar(
-        title: Text(webviewTitle),
+        title: Text(widget.title,style: TextStyle(fontSize: 16.0),),
       ),
     );
   }
@@ -46,7 +46,7 @@ class _WebViewPage extends State<WebViewPage> {
     _onStateChanged = flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) async {
       if (mounted) {
         if(state.type == WebViewState.finishLoad) {
-          webviewTitle = await flutterWebviewPlugin.evalJavascript("window.document.title");
+//          webviewTitle = await flutterWebviewPlugin.evalJavascript("window.document.title");
         }
         setState(() {});
       }

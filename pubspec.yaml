@@ -83,6 +83,10 @@ flutter:
     - images/qq.png
     - images/weibo.png
     - images/wangyi.png
+    - images/icon_checkbox.png
+    - images/icon_right.png
+    - images/login_page_logo.png
+
 
 
 
