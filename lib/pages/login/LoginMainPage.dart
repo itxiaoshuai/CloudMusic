@@ -15,9 +15,8 @@ class LoginMainPage extends StatelessWidget {
             Positioned(
               left: 0,
               right: 0,
-              top: 100,
+              top: 150,
               child: Image.asset(
-
                 ConstImgResource.login,
                 width: 68,
                 height: 68,
@@ -34,7 +33,7 @@ class LoginMainPage extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: Container(
-                            height: 45,
+                            height: 40,
                             padding: EdgeInsets.only(left: 45, right: 45),
                             child: new RaisedButton(
                               onPressed: () {},
@@ -55,7 +54,7 @@ class LoginMainPage extends StatelessWidget {
                       height: 20,
                     ),
                     AuthorizedLoginItem(),
-                    UserAgreementItem(),
+                    UserAgreementItemState(),
                   ],
                 ),
               ),
@@ -104,7 +103,14 @@ class AuthorizedLoginItem extends StatelessWidget {
 }
 
 //用户协议模块
-class UserAgreementItem extends StatelessWidget {
+class UserAgreementItemState extends StatefulWidget {
+  @override
+  _UserAgreementItemState createState() => _UserAgreementItemState();
+}
+
+class _UserAgreementItemState extends State<UserAgreementItemState> {
+  bool visible = true;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -114,23 +120,36 @@ class UserAgreementItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-                child: Image.asset(
-                  ConstImgResource.commonCheck,
-                  color: Colors.white54,
-                ),
-                width: 10,
-                height: 10,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    //圆角
-                    Radius.circular(2.0),
+            new GestureDetector(
+              child: Container(
+                  child: Offstage(
+                    offstage: visible,
+                    child: Image.asset(
+                      ConstImgResource.commonCheck,
+                      color: Colors.white54,
+                    ),
                   ),
-                  border: Border.all(
-                      width: 0.5,
-                      style: BorderStyle.solid,
-                      color: Colors.white54),
-                )),
+                  width: 10,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      //圆角
+                      Radius.circular(2.0),
+                    ),
+                    border: Border.all(
+                        width: 0.5,
+                        style: BorderStyle.solid,
+                        color: Colors.white54),
+                  )),
+              onTap: () {
+                print('单击打印');
+                visible = !visible;
+                setState(() {});
+              },
+              onDoubleTap: () {
+                print('双击打印');
+              },
+            ),
             Container(
               width: 3,
             ),
@@ -152,6 +171,7 @@ class _SwitchCheckBoxState extends State<SwitchCheckBoxState> {
 
   final TapGestureRecognizer serviceRecognizer = TapGestureRecognizer();
   final TapGestureRecognizer privacyRecognizer = TapGestureRecognizer();
+
   void initState() {
     super.initState();
     serviceRecognizer.onTap = () {
@@ -188,11 +208,11 @@ class _SwitchCheckBoxState extends State<SwitchCheckBoxState> {
                   style: new TextStyle(fontSize: 10.0, color: Colors.white),
                   recognizer: serviceRecognizer),
               new TextSpan(
-                  text: '和',
-                  style: new TextStyle(fontSize: 9.0, color: Colors.white70),
-                  ),
+                text: '和',
+                style: new TextStyle(fontSize: 9.0, color: Colors.white70),
+              ),
               new TextSpan(
-                text: '《隐私协议》',
+                text: '《隐私政策》',
                 style: new TextStyle(fontSize: 10.0, color: Colors.white),
                 recognizer: privacyRecognizer,
               ),
