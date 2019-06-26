@@ -150,24 +150,25 @@ class SwitchCheckBoxState extends StatefulWidget {
 class _SwitchCheckBoxState extends State<SwitchCheckBoxState> {
   bool isCheck = false;
 
-  final TapGestureRecognizer recognizer = TapGestureRecognizer();
-
+  final TapGestureRecognizer serviceRecognizer = TapGestureRecognizer();
+  final TapGestureRecognizer privacyRecognizer = TapGestureRecognizer();
   void initState() {
     super.initState();
-    recognizer.onTap = () {
-//      Fluttertoast.showToast(
-//          msg: "This is Center Short Toast",
-//          toastLength: Toast.LENGTH_SHORT,
-//          gravity: ToastGravity.CENTER,
-//          timeInSecForIos: 1,
-//          backgroundColor: Colors.red,
-//          textColor: Colors.white,
-//          fontSize: 16.0);
+    serviceRecognizer.onTap = () {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (BuildContext context) {
         return WebViewPage(
           "http://music.163.com/html/web2/service.html",
           title: "网易云音乐服务条款",
+        );
+      }));
+    };
+    privacyRecognizer.onTap = () {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (BuildContext context) {
+        return WebViewPage(
+          "http://corp.163.com/gb/legal.html",
+          title: "NetEase,Inc",
         );
       }));
     };
@@ -185,15 +186,15 @@ class _SwitchCheckBoxState extends State<SwitchCheckBoxState> {
               new TextSpan(
                   text: '《用户协议》',
                   style: new TextStyle(fontSize: 10.0, color: Colors.white),
-                  recognizer: recognizer),
+                  recognizer: serviceRecognizer),
               new TextSpan(
                   text: '和',
                   style: new TextStyle(fontSize: 9.0, color: Colors.white70),
-                  recognizer: recognizer),
+                  ),
               new TextSpan(
                 text: '《隐私协议》',
                 style: new TextStyle(fontSize: 10.0, color: Colors.white),
-                recognizer: recognizer,
+                recognizer: privacyRecognizer,
               ),
             ],
           ),
