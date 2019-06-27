@@ -6,6 +6,9 @@ import 'package:flutter_app/base/ConstImg.dart';
 import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/banner_model.dart';
 import 'package:flutter_app/pages/find/widget/FindBanner.dart';
+import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
+import 'package:flutter_app/pages/login/LoginMainPage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class FindPage extends StatefulWidget {
   @override
@@ -30,11 +33,9 @@ class _FindPageState extends State {
   Future getHttp() async {
 //    var response = await Http().get("/banner");
     var response =
-    await Http().get("http://www.mocky.io/v2/5cee0154300000592c6e9825");
+        await Http().get("http://www.mocky.io/v2/5cee0154300000592c6e9825");
     print(response);
-    List<Banners> banners = BannerModel
-        .fromJson(response)
-        .banners;
+    List<Banners> banners = BannerModel.fromJson(response).banners;
     print(banners.length);
     _bannerData = banners;
     if (banners != null && mounted) {
@@ -69,23 +70,22 @@ class _FindPageState extends State {
       onRefresh: () async {
         getHttp();
       },
-      child: CustomScrollView(slivers: _listWidget()),
+      child: CustomScrollView(slivers: _listWidget(context)),
     );
   }
 
-  _listWidget() {
+  _listWidget(BuildContext context) {
     List<Widget> list = <Widget>[
       FindBanner(bannerData: _bannerData),
-      _buildMenu(),
+      _buildMenu(context),
       SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           mainAxisSpacing: 10.0,
           crossAxisSpacing: 10.0,
-
         ),
         delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
+          (BuildContext context, int index) {
             return Container(
               alignment: Alignment.center,
               color: Colors.teal[100 * (index % 9)],
@@ -94,11 +94,8 @@ class _FindPageState extends State {
                 child: Stack(
                   children: <Widget>[
                     Container(
-
                       height: 100,
-
                     ),
-
                   ],
                 ),
               ),
@@ -113,7 +110,7 @@ class _FindPageState extends State {
   }
 }
 
-_buildMenu() {
+_buildMenu(BuildContext context) {
   Widget widget = SliverList(
     delegate: SliverChildListDelegate([
       Container(
@@ -122,18 +119,60 @@ _buildMenu() {
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
             children: [
-              ListItem(
-                  image: "images/find/t_dragonball_icn_daily.png",
-                  text: "每日推荐"),
-              ListItem(
-                  image: "images/find/t_dragonball_icn_playlist.png",
-                  text: "歌单"),
-              ListItem(
-                  image: "images/find/t_dragonball_icn_rank.png", text: "排行榜"),
-              ListItem(
-                  image: "images/find/t_dragonball_icn_radio.png", text: "电台"),
-              ListItem(
-                  image: "images/find/t_dragonball_icn_look.png", text: "直播"),
+              InkWell(
+                child: ListItem(
+                    image: "images/find/t_dragonball_icn_daily.png",
+                    text: "每日推荐"),
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return LoginMainPage();
+                  }));
+                },
+              ),
+              InkWell(
+                child: ListItem(
+                    image: "images/find/t_dragonball_icn_playlist.png",
+                    text: "歌单"),
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return LoginMainPage();
+                  }));
+                },
+              ),
+              InkWell(
+                child: ListItem(
+                    image: "images/find/t_dragonball_icn_rank.png",
+                    text: "排行榜"),
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return LeaderBoardPage();
+                  }));
+                },
+              ),
+              InkWell(
+                child: ListItem(
+                    image: "images/find/t_dragonball_icn_radio.png",
+                    text: "电台"),
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return LoginMainPage();
+                  }));
+                },
+              ),
+              InkWell(
+                child: ListItem(
+                    image: "images/find/t_dragonball_icn_look.png", text: "直播"),
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return LoginMainPage();
+                  }));
+                },
+              ),
             ]),
       ),
       Divider(height: 1),

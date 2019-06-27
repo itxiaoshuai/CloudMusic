@@ -2,7 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/ConstImg.dart';
 import 'package:flutter_app/base/StringResource.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../WebViewPage.dart';
+
+bool visible = true;
 
 class LoginMainPage extends StatelessWidget {
   @override
@@ -36,7 +39,17 @@ class LoginMainPage extends StatelessWidget {
                             height: 40,
                             padding: EdgeInsets.only(left: 45, right: 45),
                             child: new RaisedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                if (visible) {
+                                  Fluttertoast.showToast(
+                                      msg:
+                                          "请先勾选同意\"" "用户协议\"" "和\"" "隐私政策\"" "",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.CENTER,
+                                      timeInSecForIos: 1,
+                                      textColor: Colors.white);
+                                }
+                              },
                               color: Colors.white,
                               child: new Text(
                                 ConstStringResource.login,
@@ -109,8 +122,6 @@ class UserAgreementItemState extends StatefulWidget {
 }
 
 class _UserAgreementItemState extends State<UserAgreementItemState> {
-  bool visible = true;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -120,8 +131,13 @@ class _UserAgreementItemState extends State<UserAgreementItemState> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new GestureDetector(
+            InkWell(
+              onTap: () {
+                visible = !visible;
+                setState(() {});
+              },
               child: Container(
+                  margin: EdgeInsets.all(5),
                   child: Offstage(
                     offstage: visible,
                     child: Image.asset(
@@ -141,17 +157,6 @@ class _UserAgreementItemState extends State<UserAgreementItemState> {
                         style: BorderStyle.solid,
                         color: Colors.white54),
                   )),
-              onTap: () {
-                print('单击打印');
-                visible = !visible;
-                setState(() {});
-              },
-              onDoubleTap: () {
-                print('双击打印');
-              },
-            ),
-            Container(
-              width: 3,
             ),
             SwitchCheckBoxState(),
           ],

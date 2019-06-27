@@ -96,7 +96,7 @@ class Http {
   }
 
   setConfig() {
-    dio.options.baseUrl = "http://localhost:3000";
+    dio.options.baseUrl = "http://192.168.1.124:3000";
     dio.options.connectTimeout = 3000;
     dio.options.receiveTimeout = 5000;
   }
