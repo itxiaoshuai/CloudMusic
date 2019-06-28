@@ -29,7 +29,7 @@ class _LeaderBoardPageState extends State {
           title: Text('排行榜'),
         ),
 //        body: ShopPageFragment());
-        body: ListView.builder(itemCount: 1, itemBuilder: buildItem));
+        body: ListView.builder(itemCount: 4, itemBuilder: buildItem));
   }
 
   //ListView的Item
@@ -50,21 +50,66 @@ class ListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.redAccent,
+      margin: EdgeInsets.only(top: 5,bottom: 5),
+      height: 100,
+//      color: Colors.redAccent,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
+          Container(
+            width: 15,
+          ),
           ListItemCustom(),
           Expanded(
-            child: Center(
+            child: Container(
+              margin: EdgeInsets.only(left: 10,right: 10),
 
-              child: Container(
-                color: Colors.cyan,
-                height: 100,
-                child: ListView.builder(itemCount: 3, itemBuilder: buildItem),
-              ),
-//
+              child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                  //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
+                  children: [
+                    Expanded(
+                      child: Container(
+
+                          child: Center(
+                        child: Text(
+                          '1.木偶人-木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦',
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )),
+                    ),
+                    Expanded(
+                      child: Container(
+                          child: Center(
+                        child: Text(
+                          '1.木偶人-木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦',
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )),
+                    ),
+                    Expanded(
+                      child: Container(
+                          child: Center(
+                        child: Text(
+                          '1.木偶人-木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦',
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )),
+                    ),
+                  ]),
             ),
+          ),
+          Container(
+            color: Colors.green,
           ),
 
 //          ListView.builder(itemCount: 3, itemBuilder: buildItem),
