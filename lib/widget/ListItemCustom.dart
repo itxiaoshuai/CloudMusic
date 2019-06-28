@@ -7,13 +7,14 @@ class ListItemCustom extends StatelessWidget {
   final double height; //高
   final double circular; //圆角
   final String img; //图片
-  ListItemCustom({
-    this.width = 100,
-    this.height = 100,
-    this.circular = 6.0,
-    this.img =
-        'http://p1.music.126.net/MJdmNzZwTCz0b4IpHJV6Wg==/109951162865487429.jpg',
-  });
+  final String updateFrequency;
+
+  ListItemCustom(
+      {this.width = 100,
+      this.height = 100,
+      this.circular = 6.0,
+      this.updateFrequency="",
+      this.img});
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +51,14 @@ class ListItemCustom extends StatelessWidget {
                   ),
                 ),
               ))),
+          Positioned(
+            left: 5,
+            bottom: 5,
+            child: Text(
+              updateFrequency,
+              style: TextStyle(fontSize: 10, color: Colors.white),
+            ),
+          ),
         ],
       )),
     );

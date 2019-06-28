@@ -1,9 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/CommonLoading.dart';
+import 'package:flutter_app/data/api/apis.dart';
+
 import 'package:flutter_app/data/net/Http.dart';
+import 'package:flutter_app/data/protocol/LeaderboardModel.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
-import 'package:flutter_app/widget/item/Item.dart';
+
 
 class LeaderBoardPage extends StatefulWidget {
   @override
@@ -11,6 +13,8 @@ class LeaderBoardPage extends StatefulWidget {
 }
 
 class _LeaderBoardPageState extends State {
+  List<LeaderBoardList> _leaderBoardList = [];
+
   @override
   void initState() {
     getHttp();
@@ -18,28 +22,284 @@ class _LeaderBoardPageState extends State {
   }
 
   Future getHttp() async {
-    var response = await Http().get("/toplist");
-    print(response);
+    var response = await Http().get(MusicApi.TOPLIST);
+
+    var user = LeaderBoardModel.fromJson(response);
+    List<LeaderBoardList> list = user.list;
+    print(list);
+    if (list != null && mounted) {
+      setState(() {
+        _leaderBoardList = list;
+      });
+    }
+
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('排行榜'),
+      appBar: AppBar(
+        title: Text('排行榜'),
+      ),
+      body: CustomScrollView(
+        slivers: _listWidget(context),
+      ),
+    );
+  }
+
+  _listWidget(BuildContext context) {
+    List<Widget> list;
+    if (_leaderBoardList.length > 0) {
+      list = <Widget>[
+        SliverList(
+          delegate: new SliverChildListDelegate(
+            <Widget>[
+              Container(
+                child: Text(
+                  '官方榜',
+                  style: TextStyle(fontSize: 16),
+                ),
+                margin: EdgeInsets.only(left: 15, top: 15, bottom: 10),
+              ),
+            ],
+          ),
         ),
-//        body: ShopPageFragment());
-        body: ListView.builder(itemCount: 4, itemBuilder: buildItem));
+        SliverList(
+          delegate:
+              SliverChildBuilderDelegate((BuildContext context, int index) {
+            //创建列表项
+            return Container(
+              child: ListItem(
+                img: _leaderBoardList[index].coverImgUrl,
+                updateFrequency: _leaderBoardList[index].updateFrequency,
+              ),
+            );
+          }, childCount: 6 //50个列表项
+                  ),
+        ),
+        SliverList(
+          delegate: new SliverChildListDelegate(
+            <Widget>[
+              Container(
+                child: Text(
+                  '推荐榜',
+                  style: TextStyle(fontSize: 16),
+                ),
+                margin: EdgeInsets.only(left: 15, top: 15, bottom: 10),
+              ),
+            ],
+          ),
+        ),
+        _buildRecommend(context),
+        SliverList(
+          delegate: new SliverChildListDelegate(
+            <Widget>[
+              Container(
+                child: Text(
+                  '全球榜',
+                  style: TextStyle(fontSize: 16),
+                ),
+                margin: EdgeInsets.only(left: 15, top: 15, bottom: 10),
+              ),
+            ],
+          ),
+        ),
+        _buildGlobalList(context),
+        SliverList(
+          delegate: new SliverChildListDelegate(
+            <Widget>[
+              Container(
+                child: Text(
+                  '更多榜单',
+                  style: TextStyle(fontSize: 16),
+                ),
+                margin: EdgeInsets.only(left: 15, top: 15, bottom: 10),
+              ),
+            ],
+          ),
+        ),
+        _buildMoreList(context),
+
+
+        SliverList(
+          delegate: new SliverChildListDelegate(
+            <Widget>[
+              Container(
+                margin: EdgeInsets.only(top: 50, bottom: 10),
+              ),
+            ],
+          ),
+        ),
+      ];
+    } else {
+      list = <Widget>[
+        SliverList(
+          delegate: SliverChildListDelegate([
+            Container(
+              height: 1,
+              color: Colors.redAccent,
+            ),
+          ]),
+        )
+      ];
+    }
+
+    return list;
+  }
+
+  _buildRecommend(BuildContext context) {
+    Widget widget;
+    if (_leaderBoardList.length > 12) {
+      List<LeaderBoardList> list = _leaderBoardList.sublist(6, 12);
+
+      widget = SliverPadding(
+        padding: const EdgeInsets.all(8.0),
+        sliver: SliverGrid(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, //Grid按两列显示
+          ),
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              //创建子widget
+              return Container(
+                child: ListItemCustom(
+                  img: list[index].coverImgUrl,
+                  updateFrequency: list[index].updateFrequency,
+                ),
+              );
+            },
+            childCount: list.length,
+          ),
+        ),
+      );
+    } else {
+      List<LeaderBoardList> list =
+          _leaderBoardList.sublist(6, _leaderBoardList.length);
+
+      widget = SliverPadding(
+        padding: const EdgeInsets.all(8.0),
+        sliver: SliverGrid(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, //Grid按两列显示
+          ),
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              //创建子widget
+              return Container(
+                child: ListItemCustom(
+                  img: list[index].coverImgUrl,
+                  updateFrequency: list[index].updateFrequency,
+                ),
+              );
+            },
+            childCount: list.length,
+          ),
+        ),
+      );
+    }
+
+    return widget;
+  }
+
+  _buildGlobalList(BuildContext context) {
+    Widget widget;
+    if (_leaderBoardList.length > 18) {
+      List<LeaderBoardList> list = _leaderBoardList.sublist(12, 18);
+
+      widget = SliverPadding(
+        padding: const EdgeInsets.all(8.0),
+        sliver: SliverGrid(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, //Grid按两列显示
+          ),
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              //创建子widget
+              return Container(
+                child: ListItemCustom(
+                  img: list[index].coverImgUrl,
+                  updateFrequency: list[index].updateFrequency,
+                ),
+              );
+            },
+            childCount: list.length,
+          ),
+        ),
+      );
+    } else {
+      List<LeaderBoardList> list =
+          _leaderBoardList.sublist(12, _leaderBoardList.length);
+
+      widget = SliverPadding(
+        padding: const EdgeInsets.all(8.0),
+        sliver: SliverGrid(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, //Grid按两列显示
+          ),
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              //创建子widget
+              return Container(
+                child: ListItemCustom(
+                  img: list[index].coverImgUrl,
+                  updateFrequency: list[index].updateFrequency,
+                ),
+              );
+            },
+            childCount: list.length,
+          ),
+        ),
+      );
+    }
+
+    return widget;
+  }
+
+  _buildMoreList(BuildContext context) {
+    Widget widget;
+    if (_leaderBoardList.length > 18) {
+      List<LeaderBoardList> list =
+          _leaderBoardList.sublist(18, _leaderBoardList.length);
+
+      widget = SliverPadding(
+        padding: const EdgeInsets.all(8.0),
+        sliver: SliverGrid(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, //Grid按两列显示
+          ),
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) {
+              //创建子widget
+              return Container(
+                child: ListItemCustom(
+                  img: list[index].coverImgUrl,
+                  updateFrequency: list[index].updateFrequency,
+                ),
+              );
+            },
+            childCount: list.length,
+          ),
+        ),
+      );
+    }
+
+    return widget;
   }
 
   //ListView的Item
-  Widget buildItem(BuildContext context, int index) => ListItem();
+  Widget buildItem(BuildContext context, int index) => ListItem(
+        img: _leaderBoardList[index].coverImgUrl,
+        updateFrequency: _leaderBoardList[index].updateFrequency,
+      );
 }
 
 class ListItem extends StatelessWidget {
   final String text;
+  final String img;
+  final String updateFrequency;
 
-  ListItem({this.text});
+  ListItem({this.text, this.img, this.updateFrequency});
 
   //ListView的Item
   Widget buildItem(BuildContext context, int index) => Text(
@@ -50,7 +310,7 @@ class ListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 5,bottom: 5),
+      margin: EdgeInsets.only(top: 5, bottom: 5),
       height: 100,
 //      color: Colors.redAccent,
       child: Row(
@@ -59,18 +319,19 @@ class ListItem extends StatelessWidget {
           Container(
             width: 15,
           ),
-          ListItemCustom(),
+          ListItemCustom(
+            img: img,
+            updateFrequency: updateFrequency,
+          ),
           Expanded(
             child: Container(
-              margin: EdgeInsets.only(left: 10,right: 10),
-
+              margin: EdgeInsets.only(left: 10, right: 10),
               child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
                   //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
                   children: [
                     Expanded(
                       child: Container(
-
                           child: Center(
                         child: Text(
                           '1.木偶人-木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦',

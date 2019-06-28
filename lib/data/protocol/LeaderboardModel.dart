@@ -1,26 +1,76 @@
 class LeaderBoardModel {
-  String updateFrequency; //每天更新
-  String coverImgUrl;
+  int code;
+  List<LeaderBoardList> list;
 
-  @override
-  String toString() {
-    return 'LeaderBoardModel{updateFrequency: $updateFrequency, coverImgUrl: $coverImgUrl, name: $name}';
+  LeaderBoardModel({this.code, this.list});
+
+  LeaderBoardModel.fromJson(Map<String, dynamic> json) {
+    code = json['code'];
+    if (json['list'] != null) {
+      list = List<LeaderBoardList>();
+      json['list'].forEach((v) {
+        list.add(LeaderBoardList.fromJson(v));
+      });
+    }
   }
 
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['code'] = this.code;
+    if (this.list != null) {
+      data['list'] = this.list.map((v) => v.toJson()).toList();
+    }
+
+    return data;
+  }
+}
+
+class LeaderBoardList {
+  String updateFrequency;
+  String coverImgUrl;
+  int trackCount;
+  int userId;
+  String toplistType;
   String name;
+  String description;
+  int playCount;
+  bool ordered;
 
-  LeaderBoardModel(this.updateFrequency, this.coverImgUrl, this.name);
+  LeaderBoardList(
+      {this.updateFrequency,
+      this.ordered,
+      this.coverImgUrl,
+      this.trackCount,
+      this.userId,
+      this.playCount,
+      this.description,
+      this.name,
+      this.toplistType});
 
-  LeaderBoardModel.fromJson(Map<String, dynamic> json)
-      : updateFrequency = json['updateFrequency'],
-        name = json['name'],
-        coverImgUrl = json['coverImgUrl'];
+  LeaderBoardList.fromJson(Map<String, dynamic> json) {
+    updateFrequency = json['updateFrequency'];
+    ordered = json['ordered'];
+    coverImgUrl = json['coverImgUrl'];
+    trackCount = json['trackCount'];
+    userId = json['userId'];
+    playCount = json['playCount'];
+    description = json['description'];
+    name = json['name'];
+    toplistType = json['ToplistType'];
+  }
 
-  Map<String, dynamic> toJson() => {
-        'updateFrequency': updateFrequency,
-        'name': name,
-        'coverImgUrl': coverImgUrl,
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
 
-
+    data['updateFrequency'] = this.updateFrequency;
+    data['ordered'] = this.ordered;
+    data['coverImgUrl'] = this.coverImgUrl;
+    data['trackCount'] = this.trackCount;
+    data['userId'] = this.userId;
+    data['playCount'] = this.playCount;
+    data['description'] = this.description;
+    data['name'] = this.name;
+    data['ToplistType'] = this.toplistType;
+    return data;
+  }
 }
