@@ -9,6 +9,8 @@ import 'package:flutter_app/data/protocol/LeaderboardDetailModel.dart';
 import 'package:flutter_app/data/protocol/LeaderboardModel.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 
+import 'LeaderboardDetailPage.dart';
+
 class LeaderBoardPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _LeaderBoardPageState();
@@ -79,10 +81,18 @@ class _LeaderBoardPageState extends State {
               SliverChildBuilderDelegate((BuildContext context, int index) {
             //创建列表项
             return Container(
-              child: ListItem(
-                img: _leaderBoardList[index].coverImgUrl,
-                updateFrequency: _leaderBoardList[index].updateFrequency,
-                id: _leaderBoardList[index].id,
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return ChoiceSongSheetPage();
+                  }));
+                },
+                child: ListItem(
+                  img: _leaderBoardList[index].coverImgUrl,
+                  updateFrequency: _leaderBoardList[index].updateFrequency,
+                  id: _leaderBoardList[index].id,
+                ),
               ),
             );
           }, childCount: 6 //50个列表项
@@ -321,12 +331,19 @@ class _ListItemState extends State {
   final String img;
   final String updateFrequency;
   final int id;
-  List<String> _listTitle = [];
+
+  final List<String> _listTitle = [];
 
   _ListItemState({this.text, this.img, this.updateFrequency, this.id});
 
   @override
   void initState() {
+    var v = _listTitle.length;
+
+    print('_listTitle.length.length$v');
+    if (v == 18) {
+      return;
+    }
     if (id > 0) {
       getSongListDetail(id);
     }
