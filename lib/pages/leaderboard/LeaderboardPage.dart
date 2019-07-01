@@ -1,11 +1,13 @@
+import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/api/apis.dart';
 
 import 'package:flutter_app/data/net/Http.dart';
+import 'package:flutter_app/data/protocol/LeaderboardDetailModel.dart';
 import 'package:flutter_app/data/protocol/LeaderboardModel.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
-
 
 class LeaderBoardPage extends StatefulWidget {
   @override
@@ -14,6 +16,7 @@ class LeaderBoardPage extends StatefulWidget {
 
 class _LeaderBoardPageState extends State {
   List<LeaderBoardList> _leaderBoardList = [];
+  List<int> tracks = [];
 
   @override
   void initState() {
@@ -30,10 +33,16 @@ class _LeaderBoardPageState extends State {
     if (list != null && mounted) {
       setState(() {
         _leaderBoardList = list;
+
+        if (_leaderBoardList.length >= 6) {
+          tracks = new List<int>();
+          _leaderBoardList.sublist(0, 6).forEach((v) {
+            tracks.add(v.id);
+          });
+        }
+        print('tracks====$tracks');
       });
     }
-
-
   }
 
   @override
@@ -73,6 +82,7 @@ class _LeaderBoardPageState extends State {
               child: ListItem(
                 img: _leaderBoardList[index].coverImgUrl,
                 updateFrequency: _leaderBoardList[index].updateFrequency,
+                id: _leaderBoardList[index].id,
               ),
             );
           }, childCount: 6 //50个列表项
@@ -120,8 +130,6 @@ class _LeaderBoardPageState extends State {
           ),
         ),
         _buildMoreList(context),
-
-
         SliverList(
           delegate: new SliverChildListDelegate(
             <Widget>[
@@ -291,21 +299,73 @@ class _LeaderBoardPageState extends State {
   Widget buildItem(BuildContext context, int index) => ListItem(
         img: _leaderBoardList[index].coverImgUrl,
         updateFrequency: _leaderBoardList[index].updateFrequency,
+        id: _leaderBoardList[index].id,
       );
 }
 
-class ListItem extends StatelessWidget {
+class ListItem extends StatefulWidget {
   final String text;
   final String img;
   final String updateFrequency;
+  final int id;
 
-  ListItem({this.text, this.img, this.updateFrequency});
+  ListItem({this.text, this.img, this.updateFrequency, this.id});
 
-  //ListView的Item
-  Widget buildItem(BuildContext context, int index) => Text(
-        'xxxxxx',
-        style: TextStyle(fontSize: 18.0, color: Colors.black),
-      );
+  @override
+  _ListItemState createState() => _ListItemState(
+      text: text, img: img, updateFrequency: updateFrequency, id: id);
+}
+
+class _ListItemState extends State {
+  final String text;
+  final String img;
+  final String updateFrequency;
+  final int id;
+  List<String> _listTitle = [];
+
+  _ListItemState({this.text, this.img, this.updateFrequency, this.id});
+
+  @override
+  void initState() {
+    if (id > 0) {
+      getSongListDetail(id);
+    }
+    super.initState();
+  }
+
+  ///http://106.13.32.37:3000/playlist/detail?id=19723756
+
+  Future getSongListDetail(int id) async {
+    var response = await Http().get(
+      MusicApi.SONGLISTDETAILS,
+      queryParameters: {"id": id},
+    );
+    print('response====$response');
+    LeaderBoardDetailModel songListDetail =
+        LeaderBoardDetailModel.fromJson(response);
+
+    var playlist = songListDetail.playlist;
+
+    List<Tracks> tracks = playlist.tracks;
+
+    tracks.sublist(0, 3).forEach((id) {
+      var name = id.name;
+      List<Ar> authors = id.ar;
+      var authorName;
+      authors.forEach((author) {
+        authorName = author.name;
+      });
+      var title = name + '_' + authorName;
+      print('title====$title');
+
+      _listTitle.add(title);
+    });
+    if (_listTitle != null && mounted) {
+      setState(() {
+        print('_listTitle====$_listTitle');
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -323,84 +383,84 @@ class ListItem extends StatelessWidget {
             img: img,
             updateFrequency: updateFrequency,
           ),
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.only(left: 10, right: 10),
-              child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                  //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
-                  children: [
-                    Expanded(
-                      child: Container(
-                          child: Center(
-                        child: Text(
-                          '1.木偶人-木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦',
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      )),
-                    ),
-                    Expanded(
-                      child: Container(
-                          child: Center(
-                        child: Text(
-                          '1.木偶人-木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦',
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      )),
-                    ),
-                    Expanded(
-                      child: Container(
-                          child: Center(
-                        child: Text(
-                          '1.木偶人-木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦木偶人-薛之谦',
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      )),
-                    ),
-                  ]),
-            ),
-          ),
+          _buildTopThreeSongs(context),
           Container(
             color: Colors.green,
           ),
-
-//          ListView.builder(itemCount: 3, itemBuilder: buildItem),
         ],
       ),
-//      child: ListItemCustom(),
-//      child: Row(
-//        children: <Widget>[
-//          ListItemCustom(),
-////          CachedNetworkImage(
-////            fit: BoxFit.fill,
-////            imageUrl:
-////                'http://p2.music.126.net/BzSxoj6O1LQPlFceDn-LKw==/18681802069355169.jpg',
-////            placeholder: (context, url) => ProgressView(),
-////            errorWidget: (context, url, error) => new Icon(Icons.error),
-////          ),
-////          ListView.builder(itemCount: 3, itemBuilder: buildItem),
-////          Column(
-////            children: <Widget>[
-////              ListView.builder(itemCount: 3, itemBuilder: buildItem),
-////              Container(
-////                  color: Colors.orange,
-////                  child: Text(text,
-////                      style: TextStyle(
-////                        fontSize: 12,
-////                      )))
-////            ],
-////          ),
-//        ],
-//      ),
     );
+  }
+
+  ///展示前三首音乐
+  _buildTopThreeSongs(BuildContext context) {
+    Widget widget;
+    var length = _listTitle.length;
+    print('_listTitle.length$length');
+    if (_listTitle.length >= 3) {
+      widget = Expanded(
+        child: Container(
+          margin: EdgeInsets.only(left: 10, right: 10),
+          child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+              //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
+              children: [
+                Expanded(
+                  child: Container(
+//                      color: Colors.green,
+                      child: Center(
+                    child: new Align(
+                      alignment: FractionalOffset.centerLeft,
+                      child: Text(
+                        '1.' + _listTitle[0],
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  )),
+                ),
+                Expanded(
+                  child: Container(
+                      child: Center(
+                    child: new Align(
+                      alignment: FractionalOffset.centerLeft,
+                      child: Text(
+                        '2.' + _listTitle[1],
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  )),
+                ),
+                Expanded(
+                  child: Container(
+                      child: Center(
+                    child: new Align(
+                      alignment: FractionalOffset.centerLeft,
+                      child: Text(
+                        '3.' + _listTitle[2],
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  )),
+                ),
+              ]),
+        ),
+      );
+    } else {
+      print('_listTitle.lengthxxxxxxxxxx$length');
+      widget = Container(
+        height: 0,
+      );
+    }
+
+    return widget;
   }
 }

@@ -35,7 +35,7 @@ class LeaderBoardList {
   String description;
   int playCount;
   bool ordered;
-
+  int id;
   LeaderBoardList(
       {this.updateFrequency,
       this.ordered,
@@ -45,7 +45,8 @@ class LeaderBoardList {
       this.playCount,
       this.description,
       this.name,
-      this.toplistType});
+      this.toplistType,
+      this.id});
 
   LeaderBoardList.fromJson(Map<String, dynamic> json) {
     updateFrequency = json['updateFrequency'];
@@ -57,6 +58,7 @@ class LeaderBoardList {
     description = json['description'];
     name = json['name'];
     toplistType = json['ToplistType'];
+    id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -71,6 +73,7 @@ class LeaderBoardList {
     data['description'] = this.description;
     data['name'] = this.name;
     data['ToplistType'] = this.toplistType;
+    data['id'] = this.id;
     return data;
   }
 }

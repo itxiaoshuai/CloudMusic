@@ -61,13 +61,14 @@ class Http {
   }
 
   // get 请求封装
-  get(url, {options, cancelToken, data}) async {
-    print('get:::url：$url ,body: $data');
+  get(url, {options, cancelToken, queryParameters}) async {
+    print('get:::url：$url ,queryParameters: $queryParameters');
     Response response;
     try {
       response = await dio.get(
         url,
         cancelToken: cancelToken,
+        queryParameters: queryParameters
       );
     } on DioError catch (e) {
       if (CancelToken.isCancel(e)) {
