@@ -3,12 +3,15 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/ConstImg.dart';
+import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/banner_model.dart';
 import 'package:flutter_app/pages/find/widget/FindBanner.dart';
 import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import 'FutureBuilderPage.dart';
 
 class FindPage extends StatefulWidget {
   @override
@@ -27,6 +30,7 @@ class _FindPageState extends State {
   @override
   void initState() {
     getHttp();
+    getSongListRecommend();
     super.initState();
   }
 
@@ -43,26 +47,13 @@ class _FindPageState extends State {
         _bannerData = banners;
       });
     }
-
-    /// 获取轮播图
-//    String result = Http(loading: false).request(Method.get, '/banner');
-//    if (result != null) {
-//      print('xxxxxxxxxxxxxxxxxx');
-//      print(result);
-//      print('zzzzzzzzzzzzzzzzzzzzz');
-//
-//    }
   }
 
-//  void getHttp() async {
-//    try {
-//      print("zzzzzzzzzzzzzzzzzzzzzzzzzz");
-//      Response response = await Dio().get("http://192.168.0.100:3000/banner");
-//      print(response);
-//    } catch (e) {
-//      print(e);
-//    }
-//  }
+  Future getSongListRecommend() async {
+    var response = await Http().get(MusicApi.SONGLISTDRECOMMEND);
+
+    print(response);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +117,7 @@ _buildMenu(BuildContext context) {
                 onTap: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (BuildContext context) {
-                    return LoginMainPage();
+                    return FutureBuilderPage();
                   }));
                 },
               ),
