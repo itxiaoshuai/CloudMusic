@@ -36,7 +36,7 @@ class _HomeDrawerState extends State {
 class DrawerListItemHorizontal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Center(
+    return  Center(
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
           children: [

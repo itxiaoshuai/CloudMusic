@@ -37,7 +37,7 @@ class _LeaderBoardPageState extends State {
         _leaderBoardList = list;
 
         if (_leaderBoardList.length >= 6) {
-          tracks = new List<int>();
+          tracks =  List<int>();
           _leaderBoardList.sublist(0, 6).forEach((v) {
             tracks.add(v.id);
           });
@@ -64,7 +64,7 @@ class _LeaderBoardPageState extends State {
     if (_leaderBoardList.length > 0) {
       list = <Widget>[
         SliverList(
-          delegate: new SliverChildListDelegate(
+          delegate:  SliverChildListDelegate(
             <Widget>[
               Container(
                 child: Text(
@@ -99,7 +99,7 @@ class _LeaderBoardPageState extends State {
                   ),
         ),
         SliverList(
-          delegate: new SliverChildListDelegate(
+          delegate:  SliverChildListDelegate(
             <Widget>[
               Container(
                 child: Text(
@@ -113,7 +113,7 @@ class _LeaderBoardPageState extends State {
         ),
         _buildRecommend(context),
         SliverList(
-          delegate: new SliverChildListDelegate(
+          delegate:  SliverChildListDelegate(
             <Widget>[
               Container(
                 child: Text(
@@ -127,7 +127,7 @@ class _LeaderBoardPageState extends State {
         ),
         _buildGlobalList(context),
         SliverList(
-          delegate: new SliverChildListDelegate(
+          delegate:  SliverChildListDelegate(
             <Widget>[
               Container(
                 child: Text(
@@ -141,7 +141,7 @@ class _LeaderBoardPageState extends State {
         ),
         _buildMoreList(context),
         SliverList(
-          delegate: new SliverChildListDelegate(
+          delegate:  SliverChildListDelegate(
             <Widget>[
               Container(
                 margin: EdgeInsets.only(top: 50, bottom: 10),
@@ -426,7 +426,7 @@ class _ListItemState extends State {
                   child: Container(
 //                      color: Colors.green,
                       child: Center(
-                    child: new Align(
+                    child:  Align(
                       alignment: FractionalOffset.centerLeft,
                       child: Text(
                         '1.' + _listTitle[0],
@@ -441,7 +441,7 @@ class _ListItemState extends State {
                 Expanded(
                   child: Container(
                       child: Center(
-                    child: new Align(
+                    child:  Align(
                       alignment: FractionalOffset.centerLeft,
                       child: Text(
                         '2.' + _listTitle[1],
@@ -456,7 +456,7 @@ class _ListItemState extends State {
                 Expanded(
                   child: Container(
                       child: Center(
-                    child: new Align(
+                    child:  Align(
                       alignment: FractionalOffset.centerLeft,
                       child: Text(
                         '3.' + _listTitle[2],

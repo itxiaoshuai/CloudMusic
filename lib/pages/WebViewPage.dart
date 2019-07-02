@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class WebViewPage extends StatefulWidget {
-  final flutterWebviewPlugin = new FlutterWebviewPlugin();
+  final flutterWebviewPlugin =  FlutterWebviewPlugin();
   final String url;
   final AppBar appBar;
   final String title;
@@ -17,7 +17,7 @@ class WebViewPage extends StatefulWidget {
 }
 
 class _WebViewPage extends State<WebViewPage> {
-  final flutterWebviewPlugin = new FlutterWebviewPlugin();
+  final flutterWebviewPlugin =  FlutterWebviewPlugin();
   StreamSubscription<WebViewStateChanged> _onStateChanged;
   String webviewTitle = "";
 

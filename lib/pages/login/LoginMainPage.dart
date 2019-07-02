@@ -38,7 +38,7 @@ class LoginMainPage extends StatelessWidget {
                           child: Container(
                             height: 40,
                             padding: EdgeInsets.only(left: 45, right: 45),
-                            child: new RaisedButton(
+                            child:  RaisedButton(
                               onPressed: () {
                                 if (visible) {
                                   Fluttertoast.showToast(
@@ -51,12 +51,12 @@ class LoginMainPage extends StatelessWidget {
                                 }
                               },
                               color: Colors.white,
-                              child: new Text(
+                              child: Text(
                                 ConstStringResource.login,
                                 style: TextStyle(
                                     fontSize: 18, color: Colors.redAccent),
                               ),
-                              shape: new RoundedRectangleBorder(
+                              shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(25.0)),
                             ),
                           ),
@@ -203,22 +203,22 @@ class _SwitchCheckBoxState extends State<SwitchCheckBoxState> {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        new RichText(
-          text: new TextSpan(
+        RichText(
+          text: TextSpan(
             text: '同意',
-            style: new TextStyle(fontSize: 9.0, color: Colors.white70),
+            style: TextStyle(fontSize: 9.0, color: Colors.white70),
             children: <TextSpan>[
-              new TextSpan(
+              TextSpan(
                   text: '《用户协议》',
-                  style: new TextStyle(fontSize: 10.0, color: Colors.white),
+                  style: TextStyle(fontSize: 10.0, color: Colors.white),
                   recognizer: serviceRecognizer),
-              new TextSpan(
+              TextSpan(
                 text: '和',
-                style: new TextStyle(fontSize: 9.0, color: Colors.white70),
+                style: TextStyle(fontSize: 9.0, color: Colors.white70),
               ),
-              new TextSpan(
+              TextSpan(
                 text: '《隐私政策》',
-                style: new TextStyle(fontSize: 10.0, color: Colors.white),
+                style:  TextStyle(fontSize: 10.0, color: Colors.white),
                 recognizer: privacyRecognizer,
               ),
             ],

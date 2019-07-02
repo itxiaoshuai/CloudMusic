@@ -47,7 +47,7 @@ class ListItemCustom extends StatelessWidget {
                     fit: BoxFit.fill,
                     imageUrl: img,
                     placeholder: (context, url) => ProgressView(),
-                    errorWidget: (context, url, error) => new Icon(Icons.error),
+                    errorWidget: (context, url, error) =>  Icon(Icons.error),
                   ),
                 ),
               ))),

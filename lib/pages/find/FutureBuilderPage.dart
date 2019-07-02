@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
+import 'package:flutter_app/pages/find/widget/SpinKitWave.dart';
+
 import 'package:flutter_app/widget/ListItemCustom.dart';
 
 class FutureBuilderPage extends StatefulWidget {
@@ -50,12 +52,19 @@ class FutureBuilderState extends State<FutureBuilderPage> {
       case ConnectionState.waiting:
         print('waiting');
         return Center(
-          child: CircularProgressIndicator(),
+          child: SpinKitWave(
+
+          ),
         );
       case ConnectionState.done:
         print('done');
         if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-        return _createListView(context, snapshot);
+//        return _createListView(context, snapshot);
+        return Center(
+          child: SpinKitWave(
+
+          ),
+        );
       default:
         return null;
     }
@@ -74,13 +83,15 @@ class FutureBuilderState extends State<FutureBuilderPage> {
           itemCount: songlist.length,
           //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //横轴元素个数
+              //横轴元素个数
               crossAxisCount: 3,
               //子组件宽高长度比例
               childAspectRatio: 1.0),
           itemBuilder: (BuildContext context, int index) {
             //Widget Function(BuildContext context, int index)
-            return ListItemCustom(img: songlist[index]['picUrl'],);
+            return ListItemCustom(
+              img: songlist[index]['picUrl'],
+            );
           }),
     );
   }
@@ -94,31 +105,4 @@ class FutureBuilderState extends State<FutureBuilderPage> {
       title: Text(movies[index]['name']),
     );
   }
-}
-
-Widget _buildRecommend(BuildContext context, List songlist) {
-  Widget widget;
-  widget = Container(
-    child: SliverPadding(
-      padding: const EdgeInsets.all(8.0),
-      sliver: SliverGrid(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3, //Grid按两列显示
-        ),
-        delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-            //创建子widget
-            return Container(
-              child: Text('xxxx'),
-//            child: ListItemCustom(
-//              img: songlist[index]['picUrl'],
-//            ),
-            );
-          },
-          childCount: songlist.length,
-        ),
-      ),
-    );,
-  )
-  return widget;
 }

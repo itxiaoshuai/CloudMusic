@@ -9,13 +9,13 @@ class LeaderBoardDetailModel {
 
   LeaderBoardDetailModel.fromJson(Map<String, dynamic> json) {
     playlist = json['playlist'] != null
-        ? new Playlist.fromJson(json['playlist'])
+        ?  Playlist.fromJson(json['playlist'])
         : null;
     code = json['code'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     if (this.playlist != null) {
       data['playlist'] = this.playlist.toJson();
     }
@@ -92,18 +92,18 @@ class Playlist {
 
   Playlist.fromJson(Map<String, dynamic> json) {
     if (json['subscribers'] != null) {
-      subscribers = new List<Subscribers>();
+      subscribers =  List<Subscribers>();
       json['subscribers'].forEach((v) {
-        subscribers.add(new Subscribers.fromJson(v));
+        subscribers.add( Subscribers.fromJson(v));
       });
     }
     subscribed = json['subscribed'];
     creator =
-        json['creator'] != null ? new Creator.fromJson(json['creator']) : null;
+        json['creator'] != null ?  Creator.fromJson(json['creator']) : null;
     if (json['tracks'] != null) {
-      tracks = new List<Tracks>();
+      tracks =  List<Tracks>();
       json['tracks'].forEach((v) {
-        tracks.add(new Tracks.fromJson(v));
+        tracks.add( Tracks.fromJson(v));
       });
     }
 
@@ -137,7 +137,7 @@ class Playlist {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     if (this.subscribers != null) {
       data['subscribers'] = this.subscribers.map((v) => v.toJson()).toList();
     }
@@ -270,7 +270,7 @@ class Subscribers {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['defaultAvatar'] = this.defaultAvatar;
     data['province'] = this.province;
     data['authStatus'] = this.authStatus;
@@ -392,7 +392,7 @@ class Creator {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['defaultAvatar'] = this.defaultAvatar;
     data['province'] = this.province;
     data['authStatus'] = this.authStatus;
@@ -482,9 +482,9 @@ class Tracks {
     name = json['name'];
     id = json['id'];
     if (json['ar'] != null) {
-      ar = new List<Ar>();
+      ar =  List<Ar>();
       json['ar'].forEach((v) {
-        ar.add(new Ar.fromJson(v));
+        ar.add( Ar.fromJson(v));
       });
     }
     pop = json['pop'];
@@ -511,7 +511,7 @@ class Tracks {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['name'] = this.name;
     data['id'] = this.id;
 
@@ -557,7 +557,7 @@ class Ar {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;
 
@@ -618,7 +618,7 @@ class Privileges {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['id'] = this.id;
     data['fee'] = this.fee;
     data['payed'] = this.payed;

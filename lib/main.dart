@@ -1,23 +1,153 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/find/PageFind.dart';
+import 'package:flutter_app/pages/find/widget/SpinKitWave.dart';
 import 'package:flutter_app/pages/my/PageMy.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
 
-void main() => runApp(MyApp());
+import 'package:flutter/animation.dart';
+import 'package:flutter_app/widget/loading/bar.dart';
+
+import 'dart:ui' show lerpDouble;
+
+import 'package:flutter_app/widget/loading/color_palette.dart';
+
+
+void main() {
+  runApp( MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return  MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: HomePage(),
+      home:  MyHomePage(),
     );
   }
 }
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() =>  _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+  final random =  Random();
+  AnimationController animation;
+  BarChartTween tween;
+
+  @override
+  void initState() {
+    super.initState();
+    animation =  AnimationController(
+        duration: const Duration(milliseconds: 1000),
+        vsync: this
+    )
+    ..repeat();
+    tween =  BarChartTween( BarChart.empty(),  BarChart.random(random));
+    animation.forward();
+    animation.addStatusListener((status){
+      if(status==AnimationStatus.completed){
+//        tween =  BarChartTween(
+//          tween.evaluate(animation),
+//          BarChart.random(random),
+//        );
+        animation.reverse();
+      }
+
+    });
+  }
+
+  @override
+  void dispose() {
+    animation.dispose();
+    super.dispose();
+  }
+
+  void changeData() {
+    setState(() {
+      tween =  BarChartTween(
+        tween.evaluate(animation),
+         BarChart.random(random),
+      );
+      animation.forward(from: 0.0);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      body:  Center(
+          child:  CustomPaint(
+              size:  Size(200.0, 100.0),
+              painter:  BarChartPainter(tween.animate(animation))
+          )
+      ),
+      floatingActionButton:  FloatingActionButton(
+        onPressed: changeData,
+        child:  Icon(Icons.refresh),
+      ),
+    );
+  }
+}
+
+
+
+
+
+class Bar {
+  Bar(this.height, this.color);
+  final double height;
+  final Color color;
+
+  factory Bar.empty() =>  Bar(0.0, Colors.transparent);
+  factory Bar.random(Random random) {
+    return  Bar(
+        random.nextDouble() * 100.0,
+        ColorPalette.primary.random(random)
+    );
+  }
+
+  static Bar lerp(Bar begin, Bar end, double t) {
+    return  Bar(
+        lerpDouble(begin.height, end.height, t),
+        Color.lerp(begin.color, end.color, t)
+    );
+  }
+}
+
+class BarTween extends Tween<Bar> {
+  BarTween(Bar begin, Bar end) : super(begin: begin, end: end);
+
+  @override
+  Bar lerp(double t) => Bar.lerp(begin, end, t);
+}
+
+
+
+
+
+
+
+
+
+
+
+//class MyApp extends StatelessWidget {
+//  // This widget is the root of your application.
+//  @override
+//  Widget build(BuildContext context) {
+//    return MaterialApp(
+//      title: 'Flutter Demo',
+//      theme: ThemeData(
+//        primarySwatch: Colors.red,
+//      ),
+//      home: HomePage(),
+//    );
+//  }
+//}
 
 class HomePage extends StatefulWidget {
   @override
@@ -36,7 +166,7 @@ class _HomePageState extends State<HomePage>
 
   void initState() {
     super.initState();
-    _tabController = new TabController(vsync: this, length: 4);
+    _tabController =  TabController(vsync: this, length: 4);
   }
 
   @override
@@ -50,16 +180,16 @@ class _HomePageState extends State<HomePage>
           indicatorSize: TabBarIndicatorSize.tab,
           isScrollable: true,
           tabs: <Widget>[
-            new Tab(
+             Tab(
               text: '我的',
             ),
-            new Tab(
+             Tab(
               text: '发现',
             ),
-            new Tab(
+             Tab(
               text: '朋友',
             ),
-            new Tab(
+             Tab(
               text: '视频',
             ),
           ],
@@ -75,7 +205,7 @@ class _HomePageState extends State<HomePage>
           )
         ],
       ),
-      body: new TabBarView(
+      body:  TabBarView(
         controller: _tabController,
         children: <Widget>[
           MyPage(),
@@ -137,7 +267,7 @@ class _TabContainerState extends State<TabContainerState>
 
           tabs: choices.map((Choice choice) {
             //选项卡
-            return new Tab(
+            return  Tab(
               text: choice.title,
             );
           }).toList(),

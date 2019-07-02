@@ -16,15 +16,15 @@ class SongListRecommendModel {
     code = json['code'];
     category = json['category'];
     if (json['result'] != null) {
-      result = new List<Result>();
+      result =  List<Result>();
       json['result'].forEach((v) {
-        result.add(new Result.fromJson(v));
+        result.add( Result.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['hasTaste'] = this.hasTaste;
     data['code'] = this.code;
     data['category'] = this.category;
@@ -73,7 +73,7 @@ class Result {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['id'] = this.id;
     data['type'] = this.type;
     data['name'] = this.name;

@@ -15,7 +15,7 @@ class LeaderBoardModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['code'] = this.code;
     if (this.list != null) {
       data['list'] = this.list.map((v) => v.toJson()).toList();
@@ -62,7 +62,7 @@ class LeaderBoardList {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
 
     data['updateFrequency'] = this.updateFrequency;
     data['ordered'] = this.ordered;

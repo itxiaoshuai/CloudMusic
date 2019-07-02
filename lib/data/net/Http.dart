@@ -10,7 +10,7 @@ class BaseResp<T> {
 
   @override
   String toString() {
-    StringBuffer sb = new StringBuffer('{');
+    StringBuffer sb =  StringBuffer('{');
     sb.write(",\"data\":\"$data\"");
     sb.write('}');
     return sb.toString();
@@ -53,7 +53,7 @@ class Http {
       _data = response.data;
       return _data;
     }
-    return new Future.error(new DioError(
+    return  Future.error( DioError(
       response: response,
       message: "statusCode: $response.statusCode, service error",
       type: DioErrorType.RESPONSE,
@@ -83,7 +83,7 @@ class Http {
   /// check Options.
   Options _checkOptions(method, options) {
     if (options == null) {
-      options = new Options();
+      options =  Options();
     }
     options.method = method;
     return options;

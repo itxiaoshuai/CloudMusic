@@ -127,7 +127,7 @@ class BannerItem extends StatelessWidget {
                         imageUrl: banner.imageUrl,
                         placeholder: (context, url) => ProgressView(),
                         errorWidget: (context, url, error) =>
-                            new Icon(Icons.error),
+                             Icon(Icons.error),
                       ),
                     ),
                   ))),
