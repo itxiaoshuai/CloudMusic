@@ -7,8 +7,10 @@ import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/banner_model.dart';
 import 'package:flutter_app/pages/find/widget/FindBanner.dart';
+import 'package:flutter_app/pages/find/widget/SpinKitWaveType.dart';
 import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
+import 'package:flutter_app/widget/ListItemCustom.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'FutureBuilderPage.dart';
@@ -55,6 +57,11 @@ class _FindPageState extends State {
     print(response);
   }
 
+  Future _gerData() async {
+    var response = await Http().get(MusicApi.SONGLISTDRECOMMEND);
+    return response;
+  }
+
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -69,36 +76,117 @@ class _FindPageState extends State {
     List<Widget> list = <Widget>[
       FindBanner(bannerData: _bannerData),
       _buildMenu(context),
-      SliverGrid(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
+      Text('xxxxxxxxxxxxxxxxxxxxx'),
+//      SliverList(
+//        delegate: SliverChildListDelegate([
+//          Container(
+//            child: FutureBuilder(
+//              builder: _buildFuture,
+//              future:
+//                  _gerData(), // 用户定义的需要异步执行的代码，类型为Future<String>或者null的变量或函数
+//            ),
+//          ),
+//        ]),
+//      ),
+    ];
+
+    return list;
+  }
+}
+
+///snapshot就是_calculation在时间轴上执行过程的状态快照
+Widget _buildFuture(BuildContext context, AsyncSnapshot snapshot) {
+  switch (snapshot.connectionState) {
+    case ConnectionState.none:
+      print('还没有开始网络请求');
+      return Text('还没有开始网络请求');
+    case ConnectionState.active:
+      print('active');
+      return Text('ConnectionState.active');
+    case ConnectionState.waiting:
+      print('waiting');
+      return Center(child: SpinKitWave(
+        itemBuilder: (_, int index) {
+          return DecoratedBox(
+            decoration: BoxDecoration(
+              color: index.isEven ? Colors.red : Colors.green,
+            ),
+          );
+        },
+      ));
+    case ConnectionState.done:
+      print('done');
+      if (snapshot.hasError) return Text('Error: ${snapshot.error}');
+//      return SpinKitWave(
+//        itemBuilder: (_, int index) {
+//          return DecoratedBox(
+//            decoration: BoxDecoration(
+//              color: index.isEven ? Colors.red : Colors.green,
+//            ),
+//          );
+//        },
+//      );
+//      return _createListView(context, snapshot);
+      return SliverGrid(
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200.0,
           mainAxisSpacing: 10.0,
           crossAxisSpacing: 10.0,
+          childAspectRatio: 4.0,
         ),
         delegate: SliverChildBuilderDelegate(
           (BuildContext context, int index) {
             return Container(
               alignment: Alignment.center,
               color: Colors.teal[100 * (index % 9)],
-//              child: Text('grid item $index'),
-              child: InkWell(
-                child: Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 100,
-                    ),
-                  ],
-                ),
-              ),
+              child: Text('grid item $index'),
             );
           },
           childCount: 20,
         ),
-      ),
-    ];
-
-    return list;
+      );
+    default:
+      return null;
   }
+}
+
+Widget _createListView(BuildContext context, AsyncSnapshot snapshot) {
+  List songlist = snapshot.data['result'];
+  return SliverGrid(
+    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+      maxCrossAxisExtent: 200.0,
+      mainAxisSpacing: 10.0,
+      crossAxisSpacing: 10.0,
+      childAspectRatio: 4.0,
+    ),
+    delegate: SliverChildBuilderDelegate(
+      (BuildContext context, int index) {
+        return Container(
+          alignment: Alignment.center,
+          color: Colors.teal[100 * (index % 9)],
+          child: Text('grid item $index'),
+        );
+      },
+      childCount: 20,
+    ),
+  );
+//  return Container(
+//    padding: const EdgeInsets.all(8.0),
+//    child: GridView.builder(
+//        itemCount: songlist.length,
+//        //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
+//        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//            //横轴元素个数
+//            crossAxisCount: 3,
+//            //子组件宽高长度比例
+//            childAspectRatio: 1.0),
+//        itemBuilder: (BuildContext context, int index) {
+//          //Widget Function(BuildContext context, int index)
+//          return ListItemCustom(
+//            img: songlist[index]['picUrl'],
+//          );
+//        }),
+//  );
 }
 
 _buildMenu(BuildContext context) {

@@ -13,50 +13,54 @@ import 'dart:ui' show lerpDouble;
 
 import 'package:flutter_app/widget/loading/color_palette.dart';
 
-
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
-      home:  MyHomePage(),
+      home: HomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   @override
-  _MyHomePageState createState() =>  _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  final random =  Random();
+  final random = Random();
   AnimationController animation;
   BarChartTween tween;
 
   @override
   void initState() {
     super.initState();
-    animation =  AnimationController(
-        duration: const Duration(milliseconds: 1000),
-        vsync: this
-    )
-    ..repeat();
-    tween =  BarChartTween( BarChart.empty(),  BarChart.random(random));
-    animation.forward();
-    animation.addStatusListener((status){
-      if(status==AnimationStatus.completed){
+    animation = AnimationController(
+        duration: const Duration(milliseconds: 1000), vsync: this)
+      ..repeat();
+    tween = BarChartTween(BarChart.empty(), BarChart.random(random));
+//    animation.forward();
+    animation.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        print('动画结束');
 //        tween =  BarChartTween(
 //          tween.evaluate(animation),
 //          BarChart.random(random),
 //        );
         animation.reverse();
+      } else if (status == AnimationStatus.forward) {
+        print('向前移动');
+      } else if (status == AnimationStatus.reverse) {
+        print('向后移动');
+      } else if (status == AnimationStatus.dismissed) {
+        animation.forward();
+        print('动画反转结束');
       }
-
     });
   }
 
@@ -68,9 +72,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   void changeData() {
     setState(() {
-      tween =  BarChartTween(
+      tween = BarChartTween(
         tween.evaluate(animation),
-         BarChart.random(random),
+        BarChart.random(random),
       );
       animation.forward(from: 0.0);
     });
@@ -78,62 +82,42 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body:  Center(
-          child:  CustomPaint(
-              size:  Size(200.0, 100.0),
-              painter:  BarChartPainter(tween.animate(animation))
-          )
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Container(
+          color: Colors.yellow,
+          child: Center(
+            child: Container(
+              height: 500,
+              color: Colors.cyan,
+              child: Column(
+                children: <Widget>[
+                  SpinKitWave(),
+                  CustomPaint(
+                      size: Size(100.0, 200.0),
+                      painter: BarChartPainter(tween.animate(animation)))
+                ],
+              ),
+            ),
+          ),
+        ),
+//        child: Column(
+//          children: <Widget>[
+//
+//            CustomPaint(
+//                size: Size(30.0, 10.0),
+//                painter: BarChartPainter(tween.animate(animation)))
+//          ],
+//        ),
       ),
-      floatingActionButton:  FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: changeData,
-        child:  Icon(Icons.refresh),
+        child: Icon(Icons.refresh),
       ),
     );
   }
 }
-
-
-
-
-
-class Bar {
-  Bar(this.height, this.color);
-  final double height;
-  final Color color;
-
-  factory Bar.empty() =>  Bar(0.0, Colors.transparent);
-  factory Bar.random(Random random) {
-    return  Bar(
-        random.nextDouble() * 100.0,
-        ColorPalette.primary.random(random)
-    );
-  }
-
-  static Bar lerp(Bar begin, Bar end, double t) {
-    return  Bar(
-        lerpDouble(begin.height, end.height, t),
-        Color.lerp(begin.color, end.color, t)
-    );
-  }
-}
-
-class BarTween extends Tween<Bar> {
-  BarTween(Bar begin, Bar end) : super(begin: begin, end: end);
-
-  @override
-  Bar lerp(double t) => Bar.lerp(begin, end, t);
-}
-
-
-
-
-
-
-
-
-
-
 
 //class MyApp extends StatelessWidget {
 //  // This widget is the root of your application.
@@ -166,7 +150,7 @@ class _HomePageState extends State<HomePage>
 
   void initState() {
     super.initState();
-    _tabController =  TabController(vsync: this, length: 4);
+    _tabController = TabController(vsync: this, length: 4);
   }
 
   @override
@@ -180,16 +164,16 @@ class _HomePageState extends State<HomePage>
           indicatorSize: TabBarIndicatorSize.tab,
           isScrollable: true,
           tabs: <Widget>[
-             Tab(
+            Tab(
               text: '我的',
             ),
-             Tab(
+            Tab(
               text: '发现',
             ),
-             Tab(
+            Tab(
               text: '朋友',
             ),
-             Tab(
+            Tab(
               text: '视频',
             ),
           ],
@@ -205,7 +189,7 @@ class _HomePageState extends State<HomePage>
           )
         ],
       ),
-      body:  TabBarView(
+      body: TabBarView(
         controller: _tabController,
         children: <Widget>[
           MyPage(),
@@ -267,7 +251,7 @@ class _TabContainerState extends State<TabContainerState>
 
           tabs: choices.map((Choice choice) {
             //选项卡
-            return  Tab(
+            return Tab(
               text: choice.title,
             );
           }).toList(),

@@ -19,6 +19,8 @@ class FutureBuilderState extends State<FutureBuilderPage> {
     return response;
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,19 +54,15 @@ class FutureBuilderState extends State<FutureBuilderPage> {
       case ConnectionState.waiting:
         print('waiting');
         return Center(
-          child: SpinKitWave(
+          child: CircularProgressIndicator(
 
           ),
         );
       case ConnectionState.done:
         print('done');
         if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-//        return _createListView(context, snapshot);
-        return Center(
-          child: SpinKitWave(
+        return _createListView(context, snapshot);
 
-          ),
-        );
       default:
         return null;
     }
