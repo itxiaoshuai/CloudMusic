@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/CommonLoading.dart';
+import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
 
 class ListItemCustom extends StatelessWidget {
   final double width; //宽
@@ -13,12 +14,17 @@ class ListItemCustom extends StatelessWidget {
       {this.width = 100,
       this.height = 100,
       this.circular = 6.0,
-      this.updateFrequency="",
+      this.updateFrequency = "",
       this.img});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return PlaylistDetailPage();
+        }));
+      },
       child: Center(
 //          color: Colors.redAccent,
 //          height: 100,
@@ -47,7 +53,7 @@ class ListItemCustom extends StatelessWidget {
                     fit: BoxFit.fill,
                     imageUrl: img,
                     placeholder: (context, url) => ProgressView(),
-                    errorWidget: (context, url, error) =>  Icon(Icons.error),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
               ))),
