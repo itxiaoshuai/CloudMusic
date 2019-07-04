@@ -11,7 +11,6 @@ import 'package:flutter_app/pages/find/widget/SpinKitWaveType.dart';
 import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'FutureBuilderPage.dart';
 
@@ -33,6 +32,7 @@ class _FindPageState extends State {
   void initState() {
     getHttp();
     getSongListRecommend();
+    _gerData();
     super.initState();
   }
 
@@ -68,30 +68,127 @@ class _FindPageState extends State {
       onRefresh: () async {
         getHttp();
       },
-      child: CustomScrollView(slivers: _listWidget(context)),
+//      child: CustomScrollView(slivers: _listWidget(context)),
+      child: ListView(
+        children: <Widget>[
+          FindBanner(bannerData: _bannerData),
+          _buildMenu(context),
+          Divider(
+            height: 1,
+            color: Colors.grey[300],
+          ),
+          _Header("推荐歌单", () {}),
+          FutureBuilder(
+            builder: _buildFuture,
+            future: _gerData(), // 用户定义的需要异步执行的代码，类型为Future<String>或者null的变量或函数
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+List<int> getDataList(int count) {
+  List<int> list = [];
+  for (int i = 0; i < count; i++) {
+    list.add(i);
+  }
+  return list;
+}
+
+List<Widget> getWidgetList(List list) {
+  return getDataList(list.length)
+      .map((item) => getItemContainer(list[item]['picUrl']))
+      .toList();
+}
+
+Widget getItemContainer(String picUrl) {
+  return ListItemCustom(img: picUrl);
+}
+
+class _Header extends StatelessWidget {
+  final String text;
+  final GestureTapCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+//      padding: EdgeInsets.only(top: 10, bottom: 10),
+      margin: EdgeInsets.only(top: 20, bottom: 6),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+              child: Container(
+            margin: EdgeInsets.only(
+              left: 10,
+            ),
+            child: Text(
+              text,
+              style: Theme.of(context)
+                  .textTheme
+                  .subhead
+                  .copyWith(fontWeight: FontWeight.w800,fontSize: 18),
+            ),
+          )),
+          Positioned(
+              right: 15,
+              child: Container(
+                padding: EdgeInsets.only(top:2,bottom: 2,left: 6,right: 6),
+                decoration: new BoxDecoration(
+                  border: new Border.all(color: Colors.grey, width: 0.5),
+                  // 边色与边宽度
+
+                  // 底色
+                  //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
+                  shape: BoxShape.rectangle,
+                  // 默认值也是矩形
+                  borderRadius: new BorderRadius.circular((20.0)), // 圆角度
+                ),
+                margin: EdgeInsets.only(
+                  left: 10,
+                ),
+                child: Text(
+                  '歌单广场',
+                  style: Theme.of(context)
+                      .textTheme
+                      .subhead
+                      .copyWith(fontWeight: FontWeight.w800, fontSize: 14),
+                ),
+              )),
+        ],
+      ),
+//      child: Row(
+//        mainAxisAlignment:   MainAxisAlignment.end,
+//        crossAxisAlignment: CrossAxisAlignment.start,
+//        children: <Widget>[
+//          Padding(padding: EdgeInsets.only(left: 8)),
+//          Text(
+//            text,
+//            style: Theme.of(context)
+//                .textTheme
+//                .subhead
+//                .copyWith(fontWeight: FontWeight.w800),
+//          ),
+//          Icon(Icons.chevron_right),
+//        ],
+//      ),
     );
   }
 
-  _listWidget(BuildContext context) {
-    List<Widget> list = <Widget>[
-      FindBanner(bannerData: _bannerData),
-      _buildMenu(context),
-      Text('xxxxxxxxxxxxxxxxxxxxx'),
-//      SliverList(
-//        delegate: SliverChildListDelegate([
-//          Container(
-//            child: FutureBuilder(
-//              builder: _buildFuture,
-//              future:
-//                  _gerData(), // 用户定义的需要异步执行的代码，类型为Future<String>或者null的变量或函数
-//            ),
-//          ),
-//        ]),
-//      ),
-    ];
+  _Header(this.text, this.onTap);
+}
 
-    return list;
-  }
+Widget _createListView(BuildContext context, AsyncSnapshot snapshot) {
+  List songlist = snapshot.data['result'];
+  return Container(
+    padding: const EdgeInsets.all(8.0),
+    child: GridView.count(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      crossAxisCount: 3,
+      children: getWidgetList(songlist),
+    ),
+  );
 }
 
 ///snapshot就是_calculation在时间轴上执行过程的状态快照
@@ -117,147 +214,72 @@ Widget _buildFuture(BuildContext context, AsyncSnapshot snapshot) {
     case ConnectionState.done:
       print('done');
       if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-//      return SpinKitWave(
-//        itemBuilder: (_, int index) {
-//          return DecoratedBox(
-//            decoration: BoxDecoration(
-//              color: index.isEven ? Colors.red : Colors.green,
-//            ),
-//          );
-//        },
-//      );
-//      return _createListView(context, snapshot);
-      return SliverGrid(
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200.0,
-          mainAxisSpacing: 10.0,
-          crossAxisSpacing: 10.0,
-          childAspectRatio: 4.0,
-        ),
-        delegate: SliverChildBuilderDelegate(
-          (BuildContext context, int index) {
-            return Container(
-              alignment: Alignment.center,
-              color: Colors.teal[100 * (index % 9)],
-              child: Text('grid item $index'),
-            );
-          },
-          childCount: 20,
-        ),
-      );
+      return _createListView(context, snapshot);
+
     default:
       return null;
   }
 }
 
-Widget _createListView(BuildContext context, AsyncSnapshot snapshot) {
-  List songlist = snapshot.data['result'];
-  return SliverGrid(
-    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-      maxCrossAxisExtent: 200.0,
-      mainAxisSpacing: 10.0,
-      crossAxisSpacing: 10.0,
-      childAspectRatio: 4.0,
-    ),
-    delegate: SliverChildBuilderDelegate(
-      (BuildContext context, int index) {
-        return Container(
-          alignment: Alignment.center,
-          color: Colors.teal[100 * (index % 9)],
-          child: Text('grid item $index'),
-        );
-      },
-      childCount: 20,
-    ),
-  );
-//  return Container(
-//    padding: const EdgeInsets.all(8.0),
-//    child: GridView.builder(
-//        itemCount: songlist.length,
-//        //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
-//        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//            //横轴元素个数
-//            crossAxisCount: 3,
-//            //子组件宽高长度比例
-//            childAspectRatio: 1.0),
-//        itemBuilder: (BuildContext context, int index) {
-//          //Widget Function(BuildContext context, int index)
-//          return ListItemCustom(
-//            img: songlist[index]['picUrl'],
-//          );
-//        }),
-//  );
-}
-
 _buildMenu(BuildContext context) {
-  Widget widget = SliverList(
-    delegate: SliverChildListDelegate([
-      Container(
-        padding: EdgeInsets.only(top: 15, bottom: 15),
+  return Container(
+    padding: EdgeInsets.only(top: 15, bottom: 15),
 //            color: Colors.green,
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
-            children: [
-              InkWell(
-                child: ListItem(
-                    image: "images/find/t_dragonball_icn_daily.png",
-                    text: "每日推荐"),
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (BuildContext context) {
-                    return FutureBuilderPage();
-                  }));
-                },
-              ),
-              InkWell(
-                child: ListItem(
-                    image: "images/find/t_dragonball_icn_playlist.png",
-                    text: "歌单"),
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (BuildContext context) {
-                    return LoginMainPage();
-                  }));
-                },
-              ),
-              InkWell(
-                child: ListItem(
-                    image: "images/find/t_dragonball_icn_rank.png",
-                    text: "排行榜"),
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (BuildContext context) {
-                    return LeaderBoardPage();
-                  }));
-                },
-              ),
-              InkWell(
-                child: ListItem(
-                    image: "images/find/t_dragonball_icn_radio.png",
-                    text: "电台"),
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (BuildContext context) {
-                    return LoginMainPage();
-                  }));
-                },
-              ),
-              InkWell(
-                child: ListItem(
-                    image: "images/find/t_dragonball_icn_look.png", text: "直播"),
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (BuildContext context) {
-                    return LoginMainPage();
-                  }));
-                },
-              ),
-            ]),
-      ),
-      Divider(height: 1),
-    ]),
+    child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
+        children: [
+          InkWell(
+            child: ListItem(
+                image: "images/find/t_dragonball_icn_daily.png", text: "每日推荐"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return FutureBuilderPage();
+              }));
+            },
+          ),
+          InkWell(
+            child: ListItem(
+                image: "images/find/t_dragonball_icn_playlist.png", text: "歌单"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return LoginMainPage();
+              }));
+            },
+          ),
+          InkWell(
+            child: ListItem(
+                image: "images/find/t_dragonball_icn_rank.png", text: "排行榜"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return LeaderBoardPage();
+              }));
+            },
+          ),
+          InkWell(
+            child: ListItem(
+                image: "images/find/t_dragonball_icn_radio.png", text: "电台"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return LoginMainPage();
+              }));
+            },
+          ),
+          InkWell(
+            child: ListItem(
+                image: "images/find/t_dragonball_icn_look.png", text: "直播"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return LoginMainPage();
+              }));
+            },
+          ),
+        ]),
   );
-  return widget;
 }
 
 class ListItem extends StatelessWidget {

@@ -16,11 +16,7 @@ class FindBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildListDelegate([
-        BannerParent(bannerData, context),
-      ]),
-    );
+    return BannerParent(bannerData, context);
   }
 }
 
@@ -100,7 +96,6 @@ class BannerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-
       child: Container(
           margin: EdgeInsets.only(left: 16, right: 16),
           child: Stack(
@@ -126,8 +121,7 @@ class BannerItem extends StatelessWidget {
                         fit: BoxFit.fill,
                         imageUrl: banner.imageUrl,
                         placeholder: (context, url) => ProgressView(),
-                        errorWidget: (context, url, error) =>
-                             Icon(Icons.error),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                     ),
                   ))),
@@ -154,10 +148,11 @@ class BannerItem extends StatelessWidget {
           )),
       onTap: () {
         if (banner.url != null) {
-
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (BuildContext context) {
-            return WebViewPage(banner.url,);
+            return WebViewPage(
+              banner.url,
+            );
           }));
         }
       },
