@@ -9,20 +9,22 @@ class ListItemCustom extends StatelessWidget {
   final double circular; //圆角
   final String img; //图片
   final String updateFrequency;
+  final Map album;
 
   ListItemCustom(
       {this.width = 100,
       this.height = 100,
       this.circular = 6.0,
       this.updateFrequency = "",
-      this.img});
+      this.img,
+      this.album});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return PlaylistDetailPage();
+          return PlaylistDetailPage(album['id']);
         }));
       },
       child: Center(

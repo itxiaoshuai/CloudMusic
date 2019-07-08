@@ -179,14 +179,17 @@ class _Header extends StatelessWidget {
 }
 
 Widget _createListView(BuildContext context, AsyncSnapshot snapshot) {
-  List songlist = snapshot.data['result'];
+  List<Map> songlist = (snapshot.data["result"] as List).cast();
   return Container(
     padding: const EdgeInsets.all(8.0),
     child: GridView.count(
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       crossAxisCount: 3,
-      children: getWidgetList(songlist),
+//      children: getWidgetList(songlist),
+      children: songlist.map<Widget>((p) {
+        return ListItemCustom(img: p['picUrl'],album: p,);
+      }).toList(),
     ),
   );
 }

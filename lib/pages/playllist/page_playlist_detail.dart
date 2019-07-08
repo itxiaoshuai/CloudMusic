@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PlaylistDetailPage extends StatefulWidget {
+  PlaylistDetailPage(this.playlistId, )
+      : assert(playlistId != null,'playlist id，can not be null');
+  final int playlistId;
+
   @override
   State<StatefulWidget> createState() => _PlayListDetailState();
 }
@@ -31,4 +35,22 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
       ),
     );
   }
+}
+
+/// 播放列表头部
+class PlaylistDetailHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Stack(
+      children: <Widget>[
+        background, //背景
+      ],
+    );
+  }
+
+  const PlaylistDetailHeader({Key key, @required this.background})
+      : super(key: key);
+
+  final Widget background; //背景
 }
