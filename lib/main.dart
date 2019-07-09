@@ -9,9 +9,6 @@ import 'package:flutter_app/widget/HomeDrawer.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter_app/widget/loading/bar.dart';
 
-import 'dart:ui' show lerpDouble;
-
-import 'package:flutter_app/widget/loading/color_palette.dart';
 
 void main() {
   runApp(MyApp());

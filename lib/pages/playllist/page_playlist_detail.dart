@@ -51,9 +51,43 @@ class PlaylistDetailHeader extends StatelessWidget {
         background, //背景
         Column(
           children: <Widget>[
-
-            ListItemCustom(
-              img: '',
+            Row(
+              children: <Widget>[
+                ListItemCustom(
+                  img: '',
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        '700首流行经典老歌[80/90/00后KTV正藏版]',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        '700首流行经典老歌[80/90/00后KTV正藏版]',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                      Container(
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              "http://img8.zol.com.cn/bbs/upload/23765/23764201.jpg"),
+                          backgroundColor: Colors.black,
+                          radius: 10.0,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
