@@ -173,3 +173,12 @@ class ListItem extends StatelessWidget {
     );
   }
 }
+///歌单列表头部
+class MusicListHeader extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return null;
+  }
+
+}
