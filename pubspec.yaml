@@ -52,43 +52,48 @@ flutter:
 
   #   To add assets to your application, add an assets section, like this:
   assets:
-    - images/location.png
-    - images/timing.png
-    - images/alarm.png
-    - images/ticket.png
-    - images/shopping_cart.png
-    - images/coupon.png
-    - images/game.png
-    - images/broadcast.png
-    - images/music_free_flow.png
-    - images/drawer_message.png
-    - images/drawer_friend.png
-    - images/drawer_skin.png
-    - images/drawer_music.png
+  - images/location.png
+  - images/timing.png
+  - images/alarm.png
+  - images/ticket.png
+  - images/shopping_cart.png
+  - images/coupon.png
+  - images/game.png
+  - images/broadcast.png
+  - images/music_free_flow.png
+  - images/drawer_message.png
+  - images/drawer_friend.png
+  - images/drawer_skin.png
+  - images/drawer_music.png
 
-    # 我的页面图片资源
-    - images/my/shortcut_fm.png
-    - images/my/download_manager.png
+  # 我的页面图片资源
+  - images/my/shortcut_fm.png
+  - images/my/download_manager.png
 
-    # 发现页面图片资源
+  # 发现页面图片资源
 
-    - images/find/t_dragonball_icn_daily.png
-    - images/find/t_dragonball_icn_look.png
-    - images/find/t_dragonball_icn_playlist.png
-    - images/find/t_dragonball_icn_radio.png
-    - images/find/t_dragonball_icn_rank.png
-    - images/find/bg_song_list.9.png
+  - images/find/t_dragonball_icn_daily.png
+  - images/find/t_dragonball_icn_look.png
+  - images/find/t_dragonball_icn_playlist.png
+  - images/find/t_dragonball_icn_radio.png
+  - images/find/t_dragonball_icn_rank.png
+  - images/find/bg_song_list.9.png
 
-    # 登入页
-    - images/wx.png
-    - images/qq.png
-    - images/weibo.png
-    - images/wangyi.png
-    - images/icon_checkbox.png
-    - images/icon_right.png
-    - images/login_page_logo.png
+  # 登入页
+  - images/wx.png
+  - images/qq.png
+  - images/weibo.png
+  - images/wangyi.png
+  - images/icon_checkbox.png
+  - images/icon_right.png
+  - images/login_page_logo.png
 
 
+  # 歌单
+  - images/album/album_comment.png
+  - images/album/album_share.png
+  - images/album/album_download.png
+  - images/album/album_multiple_selection.png
 
 
 
