@@ -30,7 +30,7 @@ class Method {
 class Http {
   Dio dio;
 
-  Http({bool loading: true}) {
+   Http({bool loading: true}) {
     dio = Dio();
     setConfig();
     setInterceptor(loading: loading);

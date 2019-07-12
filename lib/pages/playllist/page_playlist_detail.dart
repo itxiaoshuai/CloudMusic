@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/data/api/apis.dart';
+import 'package:flutter_app/data/net/Http.dart';
+import 'package:flutter_app/data/protocol/LeaderboardDetailModel.dart';
+import 'package:flutter_app/data/protocol/playlist_detail.dart';
+import 'package:flutter_app/data/repository/music_repository.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 
 class PlaylistDetailPage extends StatefulWidget {
@@ -12,6 +17,35 @@ class PlaylistDetailPage extends StatefulWidget {
 }
 
 class _PlayListDetailState extends State<PlaylistDetailPage> {
+  PlaylistDetail playlist;
+
+  @override
+  void initState() {
+//    var playlistDetail = MusicRepository.playlistDetail(widget.playlistId);
+////    if (playlistDetail != null) {
+////      setState(() {
+////        playlist = playlistDetail as PlaylistDetail;
+////        print('response====$playlistDetail');
+////
+////      });
+////    }
+    getSongListDetail(widget.playlistId);
+    super.initState();
+  }
+
+  Future getSongListDetail(int id) async {
+    var response = await Http().get(
+      MusicApi.SONGLISTDETAILS,
+      queryParameters: {"id": id},
+    );
+    PlaylistDetail playlist = PlaylistDetail.fromJson(response["playlist"]);
+    if (playlist != null) {
+      setState(() {
+        this.playlist = playlist;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,19 +71,36 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
         ),
         body: Container(
           color: Colors.orange,
-          child: PlaylistDetailHeader(
-            background: Text('xxxxxxxxxxxxxxxxxxxxxx'),
-          ),
+          child: _PlaylistDetailHeader(playlist),
         ));
   }
 }
 
+class PlaylistBody extends StatefulWidget {
+  @override
+  _PlaylistBodyState createState() => _PlaylistBodyState();
+}
+
+class _PlaylistBodyState extends State {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return null;
+  }
+}
+
 /// 播放列表头部
-class PlaylistDetailHeader extends StatelessWidget {
+class _PlaylistDetailHeader extends StatelessWidget {
+  _PlaylistDetailHeader(
+    this.playlistDetail,
+  );
+
+  final PlaylistDetail playlistDetail;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 20, top: 10, bottom: 4, right: 20),
+      padding: const EdgeInsets.only(left: 15, top: 10, bottom: 4, right: 15),
       color: Colors.redAccent,
       child: Column(
         children: <Widget>[
@@ -58,7 +109,7 @@ class PlaylistDetailHeader extends StatelessWidget {
               ListItemCustom(
                 width: 124,
                 height: 124,
-                img: '',
+                img: playlistDetail == null ? "" : playlistDetail.coverImgUrl,
               ),
               SizedBox(width: 16),
               Expanded(
@@ -66,19 +117,11 @@ class PlaylistDetailHeader extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      '700首流行经典老歌[80/90/00后KTV正藏版]',
+                      playlistDetail == null ? "" : playlistDetail.name,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 18,
-                      ),
-                    ),
-                    Text(
-                      '700首流行经典老歌[80/90/00后KTV正藏版]',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 12,
                       ),
                     ),
                     Container(
@@ -95,16 +138,18 @@ class PlaylistDetailHeader extends StatelessWidget {
                               Container(
                                 child: CircleAvatar(
                                   backgroundImage: NetworkImage(
-                                      "http://img8.zol.com.cn/bbs/upload/23765/23764201.jpg"),
+                                      playlistDetail.creator.avatarUrl),
                                   backgroundColor: Colors.black,
                                   radius: 15.0,
                                 ),
                               ),
                               Padding(padding: EdgeInsets.only(left: 6)),
                               Text(
-                                'ViVI',
+                                playlistDetail == null
+                                    ? ""
+                                    : playlistDetail.creator.nickname,
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.black),
+                                    fontSize: 14, color: Colors.black),
                               ),
                               Icon(
                                 Icons.chevron_right,
@@ -122,14 +167,23 @@ class PlaylistDetailHeader extends StatelessWidget {
           ),
           Padding(padding: EdgeInsets.only(top: 20)),
           Container(
-            padding: EdgeInsets.only(left: 20, right: 20,top: 5,bottom: 5),
+            padding: EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
             color: Colors.white,
             child: Row(
-
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                ListItem(image: "images/album/album_comment.png", text: "156"),
-                ListItem(image: "images/album/album_share.png", text: "185"),
+                ListItem(
+                  image: "images/album/album_comment.png",
+                  text: playlistDetail == null
+                      ? ""
+                      : playlistDetail.commentCount.toString(),
+                ),
+                ListItem(
+                  image: "images/album/album_share.png",
+                  text: playlistDetail == null
+                      ? ""
+                      : playlistDetail.shareCount.toString(),
+                ),
                 ListItem(image: "images/album/album_download.png", text: "下载"),
                 ListItem(
                     image: "images/album/album_multiple_selection.png",
@@ -141,11 +195,6 @@ class PlaylistDetailHeader extends StatelessWidget {
       ),
     );
   }
-
-  const PlaylistDetailHeader({Key key, @required this.background})
-      : super(key: key);
-
-  final Widget background; //背景
 }
 
 class ListItem extends StatelessWidget {
@@ -173,12 +222,12 @@ class ListItem extends StatelessWidget {
     );
   }
 }
+
 ///歌单列表头部
-class MusicListHeader extends StatelessWidget{
+class MusicListHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return null;
   }
-
 }

@@ -1,26 +1,26 @@
+//class PlaylistDetail {
+//  Playlist playlist;
+//
+//  PlaylistDetail({
+//    this.playlist,
+//  });
+//
+//  PlaylistDetail.fromJson(Map<String, dynamic> json) {
+//    playlist = json['playlist'] != null
+//        ? new Playlist.fromJson(json['playlist'])
+//        : null;
+//  }
+//
+//  Map<String, dynamic> toJson() {
+//    final Map<String, dynamic> data = new Map<String, dynamic>();
+//    if (this.playlist != null) {
+//      data['playlist'] = this.playlist.toJson();
+//    }
+//    return data;
+//  }
+//}
+
 class PlaylistDetail {
-  Playlist playlist;
-
-  PlaylistDetail({
-    this.playlist,
-  });
-
-  PlaylistDetail.fromJson(Map<String, dynamic> json) {
-    playlist = json['playlist'] != null
-        ? new Playlist.fromJson(json['playlist'])
-        : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.playlist != null) {
-      data['playlist'] = this.playlist.toJson();
-    }
-    return data;
-  }
-}
-
-class Playlist {
   Creator creator;
   List<Tracks> tracks;
   List<TrackIds> trackIds;
@@ -39,7 +39,7 @@ class Playlist {
   int shareCount; //分享次数
   int commentCount; //评论数
   bool subscribed; //是否收藏
-  Playlist(
+  PlaylistDetail(
       {this.subscribed,
       this.creator,
       this.tracks,
@@ -59,7 +59,7 @@ class Playlist {
       this.shareCount,
       this.commentCount});
 
-  Playlist.fromJson(Map<String, dynamic> json) {
+  PlaylistDetail.fromJson(Map<String, dynamic> json) {
     subscribed = json['subscribed'];
     creator =
         json['creator'] != null ? new Creator.fromJson(json['creator']) : null;
