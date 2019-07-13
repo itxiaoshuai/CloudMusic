@@ -29,7 +29,7 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
 ////
 ////      });
 ////    }
-    getSongListDetail(widget.playlistId);
+//    getSongListDetail(widget.playlistId);
     super.initState();
   }
 

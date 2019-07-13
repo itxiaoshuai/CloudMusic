@@ -7,6 +7,7 @@ import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/banner_model.dart';
 import 'package:flutter_app/pages/find/widget/FindBanner.dart';
+import 'package:flutter_app/pages/find/widget/LearnInkWell.dart';
 import 'package:flutter_app/pages/find/widget/SpinKitWaveType.dart';
 import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
@@ -278,7 +279,7 @@ _buildMenu(BuildContext context) {
             onTap: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (BuildContext context) {
-                return LoginMainPage();
+                return LearnInkWell();
               }));
             },
           ),

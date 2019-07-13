@@ -93,6 +93,8 @@ flutter:
     - images/album/album_share.png
     - images/album/album_download.png
     - images/album/album_multiple_selection.png
+    - images/album/track_mv.png
+    - images/album/track_more.png
 
 
 
