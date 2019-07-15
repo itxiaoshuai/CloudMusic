@@ -62,7 +62,7 @@ class Http {
 
   // get 请求封装
   get(url, {options, cancelToken, queryParameters}) async {
-    print('get:::url：$url ,queryParameters: $queryParameters');
+//    print('get:::url：$url ,queryParameters: $queryParameters');
     Response response;
     try {
       response = await dio.get(

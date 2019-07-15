@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/ConstImg.dart';
 import 'package:flutter_app/base/StringResource.dart';
+import 'package:flutter_app/pages/login/page_phone_login.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../WebViewPage.dart';
 
@@ -38,7 +39,7 @@ class LoginMainPage extends StatelessWidget {
                           child: Container(
                             height: 40,
                             padding: EdgeInsets.only(left: 45, right: 45),
-                            child:  RaisedButton(
+                            child: RaisedButton(
                               onPressed: () {
                                 if (visible) {
                                   Fluttertoast.showToast(
@@ -48,6 +49,11 @@ class LoginMainPage extends StatelessWidget {
                                       gravity: ToastGravity.CENTER,
                                       timeInSecForIos: 1,
                                       textColor: Colors.white);
+                                } else {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (BuildContext context) {
+                                    return PhoneLoginPage();//手机号登入
+                                  }));
                                 }
                               },
                               color: Colors.white,
@@ -218,7 +224,7 @@ class _SwitchCheckBoxState extends State<SwitchCheckBoxState> {
               ),
               TextSpan(
                 text: '《隐私政策》',
-                style:  TextStyle(fontSize: 10.0, color: Colors.white),
+                style: TextStyle(fontSize: 10.0, color: Colors.white),
                 recognizer: privacyRecognizer,
               ),
             ],

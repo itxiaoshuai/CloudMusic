@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/data/protocol/user_info.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
 import 'item/DrawerListItem.dart';
 
@@ -9,11 +12,31 @@ class HomeDrawer extends StatefulWidget {
 }
 
 class _HomeDrawerState extends State {
+  UserInfo userInfo;
+
+  @override
+  void initState() {
+    super.initState();
+    _getLocalUser();
+  }
+
+  _getLocalUser() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String userInfoStr = pref.getString('userInfo');
+
+    if (userInfoStr != null) {
+      setState(() {
+        userInfo = UserInfo.fromJson(jsonDecode(userInfoStr));
+        print(userInfo);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        padding: EdgeInsets.zero,
+//        padding: EdgeInsets.zero,
         children: <Widget>[
           Head(),
           DrawerListItemHorizontal(),
@@ -36,7 +59,7 @@ class _HomeDrawerState extends State {
 class DrawerListItemHorizontal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Center(
+    return Center(
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
           children: [
@@ -80,7 +103,8 @@ class Head extends StatelessWidget {
   Widget build(BuildContext context) {
     _login() {
       print("点击了登入按钮");
-      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (BuildContext context) {
         return LoginMainPage();
       }));
     }
