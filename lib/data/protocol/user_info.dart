@@ -6,6 +6,12 @@
 
 class UserInfo {
   String backgroundUrl;
+
+  @override
+  String toString() {
+    return 'UserInfo{backgroundUrl: $backgroundUrl, nickname: $nickname, avatarUrl: $avatarUrl, uid: $uid, vipType: $vipType, gender: $gender}';
+  }
+
   String nickname;
   String avatarUrl;
   int uid;

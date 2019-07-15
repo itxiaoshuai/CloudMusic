@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/protocol/user_info.dart';
 import 'package:flutter_app/data/repository/music_repository.dart';
+import 'package:flutter_app/pages/main/page_main.dart';
 
 import '../../main.dart';
 
@@ -48,7 +49,7 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
                   ],
                 ),
                 onPressed: () {
-                  _getUserInfo(phone,password);
+                  _getUserInfo(phone, password);
                 },
                 shape: StadiumBorder(),
                 color: Theme.of(context).primaryColor,
@@ -86,11 +87,11 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
   _getUserInfo(String phone, String password) async {
     UserInfo userInfo = await MusicRepository.logoin(phone, password);
     if (userInfo != null) {
-      Navigator.of(context).pop();
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (BuildContext context) {
-            return MyApp();//手机号登入
-          }));
+      Navigator.pushAndRemoveUntil(context, new MaterialPageRoute(
+        builder: (BuildContext context) {
+          return MainPage();
+        },
+      ), (route) => route == null);
     }
   }
 }

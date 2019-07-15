@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/protocol/user_info.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'item/DrawerListItem.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -27,7 +28,7 @@ class _HomeDrawerState extends State {
     if (userInfoStr != null) {
       setState(() {
         userInfo = UserInfo.fromJson(jsonDecode(userInfoStr));
-        print(userInfo);
+        print(userInfo.toString());
       });
     }
   }
