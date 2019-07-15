@@ -31,23 +31,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: routes,
       title: 'Flutter Demo',
-
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+      ),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

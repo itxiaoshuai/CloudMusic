@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_app/data/protocol/user_info.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,6 +18,8 @@ class _HomeDrawerState extends State {
 
   @override
   void initState() {
+    //黑色
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     super.initState();
     _getLocalUser();
   }
@@ -37,10 +40,22 @@ class _HomeDrawerState extends State {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-//        padding: EdgeInsets.zero,
+        padding: EdgeInsets.zero,
         children: <Widget>[
           Head(),
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 0.0, top: 50, right: 0, bottom: 0),
+          ),
           DrawerListItemHorizontal(),
+          Container(
+            margin: const EdgeInsets.only(top: 20,bottom: 10,left: 20,right: 20),
+            child: Center(
+              child: Divider(
+                height: 1,
+              ),
+            ),
+          ),
           DrawerListItem(image: "images/ticket.png", text: "演出"),
           DrawerListItem(image: "images/shopping_cart.png", text: "商城"),
           DrawerListItem(image: "images/location.png", text: "附近的人"),
@@ -85,7 +100,7 @@ class ListItem extends StatelessWidget {
       children: <Widget>[
         Image.asset(
           image,
-          color: Colors.red,
+          color: Theme.of(context).primaryColor,
           width: 25,
         ),
         Container(
@@ -111,45 +126,50 @@ class Head extends StatelessWidget {
     }
 
     return Container(
+        color: Colors.grey[200].withOpacity(0.8),
         child: Container(
-      padding: EdgeInsets.only(top: 30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            Text(
-              '登录网易云音乐',
-              style: TextStyle(color: Colors.black, fontSize: 12),
-            )
-          ]),
-          Container(margin: EdgeInsets.all(2)), //文字之间添加 margin
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            Text(
-              '手机电脑多端同步,尽享海量高品质音乐',
-              style: TextStyle(color: Colors.black, fontSize: 12),
-            )
-          ]),
-          Container(
-            margin: EdgeInsets.only(top: 14),
-            child: OutlineButton(
-              onPressed: _login,
+          padding: EdgeInsets.only(top: 50),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      '登录网易云音乐',
+                      style: TextStyle(color: Colors.black, fontSize: 12),
+                    )
+                  ]),
+              Container(margin: EdgeInsets.all(2)), //文字之间添加 margin
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      '手机电脑多端同步,尽享海量高品质音乐',
+                      style: TextStyle(color: Colors.black, fontSize: 12),
+                    )
+                  ]),
+              Container(
+                margin: EdgeInsets.only(top: 14, bottom: 50),
+                child: OutlineButton(
+                  onPressed: _login,
 
-              padding: EdgeInsets.only(left: 45, right: 45),
-              child: Text(
-                "立即登录",
-                style: TextStyle(
-                  color: Colors.black.withOpacity(0.5),
+                  padding: EdgeInsets.only(left: 45, right: 45),
+                  child: Text(
+                    "立即登录",
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                  shape: StadiumBorder(
+                    side: BorderSide(width: 16.0, color: Colors.grey),
+                  ),
+                  //一个边框，适合体育场形状的边框（两端有半圆的框），适用于它所应用的小部件的矩形
+                  borderSide: BorderSide(color: Colors.grey), //默认边框颜色
                 ),
-              ),
-              shape: StadiumBorder(
-                side: BorderSide(width: 16.0, color: Colors.grey),
-              ),
-              //一个边框，适合体育场形状的边框（两端有半圆的框），适用于它所应用的小部件的矩形
-              borderSide: BorderSide(color: Colors.grey), //默认边框颜色
-            ),
-          )
-        ],
-      ),
-    ));
+              )
+            ],
+          ),
+        ));
   }
 }
