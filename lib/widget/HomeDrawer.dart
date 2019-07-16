@@ -39,32 +39,137 @@ class _HomeDrawerState extends State {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
+      child: Stack(
         children: <Widget>[
-          Head(),
-          Padding(
-            padding:
-                const EdgeInsets.only(left: 0.0, top: 50, right: 0, bottom: 0),
+          Positioned(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                userInfo != null
+                    ? LoginHead(userInfo: userInfo)
+                    : UnLoginHead(),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 0.0, top: 50, right: 0, bottom: 0),
+                ),
+                DrawerListItemHorizontal(),
+                Container(
+                  margin: const EdgeInsets.only(
+                      top: 20, bottom: 10, left: 20, right: 20),
+                  child: Center(
+                    child: Divider(
+                      height: 1,
+                    ),
+                  ),
+                ),
+                DrawerListItem(image: "images/ticket.png", text: "演出"),
+                DrawerListItem(image: "images/shopping_cart.png", text: "商城"),
+                DrawerListItem(image: "images/location.png", text: "附近的人"),
+                DrawerListItem(
+                    image: "images/pocket_ringtone.png", text: "口袋铃声"),
+                DrawerListItem(image: "images/timing.png", text: "定时停止播放"),
+                DrawerListItem(image: "images/alarm.png", text: "音乐闹铃"),
+                DrawerListItem(
+                    image: "images/music_free_flow.png", text: "在线听歌免流量"),
+                DrawerListItem(image: "images/game.png", text: "游戏推荐"),
+                DrawerListItem(image: "images/coupon.png", text: "优惠券"),
+                DrawerListItem(image: "images/broadcast.png", text: "我要开播"),
+              ],
+            ),
           ),
-          DrawerListItemHorizontal(),
-          Container(
-            margin: const EdgeInsets.only(top: 20,bottom: 10,left: 20,right: 20),
-            child: Center(
-              child: Divider(
-                height: 1,
+          Positioned(
+            bottom: 0,
+            right: 0,
+            left: 0,
+            child: Container(
+              height: 50,
+//              color: Colors.white,
+              child: DefaultTextStyle(
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+                child: Center(
+                  child: Row(
+                    children: <Widget>[
+                      Material(
+                        child: InkWell(
+                          onTap: () {},
+                          child: Container(
+                            height: 60,
+                            margin: EdgeInsets.all(0.0),
+                            child: Row(
+                              children: <Widget>[
+                                Image.asset(
+                                  "images/night_mode.png",
+                                  width: 18,
+                                  height: 18,
+                                  color: Colors.black,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text('夜间模式'),
+                              ],
+                            ),
+                          ),
+                        ),
+                        color: Colors.white,
+                      ),
+                      Material(
+                        child: InkWell(
+                          onTap: () {},
+                          child: Container(
+                            height: 60,
+                            margin: EdgeInsets.all(0.0),
+                            child: Row(
+                              children: <Widget>[
+                                Image.asset(
+                                  "images/setting.png",
+                                  width: 18,
+                                  height: 18,
+                                  color: Colors.black,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text('设置'),
+                              ],
+                            ),
+                          ),
+                        ),
+                        color: Colors.white,
+                      ),
+                      Material(
+                        child: InkWell(
+                          onTap: () {},
+                          child: Container(
+                            height: 60,
+                            margin: EdgeInsets.all(0.0),
+                            child: Row(
+                              children: <Widget>[
+                                Image.asset(
+                                  "images/app_shut_down.png",
+                                  width: 18,
+                                  height: 18,
+                                  color: Colors.black,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text('退出'),
+                              ],
+                            ),
+                          ),
+                        ),
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
-          DrawerListItem(image: "images/ticket.png", text: "演出"),
-          DrawerListItem(image: "images/shopping_cart.png", text: "商城"),
-          DrawerListItem(image: "images/location.png", text: "附近的人"),
-          DrawerListItem(image: "images/timing.png", text: "定时停止播放"),
-          DrawerListItem(image: "images/alarm.png", text: "音乐闹铃"),
-          DrawerListItem(image: "images/music_free_flow.png", text: "在线听歌免流量"),
-          DrawerListItem(image: "images/game.png", text: "游戏推荐"),
-          DrawerListItem(image: "images/coupon.png", text: "优惠券"),
-          DrawerListItem(image: "images/broadcast.png", text: "我要开播"),
         ],
       ),
     );
@@ -114,7 +219,52 @@ class ListItem extends StatelessWidget {
   }
 }
 
-class Head extends StatelessWidget {
+class LoginHead extends StatelessWidget {
+  final UserInfo userInfo;
+
+  LoginHead({
+    this.userInfo,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.grey[200].withOpacity(0.8),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(top: 50, left: 15),
+            child: InkWell(
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(userInfo.avatarUrl),
+                backgroundColor: Colors.black,
+                radius: 30.0,
+              ),
+              onTap: () {},
+            ),
+          ),
+          Container(
+              margin: EdgeInsets.only(top: 15, left: 15, bottom: 50),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    userInfo.nickname,
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ))
+        ],
+      ),
+    );
+  }
+}
+
+class UnLoginHead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _login() {
