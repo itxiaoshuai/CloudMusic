@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
-import 'package:flutter_app/data/protocol/LeaderboardDetailModel.dart';
 import 'package:flutter_app/data/protocol/playlist_detail.dart';
 import 'package:flutter_app/data/repository/music_repository.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
+import 'package:flutter_app/base/utils/utils.dart';
 
 import 'item_music_list_track.dart';
 
@@ -23,15 +23,15 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
 
   @override
   void initState() {
-//    var playlistDetail = MusicRepository.playlistDetail(widget.playlistId);
-////    if (playlistDetail != null) {
-////      setState(() {
-////        playlist = playlistDetail as PlaylistDetail;
-////        print('response====$playlistDetail');
-////
-////      });
-////    }
-//    getSongListDetail(widget.playlistId);
+    var playlistDetail = MusicRepository.playlistDetail(widget.playlistId);
+//    if (playlistDetail != null) {
+//      setState(() {
+//        playlist = playlistDetail as PlaylistDetail;
+//        print('response====$playlistDetail');
+//
+//      });
+//    }
+    getSongListDetail(widget.playlistId);
     super.initState();
   }
 
@@ -44,6 +44,7 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
     if (playlist != null) {
       setState(() {
         this.playlist = playlist;
+        print('response====$playlist');
       });
     }
   }
@@ -107,6 +108,7 @@ class _PlaylistDetailHeader extends StatelessWidget {
                         ),
                       ),
                       Container(
+                        color: Colors.orangeAccent,
                         margin: const EdgeInsets.only(
                             left: 0, top: 4, bottom: 4, right: 0),
                         child: InkWell(
@@ -119,8 +121,11 @@ class _PlaylistDetailHeader extends StatelessWidget {
                               children: <Widget>[
                                 Container(
                                   child: CircleAvatar(
-//                                  backgroundImage: NetworkImage(
-//                                      playlistDetail.creator.avatarUrl),
+                                    backgroundImage: NetworkImage(
+                                      playlistDetail == null
+                                          ? ""
+                                          : playlistDetail.creator.avatarUrl,
+                                    ),
                                     backgroundColor: Colors.black,
                                     radius: 15.0,
                                   ),
@@ -142,6 +147,29 @@ class _PlaylistDetailHeader extends StatelessWidget {
                             ),
                           ),
                         ),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(
+                              color: Colors.green,
+                              child: Text(
+                                playlistDetail == null
+                                    ? ""
+                                    : stringFilter(playlistDetail.description),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Icon(
+                            Icons.chevron_right,
+                            color: Theme.of(context).primaryIconTheme.color,
+                          )
+                        ],
                       ),
                     ],
                   ),
@@ -195,7 +223,7 @@ class ListItem extends StatelessWidget {
         Image.asset(
           image,
           color: Colors.black,
-          width: 25,
+          width: 20,
         ),
         Container(
             margin: EdgeInsets.only(top: 5), //上边距
@@ -265,10 +293,10 @@ class CustomWidget extends StatelessWidget {
             title: Text('歌单'),
             elevation: 0,
 //            backgroundColor: Colors.transparent,
-            pinned: true,
-            floating: false,
+            pinned: false,
+            floating: true,
             snap: false,
-            expandedHeight: 240.0,
+            expandedHeight: 320.0,
             bottom: _buildListHeader(context),
             flexibleSpace: _PlaylistDetailHeader(playlistDetail),
             actions: <Widget>[

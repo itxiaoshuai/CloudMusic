@@ -135,7 +135,7 @@ class Creator {
   String nickname; //鹿白川
   String signature; //话少慢热不喜交际 / 不推广 勿扰
   String backgroundUrl;
-  List<String> expertTags; //标签[华语,流行,欧美]
+
 
   Creator({
     this.province,
@@ -147,7 +147,7 @@ class Creator {
     this.nickname,
     this.signature,
     this.backgroundUrl,
-    this.expertTags,
+
   });
 
   Creator.fromJson(Map<String, dynamic> json) {
@@ -160,7 +160,7 @@ class Creator {
     nickname = json['nickname'];
     signature = json['signature'];
     backgroundUrl = json['backgroundUrl'];
-    expertTags = json['expertTags'].cast<String>();
+
   }
 
   Map<String, dynamic> toJson() {
@@ -174,7 +174,6 @@ class Creator {
     data['nickname'] = this.nickname;
     data['signature'] = this.signature;
     data['backgroundUrl'] = this.backgroundUrl;
-    data['expertTags'] = this.expertTags;
     return data;
   }
 }

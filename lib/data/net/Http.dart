@@ -100,7 +100,7 @@ class Http {
 //    dio.options.baseUrl = "http://192.168.1.124:3000";
 //    dio.options.baseUrl = "http://106.13.32.37:3000";
     dio.options.baseUrl = "http://192.168.1.124:3000";
-    dio.options.connectTimeout = 3000;
+    dio.options.connectTimeout = 5000;
     dio.options.receiveTimeout = 5000;
   }
 
