@@ -1,10 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_app/base/utils/utils.dart';
 import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/playlist_detail.dart';
-import 'package:flutter_app/data/repository/music_repository.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
-import 'package:flutter_app/base/utils/utils.dart';
+import 'package:flutter_app/widget/flexible_app_bar.dart';
 
 import 'item_music_list_track.dart';
 
@@ -23,14 +25,6 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
 
   @override
   void initState() {
-    var playlistDetail = MusicRepository.playlistDetail(widget.playlistId);
-//    if (playlistDetail != null) {
-//      setState(() {
-//        playlist = playlistDetail as PlaylistDetail;
-//        print('response====$playlistDetail');
-//
-//      });
-//    }
     getSongListDetail(widget.playlistId);
     super.initState();
   }
@@ -70,6 +64,28 @@ class _PlaylistBodyState extends State {
   }
 }
 
+///播放列表头部背景
+class PlayListHeaderBackground extends StatelessWidget {
+  final String imageUrl;
+
+  const PlayListHeaderBackground({Key key, @required this.imageUrl})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        Image(image: NetworkImage(imageUrl), fit: BoxFit.cover),
+        BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
+          child: Container(color: Colors.black.withOpacity(0.1)),
+        )
+      ],
+    );
+  }
+}
+
 /// 播放列表头部
 class _PlaylistDetailHeader extends StatelessWidget {
   _PlaylistDetailHeader(
@@ -80,11 +96,24 @@ class _PlaylistDetailHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return FlexibleDetailBar(
+//      background: PlayListHeaderBackground(imageUrl: 'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
+      content: _buildContent(context),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+    backgroundColor:Colors.blue ,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Text(''),
+      ),
       body: Container(
-        padding: const EdgeInsets.only(left: 15, top: 10, bottom: 4, right: 15),
-        color: Colors.redAccent,
+        padding: const EdgeInsets.only(
+            left: 15, top: 0, bottom: 4, right: 15),
+        color: Colors.blue,
         child: Column(
           children: <Widget>[
             Row(
@@ -291,14 +320,14 @@ class CustomWidget extends StatelessWidget {
       slivers: <Widget>[
         SliverAppBar(
             title: Text('歌单'),
-            elevation: 0,
+          elevation: 0,
 //            backgroundColor: Colors.transparent,
-            pinned: false,
-            floating: true,
-            snap: false,
-            expandedHeight: 320.0,
+          pinned: true,
+//            floating: true,
+//            snap: false,
+          expandedHeight: 320.0,
             bottom: _buildListHeader(context),
-            flexibleSpace: _PlaylistDetailHeader(playlistDetail),
+          flexibleSpace: _PlaylistDetailHeader(playlistDetail),
             actions: <Widget>[
               IconButton(
                 icon: new Icon(
@@ -317,10 +346,11 @@ class CustomWidget extends StatelessWidget {
                   /* ... */
                 },
               )
-            ]),
+            ]
+        ),
         SliverList(
           delegate:
-              SliverChildBuilderDelegate((BuildContext context, int index) {
+          SliverChildBuilderDelegate((BuildContext context, int index) {
             //创建列表项
             return Material(
               child: new InkWell(
@@ -338,7 +368,7 @@ class CustomWidget extends StatelessWidget {
               color: Colors.white,
             );
           }, childCount: 50 //50个列表项
-                  ),
+          ),
         ),
       ],
     );
