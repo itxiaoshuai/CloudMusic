@@ -41,10 +41,12 @@ class _FindPageState extends State {
 
   Future getHttp() async {
 //    var response = await Http().get("/banner");
+    var dio = Dio();
+//    Response response = await dio.get('https://google.com');
     var response =
-        await Http().get("http://www.mocky.io/v2/5cee0154300000592c6e9825");
+        await dio.get("http://www.mocky.io/v2/5cee0154300000592c6e9825");
     print(response);
-    List<Banners> banners = BannerModel.fromJson(response).banners;
+    List<Banners> banners = BannerModel.fromJson(response.data).banners;
     print(banners.length);
     _bannerData = banners;
     if (banners != null && mounted) {
@@ -55,14 +57,14 @@ class _FindPageState extends State {
   }
 
   Future getSongListRecommend() async {
-    var response = await Http().get(MusicApi.SONGLISTDRECOMMEND);
-
-    print(response);
+//    var response = await Http().get(MusicApi.SONGLISTDRECOMMEND);
+//
+//    print(response);
   }
 
   Future _gerData() async {
-    var response = await Http().get(MusicApi.SONGLISTDRECOMMEND);
-    return response;
+//    var response = await Http().get(MusicApi.SONGLISTDRECOMMEND);
+//    return response;
   }
 
   @override
@@ -130,13 +132,13 @@ class _Header extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .subhead
-                  .copyWith(fontWeight: FontWeight.w800,fontSize: 18),
+                  .copyWith(fontWeight: FontWeight.w800, fontSize: 18),
             ),
           )),
           Positioned(
               right: 15,
               child: Container(
-                padding: EdgeInsets.only(top:2,bottom: 2,left: 6,right: 6),
+                padding: EdgeInsets.only(top: 2, bottom: 2, left: 6, right: 6),
                 decoration: new BoxDecoration(
                   border: new Border.all(color: Colors.grey, width: 0.5),
                   // 边色与边宽度
@@ -191,7 +193,10 @@ Widget _createListView(BuildContext context, AsyncSnapshot snapshot) {
       crossAxisCount: 3,
 //      children: getWidgetList(songlist),
       children: songlist.map<Widget>((p) {
-        return ListItemCustom(img: p['picUrl'],album: p,);
+        return ListItemCustom(
+          img: p['picUrl'],
+          album: p,
+        );
       }).toList(),
     ),
   );

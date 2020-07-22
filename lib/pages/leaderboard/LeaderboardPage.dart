@@ -27,9 +27,10 @@ class _LeaderBoardPageState extends State {
   }
 
   Future getHttp() async {
-    var response = await Http().get(MusicApi.TOPLIST);
+    var dio = Dio();
+    var response = await dio.get('http://localhost:3000/toplist');
 
-    var user = LeaderBoardModel.fromJson(response);
+    var user = LeaderBoardModel.fromJson(response.data);
     List<LeaderBoardList> list = user.list;
     print(list);
     if (list != null && mounted) {
@@ -37,7 +38,7 @@ class _LeaderBoardPageState extends State {
         _leaderBoardList = list;
 
         if (_leaderBoardList.length >= 6) {
-          tracks =  List<int>();
+          tracks = List<int>();
           _leaderBoardList.sublist(0, 6).forEach((v) {
             tracks.add(v.id);
           });
@@ -64,7 +65,7 @@ class _LeaderBoardPageState extends State {
     if (_leaderBoardList.length > 0) {
       list = <Widget>[
         SliverList(
-          delegate:  SliverChildListDelegate(
+          delegate: SliverChildListDelegate(
             <Widget>[
               Container(
                 child: Text(
@@ -99,7 +100,7 @@ class _LeaderBoardPageState extends State {
                   ),
         ),
         SliverList(
-          delegate:  SliverChildListDelegate(
+          delegate: SliverChildListDelegate(
             <Widget>[
               Container(
                 child: Text(
@@ -113,7 +114,7 @@ class _LeaderBoardPageState extends State {
         ),
         _buildRecommend(context),
         SliverList(
-          delegate:  SliverChildListDelegate(
+          delegate: SliverChildListDelegate(
             <Widget>[
               Container(
                 child: Text(
@@ -127,7 +128,7 @@ class _LeaderBoardPageState extends State {
         ),
         _buildGlobalList(context),
         SliverList(
-          delegate:  SliverChildListDelegate(
+          delegate: SliverChildListDelegate(
             <Widget>[
               Container(
                 child: Text(
@@ -141,7 +142,7 @@ class _LeaderBoardPageState extends State {
         ),
         _buildMoreList(context),
         SliverList(
-          delegate:  SliverChildListDelegate(
+          delegate: SliverChildListDelegate(
             <Widget>[
               Container(
                 margin: EdgeInsets.only(top: 50, bottom: 10),
@@ -353,30 +354,30 @@ class _ListItemState extends State {
   ///http://106.13.32.37:3000/playlist/detail?id=19723756
 
   Future getSongListDetail(int id) async {
-    var response = await Http().get(
-      MusicApi.SONGLISTDETAILS,
-      queryParameters: {"id": id},
-    );
-    print('response====$response');
-    LeaderBoardDetailModel songListDetail =
-        LeaderBoardDetailModel.fromJson(response);
+//    var response = await Http().get(
+//      MusicApi.SONGLISTDETAILS,
+//      queryParameters: {"id": id},
+//    );
+//    print('response====$response');
+//    LeaderBoardDetailModel songListDetail =
+//        LeaderBoardDetailModel.fromJson(response);
 
-    var playlist = songListDetail.playlist;
+//    var playlist = songListDetail.playlist;
 
-    List<Tracks> tracks = playlist.tracks;
-
-    tracks.sublist(0, 3).forEach((id) {
-      var name = id.name;
-      List<Ar> authors = id.ar;
-      var authorName;
-      authors.forEach((author) {
-        authorName = author.name;
-      });
-      var title = name + '_' + authorName;
-      print('title====$title');
-
-      _listTitle.add(title);
-    });
+//    List<Tracks> tracks = playlist.tracks;
+//
+//    tracks.sublist(0, 3).forEach((id) {
+//      var name = id.name;
+//      List<Ar> authors = id.ar;
+//      var authorName;
+//      authors.forEach((author) {
+//        authorName = author.name;
+//      });
+//      var title = name + '_' + authorName;
+//      print('title====$title');
+//
+//      _listTitle.add(title);
+//    });
     if (_listTitle != null && mounted) {
       setState(() {
         print('_listTitle====$_listTitle');
@@ -426,7 +427,7 @@ class _ListItemState extends State {
                   child: Container(
 //                      color: Colors.green,
                       child: Center(
-                    child:  Align(
+                    child: Align(
                       alignment: FractionalOffset.centerLeft,
                       child: Text(
                         '1.' + _listTitle[0],
@@ -441,7 +442,7 @@ class _ListItemState extends State {
                 Expanded(
                   child: Container(
                       child: Center(
-                    child:  Align(
+                    child: Align(
                       alignment: FractionalOffset.centerLeft,
                       child: Text(
                         '2.' + _listTitle[1],
@@ -456,7 +457,7 @@ class _ListItemState extends State {
                 Expanded(
                   child: Container(
                       child: Center(
-                    child:  Align(
+                    child: Align(
                       alignment: FractionalOffset.centerLeft,
                       child: Text(
                         '3.' + _listTitle[2],

@@ -15,11 +15,9 @@ class FutureBuilderState extends State<FutureBuilderPage> {
   String title = 'FutureBuilder使用';
 
   Future _gerData() async {
-    var response = await Http().get(MusicApi.SONGLISTDRECOMMEND);
-    return response;
+//    var response = await Http().get(MusicApi.SONGLISTDRECOMMEND);
+//    return response;
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +52,7 @@ class FutureBuilderState extends State<FutureBuilderPage> {
       case ConnectionState.waiting:
         print('waiting');
         return Center(
-          child: CircularProgressIndicator(
-
-          ),
+          child: CircularProgressIndicator(),
         );
       case ConnectionState.done:
         print('done');

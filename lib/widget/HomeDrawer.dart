@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/base/res/gaps.dart';
 import 'package:flutter_app/data/protocol/user_info.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,133 +40,124 @@ class _HomeDrawerState extends State {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Stack(
+      child: Scaffold(
+          body: Column(
         children: <Widget>[
-          Positioned(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                userInfo != null
-                    ? LoginHead(userInfo: userInfo)
-                    : UnLoginHead(),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 0.0, top: 50, right: 0, bottom: 0),
-                ),
-                DrawerListItemHorizontal(),
-                Container(
-                  margin: const EdgeInsets.only(
-                      top: 20, bottom: 10, left: 20, right: 20),
-                  child: Center(
-                    child: Divider(
-                      height: 1,
+          Flexible(
+            flex: 1,
+            child: Container(
+                color: Colors.white,
+                alignment: Alignment.center,
+                child: ListView(
+                  children: [
+                    DrawerTopLogin(),
+                    DrawerCenter(),
+                  ],
+                )),
+          ),
+          DrawerBottom(),
+        ],
+      )),
+    );
+  }
+}
+
+class DrawerCenter extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        DrawerListItem(image: "images/ticket.png", text: "演出"),
+        DrawerListItem(image: "images/shopping_cart.png", text: "商城"),
+        DrawerListItem(image: "images/location.png", text: "附近的人"),
+        DrawerListItem(image: "images/pocket_ringtone.png", text: "口袋铃声"),
+        DrawerListItem(image: "images/timing.png", text: "定时停止播放"),
+        DrawerListItem(image: "images/alarm.png", text: "音乐闹铃"),
+        DrawerListItem(image: "images/music_free_flow.png", text: "在线听歌免流量"),
+        DrawerListItem(image: "images/game.png", text: "游戏推荐"),
+        DrawerListItem(image: "images/coupon.png", text: "优惠券"),
+        DrawerListItem(image: "images/broadcast.png", text: "我要开播"),
+        DrawerListItem(image: "images/music_free_flow.png", text: "在线听歌免流量"),
+        DrawerListItem(image: "images/game.png", text: "游戏推荐"),
+        DrawerListItem(image: "images/coupon.png", text: "优惠券"),
+        DrawerListItem(image: "images/broadcast.png", text: "我要开播"),
+      ],
+    );
+  }
+}
+
+class DrawerBottom extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Material(
+            child: InkWell(
+              onTap: () {},
+              child: Container(
+                height: 60,
+                margin: EdgeInsets.all(0.0),
+                child: Row(
+                  children: <Widget>[
+                    Image.asset(
+                      "images/night_mode.png",
+                      width: 18,
+                      height: 18,
+                      color: Colors.black,
                     ),
-                  ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('夜间模式'),
+                  ],
                 ),
-                DrawerListItem(image: "images/ticket.png", text: "演出"),
-                DrawerListItem(image: "images/shopping_cart.png", text: "商城"),
-                DrawerListItem(image: "images/location.png", text: "附近的人"),
-                DrawerListItem(
-                    image: "images/pocket_ringtone.png", text: "口袋铃声"),
-                DrawerListItem(image: "images/timing.png", text: "定时停止播放"),
-                DrawerListItem(image: "images/alarm.png", text: "音乐闹铃"),
-                DrawerListItem(
-                    image: "images/music_free_flow.png", text: "在线听歌免流量"),
-                DrawerListItem(image: "images/game.png", text: "游戏推荐"),
-                DrawerListItem(image: "images/coupon.png", text: "优惠券"),
-                DrawerListItem(image: "images/broadcast.png", text: "我要开播"),
-              ],
+              ),
             ),
           ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            left: 0,
-            child: Container(
-              height: 50,
-//              color: Colors.white,
-              child: DefaultTextStyle(
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
+          Material(
+            child: InkWell(
+              onTap: () {},
+              child: Container(
+                height: 60,
+                margin: EdgeInsets.all(0.0),
+                child: Row(
+                  children: <Widget>[
+                    Image.asset(
+                      "images/setting.png",
+                      width: 18,
+                      height: 18,
+                      color: Colors.black,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('设置'),
+                  ],
                 ),
-                child: Center(
-                  child: Row(
-                    children: <Widget>[
-                      Material(
-                        child: InkWell(
-                          onTap: () {},
-                          child: Container(
-                            height: 60,
-                            margin: EdgeInsets.all(0.0),
-                            child: Row(
-                              children: <Widget>[
-                                Image.asset(
-                                  "images/night_mode.png",
-                                  width: 18,
-                                  height: 18,
-                                  color: Colors.black,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text('夜间模式'),
-                              ],
-                            ),
-                          ),
-                        ),
-                        color: Colors.white,
-                      ),
-                      Material(
-                        child: InkWell(
-                          onTap: () {},
-                          child: Container(
-                            height: 60,
-                            margin: EdgeInsets.all(0.0),
-                            child: Row(
-                              children: <Widget>[
-                                Image.asset(
-                                  "images/setting.png",
-                                  width: 18,
-                                  height: 18,
-                                  color: Colors.black,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text('设置'),
-                              ],
-                            ),
-                          ),
-                        ),
-                        color: Colors.white,
-                      ),
-                      Material(
-                        child: InkWell(
-                          onTap: () {},
-                          child: Container(
-                            height: 60,
-                            margin: EdgeInsets.all(0.0),
-                            child: Row(
-                              children: <Widget>[
-                                Image.asset(
-                                  "images/app_shut_down.png",
-                                  width: 18,
-                                  height: 18,
-                                  color: Colors.black,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text('退出'),
-                              ],
-                            ),
-                          ),
-                        ),
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
+              ),
+            ),
+          ),
+          Material(
+            child: InkWell(
+              onTap: () {},
+              child: Container(
+                height: 60,
+                margin: EdgeInsets.all(0.0),
+                child: Row(
+                  children: <Widget>[
+                    Image.asset(
+                      "images/app_shut_down.png",
+                      width: 18,
+                      height: 18,
+                      color: Colors.black,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('退出'),
+                  ],
                 ),
               ),
             ),
@@ -264,6 +256,61 @@ class LoginHead extends StatelessWidget {
   }
 }
 
+//登入部分
+class DrawerTopLogin extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      child: Material(
+        color: Colors.white,
+        elevation: 0,
+        child: Column(
+          children: [
+            Gaps.vGap30,
+            Text(
+              '手机电脑多端同步,尽享海量高品质音乐',
+              style: TextStyle(color: Colors.black, fontSize: 12),
+            ),
+            Gaps.vGap15,
+            Container(
+              child: RaisedButton(
+                onPressed: () {},
+                color: Colors.red,
+                padding: EdgeInsets.only(left: 30, right: 30),
+                child: Text(
+                  "立即登录",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                  ),
+                ),
+
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                //一个边框，适合体育场形状的边框（两端有半圆的框），适用于它所应用的小部件的矩形
+              ),
+            ),
+            Gaps.vGap15,
+            DrawerListItemHorizontal(),
+            Gaps.vGap15,
+            Container(
+              margin:
+                  const EdgeInsets.only(top: 0, bottom: 0, left: 15, right: 15),
+              child: Center(
+                child: Divider(
+                  height: 0.6,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class UnLoginHead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -284,13 +331,7 @@ class UnLoginHead extends StatelessWidget {
             children: <Widget>[
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      '登录网易云音乐',
-                      style: TextStyle(color: Colors.black, fontSize: 12),
-                    )
-                  ]),
-              Container(margin: EdgeInsets.all(2)), //文字之间添加 margin
+                  children: <Widget>[]),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

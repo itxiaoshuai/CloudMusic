@@ -30,17 +30,17 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
   }
 
   Future getSongListDetail(int id) async {
-    var response = await Http().get(
-      MusicApi.SONGLISTDETAILS,
-      queryParameters: {"id": id},
-    );
-    PlaylistDetail playlist = PlaylistDetail.fromJson(response["playlist"]);
-    if (playlist != null) {
-      setState(() {
-        this.playlist = playlist;
-        print('response====$playlist');
-      });
-    }
+//    var response = await Http().get(
+//      MusicApi.SONGLISTDETAILS,
+//      queryParameters: {"id": id},
+//    );
+//    PlaylistDetail playlist = PlaylistDetail.fromJson(response["playlist"]);
+//    if (playlist != null) {
+//      setState(() {
+//        this.playlist = playlist;
+//        print('response====$playlist');
+//      });
+//    }
   }
 
   @override
