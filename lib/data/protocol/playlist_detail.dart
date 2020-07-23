@@ -136,7 +136,6 @@ class Creator {
   String signature; //话少慢热不喜交际 / 不推广 勿扰
   String backgroundUrl;
 
-
   Creator({
     this.province,
     this.avatarUrl,
@@ -147,7 +146,6 @@ class Creator {
     this.nickname,
     this.signature,
     this.backgroundUrl,
-
   });
 
   Creator.fromJson(Map<String, dynamic> json) {
@@ -160,7 +158,6 @@ class Creator {
     nickname = json['nickname'];
     signature = json['signature'];
     backgroundUrl = json['backgroundUrl'];
-
   }
 
   Map<String, dynamic> toJson() {

@@ -1,10 +1,12 @@
 import 'dart:ui';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/utils/utils.dart';
 import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/playlist_detail.dart';
+import 'package:flutter_app/net/huyi_android_api.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
 
@@ -30,17 +32,20 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
   }
 
   Future getSongListDetail(int id) async {
-//    var response = await Http().get(
-//      MusicApi.SONGLISTDETAILS,
-//      queryParameters: {"id": id},
-//    );
-//    PlaylistDetail playlist = PlaylistDetail.fromJson(response["playlist"]);
-//    if (playlist != null) {
-//      setState(() {
-//        this.playlist = playlist;
-//        print('response====$playlist');
-//      });
-//    }
+//    http://118.24.63.15:1020/playlist/detail?id=19723756
+    print('id====$id');
+    var dio = Dio();
+    var response =
+        await dio.get("http://118.24.63.15:1020/playlist/detail?id=$id");
+    print(response);
+    PlaylistDetail playlist =
+        PlaylistDetail.fromJson(response.data["playlist"]);
+    if (playlist != null) {
+      setState(() {
+        this.playlist = playlist;
+        print('response====$playlist');
+      });
+    }
   }
 
   @override
@@ -104,15 +109,14 @@ class _PlaylistDetailHeader extends StatelessWidget {
 
   Widget _buildContent(BuildContext context) {
     return Scaffold(
-    backgroundColor:Colors.blue ,
+      backgroundColor: Colors.blue,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Text(''),
       ),
       body: Container(
-        padding: const EdgeInsets.only(
-            left: 15, top: 0, bottom: 4, right: 15),
+        padding: const EdgeInsets.only(left: 15, top: 0, bottom: 4, right: 15),
         color: Colors.blue,
         child: Column(
           children: <Widget>[
@@ -320,14 +324,14 @@ class CustomWidget extends StatelessWidget {
       slivers: <Widget>[
         SliverAppBar(
             title: Text('歌单'),
-          elevation: 0,
+            elevation: 0,
 //            backgroundColor: Colors.transparent,
-          pinned: true,
+            pinned: true,
 //            floating: true,
 //            snap: false,
-          expandedHeight: 320.0,
+            expandedHeight: 320.0,
             bottom: _buildListHeader(context),
-          flexibleSpace: _PlaylistDetailHeader(playlistDetail),
+            flexibleSpace: _PlaylistDetailHeader(playlistDetail),
             actions: <Widget>[
               IconButton(
                 icon: new Icon(
@@ -346,11 +350,10 @@ class CustomWidget extends StatelessWidget {
                   /* ... */
                 },
               )
-            ]
-        ),
+            ]),
         SliverList(
           delegate:
-          SliverChildBuilderDelegate((BuildContext context, int index) {
+              SliverChildBuilderDelegate((BuildContext context, int index) {
             //创建列表项
             return Material(
               child: new InkWell(
@@ -368,7 +371,7 @@ class CustomWidget extends StatelessWidget {
               color: Colors.white,
             );
           }, childCount: 50 //50个列表项
-          ),
+                  ),
         ),
       ],
     );

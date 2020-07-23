@@ -8,6 +8,7 @@ import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/LeaderboardDetailModel.dart';
 import 'package:flutter_app/data/protocol/LeaderboardModel.dart';
 import 'package:flutter_app/net/huyi_android_api.dart';
+import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 
 import 'LeaderboardDetailPage.dart';
@@ -86,9 +87,8 @@ class _LeaderBoardPageState extends State {
             return Container(
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (BuildContext context) {
-                    return ChoiceSongSheetPage();
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return PlaylistDetailPage(_leaderBoardList[index].id);
                   }));
                 },
                 child: ListItem(

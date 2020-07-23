@@ -22,11 +22,6 @@ class ListItemCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return PlaylistDetailPage(album['id']);
-        }));
-      },
       child: Center(
 //          color: Colors.redAccent,
 //          height: 100,

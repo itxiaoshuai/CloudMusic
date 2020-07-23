@@ -5,9 +5,9 @@ import 'package:flutter_app/pages/playllist/item_music_list_track.dart';
 class SongListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return CustomWidget();
     return BackgroundBlur(
-      child:
-          Scaffold(backgroundColor: Colors.transparent, body: Text('xx')),
+      child: Scaffold(backgroundColor: Colors.transparent, body: Text('xx')),
       coverPic:
           'http://p2.music.126.net/2XWY_6zJ9vAsnXIRCYQeiw==/109951164208685267.jpg',
     );
@@ -20,10 +20,9 @@ class CustomWidget extends StatelessWidget {
     return CustomScrollView(
       slivers: <Widget>[
         SliverAppBar(
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colors.blue,
             title: Text('歌单'),
             elevation: 0,
-//            backgroundColor: Colors.transparent,
             pinned: true,
             floating: false,
             snap: false,
