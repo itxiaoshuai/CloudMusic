@@ -7,6 +7,7 @@ import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/LeaderboardDetailModel.dart';
 import 'package:flutter_app/data/protocol/LeaderboardModel.dart';
+import 'package:flutter_app/net/huyi_android_api.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 
 import 'LeaderboardDetailPage.dart';
@@ -28,7 +29,8 @@ class _LeaderBoardPageState extends State {
 
   Future getHttp() async {
     var dio = Dio();
-    var response = await dio.get('http://localhost:3000/toplist');
+    var response = await dio.get("http://118.24.63.15:1020/toplist/detail");
+    print(response);
 
     var user = LeaderBoardModel.fromJson(response.data);
     List<LeaderBoardList> list = user.list;
@@ -40,7 +42,7 @@ class _LeaderBoardPageState extends State {
         if (_leaderBoardList.length >= 6) {
           tracks = List<int>();
           _leaderBoardList.sublist(0, 6).forEach((v) {
-            tracks.add(v.id);
+//            tracks.add(v.id);
           });
         }
         print('tracks====$tracks');
@@ -93,10 +95,11 @@ class _LeaderBoardPageState extends State {
                   img: _leaderBoardList[index].coverImgUrl,
                   updateFrequency: _leaderBoardList[index].updateFrequency,
                   id: _leaderBoardList[index].id,
+                  tracks: _leaderBoardList[index].tracks,
                 ),
               ),
             );
-          }, childCount: 6 //50个列表项
+          }, childCount: 4 //50个列表项
                   ),
         ),
         SliverList(
@@ -305,13 +308,6 @@ class _LeaderBoardPageState extends State {
 
     return widget;
   }
-
-  //ListView的Item
-  Widget buildItem(BuildContext context, int index) => ListItem(
-        img: _leaderBoardList[index].coverImgUrl,
-        updateFrequency: _leaderBoardList[index].updateFrequency,
-        id: _leaderBoardList[index].id,
-      );
 }
 
 class ListItem extends StatefulWidget {
@@ -319,78 +315,34 @@ class ListItem extends StatefulWidget {
   final String img;
   final String updateFrequency;
   final int id;
+  final List<Track> tracks;
 
-  ListItem({this.text, this.img, this.updateFrequency, this.id});
+  ListItem({this.text, this.img, this.updateFrequency, this.id, this.tracks});
 
   @override
   _ListItemState createState() => _ListItemState(
-      text: text, img: img, updateFrequency: updateFrequency, id: id);
+      text: text,
+      img: img,
+      updateFrequency: updateFrequency,
+      id: id,
+      tracks: tracks);
 }
 
-class _ListItemState extends State {
+class _ListItemState extends State<ListItem> {
   final String text;
   final String img;
   final String updateFrequency;
   final int id;
+  final List<Track> tracks;
 
-  final List<String> _listTitle = [];
-
-  _ListItemState({this.text, this.img, this.updateFrequency, this.id});
-
-  @override
-  void initState() {
-    var v = _listTitle.length;
-
-    print('_listTitle.length.length$v');
-    if (v == 18) {
-      return;
-    }
-    if (id > 0) {
-      getSongListDetail(id);
-    }
-    super.initState();
-  }
-
-  ///http://106.13.32.37:3000/playlist/detail?id=19723756
-
-  Future getSongListDetail(int id) async {
-//    var response = await Http().get(
-//      MusicApi.SONGLISTDETAILS,
-//      queryParameters: {"id": id},
-//    );
-//    print('response====$response');
-//    LeaderBoardDetailModel songListDetail =
-//        LeaderBoardDetailModel.fromJson(response);
-
-//    var playlist = songListDetail.playlist;
-
-//    List<Tracks> tracks = playlist.tracks;
-//
-//    tracks.sublist(0, 3).forEach((id) {
-//      var name = id.name;
-//      List<Ar> authors = id.ar;
-//      var authorName;
-//      authors.forEach((author) {
-//        authorName = author.name;
-//      });
-//      var title = name + '_' + authorName;
-//      print('title====$title');
-//
-//      _listTitle.add(title);
-//    });
-    if (_listTitle != null && mounted) {
-      setState(() {
-        print('_listTitle====$_listTitle');
-      });
-    }
-  }
+  _ListItemState(
+      {this.text, this.img, this.updateFrequency, this.id, this.tracks});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 5, bottom: 5),
       height: 100,
-//      color: Colors.redAccent,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
@@ -410,74 +362,34 @@ class _ListItemState extends State {
     );
   }
 
-  ///展示前三首音乐
   _buildTopThreeSongs(BuildContext context) {
     Widget widget;
-    var length = _listTitle.length;
-    print('_listTitle.length$length');
-    if (_listTitle.length >= 3) {
-      widget = Expanded(
-        child: Container(
-          margin: EdgeInsets.only(left: 10, right: 10),
-          child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-              //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
-              children: [
-                Expanded(
-                  child: Container(
-//                      color: Colors.green,
-                      child: Center(
-                    child: Align(
-                      alignment: FractionalOffset.centerLeft,
-                      child: Text(
-                        '1.' + _listTitle[0],
-                        style: TextStyle(
-                          fontSize: 14,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
+    var i = 1; //排行榜名次
+    widget = Expanded(
+      child: Container(
+        margin: EdgeInsets.only(left: 10, right: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: tracks.map((t) {
+            return Expanded(
+              child: Container(
+                  child: Center(
+                child: Align(
+                  alignment: FractionalOffset.centerLeft,
+                  child: Text(
+                    '${i++}.${t.first} - ${t.second}',
+                    style: TextStyle(
+                      fontSize: 14,
                     ),
-                  )),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-                Expanded(
-                  child: Container(
-                      child: Center(
-                    child: Align(
-                      alignment: FractionalOffset.centerLeft,
-                      child: Text(
-                        '2.' + _listTitle[1],
-                        style: TextStyle(
-                          fontSize: 14,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  )),
-                ),
-                Expanded(
-                  child: Container(
-                      child: Center(
-                    child: Align(
-                      alignment: FractionalOffset.centerLeft,
-                      child: Text(
-                        '3.' + _listTitle[2],
-                        style: TextStyle(
-                          fontSize: 14,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  )),
-                ),
-              ]),
+              )),
+            );
+          }).toList(),
         ),
-      );
-    } else {
-      print('_listTitle.lengthxxxxxxxxxx$length');
-      widget = Container(
-        height: 0,
-      );
-    }
+      ),
+    );
 
     return widget;
   }

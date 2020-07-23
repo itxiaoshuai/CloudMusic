@@ -1,79 +1,54 @@
+import 'package:flutter/cupertino.dart';
+
 class LeaderBoardModel {
   int code;
   List<LeaderBoardList> list;
 
-  LeaderBoardModel({this.code, this.list});
-
-  LeaderBoardModel.fromJson(Map<String, dynamic> json) {
-    code = json['code'];
-    if (json['list'] != null) {
-      list = List<LeaderBoardList>();
-      json['list'].forEach((v) {
-        list.add(LeaderBoardList.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
-    data['code'] = this.code;
-    if (this.list != null) {
-      data['list'] = this.list.map((v) => v.toJson()).toList();
-    }
-
-    return data;
+  static LeaderBoardModel fromJson(Map<String, dynamic> map) {
+    if (map == null) return null;
+    LeaderBoardModel newsBean = LeaderBoardModel();
+    newsBean.code = map['code'];
+    newsBean.list = List()
+      ..addAll(
+          (map['list'] as List ?? []).map((o) => LeaderBoardList.fromJson(o)));
+    return newsBean;
   }
 }
 
 class LeaderBoardList {
   String updateFrequency;
-  String coverImgUrl;
-  int trackCount;
-  int userId;
-  String toplistType;
-  String name;
   String description;
+  String name;
   int playCount;
-  bool ordered;
   int id;
-  LeaderBoardList(
-      {this.updateFrequency,
-      this.ordered,
-      this.coverImgUrl,
-      this.trackCount,
-      this.userId,
-      this.playCount,
-      this.description,
-      this.name,
-      this.toplistType,
-      this.id});
+  String coverImgUrl;
+  List<Track> tracks;
 
-  LeaderBoardList.fromJson(Map<String, dynamic> json) {
-    updateFrequency = json['updateFrequency'];
-    ordered = json['ordered'];
-    coverImgUrl = json['coverImgUrl'];
-    trackCount = json['trackCount'];
-    userId = json['userId'];
-    playCount = json['playCount'];
-    description = json['description'];
-    name = json['name'];
-    toplistType = json['ToplistType'];
-    id = json['id'];
+  static LeaderBoardList fromJson(Map<String, dynamic> map) {
+    if (map == null) return null;
+    LeaderBoardList product = LeaderBoardList();
+    product.updateFrequency = map['updateFrequency'];
+    product.description = map['description'];
+    product.name = map['name'];
+    product.playCount = map['playCount'];
+    product.id = map['id'];
+    product.coverImgUrl = map['coverImgUrl'];
+    product.tracks = List()
+      ..addAll((map['tracks'] as List ?? []).map((o) => Track.fromJson(o)));
+
+    return product;
   }
+}
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+class Track {
+  String first;
+  String second;
 
-    data['updateFrequency'] = this.updateFrequency;
-    data['ordered'] = this.ordered;
-    data['coverImgUrl'] = this.coverImgUrl;
-    data['trackCount'] = this.trackCount;
-    data['userId'] = this.userId;
-    data['playCount'] = this.playCount;
-    data['description'] = this.description;
-    data['name'] = this.name;
-    data['ToplistType'] = this.toplistType;
-    data['id'] = this.id;
-    return data;
+  static Track fromJson(Map<String, dynamic> map) {
+    if (map == null) return null;
+    Track track = Track();
+    track.first = map['first'];
+    track.second = map['second'];
+    return track;
   }
 }

@@ -26,12 +26,6 @@ class MyPage extends StatelessWidget {
               ],
             ),
           ),
-//          VerticalItem(image: "images/ticket.png", text: "演出"),
-//          VerticalItem(image: "images/ticket.png", text: "演出"),
-//          VerticalItem(image: "images/ticket.png", text: "演出"),
-//          VerticalItem(image: "images/ticket.png", text: "演出"),
-//          VerticalItem(image: "images/ticket.png", text: "演出"),
-//          VerticalItem(image: "images/ticket.png", text: "演出"),
           _getContainer('本地音乐', '(11)', Icons.music_note),
           _getContainer('最近播放', '(7)', Icons.local_play),
           _getContainer('下载管理', '(0)', Icons.file_download),
@@ -100,9 +94,6 @@ class HorizontalItem extends StatelessWidget {
                 ]),
               ),
             ),
-            Container(
-              height: 8,
-            ),
             Text(
               text,
               style: TextStyle(fontSize: 12, color: Colors.black),
@@ -124,7 +115,6 @@ class VerticalItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 10, right: 10),
-      height: 45.0,
       child: Row(
         children: <Widget>[
           Image.asset(

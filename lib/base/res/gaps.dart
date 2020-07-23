@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'colors.dart';
 import 'dimens.dart';
@@ -13,6 +14,7 @@ class Gaps {
   static const Widget hGap15 = const SizedBox(width: Dimens.gap_dp15);
   static const Widget hGap16 = const SizedBox(width: Dimens.gap_dp16);
   static const Widget hGap28 = const SizedBox(width: 28);
+
   /// 垂直间隔
   static const Widget vGap4 = const SizedBox(height: Dimens.gap_dp4);
   static const Widget vGap5 = const SizedBox(height: Dimens.gap_dp5);
@@ -32,6 +34,14 @@ class Gaps {
     width: double.infinity,
     child: const DecoratedBox(decoration: BoxDecoration(color: Colours.line)),
   );
+  static Widget line2 = Container(
+    margin: const EdgeInsets.only(top: 0, bottom: 0, left: 15, right: 15),
+    child: Center(
+      child: Divider(
+        height: 0.6,
+      ),
+    ),
+  );
 
-  static const Widget empty = const SizedBox();
+  Widget empty = const SizedBox();
 }
