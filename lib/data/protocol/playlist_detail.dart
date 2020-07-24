@@ -1,27 +1,11 @@
-//class PlaylistDetail {
-//  Playlist playlist;
-//
-//  PlaylistDetail({
-//    this.playlist,
-//  });
-//
-//  PlaylistDetail.fromJson(Map<String, dynamic> json) {
-//    playlist = json['playlist'] != null
-//        ? new Playlist.fromJson(json['playlist'])
-//        : null;
-//  }
-//
-//  Map<String, dynamic> toJson() {
-//    final Map<String, dynamic> data = new Map<String, dynamic>();
-//    if (this.playlist != null) {
-//      data['playlist'] = this.playlist.toJson();
-//    }
-//    return data;
-//  }
-//}
-
 class PlaylistDetail {
   Creator creator;
+
+  @override
+  String toString() {
+    return 'PlaylistDetail{creator: $creator, tracks: $tracks, trackIds: $trackIds, createTime: $createTime, highQuality: $highQuality, userId: $userId, cloudTrackCount: $cloudTrackCount, subscribedCount: $subscribedCount, coverImgUrl: $coverImgUrl, trackCount: $trackCount, playCount: $playCount, description: $description, tags: $tags, name: $name, id: $id, shareCount: $shareCount, commentCount: $commentCount, subscribed: $subscribed}';
+  }
+
   List<Tracks> tracks;
   List<TrackIds> trackIds;
   int createTime;
@@ -88,7 +72,9 @@ class PlaylistDetail {
     playCount = json['playCount'];
 
     description = json['description'];
-    tags = json['tags'].cast<String>();
+    if (json['tags'] != null) {
+      tags = json['tags'].cast<String>();
+    }
 
     name = json['name'];
     id = json['id'];

@@ -27,4 +27,30 @@ class ApiInterceptor extends InterceptorsWrapper {
 //    debugPrint(jsonResponse);
     return options;
   }
+
+  @override
+  Future onResponse(Response response) {
+//    debugPrint('${response.data}');
+    ResponseData respData = ResponseData.fromJson(response.data);
+    if (respData.success) {
+      //请求成功
+      return super.onResponse(response);
+    } else {
+      throw NotSuccessException.fromRespData(respData);
+    }
+  }
+
+  @override
+  Future onError(DioError err) {
+    debugPrint('${err}');
+    return super.onError(err);
+  }
+}
+
+class ResponseData extends BaseResponseData {
+  bool get success => 200 == code;
+
+  ResponseData.fromJson(Map<String, dynamic> json) {
+    code = json['code'];
+  }
 }

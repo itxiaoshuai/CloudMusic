@@ -40,3 +40,39 @@ class HeaderInterceptor extends InterceptorsWrapper {
     return options;
   }
 }
+
+/// 接口的code没有返回为true的异常
+class NotSuccessException implements Exception {
+  String message;
+
+  NotSuccessException.fromRespData(BaseResponseData respData) {}
+
+  @override
+  String toString() {
+    return 'NotExpectedException{respData: $message}';
+  }
+}
+
+/// 子类需要重写
+abstract class BaseResponseData {
+  int code = 200;
+
+  bool get success;
+
+  BaseResponseData({
+    this.code,
+  });
+
+  @override
+  String toString() {
+    return 'BaseRespData{code: $code, }';
+  }
+}
+
+/// 用于未登录等权限不够,需要跳转授权页面
+class UnAuthorizedException implements Exception {
+  const UnAuthorizedException();
+
+  @override
+  String toString() => 'UnAuthorizedException';
+}

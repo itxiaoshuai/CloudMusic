@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/data/protocol/playlist_detail.dart';
 
 ///单个歌曲(item)
 class TrackItem extends StatelessWidget {
   final int index;
+  final Tracks tracks;
 
-  TrackItem({
-    this.index,
-  });
+  TrackItem({this.index, this.tracks});
+
+  String getText(Tracks tracks) {
+    StringBuffer stringBuffer = new StringBuffer();
+    var length = tracks.ar.length;
+    tracks.ar.forEach((item) {
+      if (length == 1) {
+        stringBuffer.write(item.name);
+      }
+      if (length > 1) {
+        stringBuffer.write(item.name);
+        stringBuffer.write('/');
+      }
+
+      length--;
+    });
+    if (tracks.al != null) {
+      if (tracks.al.name != null) stringBuffer.write('-');
+      stringBuffer.write(tracks.al.name);
+    }
+
+    return stringBuffer.toString();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +60,7 @@ class TrackItem extends StatelessWidget {
                         child: Align(
                           alignment: FractionalOffset.centerLeft,
                           child: Text(
-                            '有一种悲伤',
+                            tracks.name,
                             style: TextStyle(fontSize: 16, color: Colors.black),
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -52,7 +74,7 @@ class TrackItem extends StatelessWidget {
                         child: Align(
                           alignment: FractionalOffset.centerLeft,
                           child: Text(
-                            '比悲伤更悲伤的故事 比悲伤更悲伤的故事 电影原声带',
+                            getText(tracks),
                             style: TextStyle(
                                 fontSize: 12, color: Colors.grey[600]),
                             overflow: TextOverflow.ellipsis,

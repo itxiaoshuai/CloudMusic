@@ -23,7 +23,6 @@ abstract class LayoutStateRefreshListModel<T> extends LayoutStateModel {
   refresh({bool init = false}) async {
     try {
       List<T> data = await loadData();
-      debugPrint('---home.product.length--> ${data.length}');
       if (data.isEmpty) {
         list.clear();
       } else {
@@ -31,7 +30,6 @@ abstract class LayoutStateRefreshListModel<T> extends LayoutStateModel {
         list.clear();
         list.addAll(data);
         setState(LayoutState.SUCCESS);
-        debugPrint('---list.addAll(data);length--> ${data.length}');
       }
     } catch (e, s) {
       //加载出错清空数据

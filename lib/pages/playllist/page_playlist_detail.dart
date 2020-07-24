@@ -6,9 +6,14 @@ import 'package:flutter_app/base/utils/utils.dart';
 import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/playlist_detail.dart';
+import 'package:flutter_app/model/play_list_model.dart';
 import 'package:flutter_app/net/huyi_android_api.dart';
+import 'package:flutter_app/provider/layout_state.dart';
+import 'package:flutter_app/provider/provider_widget.dart';
+import 'package:flutter_app/provider/view_state_widget.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
+import 'package:provider/provider.dart';
 
 import 'item_music_list_track.dart';
 
@@ -26,32 +31,26 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
   PlaylistDetail playlist;
 
   @override
-  void initState() {
-    getSongListDetail(widget.playlistId);
-    super.initState();
-  }
-
-  Future getSongListDetail(int id) async {
-//    http://118.24.63.15:1020/playlist/detail?id=19723756
-    print('id====$id');
-    var dio = Dio();
-    var response =
-        await dio.get("http://118.24.63.15:1020/playlist/detail?id=$id");
-    print(response);
-    PlaylistDetail playlist =
-        PlaylistDetail.fromJson(response.data["playlist"]);
-    if (playlist != null) {
-      setState(() {
-        this.playlist = playlist;
-        print('response====$playlist');
-      });
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Material(
-      child: CustomWidget(playlist),
+      child: ProviderWidget<PlayListModel>(
+        model: PlayListModel(),
+        onModelReady: (model) {
+          model.loadData(widget.playlistId);
+        },
+        builder: (context, model, child) {
+          debugPrint('---当前状态--> ${model}');
+          switch (model.layoutState) {
+            case LayoutState.IDLE:
+              break;
+            case LayoutState.LOADING:
+              return ViewStateLoadingWidget();
+              break;
+          }
+
+          return CustomWidget(model);
+        },
+      ),
     );
   }
 }
@@ -93,11 +92,9 @@ class PlayListHeaderBackground extends StatelessWidget {
 
 /// 播放列表头部
 class _PlaylistDetailHeader extends StatelessWidget {
-  _PlaylistDetailHeader(
-    this.playlistDetail,
-  );
+  _PlaylistDetailHeader(this.model);
 
-  final PlaylistDetail playlistDetail;
+  PlayListModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +122,7 @@ class _PlaylistDetailHeader extends StatelessWidget {
                 ListItemCustom(
                   width: 124,
                   height: 124,
-                  img: playlistDetail == null ? "" : playlistDetail.coverImgUrl,
+                  img: model.data == null ? "" : model.data.coverImgUrl,
                 ),
                 SizedBox(width: 16),
                 Expanded(
@@ -133,7 +130,7 @@ class _PlaylistDetailHeader extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        playlistDetail == null ? "" : playlistDetail.name,
+                        model.data == null ? "" : model.data.name,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -155,9 +152,9 @@ class _PlaylistDetailHeader extends StatelessWidget {
                                 Container(
                                   child: CircleAvatar(
                                     backgroundImage: NetworkImage(
-                                      playlistDetail == null
+                                      model.data == null
                                           ? ""
-                                          : playlistDetail.creator.avatarUrl,
+                                          : model.data.creator.avatarUrl,
                                     ),
                                     backgroundColor: Colors.black,
                                     radius: 15.0,
@@ -165,9 +162,9 @@ class _PlaylistDetailHeader extends StatelessWidget {
                                 ),
                                 Padding(padding: EdgeInsets.only(left: 6)),
                                 Text(
-                                  playlistDetail == null
+                                  model.data == null
                                       ? ""
-                                      : playlistDetail.creator.nickname,
+                                      : model.data.creator.nickname,
                                   style: TextStyle(
                                       fontSize: 14, color: Colors.black),
                                 ),
@@ -187,9 +184,9 @@ class _PlaylistDetailHeader extends StatelessWidget {
                             child: Container(
                               color: Colors.green,
                               child: Text(
-                                playlistDetail == null
+                                model.data == null
                                     ? ""
-                                    : stringFilter(playlistDetail.description),
+                                    : stringFilter(model.data.description),
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
@@ -218,15 +215,15 @@ class _PlaylistDetailHeader extends StatelessWidget {
                 children: <Widget>[
                   ListItem(
                     image: "images/album/album_comment.png",
-                    text: playlistDetail == null
+                    text: model.data == null
                         ? ""
-                        : playlistDetail.commentCount.toString(),
+                        : model.data.commentCount.toString(),
                   ),
                   ListItem(
                     image: "images/album/album_share.png",
-                    text: playlistDetail == null
+                    text: model.data == null
                         ? ""
-                        : playlistDetail.shareCount.toString(),
+                        : model.data.shareCount.toString(),
                   ),
                   ListItem(
                       image: "images/album/album_download.png", text: "下载"),
@@ -312,18 +309,16 @@ class MusicListHeader extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class CustomWidget extends StatelessWidget {
-  CustomWidget(
-    this.playlistDetail,
-  );
+  CustomWidget(this.model);
 
-  final PlaylistDetail playlistDetail;
+  PlayListModel model;
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
         SliverAppBar(
-            title: Text('歌单'),
+            title: Text(model.data.name),
             elevation: 0,
 //            backgroundColor: Colors.transparent,
             pinned: true,
@@ -331,7 +326,7 @@ class CustomWidget extends StatelessWidget {
 //            snap: false,
             expandedHeight: 320.0,
             bottom: _buildListHeader(context),
-            flexibleSpace: _PlaylistDetailHeader(playlistDetail),
+            flexibleSpace: _PlaylistDetailHeader(model),
             actions: <Widget>[
               IconButton(
                 icon: new Icon(
@@ -354,7 +349,7 @@ class CustomWidget extends StatelessWidget {
         SliverList(
           delegate:
               SliverChildBuilderDelegate((BuildContext context, int index) {
-            //创建列表项
+            Tracks track = model.data.tracks[index];
             return Material(
               child: new InkWell(
                 onTap: () {
@@ -365,12 +360,15 @@ class CustomWidget extends StatelessWidget {
                   height: 60,
                   //不要在这里设置背景色，否则会遮挡水波纹效果,如果设置的话尽量设置Material下面的color来实现背景色
                   margin: EdgeInsets.all(0.0),
-                  child: TrackItem(index: index + 1),
+                  child: TrackItem(
+                    index: index + 1,
+                    tracks: track,
+                  ),
                 ),
               ),
               color: Colors.white,
             );
-          }, childCount: playlistDetail.tracks.length //50个列表项
+          }, childCount: model.data.tracks.length //50个列表项
                   ),
         ),
       ],

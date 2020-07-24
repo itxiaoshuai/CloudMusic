@@ -3,6 +3,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/protocol/LeaderboardModel.dart';
+import 'package:flutter_app/data/protocol/playlist_detail.dart';
 import 'package:flutter_app/net/huyi_android_api.dart';
 
 class RequestManager {
@@ -12,5 +13,15 @@ class RequestManager {
     var user = LeaderBoardModel.fromJson(response.data);
     List<LeaderBoardList> list = user.list;
     return list;
+  }
+
+  //获取榜单详情
+  static Future fetchPlayList(int id) async {
+    Map<String, dynamic> formData = {
+      'id': id,
+    };
+    var response =
+        await http.get('/playlist/detail', queryParameters: formData);
+    return response.data;
   }
 }
