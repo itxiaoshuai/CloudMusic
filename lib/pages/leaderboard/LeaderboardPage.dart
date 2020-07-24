@@ -7,9 +7,12 @@ import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/LeaderboardDetailModel.dart';
 import 'package:flutter_app/data/protocol/LeaderboardModel.dart';
+import 'package:flutter_app/model/top_list_model.dart';
 import 'package:flutter_app/net/huyi_android_api.dart';
 import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
+import 'package:flutter_app/provider/provider_widget.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
+import 'package:provider/provider.dart';
 
 import 'LeaderboardDetailPage.dart';
 
@@ -19,54 +22,30 @@ class LeaderBoardPage extends StatefulWidget {
 }
 
 class _LeaderBoardPageState extends State {
-  List<LeaderBoardList> _leaderBoardList = [];
-  List<int> tracks = [];
-
-  @override
-  void initState() {
-    getHttp();
-    super.initState();
-  }
-
-  Future getHttp() async {
-    var dio = Dio();
-    var response = await dio.get("http://118.24.63.15:1020/toplist/detail");
-    print(response);
-
-    var user = LeaderBoardModel.fromJson(response.data);
-    List<LeaderBoardList> list = user.list;
-    print(list);
-    if (list != null && mounted) {
-      setState(() {
-        _leaderBoardList = list;
-
-        if (_leaderBoardList.length >= 6) {
-          tracks = List<int>();
-          _leaderBoardList.sublist(0, 6).forEach((v) {
-//            tracks.add(v.id);
-          });
-        }
-        print('tracks====$tracks');
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('排行榜'),
       ),
-      body: CustomScrollView(
-        slivers: _listWidget(context),
-      ),
+      body: ProviderWidget<TopListModel>(
+          model: TopListModel(),
+          onModelReady: (model) {
+            model.initData();
+          },
+          builder: (context, model, child) {
+            debugPrint('---当前状态--> ${model}');
+            return CustomScrollView(
+              slivers: _listWidget(context, model),
+            );
+          }),
     );
   }
 
-  _listWidget(BuildContext context) {
-    List<Widget> list;
-    if (_leaderBoardList.length > 0) {
-      list = <Widget>[
+  _listWidget(BuildContext context, TopListModel model) {
+    List<Widget> widget;
+    if (model.list.length > 0) {
+      widget = <Widget>[
         SliverList(
           delegate: SliverChildListDelegate(
             <Widget>[
@@ -83,19 +62,19 @@ class _LeaderBoardPageState extends State {
         SliverList(
           delegate:
               SliverChildBuilderDelegate((BuildContext context, int index) {
-            //创建列表项
+            LeaderBoardList item = model.list[index];
             return Container(
               child: InkWell(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return PlaylistDetailPage(_leaderBoardList[index].id);
+                    return PlaylistDetailPage(model.list[index].id);
                   }));
                 },
                 child: ListItem(
-                  img: _leaderBoardList[index].coverImgUrl,
-                  updateFrequency: _leaderBoardList[index].updateFrequency,
-                  id: _leaderBoardList[index].id,
-                  tracks: _leaderBoardList[index].tracks,
+                  img: item.coverImgUrl,
+                  updateFrequency: item.updateFrequency,
+                  id: item.id,
+                  tracks: item.tracks,
                 ),
               ),
             );
@@ -115,7 +94,7 @@ class _LeaderBoardPageState extends State {
             ],
           ),
         ),
-        _buildRecommend(context),
+        _buildRecommend(context, model),
         SliverList(
           delegate: SliverChildListDelegate(
             <Widget>[
@@ -129,7 +108,7 @@ class _LeaderBoardPageState extends State {
             ],
           ),
         ),
-        _buildGlobalList(context),
+        _buildGlobalList(context, model),
         SliverList(
           delegate: SliverChildListDelegate(
             <Widget>[
@@ -143,7 +122,7 @@ class _LeaderBoardPageState extends State {
             ],
           ),
         ),
-        _buildMoreList(context),
+        _buildMoreList(context, model),
         SliverList(
           delegate: SliverChildListDelegate(
             <Widget>[
@@ -155,7 +134,7 @@ class _LeaderBoardPageState extends State {
         ),
       ];
     } else {
-      list = <Widget>[
+      widget = <Widget>[
         SliverList(
           delegate: SliverChildListDelegate([
             Container(
@@ -167,14 +146,13 @@ class _LeaderBoardPageState extends State {
       ];
     }
 
-    return list;
+    return widget;
   }
 
-  _buildRecommend(BuildContext context) {
+  _buildRecommend(BuildContext context, TopListModel model) {
     Widget widget;
-    if (_leaderBoardList.length > 12) {
-      List<LeaderBoardList> list = _leaderBoardList.sublist(6, 12);
-
+    if (model.list.length > 12) {
+      List list = model.list.sublist(6, 12);
       widget = SliverPadding(
         padding: const EdgeInsets.all(8.0),
         sliver: SliverGrid(
@@ -183,11 +161,11 @@ class _LeaderBoardPageState extends State {
           ),
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              //创建子widget
+              LeaderBoardList item = list[index];
               return Container(
                 child: ListItemCustom(
-                  img: list[index].coverImgUrl,
-                  updateFrequency: list[index].updateFrequency,
+                  img: item.coverImgUrl,
+                  updateFrequency: item.updateFrequency,
                 ),
               );
             },
@@ -196,9 +174,7 @@ class _LeaderBoardPageState extends State {
         ),
       );
     } else {
-      List<LeaderBoardList> list =
-          _leaderBoardList.sublist(6, _leaderBoardList.length);
-
+      List list = model.list.sublist(6, model.list.length);
       widget = SliverPadding(
         padding: const EdgeInsets.all(8.0),
         sliver: SliverGrid(
@@ -207,11 +183,11 @@ class _LeaderBoardPageState extends State {
           ),
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              //创建子widget
+              LeaderBoardList item = list[index];
               return Container(
                 child: ListItemCustom(
-                  img: list[index].coverImgUrl,
-                  updateFrequency: list[index].updateFrequency,
+                  img: item.coverImgUrl,
+                  updateFrequency: item.updateFrequency,
                 ),
               );
             },
@@ -224,11 +200,10 @@ class _LeaderBoardPageState extends State {
     return widget;
   }
 
-  _buildGlobalList(BuildContext context) {
+  _buildGlobalList(BuildContext context, TopListModel model) {
     Widget widget;
-    if (_leaderBoardList.length > 18) {
-      List<LeaderBoardList> list = _leaderBoardList.sublist(12, 18);
-
+    if (model.list.length > 18) {
+      List list = model.list.sublist(12, 18);
       widget = SliverPadding(
         padding: const EdgeInsets.all(8.0),
         sliver: SliverGrid(
@@ -237,11 +212,11 @@ class _LeaderBoardPageState extends State {
           ),
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              //创建子widget
+              LeaderBoardList item = list[index];
               return Container(
                 child: ListItemCustom(
-                  img: list[index].coverImgUrl,
-                  updateFrequency: list[index].updateFrequency,
+                  img: item.coverImgUrl,
+                  updateFrequency: item.updateFrequency,
                 ),
               );
             },
@@ -250,9 +225,7 @@ class _LeaderBoardPageState extends State {
         ),
       );
     } else {
-      List<LeaderBoardList> list =
-          _leaderBoardList.sublist(12, _leaderBoardList.length);
-
+      List list = model.list.sublist(12, model.list.length);
       widget = SliverPadding(
         padding: const EdgeInsets.all(8.0),
         sliver: SliverGrid(
@@ -261,11 +234,11 @@ class _LeaderBoardPageState extends State {
           ),
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              //创建子widget
+              LeaderBoardList item = list[index];
               return Container(
                 child: ListItemCustom(
-                  img: list[index].coverImgUrl,
-                  updateFrequency: list[index].updateFrequency,
+                  img: item.coverImgUrl,
+                  updateFrequency: item.updateFrequency,
                 ),
               );
             },
@@ -278,12 +251,10 @@ class _LeaderBoardPageState extends State {
     return widget;
   }
 
-  _buildMoreList(BuildContext context) {
+  _buildMoreList(BuildContext context, TopListModel model) {
     Widget widget;
-    if (_leaderBoardList.length > 18) {
-      List<LeaderBoardList> list =
-          _leaderBoardList.sublist(18, _leaderBoardList.length);
-
+    if (model.list.length > 18) {
+      List list = model.list.sublist(18, model.list.length);
       widget = SliverPadding(
         padding: const EdgeInsets.all(8.0),
         sliver: SliverGrid(
@@ -292,11 +263,11 @@ class _LeaderBoardPageState extends State {
           ),
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              //创建子widget
+              LeaderBoardList item = list[index];
               return Container(
                 child: ListItemCustom(
-                  img: list[index].coverImgUrl,
-                  updateFrequency: list[index].updateFrequency,
+                  img: item.coverImgUrl,
+                  updateFrequency: item.updateFrequency,
                 ),
               );
             },

@@ -45,9 +45,9 @@ class _FindPageState extends State {
 //    Response response = await dio.get('https://google.com');
     var response =
         await dio.get("http://www.mocky.io/v2/5cee0154300000592c6e9825");
-    print(response);
+
     List<Banners> banners = BannerModel.fromJson(response.data).banners;
-    print(banners.length);
+
     _bannerData = banners;
     if (banners != null && mounted) {
       setState(() {

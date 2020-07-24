@@ -98,7 +98,7 @@ class MusicListHeader extends StatelessWidget implements PreferredSizeWidget {
                 Padding(padding: EdgeInsets.only(left: 4)),
                 Text(
                   "播放全部",
-                  style: Theme.of(context).textTheme.body1,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
                 Padding(padding: EdgeInsets.only(left: 2)),
                 Text(

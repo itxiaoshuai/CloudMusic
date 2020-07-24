@@ -370,7 +370,7 @@ class CustomWidget extends StatelessWidget {
               ),
               color: Colors.white,
             );
-          }, childCount: 50 //50个列表项
+          }, childCount: playlistDetail.tracks.length //50个列表项
                   ),
         ),
       ],
