@@ -9,4 +9,9 @@ class ConstImgResource {
   static String weibo = 'images/weibo.png';
   static String wangyi = 'images/wangyi.png';
   static String login = 'images/login_page_logo.png';
+
+  static String comment = 'images/album/album_comment.png';
+  static String share = 'images/album/album_share.png';
+  static String download = 'images/album/album_download.png';
+  static String multipleSelection = 'images/album/album_multiple_selection.png';
 }

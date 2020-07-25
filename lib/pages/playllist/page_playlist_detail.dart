@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/base/ConstImg.dart';
 import 'package:flutter_app/base/utils/utils.dart';
 import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
@@ -214,22 +215,20 @@ class _PlaylistDetailHeader extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   ListItem(
-                    image: "images/album/album_comment.png",
+                    image: ConstImgResource.comment,
                     text: model.data == null
                         ? ""
                         : model.data.commentCount.toString(),
                   ),
                   ListItem(
-                    image: "images/album/album_share.png",
+                    image: ConstImgResource.share,
                     text: model.data == null
                         ? ""
                         : model.data.shareCount.toString(),
                   ),
+                  ListItem(image: ConstImgResource.download, text: "下载"),
                   ListItem(
-                      image: "images/album/album_download.png", text: "下载"),
-                  ListItem(
-                      image: "images/album/album_multiple_selection.png",
-                      text: "多选"),
+                      image: ConstImgResource.multipleSelection, text: "多选"),
                 ],
               ),
             ),
