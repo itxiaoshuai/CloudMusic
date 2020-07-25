@@ -1,20 +1,15 @@
 import 'dart:ui';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/ConstImg.dart';
 import 'package:flutter_app/base/utils/utils.dart';
-import 'package:flutter_app/data/api/apis.dart';
-import 'package:flutter_app/data/net/Http.dart';
 import 'package:flutter_app/data/protocol/playlist_detail.dart';
 import 'package:flutter_app/model/play_list_model.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
 import 'package:flutter_app/provider/layout_state.dart';
 import 'package:flutter_app/provider/provider_widget.dart';
 import 'package:flutter_app/provider/view_state_widget.dart';
+import 'package:flutter_app/route/routes.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
-import 'package:provider/provider.dart';
 
 import 'item_music_list_track.dart';
 
@@ -49,23 +44,10 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
               break;
           }
 
-          return CustomWidget(model);
+          return CustomWidget(model, widget.playlistId);
         },
       ),
     );
-  }
-}
-
-class PlaylistBody extends StatefulWidget {
-  @override
-  _PlaylistBodyState createState() => _PlaylistBodyState();
-}
-
-class _PlaylistBodyState extends State {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return null;
   }
 }
 
@@ -93,9 +75,10 @@ class PlayListHeaderBackground extends StatelessWidget {
 
 /// 播放列表头部
 class _PlaylistDetailHeader extends StatelessWidget {
-  _PlaylistDetailHeader(this.model);
+  _PlaylistDetailHeader(this.model, this.id);
 
   PlayListModel model;
+  int id;
 
   @override
   Widget build(BuildContext context) {
@@ -214,11 +197,20 @@ class _PlaylistDetailHeader extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  ListItem(
-                    image: ConstImgResource.comment,
-                    text: model.data == null
-                        ? ""
-                        : model.data.commentCount.toString(),
+                  Material(
+                    child: InkWell(
+                      //点击事件回调
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(RouteName.comment, arguments: id);
+                      },
+                      child: ListItem(
+                        image: ConstImgResource.comment,
+                        text: model.data == null
+                            ? ""
+                            : model.data.commentCount.toString(),
+                      ),
+                    ),
                   ),
                   ListItem(
                     image: ConstImgResource.share,
@@ -308,9 +300,10 @@ class MusicListHeader extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class CustomWidget extends StatelessWidget {
-  CustomWidget(this.model);
+  CustomWidget(this.model, this.id);
 
   PlayListModel model;
+  int id;
 
   @override
   Widget build(BuildContext context) {
@@ -325,7 +318,7 @@ class CustomWidget extends StatelessWidget {
 //            snap: false,
             expandedHeight: 320.0,
             bottom: _buildListHeader(context),
-            flexibleSpace: _PlaylistDetailHeader(model),
+            flexibleSpace: _PlaylistDetailHeader(model, id),
             actions: <Widget>[
               IconButton(
                 icon: new Icon(

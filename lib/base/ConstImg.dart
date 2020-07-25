@@ -14,4 +14,6 @@ class ConstImgResource {
   static String share = 'images/album/album_share.png';
   static String download = 'images/album/album_download.png';
   static String multipleSelection = 'images/album/album_multiple_selection.png';
+
+  static String praise = 'images/note_btn_praise_white.png';
 }

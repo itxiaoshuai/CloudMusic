@@ -24,4 +24,11 @@ class RequestManager {
         await http.get('/playlist/detail', queryParameters: formData);
     return response.data;
   }
+
+  //获取歌单评论
+  static Future fetchCommentList(Map<String, dynamic> queryParameters) async {
+    var response =
+        await http.get('/comment/playlist', queryParameters: queryParameters);
+    return response.data;
+  }
 }

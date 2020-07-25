@@ -7,6 +7,7 @@ import 'package:flutter_app/pages/find/PageFind.dart';
 import 'package:flutter_app/pages/find/widget/SpinKitWave.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
 import 'package:flutter_app/pages/my/PageMy.dart';
+import 'package:flutter_app/route/routes.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
 
 import 'package:flutter/animation.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: routes,
+      onGenerateRoute: Router.generateRoute,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.red,

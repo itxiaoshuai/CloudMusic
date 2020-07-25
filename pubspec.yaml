@@ -38,6 +38,9 @@ dependencies:
   shared_preferences: ^0.5.1+2
   pull_to_refresh: ^1.6.0
   provider: ^4.3.1
+  flutter_screenutil: ^2.3.1
+  date_format: ^1.0.8
+  common_utils: ^1.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -56,6 +59,9 @@ flutter:
 
   #   To add assets to your application, add an assets section, like this:
   assets:
+
+  - images/
+
   - images/location.png
   - images/timing.png
   - images/alarm.png
