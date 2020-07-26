@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/route/routes.dart';
 
 //圆形模块组件
 class MenuItem extends StatelessWidget {
   final String text;
   final String image;
+  final String route;
 
-  MenuItem({this.image, this.text});
+  MenuItem({this.image, this.text,this.route});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-
+      onTap: () {
+        Navigator.of(context).pushNamed(route);
       },
       child: Column(
         children: <Widget>[

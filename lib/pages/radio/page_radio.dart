@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/route/routes.dart';
 import 'package:flutter_app/widget/item/menu_item.dart';
 
 class RadioPage extends StatefulWidget {
@@ -9,8 +10,6 @@ class RadioPage extends StatefulWidget {
 }
 
 class RadioPageState extends State<RadioPage> {
-
-
   _buildMenu(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 15, bottom: 15),
@@ -19,14 +18,16 @@ class RadioPageState extends State<RadioPage> {
           //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
           children: [
             MenuItem(
-                image: "images/find/t_dragonball_icn_daily.png", text: "电台分类"),
+              image: "images/find/t_dragonball_icn_daily.png",
+              text: "电台分类",
+              route: RouteName.RADIO_CATEGORY,
+            ),
             MenuItem(
                 image: "images/find/t_dragonball_icn_daily.png", text: "电台排行"),
             MenuItem(
                 image: "images/find/t_dragonball_icn_daily.png", text: "付费精品"),
             MenuItem(
                 image: "images/find/t_dragonball_icn_daily.png", text: "主播学院"),
-
           ]),
     );
   }

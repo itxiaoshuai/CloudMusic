@@ -3,10 +3,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_app/pages/album/comment_page.dart';
+import 'package:flutter_app/pages/radio/page_radio_category.dart';
 import 'package:flutter_app/route/page_route_anim.dart';
 
 class RouteName {
   static const String comment = 'comment';
+  static const String RADIO_CATEGORY = 'radio_category';
 }
 
 class Router {
@@ -15,6 +17,8 @@ class Router {
       case RouteName.comment:
         int id = settings.arguments;
         return NoAnimRouteBuilder(CommentPage(id));
+      case RouteName.RADIO_CATEGORY:
+        return NoAnimRouteBuilder(RadioCategoryPage());
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(
