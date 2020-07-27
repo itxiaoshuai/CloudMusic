@@ -98,8 +98,9 @@ class _CommentPageState extends State<CommentPage> {
                 borderRadius: BorderRadius.circular(30),
                 child: Container(
                   width: 108.w,
-                  height: 108.h,
+                  height: 108.w,
                   color: Colors.blue,
+                  child: Image.network(comment.user.avatarUrl),
                 ),
               ),
               SizedBox(width: 30.w),
@@ -107,8 +108,8 @@ class _CommentPageState extends State<CommentPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '静水深流',
-                    style: TextStyle(fontSize: 14, color: Colors.black54),
+                    comment.user.nickname,
+                    style: TextStyle(fontSize: 14, color: Colors.black87),
                   ),
                   Text(
                     DateUtil.formatDateMs(comment.time,

@@ -24,7 +24,8 @@ class Comment {
   int playCount;
   int commentId;
   String content;
-  String avatarUrl;
+
+  User user;
 
   static Comment fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
@@ -35,8 +36,29 @@ class Comment {
     comment.playCount = map['playCount'];
     comment.commentId = map['commentId'];
     comment.content = map['content'];
-    comment.avatarUrl = map['avatarUrl'];
-
+    comment.user = User.fromJson(map['user']);
     return comment;
+  }
+}
+
+class User {
+  String avatarUrl;
+  String nickname;
+  String remarkName;
+  int vipType;
+  int userId;
+  int userType;
+
+  static User fromJson(Map<String, dynamic> map) {
+    if (map == null) return null;
+    User user = User();
+    user.avatarUrl = map['avatarUrl'];
+    user.nickname = map['nickname'];
+    user.remarkName = map['remarkName'];
+    user.vipType = map['vipType'];
+    user.userId = map['userId'];
+    user.userType = map['userType'];
+
+    return user;
   }
 }
