@@ -8,6 +8,7 @@ import 'package:flutter_app/model/comment_list_model.dart';
 import 'package:flutter_app/provider/layout_state.dart';
 import 'package:flutter_app/provider/provider_widget.dart';
 import 'package:flutter_app/provider/view_state_widget.dart';
+import 'package:flutter_app/route/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommentPage extends StatefulWidget {
@@ -94,13 +95,18 @@ class _CommentPageState extends State<CommentPage> {
           SizedBox(height: 30.h),
           Row(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Container(
-                  width: 108.w,
-                  height: 108.w,
-                  color: Colors.blue,
-                  child: Image.network(comment.user.avatarUrl),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed(RouteName.USER_HOME);
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Container(
+                    width: 108.w,
+                    height: 108.w,
+                    color: Colors.blue,
+                    child: Image.network(comment.user.avatarUrl),
+                  ),
                 ),
               ),
               SizedBox(width: 30.w),

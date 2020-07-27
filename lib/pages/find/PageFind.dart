@@ -8,6 +8,7 @@ import 'package:flutter_app/pages/find/widget/SpinKitWaveType.dart';
 import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
 import 'package:flutter_app/pages/page_songlist.dart';
 import 'package:flutter_app/pages/radio/page_radio.dart';
+import 'package:flutter_app/pages/user/page_user_detail.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 
 import 'FutureBuilderPage.dart';
@@ -240,7 +241,7 @@ _buildMenu(BuildContext context) {
             onTap: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (BuildContext context) {
-                return FutureBuilderPage();
+                return NestedScrollDemoPage();
               }));
             },
           ),
@@ -280,7 +281,7 @@ _buildMenu(BuildContext context) {
             onTap: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (BuildContext context) {
-                return LearnInkWell();
+                return UserDetailPage();
               }));
             },
           ),

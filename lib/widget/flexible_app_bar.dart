@@ -31,9 +31,7 @@ class FlexibleDetailBar extends StatelessWidget {
         ((settings.currentExtent - settings.minExtent) / deltaExtent)
             .clamp(0.0, 1.0);
     print('expandedState====$expandedState');
-    children.add(Positioned(
-
-    ));
+    children.add(Positioned());
     return content;
   }
 }

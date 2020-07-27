@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_app/pages/album/comment_page.dart';
 import 'package:flutter_app/pages/radio/page_radio_category.dart';
+import 'package:flutter_app/pages/user/page_user_home.dart';
 import 'package:flutter_app/route/page_route_anim.dart';
 
 class RouteName {
   static const String comment = 'comment';
   static const String RADIO_CATEGORY = 'radio_category';
+  static const String USER_HOME = 'user_home'; //主页
 }
 
 class Router {
@@ -19,6 +21,8 @@ class Router {
         return NoAnimRouteBuilder(CommentPage(id));
       case RouteName.RADIO_CATEGORY:
         return NoAnimRouteBuilder(RadioCategoryPage());
+      case RouteName.USER_HOME:
+        return NoAnimRouteBuilder(PageUserHome(1));
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(

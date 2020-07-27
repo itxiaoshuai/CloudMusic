@@ -1,102 +1,314 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/api/apis.dart';
-import 'package:flutter_app/data/net/Http.dart';
-import 'package:flutter_app/pages/find/widget/SpinKitWave.dart';
+import 'package:flutter_app/widget/flexible_app_bar.dart';
+import 'package:flutter_app/widget/my_underline_indicator.dart';
 
-import 'package:flutter_app/widget/ListItemCustom.dart';
-
-class FutureBuilderPage extends StatefulWidget {
+class NestedScrollDemoPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => FutureBuilderState();
+  State<StatefulWidget> createState() => NestedScrollState();
 }
 
-class FutureBuilderState extends State<FutureBuilderPage> {
-  String title = 'FutureBuilder使用';
+class NestedScrollState extends State<NestedScrollDemoPage>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
 
-  Future _gerData() async {
-//    var response = await Http().get(MusicApi.SONGLISTDRECOMMEND);
-//    return response;
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: 2);
+  }
+
+  var imgs = [
+    "https://i1.mifile.cn/f/i/2019/micc9/summary/specs-02.png",
+    "https://i1.mifile.cn/f/i/2019/micc9/summary/specs-03.png",
+    "https://i1.mifile.cn/f/i/2019/micc9/summary/specs-04.png",
+    "https://i1.mifile.cn/f/i/2019/micc9/summary/specs-05.png",
+    "https://i1.mifile.cn/f/i/2019/micc9/summary/specs-06.png"
+  ];
+
+  void changeImg(int pos) {
+    setState(() {
+      imgs[pos] = "https://i1.mifile.cn/f/i/2019/micc9/summary/specs-08.png";
+    });
+  }
+
+  void onPageChanged(int pos) {
+    print("当前是第$pos页");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            title = title + '.';
-          });
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              expandedHeight: 250.0,
+              pinned: true,
+              flexibleSpace: Container(
+                margin: EdgeInsets.only(top: 50),
+                color: Colors.blue,
+                child: Column(
+                  children: [
+//                    SizedBox(
+//                      height: kToolbarHeight + kTextTabBarHeight,
+//                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Container(
+                          width: 56,
+                          height: 56,
+                          child: Image.network(
+                              'https://p4.music.126.net/S8_sVVdNkr84Jcb-CFcjYQ==/109951165150069282.jpg'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ];
         },
-        child: Icon(Icons.title),
-      ),
-      body: FutureBuilder(
-        builder: _buildFuture,
-        future: _gerData(), // 用户定义的需要异步执行的代码，类型为Future<String>或者null的变量或函数
+        body: PageView(
+          children: <Widget>[
+            Image.network(imgs[0]),
+            Image.network(imgs[1]),
+            Image.network(imgs[2]),
+            Image.network(imgs[3]),
+            GestureDetector(
+                onTap: () => changeImg(4), child: Image.network(imgs[4]))
+          ],
+          onPageChanged: onPageChanged,
+        ),
       ),
     );
   }
+}
 
-  ///snapshot就是_calculation在时间轴上执行过程的状态快照
-  Widget _buildFuture(BuildContext context, AsyncSnapshot snapshot) {
-    switch (snapshot.connectionState) {
-      case ConnectionState.none:
-        print('还没有开始网络请求');
-        return Text('还没有开始网络请求');
-      case ConnectionState.active:
-        print('active');
-        return Text('ConnectionState.active');
-      case ConnectionState.waiting:
-        print('waiting');
-        return Center(
-          child: CircularProgressIndicator(),
-        );
-      case ConnectionState.done:
-        print('done');
-        if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-        return _createListView(context, snapshot);
+class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
+  final TabBar child;
 
-      default:
-        return null;
-    }
-  }
+  StickyTabBarDelegate({@required this.child});
 
-  Widget _createListView(BuildContext context, AsyncSnapshot snapshot) {
-    List songlist = snapshot.data['result'];
-//    return ListView.builder(
-//      itemBuilder: (context, index) => _itemBuilder(context, index, songlist),
-//      itemCount: songlist.length * 2,
-//    );
-//    _buildRecommend(context, songlist);
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      padding: const EdgeInsets.all(8.0),
-      child: GridView.builder(
-          itemCount: songlist.length,
-          //SliverGridDelegateWithFixedCrossAxisCount 构建一个横轴固定数量Widget
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //横轴元素个数
-              crossAxisCount: 3,
-              //子组件宽高长度比例
-              childAspectRatio: 1.0),
-          itemBuilder: (BuildContext context, int index) {
-            //Widget Function(BuildContext context, int index)
-            return ListItemCustom(
-              img: songlist[index]['picUrl'],
-            );
-          }),
+      color: Theme.of(context).backgroundColor,
+      child: this.child,
     );
   }
 
-  Widget _itemBuilder(BuildContext context, int index, movies) {
-    if (index.isOdd) {
-      return Divider();
-    }
-    index = index ~/ 2;
-    return ListTile(
-      title: Text(movies[index]['name']),
+  @override
+  double get maxExtent => this.child.preferredSize.height;
+
+  @override
+  double get minExtent => this.child.preferredSize.height;
+
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
+    return true;
+  }
+}
+
+///伸缩自如的AppBar
+class _UserDetailAppBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      pinned: true,
+      leading: Container(),
+      expandedHeight: 230.0,
+      flexibleSpace: Column(
+        children: [
+          Column(
+            children: <Widget>[
+              InkWell(
+                onTap: () {},
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Container(
+                    width: 56,
+                    height: 56,
+                    child: Image.network(
+                        'https://p4.music.126.net/S8_sVVdNkr84Jcb-CFcjYQ==/109951165150069282.jpg'),
+                  ),
+                ),
+              ),
+              Text('情深深你大爷'),
+              Row(
+                children: [
+                  Text('关注4'),
+                  Text('粉丝0'),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Container(
+                    padding:
+                        EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                    child: Text(
+                      "Lv.5",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.white,
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[400], // 底色
+                      shape: BoxShape.rectangle, // 默认值也是矩形
+                      borderRadius: BorderRadius.circular((20.0)), // 圆角度
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    padding:
+                        EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                    child: Text(
+                      "+关注",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.white,
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.rectangle, // 默认值也是矩形
+                      borderRadius: BorderRadius.circular((20.0)), // 圆角度
+                    ),
+                  ),
+                  Container(
+                    padding:
+                        EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                    child: Text(
+                      "发私信",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.white,
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.rectangle, // 默认值也是矩形
+                      borderRadius: BorderRadius.circular((20.0)), // 圆角度
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// 播放列表头部
+class _PlaylistDetailHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return FlexibleDetailBar(
+//      background: PlayListHeaderBackground(imageUrl: 'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
+      content: _buildContent(context),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blue,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Text(''),
+      ),
+      body: Container(
+        padding: const EdgeInsets.only(left: 15, top: 0, bottom: 4, right: 15),
+        color: Colors.blue,
+        child: Column(
+          children: <Widget>[
+            InkWell(
+              onTap: () {},
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                child: Container(
+                  width: 56,
+                  height: 56,
+                  child: Image.network(
+                      'https://p4.music.126.net/S8_sVVdNkr84Jcb-CFcjYQ==/109951165150069282.jpg'),
+                ),
+              ),
+            ),
+            Text('情深深你大爷'),
+            Row(
+              children: [
+                Text('关注4'),
+                Text('粉丝0'),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  padding:
+                      EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                  child: Text(
+                    "Lv.5",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[400], // 底色
+                    shape: BoxShape.rectangle, // 默认值也是矩形
+                    borderRadius: BorderRadius.circular((20.0)), // 圆角度
+                  ),
+                ),
+                Spacer(),
+                Container(
+                  padding:
+                      EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                  child: Text(
+                    "+关注",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.rectangle, // 默认值也是矩形
+                    borderRadius: BorderRadius.circular((20.0)), // 圆角度
+                  ),
+                ),
+                Container(
+                  padding:
+                      EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                  child: Text(
+                    "发私信",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.rectangle, // 默认值也是矩形
+                    borderRadius: BorderRadius.circular((20.0)), // 圆角度
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
