@@ -83,14 +83,16 @@ class _PlaylistDetailHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlexibleDetailBar(
-//      background: PlayListHeaderBackground(imageUrl: 'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
+      background: PlayListHeaderBackground(
+          imageUrl:
+              'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
       content: _buildContent(context),
     );
   }
 
   Widget _buildContent(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -98,7 +100,7 @@ class _PlaylistDetailHeader extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.only(left: 15, top: 0, bottom: 4, right: 15),
-        color: Colors.blue,
+        color: Colors.transparent,
         child: Column(
           children: <Widget>[
             Row(

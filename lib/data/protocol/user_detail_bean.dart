@@ -234,3 +234,19 @@ class Bindings {
     return data;
   }
 }
+
+class MainAuthType {
+  final int type;
+  final String desc;
+
+  MainAuthType.fromJsonMap(Map<String, dynamic> map)
+      : type = map["type"],
+        desc = map["desc"];
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['type'] = type;
+    data['desc'] = desc;
+    return data;
+  }
+}

@@ -1,11 +1,6 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/api/apis.dart';
 
-import 'package:flutter_app/data/net/Http.dart';
-import 'package:flutter_app/data/protocol/LeaderboardDetailModel.dart';
 import 'package:flutter_app/data/protocol/LeaderboardModel.dart';
 import 'package:flutter_app/model/top_list_model.dart';
 import 'package:flutter_app/net/huyi_android_api.dart';
@@ -22,6 +17,46 @@ class LeaderBoardPage extends StatefulWidget {
 }
 
 class _LeaderBoardPageState extends State {
+  @override
+  void initState() {
+    initData();
+    super.initState();
+  }
+
+  Future<void> initData() async {
+//    Response response;
+//    Dio dio = Dio();
+//    response =
+//        dio.get('http://interface3.music.163.com/eapi/search/localsong/upload')
+//            as Response;
+//
+//    print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+//    Stream<void> stream = response.asStream();
+//    print(stream);
+//
+//    print(response.asStream());
+    Response response;
+    Dio dio = new Dio();
+    await dio
+        .get(
+          "http://interface3.music.163.com/eapi/search/localsong/upload",
+        )
+        .asStream()
+        .listen((data) {
+      print(data.headers);
+      print(data.redirects);
+    }, onError: (error) {
+      print("流发生错误");
+    }, onDone: () {
+      print("流已完成");
+    }, cancelOnError: false);
+  }
+
+  Future<String> getData() async {
+    await Future.delayed(Duration(seconds: 3));
+    return '当前时间为：${DateTime.now()}';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

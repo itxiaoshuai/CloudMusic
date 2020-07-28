@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_app/data/protocol/user_detail_bean.dart';
 import 'package:flutter_app/pages/album/comment_page.dart';
 import 'package:flutter_app/pages/radio/page_radio_category.dart';
+import 'package:flutter_app/pages/user/page_user_detail.dart';
 import 'package:flutter_app/pages/user/page_user_home.dart';
 import 'package:flutter_app/route/page_route_anim.dart';
 
@@ -22,7 +24,11 @@ class Router {
       case RouteName.RADIO_CATEGORY:
         return NoAnimRouteBuilder(RadioCategoryPage());
       case RouteName.USER_HOME:
-        return NoAnimRouteBuilder(PageUserHome(1));
+        var userId = settings.arguments;
+
+        return NoAnimRouteBuilder(UserDetailPage(
+          userId: userId,
+        ));
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(

@@ -97,7 +97,8 @@ class _CommentPageState extends State<CommentPage> {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pushNamed(RouteName.USER_HOME);
+                  Navigator.of(context).pushNamed(RouteName.USER_HOME,
+                      arguments: comment.user.userId);
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
