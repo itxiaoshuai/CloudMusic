@@ -23,10 +23,6 @@ class ListItemCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Center(
-//          color: Colors.redAccent,
-//          height: 100,
-//          width: 100,
-
           child: Stack(
         children: <Widget>[
           Container(

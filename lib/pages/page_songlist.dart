@@ -1,119 +1,95 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/playllist/background_blur.dart';
 import 'package:flutter_app/pages/playllist/item_music_list_track.dart';
+import 'package:flutter_app/pages/playllist/page_category_song_list.dart';
 
-class SongListPage extends StatelessWidget {
+class SongListPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return CustomWidget();
-    return BackgroundBlur(
-      child: Scaffold(backgroundColor: Colors.transparent, body: Text('xx')),
-      coverPic:
-          'http://p2.music.126.net/2XWY_6zJ9vAsnXIRCYQeiw==/109951164208685267.jpg',
-    );
-  }
+  State<StatefulWidget> createState() => SongListPageState();
 }
 
-class CustomWidget extends StatelessWidget {
+class SongListPageState extends State<SongListPage>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: choices.length);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverAppBar(
-            backgroundColor: Colors.blue,
-            title: Text('歌单'),
-            elevation: 0,
-            pinned: true,
-            floating: false,
-            snap: false,
-            expandedHeight: 240.0,
-            bottom: _buildListHeader(context),
-//            flexibleSpace: _PlaylistDetailHeader(widget.playlist),
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.more),
-                tooltip: 'Add new entry',
-                onPressed: () {
-                  /* ... */
-                },
-              ),
-              IconButton(
-                icon: const Icon(Icons.add_circle),
-                tooltip: 'Add new entry',
-                onPressed: () {
-                  /* ... */
-                },
-              ),
-            ]),
-        SliverList(
-          delegate:
-              SliverChildBuilderDelegate((BuildContext context, int index) {
-            //创建列表项
-            return Material(
-              child: new InkWell(
-                onTap: () {
-                  print(
-                      '###########################点击了##################################');
-                },
-                child: new Container(
-                  height: 60,
-                  //不要在这里设置背景色，否则会遮挡水波纹效果,如果设置的话尽量设置Material下面的color来实现背景色
-                  margin: EdgeInsets.all(0.0),
-                  child: TrackItem(index: index + 1),
-                ),
-              ),
-              color: Colors.white,
+    return Scaffold(
+//      backgroundColor: Colors.transparent, //把scaffold的背景色改成透明
+      appBar: AppBar(
+        centerTitle: true,
+        titleSpacing: 0,
+        automaticallyImplyLeading: false,
+        title: TabBar(
+          indicatorSize: TabBarIndicatorSize.tab,
+          isScrollable: true,
+          tabs: choices.map((Choice choice) {
+            //选项卡
+            return new Tab(
+              text: choice.title,
             );
-          }, childCount: 50 //50个列表项
-                  ),
+          }).toList(),
+          controller: _tabController,
         ),
-      ],
-    );
-  }
-
-  Widget _buildListHeader(BuildContext context) {
-    return MusicListHeader();
-  }
-}
-
-///音乐列表头
-class MusicListHeader extends StatelessWidget implements PreferredSizeWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-      child: Material(
-        color: Colors.white,
-        elevation: 0,
-        child: InkWell(
-          child: SizedBox.fromSize(
-            size: preferredSize,
-            child: Row(
-              children: <Widget>[
-                Padding(padding: EdgeInsets.only(left: 16)),
-                Icon(
-                  Icons.play_circle_outline,
-                  color: Theme.of(context).iconTheme.color,
-                ),
-                Padding(padding: EdgeInsets.only(left: 4)),
-                Text(
-                  "播放全部",
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-                Padding(padding: EdgeInsets.only(left: 2)),
-                Text(
-                  "(共首)",
-                  style: Theme.of(context).textTheme.caption,
-                ),
-                Spacer(),
-              ]..removeWhere((v) => v == null),
-            ),
-          ),
-        ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: choices.map((Choice choice) {
+          return PlaylistCategoryPage(cat: choice.title); //一个属于展示内容的listview
+        }).toList(),
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(50);
 }
+
+class Choice {
+  const Choice({this.title, this.categoryId});
+
+  final String title; //这个参数是分类名称
+  final int categoryId; //这个适用于网络请求的参数，获取不同分类列表
+}
+
+const List<Choice> choices = const <Choice>[
+  const Choice(
+    title: '官方 ',
+    categoryId: 1,
+  ),
+  const Choice(
+    title: '精品',
+    categoryId: 2,
+  ),
+  const Choice(
+    title: '华语',
+    categoryId: 3,
+  ),
+  const Choice(
+    title: '流行',
+    categoryId: 4,
+  ),
+  const Choice(
+    title: '电子',
+    categoryId: 5,
+  ),
+  const Choice(
+    title: '诗歌散文',
+    categoryId: 6,
+  ),
+  const Choice(
+    title: '古风',
+    categoryId: 7,
+  ),
+  const Choice(
+    title: '摇滚',
+  ),
+];
