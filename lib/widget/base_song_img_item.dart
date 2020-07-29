@@ -2,6 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/CommonLoading.dart';
+import 'package:flutter_app/base/ConstImg.dart';
+import 'package:flutter_app/base/utils/number_utils.dart';
+import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
 
 class BaseImgItem extends StatelessWidget {
   final double width; //宽
@@ -10,6 +13,8 @@ class BaseImgItem extends StatelessWidget {
   final String img; //图片
   final String updateFrequency; //每周几更新
   final String describe; //描述
+  final int playCount;
+  final int id;
   BaseImgItem({
     this.width,
     this.height,
@@ -17,12 +22,20 @@ class BaseImgItem extends StatelessWidget {
     this.updateFrequency = "",
     this.img,
     this.describe = '',
+    this.playCount = 0,
+    this.id,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return PlaylistDetailPage(id);
+        }));
+      },
       child: Container(
+        margin: EdgeInsets.only(top: 20),
         width: width,
         child: Column(
           children: [
@@ -49,7 +62,22 @@ class BaseImgItem extends StatelessWidget {
                           ),
                         ),
                       ))),
-                  Positioned(top: 0, right: 0, child: Text('3125'))
+                  Positioned(
+                    top: 5,
+                    right: 5,
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          ConstImgResource.playNum,
+                          width: 10,
+                          height: 10,
+                        ),
+                        Text('${NumberUtils.amountConversion(playCount)}',
+                            style:
+                                TextStyle(fontSize: 10, color: Colors.white)),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),

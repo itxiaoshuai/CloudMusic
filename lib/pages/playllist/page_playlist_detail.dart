@@ -117,7 +117,7 @@ class _PlaylistDetailHeader extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         model.data == null ? "" : model.data.name,
-                        maxLines: 2,
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 18,

@@ -45,7 +45,9 @@ class PlaylistCategoryPageState extends State<PlaylistCategoryPage> {
                 direction: Axis.horizontal,
                 children: widgets.map<Widget>((p) {
                   return BaseImgItem(
+                    id: p['id'],
                     width: width,
+                    playCount: p['playCount'],
                     img: p['coverImgUrl'],
                     describe: p['name'],
                   );

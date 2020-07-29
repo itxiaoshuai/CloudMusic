@@ -10,9 +10,7 @@ class PlayListModel extends LayoutStateModel {
   PlaylistDetail get data => _playlistDetail;
 
   loadData(int id) async {
-    Map<String, dynamic> formData = {
-      'id': id,
-    };
+    Map<String, dynamic> formData = {'id': id, "s": 8};
 
     try {
       setState(LayoutState.LOADING);

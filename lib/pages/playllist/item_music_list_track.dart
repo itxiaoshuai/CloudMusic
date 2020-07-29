@@ -66,7 +66,7 @@ class TrackItem extends StatelessWidget {
                           alignment: FractionalOffset.centerLeft,
                           child: Text(
                             tracks.name,
-                            style: TextStyle(fontSize: 16, color: Colors.black),
+                            style: TextStyle(fontSize: 12, color: Colors.black),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -80,8 +80,8 @@ class TrackItem extends StatelessWidget {
                           alignment: FractionalOffset.centerLeft,
                           child: Text(
                             getText(tracks),
-                            style: TextStyle(
-                                fontSize: 12, color: Colors.grey[600]),
+                            style:
+                                TextStyle(fontSize: 8, color: Colors.grey[600]),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -126,7 +126,6 @@ class TrackItem extends StatelessWidget {
 }
 
 class BottomSheetWidget extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Container(

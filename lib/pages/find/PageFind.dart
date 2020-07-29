@@ -1,15 +1,23 @@
 import 'dart:async';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/base/CommonLoading.dart';
+import 'package:flutter_app/base/res/gaps.dart';
+import 'package:flutter_app/base/res/styles.dart';
+import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/protocol/banner_model.dart';
+import 'package:flutter_app/net/huyi_android_api.dart';
 import 'package:flutter_app/pages/find/widget/FindBanner.dart';
 import 'package:flutter_app/pages/find/widget/LearnInkWell.dart';
 import 'package:flutter_app/pages/find/widget/SpinKitWaveType.dart';
 import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
+import 'package:flutter_app/pages/my/PageMy.dart';
 import 'package:flutter_app/pages/page_songlist.dart';
 import 'package:flutter_app/pages/radio/page_radio.dart';
 import 'package:flutter_app/pages/user/page_user_detail.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
+import 'package:flutter_app/widget/base_song_img_item.dart';
 
 import 'FutureBuilderPage.dart';
 
@@ -18,9 +26,9 @@ class FindPage extends StatefulWidget {
   State<StatefulWidget> createState() => _FindPageState();
 }
 
-class _FindPageState extends State {
-  final StreamController<int> _BannerstreamController = StreamController<int>();
+class _FindPageState extends State<FindPage> {
   List<Banners> _bannerData = [];
+  List widgets = [];
 
   @override
   void dispose() {
@@ -31,14 +39,11 @@ class _FindPageState extends State {
   void initState() {
     getHttp();
     getSongListRecommend();
-    _gerData();
     super.initState();
   }
 
   Future getHttp() async {
-//    var response = await Http().get("/banner");
     var dio = Dio();
-//    Response response = await dio.get('https://google.com');
     var response =
         await dio.get("http://www.mocky.io/v2/5cee0154300000592c6e9825");
 
@@ -53,14 +58,15 @@ class _FindPageState extends State {
   }
 
   Future getSongListRecommend() async {
-//    var response = await Http().get(MusicApi.SONGLISTDRECOMMEND);
-//
-//    print(response);
-  }
-
-  Future _gerData() async {
-//    var response = await Http().get(MusicApi.SONGLISTDRECOMMEND);
-//    return response;
+    Map<String, dynamic> formData = {
+      'limit': 6,
+    };
+    var response = await Http()
+        .get(MusicApi.SONGLISTDRECOMMEND, queryParameters: formData);
+    print(response);
+    List rows = response.data['result'];
+    widgets = rows;
+    setState(() {});
   }
 
   @override
@@ -79,10 +85,27 @@ class _FindPageState extends State {
             color: Colors.grey[300],
           ),
           _Header("推荐歌单", () {}),
-          FutureBuilder(
-            builder: _buildFuture,
-            future: _gerData(), // 用户定义的需要异步执行的代码，类型为Future<String>或者null的变量或函数
+          Container(
+            height: 200,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: widgets.map<Widget>((p) {
+                return Row(
+                  children: [
+                    BaseImgItem(
+                      id: p['id'],
+                      width: 120,
+                      playCount: p['playCount'],
+                      img: p['picUrl'],
+                      describe: p['name'],
+                    ),
+                    Gaps.hGap8,
+                  ],
+                );
+              }).toList(),
+            ),
           ),
+          NewSongAndDiscWidget(),
         ],
       ),
     );
@@ -324,6 +347,166 @@ class ListItem extends StatelessWidget {
                   fontSize: 12,
                 )))
       ],
+    );
+  }
+}
+
+//新歌和新碟
+class NewSongAndDiscWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return NewSongAndDiscWidgetState();
+  }
+}
+
+class NewSongAndDiscWidgetState extends State<NewSongAndDiscWidget> {
+  bool isNewSong = true; //新歌
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(left: 15, right: 15),
+      child: Column(
+        children: [
+          Container(
+//            color: Colors.blue,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                InkWell(
+                  child: Text(
+                    '新歌',
+                    style: isNewSong
+                        ? TextStyles.textBoldDark16
+                        : TextStyles.textDark16,
+                  ),
+                  onTap: () {
+                    isNewSong = !isNewSong;
+                    setState(() {});
+                  },
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 5, right: 5),
+                  color: Colors.grey,
+                  height: 15,
+                  width: 1,
+                ),
+                InkWell(
+                  child: Text(
+                    '新碟',
+                    style: isNewSong
+                        ? TextStyles.textDark16
+                        : TextStyles.textBoldDark16,
+                  ),
+                  onTap: () {
+                    isNewSong = !isNewSong;
+                    setState(() {});
+                  },
+                ),
+                Spacer(),
+                Container(
+                  padding:
+                      EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                  child: Text(
+                    isNewSong ? '更多新歌' : '更多新碟',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.black,
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle, // 默认值也是矩形
+                    borderRadius: BorderRadius.circular((20.0)), // 圆角度
+                    border: Border.all(color: Colors.grey, width: 0.5),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            height: 100,
+            color: Colors.grey,
+            child: ListView(
+              children: [
+                Container(
+                  height: 100,
+                  child: Row(
+                    children: [
+                      Center(
+                          child: Container(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(circular),
+                          child: CachedNetworkImage(
+                            fit: BoxFit.fill,
+                            imageUrl:
+                                'https://p1.music.126.net/T_u5O7KbDpcnOSLIa8OEtw==/109951165122813288.jpg',
+                            placeholder: (context, url) => ProgressView(),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
+                        ),
+                      )),
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.only(left: 10, right: 10),
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                      child: Center(
+                                    child: Align(
+                                      alignment: FractionalOffset.centerLeft,
+                                      child: Text(
+                                        'xxxxx',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  )),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                      child: Center(
+                                    child: Align(
+                                      alignment: FractionalOffset.centerLeft,
+                                      child: Text(
+                                        'xxxxx',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  )),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                      child: Center(
+                                    child: Align(
+                                      alignment: FractionalOffset.centerLeft,
+                                      child: Text(
+                                        'xxxxx',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  )),
+                                ),
+                              ]),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
