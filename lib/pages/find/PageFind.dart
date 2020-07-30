@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:date_format/date_format.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/CommonLoading.dart';
@@ -18,6 +19,7 @@ import 'package:flutter_app/pages/radio/page_radio.dart';
 import 'package:flutter_app/pages/user/page_user_detail.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 import 'package:flutter_app/widget/base_song_img_item.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'FutureBuilderPage.dart';
 
@@ -150,7 +152,7 @@ class _Header extends StatelessWidget {
               text,
               style: Theme.of(context)
                   .textTheme
-                  .subhead
+                  .subtitle1
                   .copyWith(fontWeight: FontWeight.w800, fontSize: 18),
             ),
           )),
@@ -175,80 +177,16 @@ class _Header extends StatelessWidget {
                   '歌单广场',
                   style: Theme.of(context)
                       .textTheme
-                      .subhead
+                      .subtitle1
                       .copyWith(fontWeight: FontWeight.w800, fontSize: 14),
                 ),
               )),
         ],
       ),
-//      child: Row(
-//        mainAxisAlignment:   MainAxisAlignment.end,
-//        crossAxisAlignment: CrossAxisAlignment.start,
-//        children: <Widget>[
-//          Padding(padding: EdgeInsets.only(left: 8)),
-//          Text(
-//            text,
-//            style: Theme.of(context)
-//                .textTheme
-//                .subhead
-//                .copyWith(fontWeight: FontWeight.w800),
-//          ),
-//          Icon(Icons.chevron_right),
-//        ],
-//      ),
     );
   }
 
   _Header(this.text, this.onTap);
-}
-
-Widget _createListView(BuildContext context, AsyncSnapshot snapshot) {
-  List<Map> songlist = (snapshot.data["result"] as List).cast();
-  return Container(
-    padding: const EdgeInsets.all(8.0),
-    child: GridView.count(
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      crossAxisCount: 3,
-//      children: getWidgetList(songlist),
-      children: songlist.map<Widget>((p) {
-        return ListItemCustom(
-          img: p['picUrl'],
-          album: p,
-        );
-      }).toList(),
-    ),
-  );
-}
-
-///snapshot就是_calculation在时间轴上执行过程的状态快照
-Widget _buildFuture(BuildContext context, AsyncSnapshot snapshot) {
-  switch (snapshot.connectionState) {
-    case ConnectionState.none:
-      print('还没有开始网络请求');
-      return Text('还没有开始网络请求');
-    case ConnectionState.active:
-      print('active');
-      return Text('ConnectionState.active');
-    case ConnectionState.waiting:
-      print('waiting');
-      return Center(child: SpinKitWave(
-        itemBuilder: (_, int index) {
-          return DecoratedBox(
-            decoration: BoxDecoration(
-              color: index.isEven ? Colors.red : Colors.green,
-            ),
-          );
-        },
-      ));
-    case ConnectionState.done:
-      print('done');
-      if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-      return _createListView(context, snapshot);
-
-    default:
-      return null;
-  }
 }
 
 _buildMenu(BuildContext context) {
@@ -361,14 +299,76 @@ class NewSongAndDiscWidget extends StatefulWidget {
 
 class NewSongAndDiscWidgetState extends State<NewSongAndDiscWidget> {
   bool isNewSong = true; //新歌
+  List _newSong = [];
+  List _newAlbum = [];
+
+  @override
+  void initState() {
+    getNewSongList();
+    getNewAlbumList();
+    super.initState();
+  }
+
+  Future getNewSongList() async {
+    Map<String, dynamic> formData = {
+      'limit': 6,
+    };
+    var response =
+        await Http().get(MusicApi.NewSong, queryParameters: formData);
+    print(response);
+    List rows = response.data['result'];
+    _newSong = rows;
+    setState(() {});
+  }
+
+  //新碟
+  Future getNewAlbumList() async {
+//    Map<String, dynamic> formData = {
+//      'limit': 6,
+//    };
+    var response = await Http().get(MusicApi.NewAlbum);
+    print(response);
+    List rows = response.data['albums'];
+    _newAlbum = rows;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
+    print('width is $width; height is $height');
+    String getText(Map tracks) {
+      StringBuffer stringBuffer = new StringBuffer();
+
+      String name = tracks['song']['album']['name'];
+      stringBuffer.write(name);
+      List artists = tracks['song']['album']['artists'];
+      var length = artists.length;
+      if (length > 0) {
+        stringBuffer.write('-');
+      }
+      artists.forEach((item) {
+        if (length == 1) {
+          stringBuffer.write(item['name']);
+        }
+        if (length > 1) {
+          stringBuffer.write(item['name']);
+          stringBuffer.write('/');
+        }
+
+        length--;
+      });
+
+      return stringBuffer.toString();
+    }
+
     return Container(
       margin: EdgeInsets.only(left: 15, right: 15),
       child: Column(
         children: [
           Container(
-//            color: Colors.blue,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -422,87 +422,278 @@ class NewSongAndDiscWidgetState extends State<NewSongAndDiscWidget> {
               ],
             ),
           ),
-          Container(
-            height: 100,
-            color: Colors.grey,
-            child: ListView(
-              children: [
-                Container(
-                  height: 100,
-                  child: Row(
-                    children: [
-                      Center(
-                          child: Container(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(circular),
-                          child: CachedNetworkImage(
-                            fit: BoxFit.fill,
-                            imageUrl:
-                                'https://p1.music.126.net/T_u5O7KbDpcnOSLIa8OEtw==/109951165122813288.jpg',
-                            placeholder: (context, url) => ProgressView(),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+          Visibility(
+            visible: isNewSong,
+            child: Container(
+              height: 200,
+              child: PageView(
+                controller: PageController(
+                    initialPage: 0, viewportFraction: (width - 30) / width),
+                children: TestDatas.map((color) {
+                  return Container(
+                    width: 100,
+                    height: 200,
+//                  color: color,
+                    child: Column(
+                      children: _newSong.sublist(0, 3).map((e) {
+                        return Container(
+                          height: 60,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Center(
+                                  child: Container(
+                                width: 40,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(circular),
+                                  child: CachedNetworkImage(
+                                    fit: BoxFit.fill,
+                                    imageUrl: e['picUrl'],
+                                    placeholder: (context, url) =>
+                                        ProgressView(),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                  ),
+                                ),
+                              )),
+                              Expanded(
+                                child: Container(
+//                                color: Colors.amberAccent,
+                                  padding: EdgeInsets.only(
+                                      top: 10, bottom: 10, left: 8),
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+//                      color: Colors.green,
+                                              child: Center(
+                                            child: Align(
+                                              alignment:
+                                                  FractionalOffset.centerLeft,
+                                              child: Text(
+                                                e['name'],
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.black),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          )),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+//                                            color: Colors.green,
+                                              child: Center(
+                                            child: Align(
+                                              alignment:
+                                                  FractionalOffset.centerLeft,
+                                              child: Text(
+                                                getText(e),
+                                                style: TextStyle(
+                                                    fontSize: 8,
+                                                    color: Colors.grey[600]),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          )),
+                                        ),
+                                      ]),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(right: 15),
+                                child: Image.asset(
+                                  'images/album/track_mv.png',
+                                  width: 25,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      )),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(left: 10, right: 10),
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Expanded(
+                        );
+                      }).toList(),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+          ),
+          Visibility(
+            visible: !isNewSong,
+            child: Container(
+              height: 200,
+              child: PageView(
+                controller: PageController(
+                    initialPage: 0, viewportFraction: (width - 30) / width),
+                children: [
+                  Container(
+                    width: 100,
+                    height: 200,
+//                  color: color,
+                    child: Column(
+                      children: _newAlbum.sublist(0, 3).map((e) {
+                        return Container(
+                          height: 60,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Center(
                                   child: Container(
-                                      child: Center(
-                                    child: Align(
-                                      alignment: FractionalOffset.centerLeft,
-                                      child: Text(
-                                        'xxxxx',
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                  )),
+                                width: 40,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(circular),
+                                  child: CachedNetworkImage(
+                                    fit: BoxFit.fill,
+                                    imageUrl: e['blurPicUrl'],
+                                    placeholder: (context, url) =>
+                                        ProgressView(),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                  ),
                                 ),
-                                Expanded(
-                                  child: Container(
-                                      child: Center(
-                                    child: Align(
-                                      alignment: FractionalOffset.centerLeft,
-                                      child: Text(
-                                        'xxxxx',
-                                        style: TextStyle(
-                                          fontSize: 14,
+                              )),
+                              Expanded(
+                                child: Container(
+//                                color: Colors.amberAccent,
+                                  padding: EdgeInsets.only(
+                                      top: 10, bottom: 10, left: 8),
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+//                      color: Colors.green,
+                                              child: Center(
+                                            child: Align(
+                                              alignment:
+                                                  FractionalOffset.centerLeft,
+                                              child: Text(
+                                                e['name'],
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.black),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          )),
                                         ),
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                  )),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                      child: Center(
-                                    child: Align(
-                                      alignment: FractionalOffset.centerLeft,
-                                      child: Text(
-                                        'xxxxx',
-                                        style: TextStyle(
-                                          fontSize: 14,
+                                        Expanded(
+                                          child: Container(
+//                                            color: Colors.green,
+                                              child: Center(
+                                            child: Align(
+                                              alignment:
+                                                  FractionalOffset.centerLeft,
+                                              child: Text(
+                                                e['artist']['name'],
+                                                style: TextStyle(
+                                                    fontSize: 8,
+                                                    color: Colors.grey[600]),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          )),
                                         ),
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                  )),
+                                      ]),
                                 ),
-                              ]),
-                        ),
-                      )
-                    ],
+                              ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ),
                   ),
-                ),
-              ],
+                  Container(
+                    width: 100,
+                    height: 200,
+//                  color: color,
+                    child: Column(
+                      children: _newAlbum.sublist(3, 6).map((e) {
+                        return Container(
+                          height: 60,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Center(
+                                  child: Container(
+                                width: 40,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(circular),
+                                  child: CachedNetworkImage(
+                                    fit: BoxFit.fill,
+                                    imageUrl: e['blurPicUrl'],
+                                    placeholder: (context, url) =>
+                                        ProgressView(),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                  ),
+                                ),
+                              )),
+                              Expanded(
+                                child: Container(
+//                                color: Colors.amberAccent,
+                                  padding: EdgeInsets.only(
+                                      top: 10, bottom: 10, left: 8),
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+//                      color: Colors.green,
+                                              child: Center(
+                                            child: Align(
+                                              alignment:
+                                                  FractionalOffset.centerLeft,
+                                              child: Text(
+                                                e['name'],
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.black),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          )),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+//                                            color: Colors.green,
+                                              child: Center(
+                                            child: Align(
+                                              alignment:
+                                                  FractionalOffset.centerLeft,
+                                              child: Text(
+                                                e['artist']['name'],
+                                                style: TextStyle(
+                                                    fontSize: 8,
+                                                    color: Colors.grey[600]),
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          )),
+                                        ),
+                                      ]),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],
@@ -510,3 +701,86 @@ class NewSongAndDiscWidgetState extends State<NewSongAndDiscWidget> {
     );
   }
 }
+
+class PagingScrollPhysics extends ScrollPhysics {
+  final double itemDimension; // ListView children item 固定宽度
+  final double leadingSpacing; // 选中 item 离左边缘留白
+  final double maxSize; // 最大可滑动区域
+
+  PagingScrollPhysics(
+      {this.maxSize,
+      this.leadingSpacing,
+      this.itemDimension,
+      ScrollPhysics parent})
+      : super(parent: parent);
+
+  @override
+  PagingScrollPhysics applyTo(ScrollPhysics ancestor) {
+    return PagingScrollPhysics(
+        maxSize: maxSize,
+        itemDimension: itemDimension,
+        leadingSpacing: leadingSpacing,
+        parent: buildParent(ancestor));
+  }
+
+  double _getPage(ScrollPosition position, double leading) {
+    return (position.pixels + leading) / itemDimension;
+  }
+
+  double _getPixels(double page, double leading) {
+    return (page * itemDimension) - leading;
+  }
+
+  double _getTargetPixels(
+    ScrollPosition position,
+    Tolerance tolerance,
+    double velocity,
+    double leading,
+  ) {
+    double page = _getPage(position, leading);
+
+    if (position.pixels < 0) {
+      return 0;
+    }
+
+    if (position.pixels >= maxSize) {
+      return maxSize;
+    }
+
+    if (position.pixels > 0) {
+      if (velocity < -tolerance.velocity) {
+        page -= 0.5;
+      } else if (velocity > tolerance.velocity) {
+        page += 0.5;
+      }
+      return _getPixels(page.roundToDouble(), leading);
+    }
+  }
+
+  @override
+  Simulation createBallisticSimulation(
+      ScrollMetrics position, double velocity) {
+    // If we're out of range and not headed back in range, defer to the parent
+    // ballistics, which should put us back in range at a page boundary.
+
+    if ((velocity <= 0.0 && position.pixels <= position.minScrollExtent))
+      return super.createBallisticSimulation(position, velocity);
+
+    final Tolerance tolerance = this.tolerance;
+
+    final double target =
+        _getTargetPixels(position, tolerance, velocity, leadingSpacing);
+    if (target != position.pixels)
+      return ScrollSpringSimulation(spring, position.pixels, target, velocity,
+          tolerance: tolerance);
+    return null;
+  }
+
+  @override
+  bool get allowImplicitScrolling => false;
+}
+
+const List<int> TestDatas = const <int>[
+  0,
+  1,
+];

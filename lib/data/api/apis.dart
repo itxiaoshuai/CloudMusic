@@ -8,6 +8,10 @@ class MusicApi {
   ///http://localhost:3000/personalized(推荐歌单)
   static const String SONGLISTDRECOMMEND = "/personalized";
 
+  static const String NewSong = "/personalized/newsong";
+
+  static const String NewAlbum = "/album/newest";
+
   ///调用例子 : /login/cellphone?phone=xxx&password=yyy
   static const String LOGIN = "/login/cellphone";
 }
