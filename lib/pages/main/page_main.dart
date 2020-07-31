@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/find/PageFind.dart';
 import 'package:flutter_app/pages/my/PageMy.dart';
+import 'package:flutter_app/pages/video/MyPage.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
-
 
 class MainPage extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   TabController _tabController;
 
   @override
@@ -68,11 +68,13 @@ class _MainPageState extends State<MainPage>
           MyPage(),
           FindPage(),
           Center(child: Text('朋友')),
-          Center(child: Text('视频')),
+          VideoPage(),
         ],
       ),
       drawer: HomeDrawer(),
     );
   }
-}
 
+  @override
+  bool get wantKeepAlive => true; //必须重写
+}

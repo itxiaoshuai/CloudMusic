@@ -20,6 +20,7 @@ import 'package:flutter_app/pages/user/page_user_detail.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 import 'package:flutter_app/widget/base_song_img_item.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 import 'FutureBuilderPage.dart';
 
@@ -28,7 +29,8 @@ class FindPage extends StatefulWidget {
   State<StatefulWidget> createState() => _FindPageState();
 }
 
-class _FindPageState extends State<FindPage> {
+class _FindPageState extends State<FindPage>
+    with AutomaticKeepAliveClientMixin {
   List<Banners> _bannerData = [];
   List widgets = [];
 
@@ -71,8 +73,13 @@ class _FindPageState extends State<FindPage> {
     setState(() {});
   }
 
+  List imageList = [
+    'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=500542857,4026327610&fm=26&gp=0.jpg',
+  ];
+
   @override
   Widget build(BuildContext context) {
+    var i = 1; //排行榜名次
     return RefreshIndicator(
       onRefresh: () async {
         getHttp();
@@ -82,29 +89,50 @@ class _FindPageState extends State<FindPage> {
         children: <Widget>[
           FindBanner(bannerData: _bannerData),
           _buildMenu(context),
+          Container(
+            height: 100, // 高度
+            child: new Swiper(
+              itemBuilder: (BuildContext context, int index) {
+                return new Image.network(
+                  "http://via.placeholder.com/288x188",
+                  fit: BoxFit.fill,
+                );
+              },
+              itemCount: 3,
+              viewportFraction: 0.333,
+              scale: 0.4,
+            ),
+          ),
           Divider(
             height: 1,
             color: Colors.grey[300],
           ),
           _Header("推荐歌单", () {}),
           Container(
+//            padding: EdgeInsets.only(left: 15, right: 0),
             height: 200,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: widgets.map<Widget>((p) {
-                return Row(
-                  children: [
-                    BaseImgItem(
-                      id: p['id'],
-                      width: 120,
-                      playCount: p['playCount'],
-                      img: p['picUrl'],
-                      describe: p['name'],
-                    ),
-                    Gaps.hGap8,
-                  ],
-                );
-              }).toList(),
+              children: [
+                Gaps.hGap15,
+                Row(
+                  children: widgets.map<Widget>((p) {
+                    i++;
+                    return Row(
+                      children: [
+                        BaseImgItem(
+                          id: p['id'],
+                          width: 120,
+                          playCount: p['playCount'],
+                          img: p['picUrl'],
+                          describe: p['name'],
+                        ),
+                        i == widgets.length + 1 ? Gaps.hGap15 : Gaps.hGap8,
+                      ],
+                    );
+                  }).toList(),
+                ),
+              ],
             ),
           ),
           NewSongAndDiscWidget(),
@@ -112,6 +140,9 @@ class _FindPageState extends State<FindPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 List<int> getDataList(int count) {
@@ -365,10 +396,10 @@ class NewSongAndDiscWidgetState extends State<NewSongAndDiscWidget> {
     }
 
     return Container(
-      margin: EdgeInsets.only(left: 15, right: 15),
       child: Column(
         children: [
           Container(
+            margin: EdgeInsets.only(left: 15, right: 15),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

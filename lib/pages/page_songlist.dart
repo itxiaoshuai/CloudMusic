@@ -62,7 +62,7 @@ class Choice {
 
 const List<Choice> choices = const <Choice>[
   const Choice(
-    title: '官方 ',
+    title: '推荐 ',
     categoryId: 1,
   ),
   const Choice(
