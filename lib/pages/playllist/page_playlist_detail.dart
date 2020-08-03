@@ -147,12 +147,18 @@ class _PlaylistDetailHeader extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(padding: EdgeInsets.only(left: 6)),
-                                Text(
-                                  model.data == null
-                                      ? ""
-                                      : model.data.creator.nickname,
-                                  style: TextStyle(
-                                      fontSize: 14, color: Colors.black),
+                                Expanded(
+                                  child: Container(
+                                    child: Text(
+                                      model.data == null
+                                          ? ""
+                                          : model.data.creator.nickname,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontSize: 14, color: Colors.black),
+                                    ),
+                                  ),
                                 ),
                                 Icon(
                                   Icons.chevron_right,

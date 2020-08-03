@@ -17,4 +17,5 @@ class ConstImgResource {
 
   static String praise = 'images/note_btn_praise_white.png';
   static String playNum = 'images/icon_play_num.png';
+  static String collect = 'images/collect.png';
 }

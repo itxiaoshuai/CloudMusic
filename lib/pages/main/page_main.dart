@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/find/PageFind.dart';
 import 'package:flutter_app/pages/my/PageMy.dart';
-import 'package:flutter_app/pages/video/MyPage.dart';
+import 'package:flutter_app/pages/video/VideoPage.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
 
 class MainPage extends StatefulWidget {
