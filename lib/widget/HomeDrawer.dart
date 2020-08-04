@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/base/res/gaps.dart';
 import 'package:flutter_app/data/protocol/user_info.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'item/DrawerListItem.dart';
 
@@ -20,7 +21,7 @@ class _HomeDrawerState extends State {
   @override
   void initState() {
     //黑色
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+//    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     super.initState();
     _getLocalUser();
   }
@@ -39,6 +40,7 @@ class _HomeDrawerState extends State {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     return Drawer(
       child: Scaffold(
           body: Column(
@@ -275,7 +277,12 @@ class DrawerTopLogin extends StatelessWidget {
             Gaps.vGap15,
             Container(
               child: RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return LoginMainPage(); //手机号登入
+                  }));
+                },
                 color: Colors.red,
                 padding: EdgeInsets.only(left: 30, right: 30),
                 child: Text(

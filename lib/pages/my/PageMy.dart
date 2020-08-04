@@ -1,40 +1,246 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-class MyPage extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter_app/base/ConstImg.dart';
+import 'package:flutter_app/base/utils/utils.dart';
+import 'package:flutter_app/data/protocol/playlist_detail.dart';
+import 'package:flutter_app/model/play_list_model.dart';
+import 'package:flutter_app/pages/find/FutureBuilderPage.dart';
+import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
+import 'package:flutter_app/pages/playllist/item_music_list_track.dart';
+import 'package:flutter_app/pages/radio/page_radio.dart';
+import 'package:flutter_app/pages/user/page_user_detail.dart';
+import 'package:flutter_app/provider/layout_state.dart';
+import 'package:flutter_app/provider/provider_widget.dart';
+import 'package:flutter_app/provider/view_state_widget.dart';
+import 'package:flutter_app/route/routes.dart';
+import 'package:flutter_app/widget/ListItemCustom.dart';
+import 'package:flutter_app/widget/flexible_app_bar.dart';
+
+import '../page_songlist.dart';
+
+class MyPage extends StatefulWidget {
+  MyPage(
+    this.playlistId,
+  ) : assert(playlistId != null, 'playlist id，can not be null');
+  final int playlistId;
+
+  @override
+  State<StatefulWidget> createState() => _MyPageState();
+}
+
+class _MyPageState extends State<MyPage> with SingleTickerProviderStateMixin {
+  PlaylistDetail playlist;
+  TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    this.tabController = TabController(length: 2, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellow,
-      child: ListView(
-        children: <Widget>[
-          Container(
-            height: 100,
-            color: Colors.cyan,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
+    return Scaffold(
+      backgroundColor: Colors.transparent, //把appbar的背景色改成透明
+      body: CustomScrollView(
+        slivers: <Widget>[
+//          SliverAppBar(
+//            backgroundColor: Colors.transparent, //把appbar的背景色改成透明
+//            pinned: true,
+//            elevation: 0,
+//            expandedHeight: 250,
+//            flexibleSpace: FlexibleSpaceBar(
+////              title: Text('Sliver-sticky效果'),
+////              background: Image.network(
+////                'http://img1.mukewang.com/5c18cf540001ac8206000338.jpg',
+////                fit: BoxFit.cover,
+////              ),
+//                ),
+//          ),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: StickyTabBarDelegate(
+              child: TabBar(
+                labelColor: Colors.black,
+                controller: this.tabController,
+                tabs: <Widget>[
+                  Tab(text: 'Home'),
+                  Tab(text: 'Profile'),
+                ],
+              ),
+            ),
+          ),
+          SliverFillRemaining(
+            child: TabBarView(
+              controller: this.tabController,
               children: <Widget>[
-                HorizontalItem(text: '私人FM'),
-                HorizontalItem(text: '最新电台'),
-                HorizontalItem(text: 'Sati空间'),
-                HorizontalItem(text: '私藏推荐'),
-                HorizontalItem(text: '亲子频道'),
-                HorizontalItem(text: '古典专区'),
-                HorizontalItem(text: '跑步FM'),
-                HorizontalItem(text: '小冰电台'),
-                HorizontalItem(text: '爵士电台'),
-                HorizontalItem(text: '驾驶模式'),
+                ListView(
+                  children: [
+                    Column(
+                      children: [
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                        Center(child: Text('Content of Home')),
+                        Center(child: Text('Content of Profile')),
+                      ],
+                    ),
+                  ],
+                ),
+                Center(child: Text('Content of Home')),
               ],
             ),
           ),
-          _getContainer('本地音乐', '(11)', Icons.music_note),
-          _getContainer('最近播放', '(7)', Icons.local_play),
-          _getContainer('下载管理', '(0)', Icons.file_download),
-          _getContainer('我的电台', '(0)', Icons.radio),
-          _getContainer('我的收藏', '(0)', Icons.collections_bookmark),
         ],
       ),
     );
   }
+}
+
+class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
+  final TabBar child;
+
+  StickyTabBarDelegate({@required this.child});
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return ClipRRect(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+      child: Material(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        child: Container(
+          color: Colors.yellow,
+        ),
+      ),
+    );
+  }
+
+  @override
+  double get maxExtent => this.child.preferredSize.height;
+
+  @override
+  double get minExtent => this.child.preferredSize.height;
+
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
+    return true;
+  }
+}
+
+///播放列表头部背景
+class PlayListHeaderBackground extends StatelessWidget {
+  final String imageUrl;
+
+  const PlayListHeaderBackground({Key key, @required this.imageUrl})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        Image(image: NetworkImage(imageUrl), fit: BoxFit.cover),
+        BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
+          child: Container(color: Colors.black.withOpacity(0.1)),
+        )
+      ],
+    );
+  }
+}
+
+_buildMenu(BuildContext context) {
+  return Container(
+    padding: EdgeInsets.only(top: 15, bottom: 15),
+//            color: Colors.green,
+    child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
+        children: [
+          InkWell(
+            child: VerticalItem(
+                image: "images/find/t_dragonball_icn_daily.png", text: "每日推荐"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return NestedScrollDemoPage();
+              }));
+            },
+          ),
+          InkWell(
+            child: VerticalItem(
+                image: "images/find/t_dragonball_icn_playlist.png", text: "歌单"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return SongListPage();
+              }));
+            },
+          ),
+          InkWell(
+            child: VerticalItem(
+                image: "images/find/t_dragonball_icn_rank.png", text: "排行榜"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return LeaderBoardPage();
+              }));
+            },
+          ),
+          InkWell(
+            child: VerticalItem(
+                image: "images/find/t_dragonball_icn_radio.png", text: "电台"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return RadioPage();
+              }));
+            },
+          ),
+          InkWell(
+            child: VerticalItem(
+                image: "images/find/t_dragonball_icn_look.png", text: "直播"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return UserDetailPage();
+              }));
+            },
+          ),
+        ]),
+  );
 }
 
 Widget _getContainer(String test, String textSecond, IconData icon) {
@@ -58,7 +264,6 @@ Widget _getContainer(String test, String textSecond, IconData icon) {
             ),
             Container(
               margin: EdgeInsets.all(8.0),
-              color: Colors.yellow,
               alignment: Alignment.bottomLeft,
               child: Text(textSecond, style: TextStyle(fontSize: 12)),
             ),
@@ -113,23 +318,20 @@ class VerticalItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 10, right: 10),
-      child: Row(
-        children: <Widget>[
-          Image.asset(
-            image,
-            color: Colors.black,
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 20),
-            child: Text(
-              text,
-              style: TextStyle(color: Colors.black87, fontSize: 16),
-            ),
-          ),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        Image.asset(
+          image,
+          color: Colors.black,
+          width: 20,
+        ),
+        Container(
+            margin: EdgeInsets.only(top: 5), //上边距
+            child: Text(text,
+                style: TextStyle(
+                  fontSize: 12,
+                )))
+      ],
     );
   }
 }
