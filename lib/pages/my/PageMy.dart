@@ -3,14 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/ConstImg.dart';
 import 'package:flutter_app/base/res/gaps.dart';
+import 'package:flutter_app/base/res/styles.dart';
 import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/protocol/playlist_detail.dart';
 import 'package:flutter_app/net/huyi_android_api.dart';
-import 'package:flutter_app/pages/find/FutureBuilderPage.dart';
-import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
-import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
-import 'package:flutter_app/pages/radio/page_radio.dart';
-import 'package:flutter_app/pages/user/page_user_detail.dart';
 import 'package:flutter_app/widget/base_song_img_item.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
 import 'package:flutter_screenutil/screenutil.dart';
@@ -22,7 +18,7 @@ class MyPage extends StatefulWidget {
   State<StatefulWidget> createState() => _MyPageState();
 }
 
-class _MyPageState extends State<MyPage> with SingleTickerProviderStateMixin {
+class _MyPageState extends State<MyPage> with SingleTickerProviderStateMixin,  AutomaticKeepAliveClientMixin {
   PlaylistDetail playlist;
   TabController tabController;
 
@@ -49,6 +45,9 @@ class _MyPageState extends State<MyPage> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return _DetailPage();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class _DetailPage extends StatelessWidget {
@@ -56,59 +55,167 @@ class _DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return [
-              SliverOverlapAbsorber(
-                  handle:
-                      NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                  sliver: _UserDetailAppBar())
-            ];
-          },
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  top: kToolbarHeight + kTextTabBarHeight),
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
+              return [
+                SliverOverlapAbsorber(
+                    handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                        context),
+                    sliver: _UserDetailAppBar())
+              ];
+            },
+            body: ClipRRect(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
               child: Container(
-                color: Colors.yellow,
+                color: Colors.white,
                 child: Column(
-                  children: [
+                  children: <Widget>[
                     Container(
-//            padding: EdgeInsets.only(left: 15, right: 0),
-                      height: 200,
+                        padding: EdgeInsets.only(left: 15, right: 15),
+                        height: 50,
+                        color: Colors.white,
+                        child: Row(
+                          children: [
+                            Text('我的音乐'),
+                            Spacer(),
+                            Icon(Icons.keyboard_arrow_right)
+                          ],
+                        )),
+                    Container(
+                      color: Colors.cyan,
+                      height: 140,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
-                        children: [
-                          Gaps.hGap15,
-                          Row(
-                            children: widgets.map<Widget>((p) {
-                              i++;
-                              return Row(
-                                children: [
-                                  BaseImgItem(
-                                    id: p['id'],
-                                    width: 120,
-                                    playCount: p['playCount'],
-                                    img: p['picUrl'],
-                                    describe: p['name'],
-                                  ),
-                                  i == widgets.length + 1
-                                      ? Gaps.hGap15
-                                      : Gaps.hGap8,
-                                ],
-                              );
-                            }).toList(),
+                        children: <Widget>[
+                          InkWell(
+                            onTap: () {},
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6),
+                              child: Container(
+                                  height: 140,
+                                  width: 104,
+                                  color: Colors.deepOrangeAccent,
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Positioned(
+                                          left: 0,
+                                          right: 0,
+                                          top: 40,
+                                          child: Column(
+                                            children: <Widget>[
+                                              Image.asset(
+                                                'images/album/album_download.png',
+                                                width: 24,
+                                                height: 24,
+                                                color: Colors.black,
+                                              ),
+                                              Gaps.vGap5,
+                                              Text(
+                                                '我喜欢的音乐',
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 12),
+                                              ),
+                                            ],
+                                          )),
+//                                  Text('我喜欢的音乐'),
+//                                  Text('我喜欢的音乐'),
+                                    ],
+                                  )),
+                            ),
                           ),
+                          InkWell(
+                            onTap: () {},
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6),
+                              child: Container(
+                                  height: 140,
+                                  width: 104,
+                                  color: const Color(0xffE5E5E5),
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Positioned(
+                                          left: 0,
+                                          right: 0,
+                                          top: 40,
+                                          child: Column(
+                                            children: <Widget>[
+                                              Image.asset(
+                                                'images/album/album_download.png',
+                                                width: 24,
+                                                height: 24,
+                                                color: Colors.black,
+                                              ),
+                                              Gaps.vGap5,
+                                              Text(
+                                                '推歌精选',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 12),
+                                              ),
+                                              Gaps.vGap24,
+                                              Text(
+                                                '云贝助力好歌',
+                                                style: TextStyle(
+                                                    color: Colors.grey[600],
+                                                    fontSize: 10),
+                                              ),
+                                            ],
+                                          )),
+//                                  Text('我喜欢的音乐'),
+//                                  Text('我喜欢的音乐'),
+                                    ],
+                                  )),
+                            ),
+                          ),
+                          ImgItem(),
+                          ImgItem(),
                         ],
                       ),
                     ),
+                    Container(
+                        padding: EdgeInsets.only(left: 15, right: 15),
+                        height: 50,
+                        color: Colors.white,
+                        child: Row(
+                          children: [
+                            Text('最近播放'),
+                            Spacer(),
+                            Text(
+                              '更多',
+                              style: TextStyles.textGray10,
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.grey,
+                            )
+                          ],
+                        )),
                   ],
                 ),
               ),
-            ),
-          ),
+            )),
+      ),
+    );
+  }
+}
+
+class ImgItem extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(6),
+        child: Container(
+          height: 140,
+          width: 104,
+          color: Colors.deepOrangeAccent,
+          child: Text('xxx'),
         ),
       ),
     );
@@ -139,7 +246,7 @@ class _UserDetailAppBar extends StatelessWidget {
       //阴影的高度
       forceElevated: false,
       //是否显示阴影
-//      backgroundColor: Colors.green,
+      backgroundColor: Colors.transparent,
       //背景颜色
       brightness: Brightness.dark,
       //黑底白字，lignt 白底黑字
@@ -151,22 +258,25 @@ class _UserDetailAppBar extends StatelessWidget {
       // appbar是否显示在屏幕的最上面，为false是显示在最上面，为true就显示在状态栏的下面
       titleSpacing: 16,
       //标题两边的空白区域
-      expandedHeight: 330,
+      expandedHeight: 170,
       //默认高度是状态栏和导航栏的高度，如果有滚动视差的话，要大于前两者的高度
-      floating: true,
+      floating: false,
       //滑动到最上面，再滑动是否隐藏导航栏的文字和标题等的具体内容，为true是隐藏，为false是不隐藏
-      pinned: true,
+      pinned: false,
       //是否固定导航栏，为true是固定，为false是不固定，往上滑，导航栏可以隐藏
       snap: false,
-      bottom: RoundedTabBar(),
+//      bottom: RoundedTabBar(),
       //只跟floating相对应，如果为true，floating必须为true，也就是向下滑动一点儿，整个大背景就会动画显示全部，网上滑动整个导航栏的内容就会消失
       flexibleSpace: FlexibleDetailBar(
-        background: FlexShadowBackground(
-          child: Image(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                  'https://dss2.bdstatic.com/6Ot1bjeh1BF3odCf/it/u=1676744405,540713731&fm=85&app=92&f=PNG?w=121&h=75&s=D385D70204BC4C2D515E34430300E0BB')),
+        background: Container(
+          color: Colors.transparent,
         ),
+//        background: FlexShadowBackground(
+//          child: Image(
+//              fit: BoxFit.cover,
+//              image: NetworkImage(
+//                  'https://dss2.bdstatic.com/6Ot1bjeh1BF3odCf/it/u=1676744405,540713731&fm=85&app=92&f=PNG?w=121&h=75&s=D385D70204BC4C2D515E34430300E0BB')),
+//        ),
         content: Container(
           padding: EdgeInsets.only(left: 20, right: 20),
           color: Colors.transparent,
@@ -187,32 +297,6 @@ class PrimaryTabIndicator extends UnderlineTabIndicator {
       : super(
             insets: const EdgeInsets.only(bottom: 4),
             borderSide: BorderSide(color: color, width: 2.0));
-}
-
-///网易云音乐风格的TabBar
-class RoundedTabBar extends StatelessWidget implements PreferredSizeWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
-      child: Material(
-//        color: Theme.of(context).scaffoldBackgroundColor,
-        child: Container(
-            height: 50,
-            color: Colors.white,
-            child: Row(
-              children: [
-                Text('我的音乐'),
-                Spacer(),
-                Icon(Icons.keyboard_arrow_right)
-              ],
-            )),
-      ),
-    );
-  }
-
-  @override
-  Size get preferredSize => Size.fromHeight(50);
 }
 
 _buildMenu(BuildContext context) {

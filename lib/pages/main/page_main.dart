@@ -22,7 +22,11 @@ class _MainPageState extends State<MainPage>
 
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: 4);
+    _tabController = TabController(vsync: this, length: 4, initialIndex: 1)
+      ..addListener(() {
+        print('_tabControllerIndex' + _tabController.index.toString());
+        setState(() {});
+      });
   }
 
   @override
@@ -35,7 +39,9 @@ class _MainPageState extends State<MainPage>
           fit: BoxFit.cover,
         )),
         child: Scaffold(
-            backgroundColor: Colors.transparent, //把scaffold的背景色改成透明
+            backgroundColor:
+                _tabController.index == 0 ? Colors.transparent : Colors.white,
+            //把scaffold的背景色改成透明
             appBar: AppBar(
               actions: <Widget>[
                 IconButton(
@@ -47,8 +53,10 @@ class _MainPageState extends State<MainPage>
                 )
               ],
               centerTitle: true,
-              backgroundColor: Colors.transparent, //把appbar的背景色改成透明
-              elevation: 0, //appbar的阴影
+              backgroundColor:
+                  _tabController.index == 0 ? Colors.transparent : Colors.red,
+              elevation: 0,
+              //appbar的阴影
               title: TabBar(
                 indicatorSize: TabBarIndicatorSize.tab,
                 isScrollable: true,
