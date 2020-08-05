@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/find/PageFind.dart';
 import 'package:flutter_app/pages/my/PageMy.dart';
+import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
 import 'package:flutter_app/pages/video/VideoPage.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
 
@@ -26,53 +27,62 @@ class _MainPageState extends State<MainPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-//      backgroundColor: Colors.transparent, //把scaffold的背景色改成透明
-      appBar: AppBar(
-//        backgroundColor: Colors.transparent, //把scaffold的背景色改成透明
-        elevation: 0,
-        centerTitle: true,
-//        title: TabContainerState(),
-        title: TabBar(
-          indicatorSize: TabBarIndicatorSize.tab,
-          isScrollable: true,
-          tabs: <Widget>[
-            Tab(
-              text: '我的',
+    return Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          image: NetworkImage(
+              'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
+          fit: BoxFit.cover,
+        )),
+        child: Scaffold(
+            backgroundColor: Colors.transparent, //把scaffold的背景色改成透明
+            appBar: AppBar(
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+                  onPressed: null,
+                )
+              ],
+              centerTitle: true,
+              backgroundColor: Colors.transparent, //把appbar的背景色改成透明
+              elevation: 0, //appbar的阴影
+              title: TabBar(
+                indicatorSize: TabBarIndicatorSize.tab,
+                isScrollable: true,
+                labelStyle:
+                    TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                unselectedLabelStyle: TextStyle(fontSize: 10),
+                indicator: const BoxDecoration(),
+                controller: _tabController,
+                tabs: <Widget>[
+                  Tab(
+                    text: '我的',
+                  ),
+                  Tab(
+                    text: '发现',
+                  ),
+                  Tab(
+                    text: '朋友',
+                  ),
+                  Tab(
+                    text: '视频',
+                  ),
+                ],
+              ),
             ),
-            Tab(
-              text: '发现',
-            ),
-            Tab(
-              text: '朋友',
-            ),
-            Tab(
-              text: '视频',
-            ),
-          ],
-          controller: _tabController,
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-            onPressed: null,
-          )
-        ],
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: <Widget>[
-          MyPage(),
-          FindPage(),
-          Center(child: Text('朋友')),
-          VideoPage(),
-        ],
-      ),
-      drawer: HomeDrawer(),
-    );
+            drawer: HomeDrawer(),
+            body: TabBarView(
+              controller: _tabController,
+              children: <Widget>[
+                MyPage(),
+                FindPage(),
+                Center(child: Text('朋友')),
+                VideoPage(),
+              ],
+            )));
   }
 
   @override
