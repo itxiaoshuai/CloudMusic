@@ -42,6 +42,18 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
             case LayoutState.LOADING:
               return ViewStateLoadingWidget();
               break;
+            case LayoutState.EMPTY:
+              // TODO: Handle this case.
+              break;
+            case LayoutState.ERROR:
+              // TODO: Handle this case.
+              break;
+            case LayoutState.UNAUTHORIZED:
+              // TODO: Handle this case.
+              break;
+            case LayoutState.SUCCESS:
+              // TODO: Handle this case.
+              break;
           }
 
           return CustomWidget(model, widget.playlistId);

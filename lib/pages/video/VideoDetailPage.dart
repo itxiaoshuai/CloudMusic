@@ -53,7 +53,11 @@ class _VideoDetailPageState extends State<VideoDetailPage> {
 
     super.initState();
   }
-
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
@@ -78,7 +82,7 @@ class _VideoDetailPageState extends State<VideoDetailPage> {
                   Chewie(
                     controller: ChewieController(
                       videoPlayerController: _controller,
-                      aspectRatio: 16 / 9,
+
                     ),
                   ),
                   Text(_videoDetail == null ? '' : _videoDetail.data.title),
