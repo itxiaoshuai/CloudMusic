@@ -2,29 +2,22 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/ConstImg.dart';
-import 'package:flutter_app/base/utils/utils.dart';
+import 'package:flutter_app/base/res/gaps.dart';
+import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/protocol/playlist_detail.dart';
-import 'package:flutter_app/model/play_list_model.dart';
+import 'package:flutter_app/net/huyi_android_api.dart';
 import 'package:flutter_app/pages/find/FutureBuilderPage.dart';
 import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
-import 'package:flutter_app/pages/playllist/item_music_list_track.dart';
+import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
 import 'package:flutter_app/pages/radio/page_radio.dart';
 import 'package:flutter_app/pages/user/page_user_detail.dart';
-import 'package:flutter_app/provider/layout_state.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
-import 'package:flutter_app/provider/view_state_widget.dart';
-import 'package:flutter_app/route/routes.dart';
-import 'package:flutter_app/widget/ListItemCustom.dart';
+import 'package:flutter_app/widget/base_song_img_item.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
-import '../page_songlist.dart';
+List widgets = [];
 
 class MyPage extends StatefulWidget {
-  MyPage(
-    this.playlistId,
-  ) : assert(playlistId != null, 'playlist id，can not be null');
-  final int playlistId;
-
   @override
   State<StatefulWidget> createState() => _MyPageState();
 }
@@ -37,277 +30,204 @@ class _MyPageState extends State<MyPage> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     this.tabController = TabController(length: 2, vsync: this);
+    getSongListRecommend();
+  }
+
+  Future getSongListRecommend() async {
+    Map<String, dynamic> formData = {
+      'limit': 6,
+    };
+    var response = await Http()
+        .get(MusicApi.SONGLISTDRECOMMEND, queryParameters: formData);
+    print(response);
+    List rows = response.data['result'];
+    widgets = rows;
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent, //把appbar的背景色改成透明
-      body: CustomScrollView(
-        slivers: <Widget>[
-//          SliverAppBar(
-//            backgroundColor: Colors.transparent, //把appbar的背景色改成透明
-//            pinned: true,
-//            elevation: 0,
-//            expandedHeight: 250,
-//            flexibleSpace: FlexibleSpaceBar(
-////              title: Text('Sliver-sticky效果'),
-////              background: Image.network(
-////                'http://img1.mukewang.com/5c18cf540001ac8206000338.jpg',
-////                fit: BoxFit.cover,
-////              ),
-//                ),
-//          ),
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: StickyTabBarDelegate(
-              child: TabBar(
-                labelColor: Colors.black,
-                controller: this.tabController,
-                tabs: <Widget>[
-                  Tab(text: 'Home'),
-                  Tab(text: 'Profile'),
-                ],
-              ),
-            ),
-          ),
-          SliverFillRemaining(
-            child: TabBarView(
-              controller: this.tabController,
-              children: <Widget>[
-                ListView(
-                  children: [
-                    Column(
-                      children: [
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                        Center(child: Text('Content of Home')),
-                        Center(child: Text('Content of Profile')),
-                      ],
-                    ),
-                  ],
-                ),
-                Center(child: Text('Content of Home')),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+    return _DetailPage();
   }
 }
 
-class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
-  final TabBar child;
-
-  StickyTabBarDelegate({@required this.child});
-
+class _DetailPage extends StatelessWidget {
+  var i = 1; //排行榜名次
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
-      child: Material(
-        color: Theme.of(context).scaffoldBackgroundColor,
-        child: Container(
-          color: Colors.yellow,
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: DefaultTabController(
+        length: 2,
+        child: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return [
+              SliverOverlapAbsorber(
+                  handle:
+                      NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                  sliver: _UserDetailAppBar())
+            ];
+          },
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: kToolbarHeight + kTextTabBarHeight),
+              child: Container(
+                color: Colors.yellow,
+                child: Column(
+                  children: [
+                    Container(
+//            padding: EdgeInsets.only(left: 15, right: 0),
+                      height: 200,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          Gaps.hGap15,
+                          Row(
+                            children: widgets.map<Widget>((p) {
+                              i++;
+                              return Row(
+                                children: [
+                                  BaseImgItem(
+                                    id: p['id'],
+                                    width: 120,
+                                    playCount: p['playCount'],
+                                    img: p['picUrl'],
+                                    describe: p['name'],
+                                  ),
+                                  i == widgets.length + 1
+                                      ? Gaps.hGap15
+                                      : Gaps.hGap8,
+                                ],
+                              );
+                            }).toList(),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );
   }
+}
 
+class _UserDetailAppBar extends StatelessWidget {
   @override
-  double get maxExtent => this.child.preferredSize.height;
+  Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 720, height: 1080, allowFontScaling: false);
+    return SliverAppBar(
+//      leading: GestureDetector(
+//        child: Icon(Icons.arrow_back),
+//        onTap: () => Navigator.pop(context),
+//      ),
+      //左侧按钮
+      /**
+       * 如果没有leading，automaticallyImplyLeading为true，就会默认返回箭头
+       * 如果 没有leading 且为false，空间留给title
+       * 如果有leading，这个参数就无效了
+       */
+      automaticallyImplyLeading: false,
+      //标题
+      centerTitle: false,
 
-  @override
-  double get minExtent => this.child.preferredSize.height;
+      //右侧的内容和点击事件啥的
+      elevation: 4,
+      //阴影的高度
+      forceElevated: false,
+      //是否显示阴影
+//      backgroundColor: Colors.green,
+      //背景颜色
+      brightness: Brightness.dark,
+      //黑底白字，lignt 白底黑字
 
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return true;
+      //所有的icon的样式,不仅仅是左侧的，右侧的也会改变
+      textTheme: TextTheme(),
+      //字体样式
+      primary: true,
+      // appbar是否显示在屏幕的最上面，为false是显示在最上面，为true就显示在状态栏的下面
+      titleSpacing: 16,
+      //标题两边的空白区域
+      expandedHeight: 330,
+      //默认高度是状态栏和导航栏的高度，如果有滚动视差的话，要大于前两者的高度
+      floating: true,
+      //滑动到最上面，再滑动是否隐藏导航栏的文字和标题等的具体内容，为true是隐藏，为false是不隐藏
+      pinned: true,
+      //是否固定导航栏，为true是固定，为false是不固定，往上滑，导航栏可以隐藏
+      snap: false,
+      bottom: RoundedTabBar(),
+      //只跟floating相对应，如果为true，floating必须为true，也就是向下滑动一点儿，整个大背景就会动画显示全部，网上滑动整个导航栏的内容就会消失
+      flexibleSpace: FlexibleDetailBar(
+        background: FlexShadowBackground(
+          child: Image(
+              fit: BoxFit.cover,
+              image: NetworkImage(
+                  'https://dss2.bdstatic.com/6Ot1bjeh1BF3odCf/it/u=1676744405,540713731&fm=85&app=92&f=PNG?w=121&h=75&s=D385D70204BC4C2D515E34430300E0BB')),
+        ),
+        content: Container(
+          padding: EdgeInsets.only(left: 20, right: 20),
+          color: Colors.transparent,
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+//                Spacer(),
+                _buildMenu(context),
+              ]),
+        ),
+      ),
+    );
   }
 }
 
-///播放列表头部背景
-class PlayListHeaderBackground extends StatelessWidget {
-  final String imageUrl;
+class PrimaryTabIndicator extends UnderlineTabIndicator {
+  PrimaryTabIndicator({Color color: Colors.white})
+      : super(
+            insets: const EdgeInsets.only(bottom: 4),
+            borderSide: BorderSide(color: color, width: 2.0));
+}
 
-  const PlayListHeaderBackground({Key key, @required this.imageUrl})
-      : super(key: key);
-
+///网易云音乐风格的TabBar
+class RoundedTabBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: <Widget>[
-        Image(image: NetworkImage(imageUrl), fit: BoxFit.cover),
-        BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
-          child: Container(color: Colors.black.withOpacity(0.1)),
-        )
-      ],
+    return ClipRRect(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+      child: Material(
+//        color: Theme.of(context).scaffoldBackgroundColor,
+        child: Container(
+            height: 50,
+            color: Colors.white,
+            child: Row(
+              children: [
+                Text('我的音乐'),
+                Spacer(),
+                Icon(Icons.keyboard_arrow_right)
+              ],
+            )),
+      ),
     );
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(50);
 }
 
 _buildMenu(BuildContext context) {
   return Container(
     padding: EdgeInsets.only(top: 15, bottom: 15),
-//            color: Colors.green,
-    child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
-        children: [
-          InkWell(
-            child: VerticalItem(
-                image: "images/find/t_dragonball_icn_daily.png", text: "每日推荐"),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return NestedScrollDemoPage();
-              }));
-            },
-          ),
-          InkWell(
-            child: VerticalItem(
-                image: "images/find/t_dragonball_icn_playlist.png", text: "歌单"),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return SongListPage();
-              }));
-            },
-          ),
-          InkWell(
-            child: VerticalItem(
-                image: "images/find/t_dragonball_icn_rank.png", text: "排行榜"),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return LeaderBoardPage();
-              }));
-            },
-          ),
-          InkWell(
-            child: VerticalItem(
-                image: "images/find/t_dragonball_icn_radio.png", text: "电台"),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return RadioPage();
-              }));
-            },
-          ),
-          InkWell(
-            child: VerticalItem(
-                image: "images/find/t_dragonball_icn_look.png", text: "直播"),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return UserDetailPage();
-              }));
-            },
-          ),
-        ]),
-  );
-}
-
-Widget _getContainer(String test, String textSecond, IconData icon) {
-  return Container(
-    color: Colors.blue,
-
-//      ListTile
-    child: ListTile(
-//       显示在title之前
-      leading: Icon(icon),
-
-      title: Container(
-        color: Colors.yellowAccent,
-        alignment: Alignment.bottomLeft,
-        child: Row(
-          children: <Widget>[
-            Container(
-              color: Colors.red,
-              alignment: Alignment.bottomLeft,
-              child: Text(test),
-            ),
-            Container(
-              margin: EdgeInsets.all(8.0),
-              alignment: Alignment.bottomLeft,
-              child: Text(textSecond, style: TextStyle(fontSize: 12)),
-            ),
-          ],
-        ),
-      ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: videoCategoryList.map((e) {
+        return VerticalItem(
+          image: e.img,
+          text: e.title,
+        );
+      }).toList(),
     ),
   );
-}
-
-class HorizontalItem extends StatelessWidget {
-  final String text;
-
-  HorizontalItem({this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
-        padding: EdgeInsets.all(18.0),
-        child: Column(
-          children: <Widget>[
-            Container(
-              width: 40.0,
-              height: 40.0,
-              decoration: BoxDecoration(
-                //圆形渐变
-                color: Colors.white,
-                shape: BoxShape.circle,
-                gradient: const LinearGradient(colors: [
-                  Colors.redAccent,
-                  Colors.red,
-                ]),
-              ),
-            ),
-            Text(
-              text,
-              style: TextStyle(fontSize: 12, color: Colors.black),
-            )
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 class VerticalItem extends StatelessWidget {
@@ -335,3 +255,39 @@ class VerticalItem extends StatelessWidget {
     );
   }
 }
+
+class Menu {
+  const Menu({this.title, this.img, this.path});
+
+  final String title;
+  final String img;
+  final String path;
+}
+
+const List<Menu> videoCategoryList = const <Menu>[
+  const Menu(
+    title: '本地音乐 ',
+    img: 'images/album/album_share.png',
+    path: '',
+  ),
+  const Menu(
+    title: '下载管理 ',
+    img: 'images/album/album_download.png',
+    path: '',
+  ),
+  const Menu(
+    title: '我的电台 ',
+    img: 'images/find/t_dragonball_icn_radio.png',
+    path: '',
+  ),
+  const Menu(
+    title: '我的收藏 ',
+    img: 'images/album/album_share.png',
+    path: '',
+  ),
+  const Menu(
+    title: '关注新歌 ',
+    img: 'images/album/album_share.png',
+    path: '',
+  ),
+];

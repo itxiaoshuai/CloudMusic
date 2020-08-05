@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/find/PageFind.dart';
 import 'package:flutter_app/pages/my/PageMy.dart';
+import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
 import 'package:flutter_app/pages/video/VideoPage.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
 
@@ -30,7 +31,7 @@ class _MainPageState extends State<MainPage>
         decoration: BoxDecoration(
             image: DecorationImage(
           image: NetworkImage(
-              'https://img.zcool.cn/community/0372d195ac1cd55a8012062e3b16810.jpg'),
+              'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
           fit: BoxFit.cover,
         )),
         child: Scaffold(
@@ -76,7 +77,7 @@ class _MainPageState extends State<MainPage>
             body: TabBarView(
               controller: _tabController,
               children: <Widget>[
-                MyPage(1),
+                MyPage(),
                 FindPage(),
                 Center(child: Text('朋友')),
                 VideoPage(),
