@@ -5,6 +5,8 @@ import 'package:flutter_app/base/res/styles.dart';
 import 'package:flutter_app/net/huyi_android_api.dart';
 import 'package:flutter_app/pages/video/VideoList.dart';
 
+import 'SongLabelDetailPage.dart';
+
 class SongLabelPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _SongLabelPageState();
@@ -54,7 +56,12 @@ class _SongLabelPageState extends State<SongLabelPage> {
           itemBuilder: (BuildContext context, int index) {
             Sub sub = list[index];
             return GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) {
+                      return SongLabelDetailPage(cat: sub.name,);
+                    }));
+              },
               child: getItemContainer(sub),
             );
           },
@@ -89,16 +96,14 @@ class _SongLabelPageState extends State<SongLabelPage> {
     var response = await http.get(
       '/playlist/catlist',
     );
-    List data = [];
+
     List sub = response.data['sub'];
-//    print(sub);
+    labelList.map((e) {
+      e.list.clear();
+    }).toList();
     sub.map((e) {
       int category = e['category'];
-//      print(e);
-//      data.add(e);
-//      print(data.length);
       Sub sub = Sub.fromJson(e);
-      debugPrint(sub.name);
       labelList[category].list.add(sub);
     }).toList();
 
@@ -113,9 +118,9 @@ class Label {
     this.list,
   });
 
-  final String title; //这个参数是分类名称
-  final int category; //这个适用于网络请求的参数，获取不同分类列表
-  final List list;
+  String title; //这个参数是分类名称
+  int category; //这个适用于网络请求的参数，获取不同分类列表
+  List list;
 }
 
 List<Label> labelList = <Label>[
