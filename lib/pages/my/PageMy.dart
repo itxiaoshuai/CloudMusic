@@ -18,7 +18,8 @@ class MyPage extends StatefulWidget {
   State<StatefulWidget> createState() => _MyPageState();
 }
 
-class _MyPageState extends State<MyPage> with SingleTickerProviderStateMixin,  AutomaticKeepAliveClientMixin {
+class _MyPageState extends State<MyPage>
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   PlaylistDetail playlist;
   TabController tabController;
 
@@ -283,7 +284,44 @@ class _UserDetailAppBar extends StatelessWidget {
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-//                Spacer(),
+                Gaps.vGap24,
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Container(
+                          width: 56,
+                          height: 56,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                    Gaps.hGap10,
+                    Expanded(
+                      child: Text('登录立享手机电脑多端同步'),
+                    ),
+                    Gaps.hGap10,
+                    Container(
+                      padding:
+                          EdgeInsets.only(left: 5, right: 5, top: 0, bottom: 0),
+                      child: Text(
+                        '立即登录',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.white,
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle, // 默认值也是矩形
+                        borderRadius: BorderRadius.circular((30.0)), // 圆角度
+                        border: Border.all(color: Colors.grey, width: 0.5),
+                      ),
+                    ),
+                  ],
+                ),
+                Spacer(),
                 _buildMenu(context),
               ]),
         ),
