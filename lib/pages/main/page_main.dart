@@ -34,8 +34,7 @@ class _MainPageState extends State<MainPage>
     return Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-          image: NetworkImage(
-              'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
+          image: AssetImage('images/icon_bg_my.png'),
           fit: BoxFit.cover,
         )),
         child: Scaffold(
