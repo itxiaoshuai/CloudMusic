@@ -136,30 +136,30 @@ const List<Choice> choices = const <Choice>[
     categoryId: 1,
   ),
   const Choice(
-    title: '精品',
+    title: '官方',
     categoryId: 2,
   ),
   const Choice(
-    title: '华语',
+    title: '精品',
     categoryId: 3,
   ),
   const Choice(
-    title: '流行',
+    title: '华语',
     categoryId: 4,
   ),
   const Choice(
-    title: '电子',
+    title: '流行',
     categoryId: 5,
   ),
   const Choice(
-    title: '诗歌散文',
+    title: '轻音乐',
     categoryId: 6,
   ),
   const Choice(
-    title: '古风',
+    title: '摇滚',
     categoryId: 7,
   ),
   const Choice(
-    title: '摇滚',
+    title: '民谣',
   ),
 ];

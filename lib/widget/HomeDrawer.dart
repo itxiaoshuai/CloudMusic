@@ -7,6 +7,7 @@ import 'package:flutter_app/base/res/gaps.dart';
 import 'package:flutter_app/data/protocol/user_info.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:marquee/marquee.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'item/DrawerListItem.dart';
 
@@ -40,7 +41,7 @@ class _HomeDrawerState extends State {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+//    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     return Drawer(
       child: Scaffold(
           body: Column(

@@ -52,7 +52,7 @@ class LoginMainPage extends StatelessWidget {
                                 } else {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (BuildContext context) {
-                                    return PhoneLoginPage();//手机号登入
+                                    return PhoneLoginPage(); //手机号登入
                                   }));
                                 }
                               },
@@ -182,14 +182,14 @@ class _SwitchCheckBoxState extends State<SwitchCheckBoxState> {
 
   final TapGestureRecognizer serviceRecognizer = TapGestureRecognizer();
   final TapGestureRecognizer privacyRecognizer = TapGestureRecognizer();
-
+  final TapGestureRecognizer childPrivacyRecognizer = TapGestureRecognizer();
   void initState() {
     super.initState();
     serviceRecognizer.onTap = () {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (BuildContext context) {
         return WebViewPage(
-          "http://music.163.com/html/web2/service.html",
+          "https://st.music.163.com/official-terms/service",
           title: "网易云音乐服务条款",
         );
       }));
@@ -198,8 +198,17 @@ class _SwitchCheckBoxState extends State<SwitchCheckBoxState> {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (BuildContext context) {
         return WebViewPage(
-          "http://corp.163.com/gb/legal.html",
-          title: "NetEase,Inc",
+          "https://st.music.163.com/official-terms",
+          title: "网易云音乐隐私政策",
+        );
+      }));
+    };
+    childPrivacyRecognizer.onTap = () {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (BuildContext context) {
+        return WebViewPage(
+          "https://st.music.163.com/official-terms",
+          title: "网易云音乐隐私政策",
         );
       }));
     };
@@ -219,13 +228,22 @@ class _SwitchCheckBoxState extends State<SwitchCheckBoxState> {
                   style: TextStyle(fontSize: 10.0, color: Colors.white),
                   recognizer: serviceRecognizer),
               TextSpan(
-                text: '和',
+                text: ' ',
                 style: TextStyle(fontSize: 9.0, color: Colors.white70),
               ),
               TextSpan(
                 text: '《隐私政策》',
                 style: TextStyle(fontSize: 10.0, color: Colors.white),
                 recognizer: privacyRecognizer,
+              ),
+              TextSpan(
+                text: ' ',
+                style: TextStyle(fontSize: 9.0, color: Colors.white70),
+              ),
+              TextSpan(
+                text: '《儿童隐私政策》',
+                style: TextStyle(fontSize: 10.0, color: Colors.white),
+                recognizer: childPrivacyRecognizer,
               ),
             ],
           ),

@@ -57,11 +57,12 @@ class _MainPageState extends State<MainPage>
               elevation: 0,
               //appbar的阴影
               title: TabBar(
+                labelPadding: EdgeInsets.only(left: 0, right: 0),
                 indicatorSize: TabBarIndicatorSize.tab,
-                isScrollable: true,
+                isScrollable: false,
                 labelStyle:
-                    TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                unselectedLabelStyle: TextStyle(fontSize: 10),
+                    TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                unselectedLabelStyle: TextStyle(fontSize: 14),
                 indicator: const BoxDecoration(),
                 controller: _tabController,
                 tabs: <Widget>[
@@ -92,6 +93,9 @@ class _MainPageState extends State<MainPage>
             )));
   }
 
+  get _drawer => Drawer(
+        child: Text('This is Drawer'),
+      );
   @override
   bool get wantKeepAlive => true; //必须重写
 }
