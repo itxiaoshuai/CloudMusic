@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:marquee_flutter/marquee_flutter.dart';
+import 'package:marquee_text/marquee_direction.dart';
+import 'package:marquee_text/marquee_text.dart';
+
 
 class WebViewPage extends StatefulWidget {
   final flutterWebviewPlugin = FlutterWebviewPlugin();
@@ -35,9 +37,13 @@ class _WebViewPage extends State<WebViewPage> {
     return WebviewScaffold(
       url: widget.url,
       appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: TextStyle(fontSize: 16.0),
+        title: MarqueeText(
+          text: widget.title,
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.white,
+          ),
+          speed: 5,
         ),
       ),
     );

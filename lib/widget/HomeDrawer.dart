@@ -2,12 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_app/base/res/gaps.dart';
 import 'package:flutter_app/data/protocol/user_info.dart';
 import 'package:flutter_app/pages/login/LoginMainPage.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:marquee/marquee.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'item/DrawerListItem.dart';
 
@@ -70,20 +67,20 @@ class DrawerCenter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        DrawerListItem(image: "images/ticket.png", text: "听歌识曲"),
+        DrawerListItem(image: "images/drawer_music.png", text: "听歌识曲"),
         DrawerListItem(image: "images/ticket.png", text: "演出"),
         DrawerListItem(image: "images/shopping_cart.png", text: "商城"),
         DrawerListItem(image: "images/game.png", text: "游戏推荐"),
         DrawerListItem(image: "images/location.png", text: "附近的人"),
         DrawerListItem(image: "images/pocket_ringtone.png", text: "口袋彩铃"),
         Gaps.line2,
-        DrawerListItem(image: "images/timing.png", text: "我的订单"),
+        DrawerListItem(image: "images/order.png", text: "我的订单"),
         DrawerListItem(image: "images/timing.png", text: "定时停止播放"),
-        DrawerListItem(image: "images/alarm.png", text: "扫一扫"),
+        DrawerListItem(image: "images/icon_qr.png", text: "扫一扫"),
         DrawerListItem(image: "images/alarm.png", text: "音乐闹铃"),
         DrawerListItem(image: "images/music_free_flow.png", text: "在线听歌免流量"),
         DrawerListItem(image: "images/coupon.png", text: "优惠券"),
-        DrawerListItem(image: "images/broadcast.png", text: "青少年模式"),
+        DrawerListItem(image: "images/bodyguard.png", text: "青少年模式"),
       ],
     );
   }

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:common_utils/common_utils.dart';
 import 'package:date_format/date_format.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -291,23 +292,40 @@ class ListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Container(
-          width: 40.0,
-          decoration: BoxDecoration(
-            //圆形渐变
-            color: Colors.white,
-            shape: BoxShape.circle,
-            gradient: const LinearGradient(colors: [
-              Colors.redAccent,
-              Colors.redAccent,
-              Colors.red,
-            ]),
-          ),
-          child: Image.asset(
-            image,
-            color: Colors.white,
-            width: 50,
-          ),
+        Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            Container(
+              width: 45.0,
+              decoration: BoxDecoration(
+                //圆形渐变
+                color: Colors.white,
+                shape: BoxShape.circle,
+                gradient: const LinearGradient(colors: [
+                  Colors.redAccent,
+                  Colors.redAccent,
+                  Colors.red,
+                ]),
+              ),
+              child: Image.asset(
+                image,
+                color: Colors.white,
+                width: 50,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 5),
+              child: text == '每日推荐'
+                  ? Text(
+                      '${DateUtil.formatDate(DateTime.now(), format: 'd')}',
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold),
+                    )
+                  : Text(''),
+            )
+          ],
         ),
         Container(
             margin: EdgeInsets.only(top: 5), //上边距
