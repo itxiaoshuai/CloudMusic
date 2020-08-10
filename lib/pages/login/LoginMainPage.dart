@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/base/ConstImg.dart';
 import 'package:flutter_app/base/StringResource.dart';
 import 'package:flutter_app/pages/login/page_phone_login.dart';
+import 'package:flutter_app/pages/login/page_register.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../WebViewPage.dart';
 
@@ -51,7 +52,7 @@ class LoginMainPage extends StatelessWidget {
                                 } else {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (BuildContext context) {
-                                    return PhoneLoginPage(); //手机号登入
+                                    return RegisterPage(); //手机号登入
                                   }));
                                 }
                               },
