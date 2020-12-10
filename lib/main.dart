@@ -1,19 +1,8 @@
 import 'dart:io';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/pages/find/PageFind.dart';
-import 'package:flutter_app/pages/find/widget/SpinKitWave.dart';
-import 'package:flutter_app/pages/login/LoginMainPage.dart';
-import 'package:flutter_app/pages/my/PageMy.dart';
+import 'package:flutter_app/base/route.dart';
 import 'package:flutter_app/route/routes.dart';
-import 'package:flutter_app/widget/HomeDrawer.dart';
-
-import 'package:flutter/animation.dart';
-import 'package:flutter_app/widget/loading/bar.dart';
-
-import 'base/route.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: routes,
-      onGenerateRoute: Router.generateRoute,
+      onGenerateRoute: Routers.generateRoute,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.red,

@@ -13,5 +13,6 @@ class TimeUtils {
       timeStr.write(hour);
       timeStr.write('小时前');
     } else {}
+    return timeStr.toString();
   }
 }

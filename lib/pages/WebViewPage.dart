@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:marquee_flutter/marquee_flutter.dart';
 
 class WebViewPage extends StatefulWidget {
   final flutterWebviewPlugin = FlutterWebviewPlugin();

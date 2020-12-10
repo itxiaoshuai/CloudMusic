@@ -15,7 +15,7 @@ class RouteName {
   static const String USER_HOME = 'user_home'; //主页
 }
 
-class Router {
+class Routers {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouteName.comment:

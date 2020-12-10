@@ -273,7 +273,7 @@ _buildMenu(BuildContext context) {
             onTap: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (BuildContext context) {
-                return UserDetailPage();
+                return UserDetailPage(userId: 1,);
               }));
             },
           ),

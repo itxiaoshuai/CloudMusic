@@ -43,6 +43,18 @@ class PageUserHomeState extends State<PageUserHome> {
             case LayoutState.LOADING:
               return ViewStateLoadingWidget();
               break;
+            case LayoutState.EMPTY:
+              // TODO: Handle this case.
+              break;
+            case LayoutState.ERROR:
+              // TODO: Handle this case.
+              break;
+            case LayoutState.UNAUTHORIZED:
+              // TODO: Handle this case.
+              break;
+            case LayoutState.SUCCESS:
+              // TODO: Handle this case.
+              break;
           }
           return NestedScrollDemoPage();
 //          return CustomWidget(model, widget.playlistId);
