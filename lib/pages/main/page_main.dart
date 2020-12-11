@@ -210,15 +210,17 @@ class _MainPageState extends State<MainPage>
 
   //点击导航项是要显示的页面
   final pages = [
-    ChildItemView("发现"),
-    ChildItemView("播客"),
-    ChildItemView("我的"),
-    ChildItemView("K歌"),
-    ChildItemView("云村")
+    FindPage(),
+    MyPage(),
+    MyPage(),
+    Center(child: Text('朋友')),
+    VideoPage(),
   ];
 
   Widget buildBottomTabScaffold() {
     return Scaffold(
+      appBar: AppBar(),
+      drawer: HomeDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         items: bottomNavItems,
         currentIndex: currentIndex,
@@ -239,7 +241,7 @@ class _MainPageState extends State<MainPage>
   Widget build(BuildContext context) {
     //构建页面
     return buildBottomTabScaffold();
-    return super.build(context);
+    // return super.build(context);
   }
 
   // @override

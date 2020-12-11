@@ -7,9 +7,14 @@ import 'package:flutter_app/base/res/styles.dart';
 import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/protocol/playlist_detail.dart';
 import 'package:flutter_app/net/huyi_android_api.dart';
+import 'package:flutter_app/route/routes.dart';
+import 'package:flutter_app/widget/HomeDrawer.dart';
 import 'package:flutter_app/widget/base_song_img_item.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
+import 'package:flutter_app/widget/item/menu_item.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+
+import '../../r.dart';
 
 List widgets = [];
 
@@ -42,13 +47,108 @@ class _MyPageState extends State<MyPage>
     setState(() {});
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return _DetailPage();
+  //底部导航栏显示的内容
+  final List<Widget> bottomNavItems = [
+    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "本地/下载"),
+    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "云盘"),
+    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "已购"),
+    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "最近播放"),
+    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "我的好友"),
+    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "收藏和赞"),
+    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "我的播客"),
+  ];
+
+  _buildMenu(BuildContext context) {
+    return Card(
+      elevation: 10.0,
+      margin: EdgeInsets.all(10),
+      child: GridView.count(
+        shrinkWrap: true,
+        //水平子Widget之间间距
+        crossAxisSpacing: 10.0,
+        //垂直子Widget之间间距
+        //GridView内边距
+        //一行的Widget数量
+        crossAxisCount: 4,
+        //子Widget列表
+        children: bottomNavItems,
+      ),
+    );
   }
 
   @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          _buildMenu(context),
+        ],
+      ),
+    );
+
+    return super.build(context);
+  }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return _DetailPage();
+  // }
+
+  @override
   bool get wantKeepAlive => true;
+}
+
+//我的页面应用模块
+class MyPageApplication extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _MyPageApplicationState();
+}
+
+class _MyPageApplicationState extends State<MyPage> {
+  List<String> getDataList() {
+    List<String> list = [];
+    for (int i = 0; i < 100; i++) {
+      list.add(i.toString());
+    }
+    return list;
+  }
+
+  List<Widget> getWidgetList() {
+    return getDataList().map((item) => getItemContainer(item)).toList();
+  }
+
+  Widget getItemContainer(String item) {
+    return Container(
+      width: 5.0,
+      height: 5.0,
+      alignment: Alignment.center,
+      child: Text(
+        item,
+        style: TextStyle(color: Colors.white, fontSize: 20),
+      ),
+      color: Colors.blue,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: GridView.count(
+        //水平子Widget之间间距
+        crossAxisSpacing: 10.0,
+        //垂直子Widget之间间距
+        mainAxisSpacing: 30.0,
+        //GridView内边距
+        padding: EdgeInsets.all(10.0),
+        //一行的Widget数量
+        crossAxisCount: 2,
+        //子Widget宽高比例
+        childAspectRatio: 2.0,
+        //子Widget列表
+        children: getWidgetList(),
+      ),
+    );
+  }
 }
 
 class _DetailPage extends StatelessWidget {
