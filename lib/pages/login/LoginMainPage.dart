@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/base/ConstImg.dart';
 import 'package:flutter_app/base/StringResource.dart';
 import 'package:flutter_app/pages/login/page_phone_login.dart';
+import 'package:flutter_app/pages/login/page_register.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../WebViewPage.dart';
 
@@ -44,15 +45,14 @@ class LoginMainPage extends StatelessWidget {
                                 if (visible) {
                                   Fluttertoast.showToast(
                                       msg:
-                                          "请先勾选同意\"" "用户协议\"" "和\"" "隐私政策\"" "",
+                                          "请先勾选同意 《用户协议》 《隐私政策》 《儿童隐私政策》",
                                       toastLength: Toast.LENGTH_SHORT,
-                                      gravity: ToastGravity.CENTER,
                                       timeInSecForIos: 1,
                                       textColor: Colors.white);
                                 } else {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (BuildContext context) {
-                                    return PhoneLoginPage(); //手机号登入
+                                    return RegisterPage(); //手机号登入
                                   }));
                                 }
                               },
@@ -207,8 +207,8 @@ class _SwitchCheckBoxState extends State<SwitchCheckBoxState> {
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (BuildContext context) {
         return WebViewPage(
-          "https://st.music.163.com/official-terms",
-          title: "网易云音乐隐私政策",
+          "https://m.yuedu.163.com/special/0021982C/new_child_policy.html",
+          title: "网易云音乐儿童个人信息保护规则及监护人须知",
         );
       }));
     };

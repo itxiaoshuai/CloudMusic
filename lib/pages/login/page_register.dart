@@ -4,12 +4,12 @@ import 'package:flutter_app/data/repository/music_repository.dart';
 import 'package:flutter_app/pages/main/page_main.dart';
 
 
-class PhoneLoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  _PhoneLoginPageState createState() => _PhoneLoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _PhoneLoginPageState extends State<PhoneLoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   String phone;
   String password;
 
@@ -27,14 +27,11 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
               padding: EdgeInsets.only(bottom: 20),
               child: _inputStyle(
                   TextInputType.number, "+86 请输入手机号码", Icons.phone_android,
-                  (account) {
-                this.phone = account;
-              }, false),
+                      (account) {
+                    this.phone = account;
+                  }, false),
             ),
-            _inputStyle(TextInputType.text, "请输入密码", Icons.lock_outline,
-                (password) {
-              this.password = password;
-            }, true),
+
             Container(
               margin: EdgeInsets.only(top: 32),
               child: FlatButton(
@@ -73,7 +70,7 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.black26),
         enabledBorder:
-            UnderlineInputBorder(borderSide: BorderSide(color: Colors.black26)),
+        UnderlineInputBorder(borderSide: BorderSide(color: Colors.black26)),
       ),
       obscureText: obscureText,
       cursorColor: Theme.of(context).primaryColor,

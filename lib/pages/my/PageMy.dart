@@ -364,8 +364,9 @@ class VerticalItem extends StatelessWidget {
       children: <Widget>[
         Image.asset(
           image,
-          color: Colors.black,
+          color: Colors.white,
           width: 20,
+          height: 30,
         ),
         Container(
             margin: EdgeInsets.only(top: 5), //上边距
@@ -389,7 +390,7 @@ class Menu {
 const List<Menu> videoCategoryList = const <Menu>[
   const Menu(
     title: '本地音乐 ',
-    img: 'images/album/album_share.png',
+    img: 'images/音乐.png',
     path: '',
   ),
   const Menu(
@@ -404,7 +405,7 @@ const List<Menu> videoCategoryList = const <Menu>[
   ),
   const Menu(
     title: '我的收藏 ',
-    img: 'images/album/album_share.png',
+    img: 'images/setting.png',
     path: '',
   ),
   const Menu(

@@ -31,7 +31,7 @@ dependencies:
   build_runner: ^1.4.0
   json_serializable: ^3.0.0
   cached_network_image: ^2.2.0+1
-  fluttertoast: ^3.1.0
+  fluttertoast: ^3.0.1
   flutter_webview_plugin: ^0.3.5
   #  一组加载指示器
   flutter_spinkit: "^3.1.0"
@@ -43,6 +43,7 @@ dependencies:
   common_utils: ^1.2.1
   chewie: ^0.9.10
   video_player: ^0.10.11+2
+  marquee_text: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
