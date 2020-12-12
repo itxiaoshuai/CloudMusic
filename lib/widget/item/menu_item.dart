@@ -7,7 +7,7 @@ class MenuItem extends StatelessWidget {
   final String image;
   final String route;
 
-  MenuItem({this.image, this.text,this.route});
+  MenuItem({this.image, this.text, this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +16,7 @@ class MenuItem extends StatelessWidget {
         Navigator.of(context).pushNamed(route);
       },
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
             width: 40.0,
