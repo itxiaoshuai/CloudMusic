@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/ConstImg.dart';
+import 'package:flutter_app/base/res/colors.dart';
 import 'package:flutter_app/base/res/gaps.dart';
 import 'package:flutter_app/base/res/styles.dart';
 import 'package:flutter_app/data/api/apis.dart';
@@ -76,13 +77,278 @@ class _MyPageState extends State<MyPage>
     );
   }
 
+  _buildHead(BuildContext context) {
+    return Container(
+      child: Row(
+        children: [
+          Container(
+            height: 50,
+            width: 50,
+            child: Icon(
+              Icons.person_outline_outlined,
+              size: 30,
+            ),
+            decoration: new BoxDecoration(
+              border: new Border.all(color: Colors.white, width: 2), // 边色与边宽度
+              color: Colors.redAccent[50], // 底色
+              //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
+              shape: BoxShape.circle, // 默认值也是矩形
+              // borderRadius: new BorderRadius.circular((20.0)), // 圆角度
+            ),
+          ),
+          Text('立即登入'),
+          Icon(
+            Icons.arrow_forward_ios,
+            size: 15,
+          )
+        ],
+      ),
+    );
+  }
+
+  _buildMusicLike(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        // 底色
+        //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
+        shape: BoxShape.rectangle,
+        // 默认值也是矩形
+        borderRadius: BorderRadius.circular((8.0)), // 圆角度
+      ),
+      margin: EdgeInsets.only(left: 15, right: 15),
+      child: Row(
+        children: [
+          Container(
+              width: 50,
+              height: 50,
+              child: Icon(
+                Icons.ac_unit_outlined,
+                size: 30,
+                color: Colors.grey[50],
+              ),
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                // 底色
+                shape: BoxShape.rectangle,
+                // 默认值也是矩形
+                borderRadius: BorderRadius.circular((8.0)), // 圆角度
+              )),
+          Gaps.hGap10,
+          Column(
+            //左对齐
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('我喜欢的音乐'),
+              Text('0首'),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  _buildTable(BuildContext context) {
+    return Container(
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //左对齐
+      children: [
+        Container(
+          height: 25,
+          child: Stack(
+            children: [
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    width: 75,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular((20.0)),
+                      //圆形渐变
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      gradient: const LinearGradient(colors: [
+                        Colors.redAccent,
+                        Colors.white,
+                      ]),
+                    ),
+                  )),
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  '创建歌单',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          color: Colours.line,
+          width: 1,
+          height: 20,
+        ),
+        Container(
+          height: 25,
+          child: Stack(
+            children: [
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    width: 75,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular((20.0)),
+                      //圆形渐变
+                      color: Colors.white,
+                      shape: BoxShape.rectangle,
+                      gradient: const LinearGradient(colors: [
+                        Colors.redAccent,
+                        Colors.white,
+                      ]),
+                    ),
+                  )),
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  '收藏歌单',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ));
+  }
+
+  _buildBottomListWidget(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            // 底色
+            //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
+            shape: BoxShape.rectangle,
+            // 默认值也是矩形
+            borderRadius: BorderRadius.circular((8.0)), // 圆角度
+          ),
+          margin: EdgeInsets.only(left: 15, right: 15),
+          child: Container(
+            padding: EdgeInsets.all(15),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //左对齐
+                  children: [
+                    Text('创建歌单'),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Icon(
+                            Icons.add,
+                            size: 30,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: Icon(
+                            Icons.more_vert,
+                            size: 30,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Gaps.vGap15,
+                Row(
+                  children: [
+                    Container(
+                        child: Icon(
+                          Icons.add,
+                          size: 30,
+                          color: Colors.grey,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          // 底色
+                          //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
+                          shape: BoxShape.rectangle,
+                          // 默认值也是矩形
+                          borderRadius: BorderRadius.circular((8.0)), // 圆角度
+                        )),
+                    Text('导入外部歌曲'),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            // 底色
+            //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
+            shape: BoxShape.rectangle,
+            // 默认值也是矩形
+            borderRadius: BorderRadius.circular((8.0)), // 圆角度
+          ),
+          margin: EdgeInsets.only(left: 15, right: 15, top: 10),
+          child: Container(
+            padding: EdgeInsets.all(15),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //左对齐
+                  children: [
+                    Text('收藏歌单'),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Icon(
+                            Icons.more_vert,
+                            size: 30,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Gaps.vGap15,
+                Text('暂无收藏歌曲'),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          _buildMenu(context),
-        ],
+    return Container(
+      color: Colors.grey[100],
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            _buildHead(context),
+            _buildMenu(context),
+            _buildMusicLike(context),
+            _buildTable(context),
+            _buildBottomListWidget(context),
+          ],
+        ),
       ),
     );
 
