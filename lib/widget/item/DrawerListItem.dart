@@ -31,6 +31,11 @@ class DrawerListItem extends StatelessWidget {
                   style: TextStyle(color: Colors.black87, fontSize: 14),
                 ),
               ),
+              Spacer(), //使用Spacer自动填充
+              Icon(
+                Icons.keyboard_arrow_right_rounded,
+                size: 15,
+              ),
             ],
           ),
         ),

@@ -36,132 +36,290 @@ class _HomeDrawerState extends State {
     }
   }
 
+  _buildDrawerVIP(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      child: Container(
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          //圆形渐变
+          color: Color(0xFF999999),
+          shape: BoxShape.rectangle,
+          // gradient: LinearGradient(
+          //   stops: [0.0,  1.0],
+          //   // begin: FractionalOffset.topCenter,
+          //   // end: FractionalOffset.bottomCenter,// 10% of the width, so there are ten blinds.
+          //   colors: [
+          //     const Color(0xFF999999),
+          //
+          //     const Color(0xFF999999),
+          //   ], // whitish to gray
+          // ),
+        ),
+        child: Column(
+          children: [
+            Column(
+              children: [
+                Row(
+                  crossAxisAlignment:CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '开通黑胶VIP',
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            Text('立享超17项专属特权',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle1
+                                    .copyWith(
+                                        color: Colors.grey[100],
+                                        fontWeight: FontWeight.w100,
+                                        fontSize: 10)),
+                            Icon(
+                              Icons.keyboard_arrow_right_rounded,
+                              size: 20,
+                              color: Colors.grey[400],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    Container(
+                      padding:
+                          EdgeInsets.only(top: 2, bottom: 2, left: 6, right: 6),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white, width: 0.5),
+                        shape: BoxShape.rectangle,
+                        // 默认值也是矩形
+                        borderRadius: BorderRadius.circular((20.0)), // 圆角度
+                      ),
+                      margin: EdgeInsets.only(
+                        left: 10,
+                      ),
+                      child: Text(
+                        '会员中心',
+                        style: Theme.of(context).textTheme.subtitle1.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w100,
+                            fontSize: 12),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+            Gaps.vGap4,
+            Gaps.line,
+            Gaps.vGap4,
+            Row(
+              children: [
+                Text('黑胶VIP仅5元！ 每天低至0.16...',
+                    style: Theme.of(context).textTheme.subtitle1.copyWith(
+                        color: Colors.grey[100],
+                        fontWeight: FontWeight.w100,
+                        fontSize: 10)),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _buildMusicLike(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      child: Column(
+        children: [
+          DrawerListItem(image: "images/drawer_music.png", text: "我的消息"),
+          Gaps.line,
+          DrawerListItem(image: "images/cloud_center.png", text: "云贝中心"),
+        ],
+      ),
+    );
+  }
+
+  _buildMusicService(BuildContext context) {
+    return ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        child: Container(
+          child: Column(
+            children: [
+              DrawerListItem(image: "images/ticket.png", text: "云村有票"),
+              DrawerListItem(image: "images/shopping_cart.png", text: "商城"),
+              DrawerListItem(image: "images/game.png", text: "游戏专区"),
+              DrawerListItem(image: "images/pocket_ringtone.png", text: "口袋彩铃"),
+            ],
+          ),
+        ));
+  }
+
+  _buildMusicOther(BuildContext context) {
+    return ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        child: Container(
+          child: Column(
+            children: [
+              DrawerListItem(image: "images/setting.png", text: "设置"),
+              DrawerListItem(image: "images/night_mode.png", text: "夜间模式"),
+              DrawerListItem(image: "images/timing.png", text: "定时关闭"),
+              DrawerListItem(image: "images/drawer_skin.png", text: "个性装扮"),
+              DrawerListItem(image: "images/ticket.png", text: "边听边存"),
+              DrawerListItem(
+                  image: "images/music_free_flow.png", text: "在线听歌免流量"),
+              DrawerListItem(image: "images/game.png", text: "音乐黑名单"),
+              DrawerListItem(image: "images/bodyguard.png", text: "青少年模式"),
+              DrawerListItem(image: "images/alarm.png", text: "音乐闹钟"),
+            ],
+          ),
+        ));
+  }
+
+  _buildDrawerBottom(BuildContext context) {
+    return ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        child: Container(
+          child: Column(
+            children: [
+              DrawerListItem(image: "images/order.png", text: "我的订单"),
+              DrawerListItem(image: "images/coupon.png", text: "优惠券"),
+              DrawerListItem(image: "images/help.png", text: "帮助与反馈"),
+              DrawerListItem(image: "images/drawer_skin.png", text: "分享网易云音乐"),
+              DrawerListItem(image: "images/about.png", text: "关于"),
+            ],
+          ),
+        ));
+  }
+
+  _buildDrawerBottomButton(BuildContext context) {
+    return ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        child: Container(
+          child: Material(
+            color: Colors.white,
+            child: InkWell(
+              onTap: () {},
+              child: Container(
+                padding: EdgeInsets.only(left: 15, right: 10),
+                height: 45.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(left: 10),
+                      child: Text(
+                        '关于云音乐',
+                        style: TextStyle(color: Colors.redAccent, fontSize: 16),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
 //    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     return Drawer(
       child: Scaffold(
-          body: Column(
-        children: <Widget>[
-          Flexible(
-            flex: 1,
-            child: Container(
-                color: Colors.white,
-                alignment: Alignment.center,
-                child: ListView(
-                  children: [
-                    DrawerTopLogin(),
-                    DrawerCenter(),
-                  ],
-                )),
+          backgroundColor: Colors.grey[100],
+          appBar: AppBar(
+            elevation: 0,
+            //去掉阴影
+            backgroundColor: Colors.grey[100],
+            automaticallyImplyLeading: false,
+            title: Container(
+              child: DrawerAppBar(),
+            ),
+            centerTitle: false,
+            actions: <Widget>[
+              IconButton(
+                icon: Image.asset(
+                  'images/icon_qr.png',
+                  width: 24,
+                ),
+                onPressed: () {},
+              ),
+            ],
           ),
-          DrawerBottom(),
-        ],
-      )),
+          body: Column(
+            children: <Widget>[
+              Flexible(
+                flex: 1,
+                child: Container(
+                    padding: EdgeInsets.only(
+                      left: 15,
+                      right: 15,
+                    ),
+                    child: ListView(
+                      children: [
+                        _buildDrawerVIP(context),
+                        Gaps.vGap10,
+                        _buildMusicLike(context),
+                        Gaps.vGap10,
+                        _buildMusicService(context),
+                        Gaps.vGap10,
+                        _buildMusicOther(context),
+                        Gaps.vGap10,
+                        _buildDrawerBottom(context),
+                        Gaps.vGap10,
+                        _buildDrawerBottomButton(context),
+                        Gaps.vGap30,
+                        // DrawerTopLogin(),
+                      ],
+                    )),
+              ),
+              // DrawerBottom(),
+            ],
+          )),
     );
   }
 }
 
-class DrawerCenter extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        DrawerListItem(image: "images/drawer_music.png", text: "听歌识曲"),
-        DrawerListItem(image: "images/ticket.png", text: "演出"),
-        DrawerListItem(image: "images/shopping_cart.png", text: "商城"),
-        DrawerListItem(image: "images/game.png", text: "游戏推荐"),
-        DrawerListItem(image: "images/location.png", text: "附近的人"),
-        DrawerListItem(image: "images/pocket_ringtone.png", text: "口袋彩铃"),
-        Gaps.line2,
-        DrawerListItem(image: "images/order.png", text: "我的订单"),
-        DrawerListItem(image: "images/timing.png", text: "定时停止播放"),
-        DrawerListItem(image: "images/icon_qr.png", text: "扫一扫"),
-        DrawerListItem(image: "images/alarm.png", text: "音乐闹铃"),
-        DrawerListItem(image: "images/music_free_flow.png", text: "在线听歌免流量"),
-        DrawerListItem(image: "images/coupon.png", text: "优惠券"),
-        DrawerListItem(image: "images/bodyguard.png", text: "青少年模式"),
-      ],
-    );
-  }
-}
-
-class DrawerBottom extends StatelessWidget {
+class DrawerAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Material(
-            child: InkWell(
-              onTap: () {},
-              child: Container(
-                height: 60,
-                margin: EdgeInsets.all(0.0),
-                child: Row(
-                  children: <Widget>[
-                    Image.asset(
-                      "images/night_mode.png",
-                      width: 18,
-                      height: 18,
-                      color: Colors.black,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text('夜间模式'),
-                  ],
-                ),
-              ),
+        children: [
+          Container(
+            height: 30,
+            width: 30,
+            child: Icon(
+              Icons.person_outline_outlined,
+              size: 20,
+              color: Colors.black,
+            ),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 2), // 边色与边宽度
+              color: Colors.redAccent[50], // 底色
+              //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
+              shape: BoxShape.circle, // 默认值也是矩形
+              // borderRadius: new BorderRadius.circular((20.0)), // 圆角度
             ),
           ),
-          Material(
-            child: InkWell(
-              onTap: () {},
-              child: Container(
-                height: 60,
-                margin: EdgeInsets.all(0.0),
-                child: Row(
-                  children: <Widget>[
-                    Image.asset(
-                      "images/setting.png",
-                      width: 18,
-                      height: 18,
-                      color: Colors.black,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text('设置'),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Material(
-            child: InkWell(
-              onTap: () {},
-              child: Container(
-                height: 60,
-                margin: EdgeInsets.all(0.0),
-                child: Row(
-                  children: <Widget>[
-                    Image.asset(
-                      "images/app_shut_down.png",
-                      width: 18,
-                      height: 18,
-                      color: Colors.black,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text('退出'),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          Gaps.hGap10,
+          Text('立即登录',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
+              )),
+          Icon(
+            Icons.arrow_forward_ios,
+            size: 10,
+            color: Colors.black,
+          )
         ],
       ),
     );

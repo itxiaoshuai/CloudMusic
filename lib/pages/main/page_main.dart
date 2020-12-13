@@ -221,6 +221,8 @@ class _MainPageState extends State<MainPage>
 
   Widget buildBottomTabScaffold() {
     return Scaffold(
+      //这里设置
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.black, //修改颜色
