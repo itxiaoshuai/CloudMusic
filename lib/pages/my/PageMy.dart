@@ -60,9 +60,17 @@ class _MyPageState extends State<MyPage>
   ];
 
   _buildMenu(BuildContext context) {
-    return Card(
-      elevation: 10.0,
-      margin: EdgeInsets.all(10),
+    return Container(
+      margin: EdgeInsets.only(left: 15, right: 15),
+      padding: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        // 底色
+        //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
+        shape: BoxShape.rectangle,
+        // 默认值也是矩形
+        borderRadius: BorderRadius.circular((8.0)), // 圆角度
+      ),
       child: GridView.count(
         shrinkWrap: true,
         //水平子Widget之间间距
@@ -79,8 +87,10 @@ class _MyPageState extends State<MyPage>
 
   _buildHead(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 20, ),
       child: Row(
         children: [
+          Gaps.hGap28,
           Container(
             height: 50,
             width: 50,
@@ -96,7 +106,8 @@ class _MyPageState extends State<MyPage>
               // borderRadius: new BorderRadius.circular((20.0)), // 圆角度
             ),
           ),
-          Text('立即登入'),
+          Gaps.hGap15,
+          Text('立即登录',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold)),
           Icon(
             Icons.arrow_forward_ios,
             size: 15,
@@ -117,7 +128,7 @@ class _MyPageState extends State<MyPage>
         // 默认值也是矩形
         borderRadius: BorderRadius.circular((8.0)), // 圆角度
       ),
-      margin: EdgeInsets.only(left: 15, right: 15),
+      margin: EdgeInsets.only(left: 15, right: 15,top: 15),
       child: Row(
         children: [
           Container(

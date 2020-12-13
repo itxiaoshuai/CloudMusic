@@ -1,19 +1,14 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/ConstImg.dart';
-import 'package:flutter_app/base/utils/utils.dart';
 import 'package:flutter_app/data/protocol/playlist_detail.dart';
 import 'package:flutter_app/model/play_list_model.dart';
 import 'package:flutter_app/pages/main/page_main.dart';
-import 'package:flutter_app/pages/playllist/item_music_list_track.dart';
 import 'package:flutter_app/provider/layout_state.dart';
 import 'package:flutter_app/provider/provider_widget.dart';
 import 'package:flutter_app/provider/view_state_widget.dart';
 import 'package:flutter_app/route/routes.dart';
-import 'package:flutter_app/widget/ListItemCustom.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 class PageUserHome extends StatefulWidget {
   PageUserHome(
@@ -183,7 +178,9 @@ class _PlaylistDetailHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlexibleDetailBar(
-//      background: PlayListHeaderBackground(imageUrl: 'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
+      background: PlayListHeaderBackground(
+          imageUrl:
+              'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
       content: _buildContent(context),
     );
   }

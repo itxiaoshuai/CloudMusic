@@ -221,7 +221,13 @@ class _MainPageState extends State<MainPage>
 
   Widget buildBottomTabScaffold() {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black, //修改颜色
+        ),
+        elevation: 0,//去掉阴影
+        backgroundColor: Colors.grey[100],
+      ),
       drawer: HomeDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         items: bottomNavItems,

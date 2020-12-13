@@ -18,12 +18,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       initialRoute: '/',
       routes: routes,
       onGenerateRoute: Routers.generateRoute,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        backgroundColor: Colors.grey[100],
+        // primarySwatch: Colors.grey[100],
       ),
     );
   }
