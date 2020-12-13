@@ -83,6 +83,10 @@ flutter:
   - images/day_mode.png
   - images/setting.png
   - images/app_shut_down.png
+  - images/about.png
+  - images/help.png
+  - images/cloud_center.png
+
 
   # 我的页面图片资源
   - images/my/shortcut_fm.png

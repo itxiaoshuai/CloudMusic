@@ -1,25 +1,17 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-/// Used with [TabBar.indicator] to draw a horizontal line below the
-/// selected tab.
-///
-/// The selected tab underline is inset from the tab's boundary by [insets].
-/// The [borderSide] defines the line's color and weight.
-///
-/// The [TabBar.indicatorSize] property can be used to define the indicator's
-/// bounds in terms of its (centered) widget with [TabIndicatorSize.label],
-/// or the entire tab with [TabIndicatorSize.tab].
-class MyUnderlineTabIndicator extends Decoration {
+/**************************** 以下为修改的源码部分 ******************************/
+
+// 默认高度从46改为40
+const double _kTabHeight = 40.0;
+const double _kTextAndIconTabHeight = 72.0;
+
+class RoundUnderlineTabIndicator extends Decoration {
   /// Create an underline style selected tab indicator.
   ///
   /// The [borderSide] and [insets] arguments must not be null.
-  const MyUnderlineTabIndicator({
-    this.borderSide = const BorderSide(width: 2.0, color: Colors.redAccent),
+  const RoundUnderlineTabIndicator({
+    this.borderSide = const BorderSide(width: 2.0, color: Colors.white),
     this.insets = EdgeInsets.zero,
   })  : assert(borderSide != null),
         assert(insets != null);
@@ -33,6 +25,9 @@ class MyUnderlineTabIndicator extends Decoration {
   /// tab indicator's bounds in terms of its (centered) tab widget with
   /// [TabIndicatorSize.label], or the entire tab with [TabIndicatorSize.tab].
   final EdgeInsetsGeometry insets;
+@override
+  // TODO: implement padding
+  EdgeInsetsGeometry get padding => super.padding;
 
   @override
   Decoration lerpFrom(Decoration a, double t) {
@@ -47,8 +42,8 @@ class MyUnderlineTabIndicator extends Decoration {
 
   @override
   Decoration lerpTo(Decoration b, double t) {
-    if (b is MyUnderlineTabIndicator) {
-      return MyUnderlineTabIndicator(
+    if (b is UnderlineTabIndicator) {
+      return UnderlineTabIndicator(
         borderSide: BorderSide.lerp(borderSide, b.borderSide, t),
         insets: EdgeInsetsGeometry.lerp(insets, b.insets, t),
       );
@@ -57,28 +52,34 @@ class MyUnderlineTabIndicator extends Decoration {
   }
 
   @override
-  _MyUnderlinePainter createBoxPainter([VoidCallback onChanged]) {
-    return _MyUnderlinePainter(this, onChanged);
+  _UnderlinePainter createBoxPainter([VoidCallback onChanged]) {
+    return _UnderlinePainter(this, onChanged);
   }
 }
 
-class _MyUnderlinePainter extends BoxPainter {
-  _MyUnderlinePainter(this.decoration, VoidCallback onChanged)
+class _UnderlinePainter extends BoxPainter {
+  _UnderlinePainter(this.decoration, VoidCallback onChanged)
       : assert(decoration != null),
         super(onChanged);
 
-  final MyUnderlineTabIndicator decoration;
+  final RoundUnderlineTabIndicator decoration;
 
   BorderSide get borderSide => decoration.borderSide;
+
   EdgeInsetsGeometry get insets => decoration.insets;
 
   Rect _indicatorRectFor(Rect rect, TextDirection textDirection) {
     assert(rect != null);
     assert(textDirection != null);
     final Rect indicator = insets.resolve(textDirection).deflateRect(rect);
-
+//    return Rect.fromLTWH(
+//      indicator.left,
+//      indicator.bottom - borderSide.width,
+//      indicator.width,
+//      borderSide.width,
+//    );
     //希望的宽度
-    double wantWidth = 20;
+    double wantWidth = 25;
     //取中间坐标
     double cw = (indicator.left + indicator.right) / 2;
     return Rect.fromLTWH(cw - wantWidth / 2,
@@ -93,7 +94,9 @@ class _MyUnderlinePainter extends BoxPainter {
     final TextDirection textDirection = configuration.textDirection;
     final Rect indicator =
         _indicatorRectFor(rect, textDirection).deflate(borderSide.width / 2.0);
-    final Paint paint = borderSide.toPaint()..strokeCap = StrokeCap.square;
+//    final Paint paint = borderSide.toPaint()..strokeCap = StrokeCap.square;
+    // 改为圆角
+    final Paint paint = borderSide.toPaint()..strokeCap = StrokeCap.round;
     canvas.drawLine(indicator.bottomLeft, indicator.bottomRight, paint);
   }
 }

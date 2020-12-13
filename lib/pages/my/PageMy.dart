@@ -14,7 +14,9 @@ import 'package:flutter_app/widget/base_song_img_item.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
 import 'package:flutter_app/widget/item/menu_item.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-
+import 'package:flutter_app/widget/RoundUnderlineTabIndicator.dart';
+import 'package:flutter_app/widget/CustomRRecTabIndicator.dart';
+import 'package:flutter_app/widget/CustomUnderlineTabIndicator.dart';
 import '../../r.dart';
 
 List widgets = [];
@@ -28,12 +30,22 @@ class _MyPageState extends State<MyPage>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   PlaylistDetail playlist;
   TabController tabController;
+  var tabs = <Tab>[];
 
   @override
   void initState() {
     super.initState();
-    this.tabController = TabController(length: 2, vsync: this);
+
     getSongListRecommend();
+    tabs = <Tab>[
+      Tab(
+        text: "创建歌单 ",
+      ),
+      Tab(
+        text: "收藏歌单",
+      ),
+    ];
+    this.tabController = TabController(length: tabs.length, vsync: this);
   }
 
   Future getSongListRecommend() async {
@@ -87,7 +99,9 @@ class _MyPageState extends State<MyPage>
 
   _buildHead(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20, ),
+      margin: EdgeInsets.only(
+        bottom: 20,
+      ),
       child: Row(
         children: [
           Gaps.hGap28,
@@ -107,7 +121,8 @@ class _MyPageState extends State<MyPage>
             ),
           ),
           Gaps.hGap15,
-          Text('立即登录',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold)),
+          Text('立即登录',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           Icon(
             Icons.arrow_forward_ios,
             size: 15,
@@ -128,7 +143,7 @@ class _MyPageState extends State<MyPage>
         // 默认值也是矩形
         borderRadius: BorderRadius.circular((8.0)), // 圆角度
       ),
-      margin: EdgeInsets.only(left: 15, right: 15,top: 15),
+      margin: EdgeInsets.only(left: 15, right: 15, top: 15),
       child: Row(
         children: [
           Container(
@@ -162,77 +177,26 @@ class _MyPageState extends State<MyPage>
 
   _buildTable(BuildContext context) {
     return Container(
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //左对齐
-      children: [
-        Container(
-          height: 25,
-          child: Stack(
-            children: [
-              Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    width: 75,
-                    height: 5,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular((20.0)),
-                      //圆形渐变
-                      color: Colors.white,
-                      shape: BoxShape.rectangle,
-                      gradient: const LinearGradient(colors: [
-                        Colors.redAccent,
-                        Colors.white,
-                      ]),
-                    ),
-                  )),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  '创建歌单',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          color: Colours.line,
-          width: 1,
-          height: 20,
-        ),
-        Container(
-          height: 25,
-          child: Stack(
-            children: [
-              Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    width: 75,
-                    height: 5,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular((20.0)),
-                      //圆形渐变
-                      color: Colors.white,
-                      shape: BoxShape.rectangle,
-                      gradient: const LinearGradient(colors: [
-                        Colors.redAccent,
-                        Colors.white,
-                      ]),
-                    ),
-                  )),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  '收藏歌单',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ));
+      padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+      // color: Colors.grey,
+      child: TabBar(
+        controller: tabController,
+        //可以和TabBarView使用同一个TabController
+        tabs: tabs,
+        indicatorSize: TabBarIndicatorSize.label,
+        indicator: CustomUnderlineTabIndicator(
+            insets: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 15),
+            borderSide: BorderSide(
+              width: 5,
+              color: Color(0xff00cdd7),
+            )),
+        isScrollable: false,
+        labelColor: Colors.black,
+        labelStyle: TextStyle(),
+        unselectedLabelColor: Colors.grey[600],
+        unselectedLabelStyle: TextStyle(),
+      ),
+    );
   }
 
   _buildBottomListWidget(BuildContext context) {
@@ -373,12 +337,6 @@ class _MyPageState extends State<MyPage>
 
   @override
   bool get wantKeepAlive => true;
-}
-
-//我的页面应用模块
-class MyPageApplication extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _MyPageApplicationState();
 }
 
 class _MyPageApplicationState extends State<MyPage> {

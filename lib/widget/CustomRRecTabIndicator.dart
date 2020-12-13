@@ -1,32 +1,27 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-/// Used with [TabBar.indicator] to draw a horizontal line below the
-/// selected tab.
-///
-/// The selected tab underline is inset from the tab's boundary by [insets].
-/// The [borderSide] defines the line's color and weight.
-///
-/// The [TabBar.indicatorSize] property can be used to define the indicator's
-/// bounds in terms of its (centered) widget with [TabIndicatorSize.label],
-/// or the entire tab with [TabIndicatorSize.tab].
-class MyUnderlineTabIndicator extends Decoration {
+class CustomRRecTabIndicator extends Decoration{
   /// Create an underline style selected tab indicator.
   ///
   /// The [borderSide] and [insets] arguments must not be null.
-  const MyUnderlineTabIndicator({
-    this.borderSide = const BorderSide(width: 2.0, color: Colors.redAccent),
+  const CustomRRecTabIndicator({
+    this.borderSide = const BorderSide(width: 2.0, color: Colors.white),
     this.insets = EdgeInsets.zero,
-  })  : assert(borderSide != null),
+    this.width,
+    this.radius,
+    this.color
+  }) : assert(borderSide != null),
         assert(insets != null);
 
   /// The color and weight of the horizontal line drawn below the selected tab.
   final BorderSide borderSide;
 
+  final double radius;
+
+  final double width;
+
+  final Color color;
   /// Locates the selected tab's underline relative to the tab's boundary.
   ///
   /// The [TabBar.indicatorSize] property can be used to define the
@@ -36,8 +31,8 @@ class MyUnderlineTabIndicator extends Decoration {
 
   @override
   Decoration lerpFrom(Decoration a, double t) {
-    if (a is UnderlineTabIndicator) {
-      return UnderlineTabIndicator(
+    if (a is CustomRRecTabIndicator) {
+      return CustomRRecTabIndicator(
         borderSide: BorderSide.lerp(a.borderSide, borderSide, t),
         insets: EdgeInsetsGeometry.lerp(a.insets, insets, t),
       );
@@ -47,8 +42,8 @@ class MyUnderlineTabIndicator extends Decoration {
 
   @override
   Decoration lerpTo(Decoration b, double t) {
-    if (b is MyUnderlineTabIndicator) {
-      return MyUnderlineTabIndicator(
+    if (b is CustomRRecTabIndicator) {
+      return CustomRRecTabIndicator(
         borderSide: BorderSide.lerp(borderSide, b.borderSide, t),
         insets: EdgeInsetsGeometry.lerp(insets, b.insets, t),
       );
@@ -57,17 +52,17 @@ class MyUnderlineTabIndicator extends Decoration {
   }
 
   @override
-  _MyUnderlinePainter createBoxPainter([VoidCallback onChanged]) {
-    return _MyUnderlinePainter(this, onChanged);
+  _UnderlinePainter createBoxPainter([ VoidCallback onChanged ]) {
+    return _UnderlinePainter(this, onChanged);
   }
 }
 
-class _MyUnderlinePainter extends BoxPainter {
-  _MyUnderlinePainter(this.decoration, VoidCallback onChanged)
+class _UnderlinePainter extends BoxPainter {
+  _UnderlinePainter(this.decoration, VoidCallback onChanged)
       : assert(decoration != null),
         super(onChanged);
 
-  final MyUnderlineTabIndicator decoration;
+  final CustomRRecTabIndicator decoration;
 
   BorderSide get borderSide => decoration.borderSide;
   EdgeInsetsGeometry get insets => decoration.insets;
@@ -77,12 +72,11 @@ class _MyUnderlinePainter extends BoxPainter {
     assert(textDirection != null);
     final Rect indicator = insets.resolve(textDirection).deflateRect(rect);
 
-    //希望的宽度
-    double wantWidth = 20;
+
     //取中间坐标
     double cw = (indicator.left + indicator.right) / 2;
-    return Rect.fromLTWH(cw - wantWidth / 2,
-        indicator.bottom - borderSide.width, wantWidth, borderSide.width);
+    return Rect.fromLTWH(cw - decoration.width / 2,
+        indicator.bottom - borderSide.width, decoration.width, borderSide.width);
   }
 
   @override
@@ -90,10 +84,12 @@ class _MyUnderlinePainter extends BoxPainter {
     assert(configuration != null);
     assert(configuration.size != null);
     final Rect rect = offset & configuration.size;
-    final TextDirection textDirection = configuration.textDirection;
-    final Rect indicator =
-        _indicatorRectFor(rect, textDirection).deflate(borderSide.width / 2.0);
-    final Paint paint = borderSide.toPaint()..strokeCap = StrokeCap.square;
-    canvas.drawLine(indicator.bottomLeft, indicator.bottomRight, paint);
+    final RRect rRect = RRect.fromRectAndRadius(rect,Radius.circular(decoration.radius));
+    canvas.drawRRect(rRect,Paint()..style =PaintingStyle.fill
+      ..color = decoration.color);
+
+
+
   }
+
 }
