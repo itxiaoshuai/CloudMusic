@@ -22,9 +22,9 @@ import 'package:flutter_app/widget/ListItemCustom.dart';
 import 'package:flutter_app/widget/base_song_img_item.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-
+import 'package:flutter_app/widget/SAppBarSearch.dart';
 import 'FutureBuilderPage.dart';
-
+import 'package:flutter_app/widget/HomeDrawer.dart';
 class FindPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _FindPageState();
@@ -81,6 +81,40 @@ class _FindPageState extends State<FindPage>
   @override
   Widget build(BuildContext context) {
     var i = 1; //排行榜名次
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        drawer: HomeDrawer(),
+        appBar: AppBar(
+
+          primary: true,//为false的时候会影响leading，actions、titile组件，导致向上偏移
+          textTheme: TextTheme(//设置AppBar上面各种字体主题色
+//            title: TextStyle(color: Colors.red),
+          ),
+          actionsIconTheme: IconThemeData(color: Colors.blue,opacity: 0.6),//设置导航右边图标的主题色，此时iconTheme对于右边图标颜色会失效
+          iconTheme: IconThemeData(color: Colors.black,opacity: 0.6),//设置AppBar上面Icon的主题颜色
+          brightness: Brightness.dark,//设置导航条上面的状态栏显示字体颜色
+          backgroundColor: Colors.amber,//设置背景颜色
+//          shape: CircleBorder(side: BorderSide(color: Colors.red, width: 5, style: BorderStyle.solid)),//设置appbar形状
+//          automaticallyImplyLeading: true,//在leading为null的时候失效
+          centerTitle: true,
+          title: Text('AppBar Demo'),
+          leading: IconButton(
+              icon: Icon(Icons.dehaze),
+              onPressed: (){
+                Scaffold.of(context).openDrawer();
+              }
+          ),
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.search), onPressed: (){print('search....');}),
+            IconButton(icon: Icon(Icons.history), onPressed: (){print('history....');}),
+          ],
+        ),
+      ),
+    );
+    // return Scaffold(
+    //   appBar: AppBar(),
+    // );
     return RefreshIndicator(
       onRefresh: () async {
         getHttp();
@@ -274,7 +308,9 @@ _buildMenu(BuildContext context) {
             onTap: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (BuildContext context) {
-                return UserDetailPage(userId: 1,);
+                return UserDetailPage(
+                  userId: 1,
+                );
               }));
             },
           ),

@@ -6,6 +6,17 @@ import 'package:flutter_app/base/CommonLoading.dart';
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    return Scaffold(appBar: AppBar(
+      actions: [
+            IconButton(
+              icon: Icon(Icons.mic,color: Colors.black87,),
+              onPressed: (){
+                 Scaffold.of(context).openDrawer();
+              },
+            ),
+      ],
+    ),);
     return MaterialApp(
       home: HomePage(),
     );

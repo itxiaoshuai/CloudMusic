@@ -4,9 +4,9 @@ import 'package:flutter_app/pages/my/MyApp.dart';
 import 'package:flutter_app/pages/my/PageMy.dart';
 import 'package:flutter_app/pages/my/StickyDemo.dart';
 import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
+import 'package:flutter_app/pages/podcast/PagePodcast.dart';
 import 'package:flutter_app/pages/video/VideoPage.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
-
 import 'ChildItemView.dart';
 
 class MainPage extends StatefulWidget {
@@ -212,8 +212,8 @@ class _MainPageState extends State<MainPage>
 
   //点击导航项是要显示的页面
   final pages = [
-    FindPage(),
-    StickyDemo(),
+    FindPage(),//发现
+    PagePodcast(), //播客
     MyPage(),
     MyApp(),
     VideoPage(),
@@ -223,13 +223,7 @@ class _MainPageState extends State<MainPage>
     return Scaffold(
       //这里设置
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black, //修改颜色
-        ),
-        elevation: 0,//去掉阴影
-        backgroundColor: Colors.grey[100],
-      ),
+
       drawer: HomeDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         items: bottomNavItems,
