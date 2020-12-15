@@ -95,7 +95,7 @@ class _FindPageState extends State<FindPage>
           children: <Widget>[
             FindBanner(bannerData: _bannerData),
             _buildMenu(context),
-            Image.asset(R.mipmap.dailySpecial),
+            Gaps.line,
             Container(
               height: 100, // 高度
               child: Swiper(
