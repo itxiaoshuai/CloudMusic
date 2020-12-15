@@ -20,11 +20,14 @@ import 'package:flutter_app/pages/radio/page_radio.dart';
 import 'package:flutter_app/pages/user/page_user_detail.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 import 'package:flutter_app/widget/base_song_img_item.dart';
+import 'package:flutter_app/widget/item/DrawerListItem.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_app/widget/SAppBarSearch.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'FutureBuilderPage.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
+
 class FindPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _FindPageState();
@@ -86,28 +89,68 @@ class _FindPageState extends State<FindPage>
       home: Scaffold(
         drawer: HomeDrawer(),
         appBar: AppBar(
-
-          primary: true,//为false的时候会影响leading，actions、titile组件，导致向上偏移
+          primary: true,
+          //为false的时候会影响leading，actions、titile组件，导致向上偏移
           textTheme: TextTheme(//设置AppBar上面各种字体主题色
 //            title: TextStyle(color: Colors.red),
-          ),
-          actionsIconTheme: IconThemeData(color: Colors.blue,opacity: 0.6),//设置导航右边图标的主题色，此时iconTheme对于右边图标颜色会失效
-          iconTheme: IconThemeData(color: Colors.black,opacity: 0.6),//设置AppBar上面Icon的主题颜色
-          brightness: Brightness.dark,//设置导航条上面的状态栏显示字体颜色
-          backgroundColor: Colors.amber,//设置背景颜色
+              ),
+          actionsIconTheme: IconThemeData(color: Colors.blue, opacity: 0.6),
+          //设置导航右边图标的主题色，此时iconTheme对于右边图标颜色会失效
+          iconTheme: IconThemeData(color: Colors.black, opacity: 0.6),
+          //设置AppBar上面Icon的主题颜色
+          brightness: Brightness.light,
+          //设置导航条上面的状态栏显示字体颜色
+          backgroundColor: Colors.white,
+          //设置背景颜色
 //          shape: CircleBorder(side: BorderSide(color: Colors.red, width: 5, style: BorderStyle.solid)),//设置appbar形状
 //          automaticallyImplyLeading: true,//在leading为null的时候失效
           centerTitle: true,
-          title: Text('AppBar Demo'),
+          title: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+            child: Material(
+              color: Colors.grey[100],
+              child: InkWell(
+                onTap: () {
+                  Fluttertoast.showToast(
+                      msg:
+                      "搜索",
+                      toastLength: Toast.LENGTH_SHORT,
+                      timeInSecForIos: 1,
+                      textColor: Colors.black12,gravity:ToastGravity.CENTER );
+                },
+                child: Container(
+                  padding: EdgeInsets.only(left: 15, right: 10),
+                  height: 45.0,
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.search,
+                        size: 25,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 10),
+                        child: Text(
+                          '大家都在搜王一博',
+                          style: TextStyle(color: Colors.black87, fontSize: 14),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
           leading: IconButton(
               icon: Icon(Icons.dehaze),
-              onPressed: (){
+              onPressed: () {
                 Scaffold.of(context).openDrawer();
-              }
-          ),
+              }),
           actions: <Widget>[
-            IconButton(icon: Icon(Icons.search), onPressed: (){print('search....');}),
-            IconButton(icon: Icon(Icons.history), onPressed: (){print('history....');}),
+            IconButton(
+                icon: Image.asset('images/drawer_music.png',color: Colors.black,),
+                onPressed: () {
+
+                }),
           ],
         ),
       ),
@@ -174,6 +217,7 @@ class _FindPageState extends State<FindPage>
         ],
       ),
     );
+    return super.build(context);
   }
 
   @override
