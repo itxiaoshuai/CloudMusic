@@ -78,7 +78,7 @@ _background(BuildContext context) {
         children: <Widget>[
           Expanded(
             child: Container(
-              color: Theme.of(context).primaryColor, //这里使用主题色,随主题切换变化
+              // color: Theme.of(context).primaryColor, //这里使用主题色,随主题切换变化
             ),
           )
         ],

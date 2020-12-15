@@ -18,6 +18,7 @@ import 'package:flutter_app/pages/my/PageMy.dart';
 import 'package:flutter_app/pages/page_songlist.dart';
 import 'package:flutter_app/pages/radio/page_radio.dart';
 import 'package:flutter_app/pages/user/page_user_detail.dart';
+import 'package:flutter_app/pages/video/VideoPage.dart';
 import 'package:flutter_app/widget/ListItemCustom.dart';
 import 'package:flutter_app/widget/base_song_img_item.dart';
 import 'package:flutter_app/widget/item/DrawerListItem.dart';
@@ -25,6 +26,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_app/widget/SAppBarSearch.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../../r.dart';
 import 'FutureBuilderPage.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
 
@@ -88,76 +90,64 @@ class _FindPageState extends State<FindPage>
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         drawer: HomeDrawer(),
-        appBar: AppBar(
-          primary: true,
-          //为false的时候会影响leading，actions、titile组件，导致向上偏移
-          textTheme: TextTheme(//设置AppBar上面各种字体主题色
-//            title: TextStyle(color: Colors.red),
-              ),
-          actionsIconTheme: IconThemeData(color: Colors.blue, opacity: 0.6),
-          //设置导航右边图标的主题色，此时iconTheme对于右边图标颜色会失效
-          iconTheme: IconThemeData(color: Colors.black, opacity: 0.6),
-          //设置AppBar上面Icon的主题颜色
-          brightness: Brightness.light,
-          //设置导航条上面的状态栏显示字体颜色
-          backgroundColor: Colors.white,
-          //设置背景颜色
-//          shape: CircleBorder(side: BorderSide(color: Colors.red, width: 5, style: BorderStyle.solid)),//设置appbar形状
-//          automaticallyImplyLeading: true,//在leading为null的时候失效
-          centerTitle: true,
-          title: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(30)),
-            child: Material(
-              color: Colors.grey[100],
-              child: InkWell(
-                onTap: () {
-                  Fluttertoast.showToast(
-                      msg:
-                      "搜索",
-                      toastLength: Toast.LENGTH_SHORT,
-                      timeInSecForIos: 1,
-                      textColor: Colors.black12,gravity:ToastGravity.CENTER );
+        appBar: PageFindAppBar(),
+        body: ListView(
+          children: <Widget>[
+            FindBanner(bannerData: _bannerData),
+            _buildMenu(context),
+            Image.asset(R.mipmap.dailySpecial),
+            Container(
+              height: 100, // 高度
+              child: Swiper(
+                itemBuilder: (BuildContext context, int index) {
+                  return Image.network(
+                    "http://via.placeholder.com/288x188",
+                    fit: BoxFit.fill,
+                  );
                 },
-                child: Container(
-                  padding: EdgeInsets.only(left: 15, right: 10),
-                  height: 45.0,
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.search,
-                        size: 25,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 10),
-                        child: Text(
-                          '大家都在搜王一博',
-                          style: TextStyle(color: Colors.black87, fontSize: 14),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                itemCount: 3,
+                viewportFraction: 0.333,
+                scale: 0.4,
               ),
             ),
-          ),
-          leading: IconButton(
-              icon: Icon(Icons.dehaze),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              }),
-          actions: <Widget>[
-            IconButton(
-                icon: Image.asset('images/drawer_music.png',color: Colors.black,),
-                onPressed: () {
-
-                }),
+            Divider(
+              height: 1,
+              color: Colors.grey[300],
+            ),
+            _Header("推荐歌单", () {}),
+            Container(
+//            padding: EdgeInsets.only(left: 15, right: 0),
+              height: 200,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Gaps.hGap15,
+                  Row(
+                    children: widgets.map<Widget>((p) {
+                      i++;
+                      return Row(
+                        children: [
+                          BaseImgItem(
+                            id: p['id'],
+                            width: 120,
+                            playCount: p['playCount'],
+                            img: p['picUrl'],
+                            describe: p['name'],
+                          ),
+                          i == widgets.length + 1 ? Gaps.hGap15 : Gaps.hGap8,
+                        ],
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+            NewSongAndDiscWidget(),
           ],
         ),
       ),
     );
-    // return Scaffold(
-    //   appBar: AppBar(),
-    // );
+
     return RefreshIndicator(
       onRefresh: () async {
         getHttp();
@@ -222,6 +212,87 @@ class _FindPageState extends State<FindPage>
 
   @override
   bool get wantKeepAlive => true;
+}
+
+class PageFindAppBar extends StatefulWidget implements PreferredSizeWidget {
+  @override
+  _PageFindAppBarState createState() => _PageFindAppBarState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+}
+
+class _PageFindAppBarState extends State<PageFindAppBar> {
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      elevation: 0,
+      primary: true,
+      //为false的时候会影响leading，actions、titile组件，导致向上偏移
+      textTheme: TextTheme(//设置AppBar上面各种字体主题色
+//            title: TextStyle(color: Colors.red),
+          ),
+      actionsIconTheme: IconThemeData(color: Colors.blue, opacity: 0.6),
+      //设置导航右边图标的主题色，此时iconTheme对于右边图标颜色会失效
+      iconTheme: IconThemeData(color: Colors.black, opacity: 0.6),
+      //设置AppBar上面Icon的主题颜色
+      brightness: Brightness.light,
+      //设置导航条上面的状态栏显示字体颜色
+      backgroundColor: Colors.white,
+      //设置背景颜色
+//          shape: CircleBorder(side: BorderSide(color: Colors.red, width: 5, style: BorderStyle.solid)),//设置appbar形状
+//          automaticallyImplyLeading: true,//在leading为null的时候失效
+      centerTitle: true,
+      title: ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+        child: Material(
+          color: Colors.grey[100],
+          child: InkWell(
+            onTap: () {
+              Fluttertoast.showToast(
+                  msg: "搜索",
+                  toastLength: Toast.LENGTH_SHORT,
+                  timeInSecForIos: 1,
+                  textColor: Colors.black12,
+                  gravity: ToastGravity.CENTER);
+            },
+            child: Container(
+              padding: EdgeInsets.only(left: 15, right: 10),
+              height: 45.0,
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    Icons.search,
+                    size: 25,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 10),
+                    child: Text(
+                      '大家都在搜王一博',
+                      style: TextStyle(color: Colors.black87, fontSize: 14),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      leading: IconButton(
+          icon: Icon(Icons.dehaze),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          }),
+      actions: <Widget>[
+        IconButton(
+            icon: Image.asset(
+              'images/drawer_music.png',
+              color: Colors.black,
+            ),
+            onPressed: () {}),
+      ],
+    );
+  }
 }
 
 List<int> getDataList(int count) {
@@ -300,12 +371,52 @@ class _Header extends StatelessWidget {
 }
 
 _buildMenu(BuildContext context) {
+  var i = 1; //排行榜名次
+
+  return Container(
+    // color: Colors.green,
+    height: 100,
+    padding: EdgeInsets.only(top: 15, bottom: 15),
+    child: ListView(
+        shrinkWrap: false,
+        scrollDirection: Axis.horizontal,
+        children: [
+          Gaps.hGap15,
+          Expanded(
+            child: Container(
+              child: Row(
+                children: videoCategoryList.map((e) {
+                  i++;
+
+                  return Row(
+                    children: [
+                      ListItem(image: e.img, text: e.title),
+                      i == widgets.length + 1 ? Gaps.hGap15 : Gaps.hGap15,
+                    ],
+                  );
+                }).toList(),
+              ),
+            ),
+          ),
+        ]),
+  );
+
   return Container(
     padding: EdgeInsets.only(top: 15, bottom: 15),
 //            color: Colors.green,
     child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
         children: [
+          InkWell(
+            child: ListItem(
+                image: "images/find/t_dragonball_icn_daily.png", text: "每日推荐"),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext context) {
+                return NestedScrollDemoPage();
+              }));
+            },
+          ),
           InkWell(
             child: ListItem(
                 image: "images/find/t_dragonball_icn_daily.png", text: "每日推荐"),
@@ -362,6 +473,33 @@ _buildMenu(BuildContext context) {
   );
 }
 
+class MyList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      scrollDirection: Axis.horizontal,
+      children: <Widget>[
+        new Container(
+          width: 180.0,
+          color: Colors.lightBlue,
+        ),
+        new Container(
+          width: 180.0,
+          color: Colors.amber,
+        ),
+        new Container(
+          width: 180.0,
+          color: Colors.deepOrange,
+        ),
+        new Container(
+          width: 180.0,
+          color: Colors.deepPurpleAccent,
+        ),
+      ],
+    );
+  }
+}
+
 class ListItem extends StatelessWidget {
   final String text;
   final String image;
@@ -370,7 +508,60 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {},
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                Container(
+                  width: 45.0,
+                  decoration: BoxDecoration(
+                    //圆形渐变
+                    color: Colors.pink[50].withOpacity(0.8),
+                    shape: BoxShape.circle,
+                    // gradient: const LinearGradient(colors: [
+                    //   Colors.redAccent,
+                    //   Colors.redAccent,
+                    //   Colors.red,
+                    // ]),
+                  ),
+                  child: Image.asset(
+                    image,
+                    color: Colors.red,
+                    width: 50,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 5),
+                  child: text == '每日推荐'
+                      ? Text(
+                          '${DateUtil.formatDate(DateTime.now(), format: 'd')}',
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        )
+                      : Text(''),
+                )
+              ],
+            ),
+            Container(
+                margin: EdgeInsets.only(top: 5), //上边距
+                child: Text(text,
+                    style: TextStyle(
+                      fontSize: 12,
+                    )))
+          ],
+        ),
+      ),
+    );
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Stack(
           alignment: Alignment.center,
@@ -379,17 +570,17 @@ class ListItem extends StatelessWidget {
               width: 45.0,
               decoration: BoxDecoration(
                 //圆形渐变
-                color: Colors.white,
+                color: Colors.pink[50].withOpacity(0.8),
                 shape: BoxShape.circle,
-                gradient: const LinearGradient(colors: [
-                  Colors.redAccent,
-                  Colors.redAccent,
-                  Colors.red,
-                ]),
+                // gradient: const LinearGradient(colors: [
+                //   Colors.redAccent,
+                //   Colors.redAccent,
+                //   Colors.red,
+                // ]),
               ),
               child: Image.asset(
                 image,
-                color: Colors.white,
+                color: Colors.red,
                 width: 50,
               ),
             ),
@@ -400,7 +591,7 @@ class ListItem extends StatelessWidget {
                       '${DateUtil.formatDate(DateTime.now(), format: 'd')}',
                       style: TextStyle(
                           fontSize: 12,
-                          color: Colors.red,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold),
                     )
                   : Text(''),
@@ -912,4 +1103,55 @@ class PagingScrollPhysics extends ScrollPhysics {
 const List<int> TestDatas = const <int>[
   0,
   1,
+];
+
+class Menu {
+  Menu({this.title, this.img, this.path});
+
+  String title;
+  String img;
+  String path;
+}
+
+List<Menu> videoCategoryList = <Menu>[
+  Menu(
+    title: R.string.dailySpecial,
+    img: R.mipmap.dailySpecial,
+    path: '',
+  ),
+  Menu(
+    title: R.string.fm,
+    img: R.mipmap.fm,
+    path: '',
+  ),
+  Menu(
+    title: R.string.playlist,
+    img: R.mipmap.playlist,
+    path: '',
+  ),
+  Menu(
+    title: R.string.rankingList,
+    img: R.mipmap.rankingList,
+    path: '',
+  ),
+  Menu(
+    title: R.string.liveStreaming,
+    img: R.mipmap.liveStreaming,
+    path: '',
+  ),
+  Menu(
+    title: R.string.digitalAlbum,
+    img: R.mipmap.digitalAlbum,
+    path: '',
+  ),
+  Menu(
+    title: '唱聊',
+    img: 'images/album/album_download.png',
+    path: '',
+  ),
+  Menu(
+    title: '游戏专区',
+    img: 'images/find/t_dragonball_icn_radio.png',
+    path: '',
+  ),
 ];

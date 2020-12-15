@@ -306,6 +306,7 @@ class _MyPageState extends State<MyPage>
             ),
           ),
         ),
+
       ],
     );
   }
@@ -322,6 +323,7 @@ class _MyPageState extends State<MyPage>
             _buildMusicLike(context),
             _buildTable(context),
             _buildBottomListWidget(context),
+            // _DetailPage(),
           ],
         ),
       ),
@@ -679,8 +681,8 @@ _buildMenu(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: videoCategoryList.map((e) {
         return VerticalItem(
-          image: e.img,
-          text: e.title,
+          image: 'images/album/album_download.png',
+          text: 'R.mipmap.dailySpecial',
         );
       }).toList(),
     ),

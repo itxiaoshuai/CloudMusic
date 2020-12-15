@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
 
 class NestedScrollDemoPage extends StatefulWidget {
@@ -214,7 +215,7 @@ class _PlaylistDetailHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlexibleDetailBar(
-//      background: PlayListHeaderBackground(imageUrl: 'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
+     background: PlayListHeaderBackground(imageUrl: 'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
       content: _buildContent(context),
     );
   }

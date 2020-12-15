@@ -26,7 +26,7 @@ dependencies:
   # 轮播控件
   flutter_swiper: ^1.1.6
   # dio是一个强大的Dart Http请求库
-  dio: ^3.0.9
+  dio: ^3.0.10
   event_bus: ^1.0.1
   build_runner: ^1.4.0
   json_serializable: ^3.0.0
@@ -100,6 +100,8 @@ flutter:
   - images/find/t_dragonball_icn_radio.png
   - images/find/t_dragonball_icn_rank.png
   - images/find/bg_song_list.9.png
+  - images/t_dragonball_icn_rank.png
+  - images/t_dragonball_icn_digitalalbum.png
 
   # 登入页
   - images/wx.png
