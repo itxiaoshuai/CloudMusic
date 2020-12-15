@@ -29,7 +29,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../../r.dart';
 import 'FutureBuilderPage.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
-
+import 'package:flutter_app/pages/find/PageDailySpecial.dart';
 class FindPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _FindPageState();
@@ -86,65 +86,62 @@ class _FindPageState extends State<FindPage>
   @override
   Widget build(BuildContext context) {
     var i = 1; //排行榜名次
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        drawer: HomeDrawer(),
-        appBar: PageFindAppBar(),
-        body: ListView(
-          children: <Widget>[
-            FindBanner(bannerData: _bannerData),
-            _buildMenu(context),
-            Gaps.line,
-            Container(
-              height: 100, // 高度
-              child: Swiper(
-                itemBuilder: (BuildContext context, int index) {
-                  return Image.network(
-                    "http://via.placeholder.com/288x188",
-                    fit: BoxFit.fill,
-                  );
-                },
-                itemCount: 3,
-                viewportFraction: 0.333,
-                scale: 0.4,
-              ),
-            ),
-            Divider(
-              height: 1,
-              color: Colors.grey[300],
-            ),
-            _Header("推荐歌单", () {}),
-            Container(
+    return Scaffold(
+      drawer: HomeDrawer(),
+      appBar: PageFindAppBar(),
+      body: ListView(
+        children: <Widget>[
+          FindBanner(bannerData: _bannerData),
+          _buildMenu(context),
+          Gaps.line,
+          // Container(
+          //   height: 100, // 高度
+          //   child: Swiper(
+          //     itemBuilder: (BuildContext context, int index) {
+          //       return Image.network(
+          //         "http://via.placeholder.com/288x188",
+          //         fit: BoxFit.fill,
+          //       );
+          //     },
+          //     itemCount: 3,
+          //     viewportFraction: 0.333,
+          //     scale: 0.4,
+          //   ),
+          // ),
+          Divider(
+            height: 1,
+            color: Colors.grey[300],
+          ),
+          _Header("推荐歌单", () {}),
+          Container(
 //            padding: EdgeInsets.only(left: 15, right: 0),
-              height: 200,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Gaps.hGap15,
-                  Row(
-                    children: widgets.map<Widget>((p) {
-                      i++;
-                      return Row(
-                        children: [
-                          BaseImgItem(
-                            id: p['id'],
-                            width: 120,
-                            playCount: p['playCount'],
-                            img: p['picUrl'],
-                            describe: p['name'],
-                          ),
-                          i == widgets.length + 1 ? Gaps.hGap15 : Gaps.hGap8,
-                        ],
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
+            height: 200,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                Gaps.hGap15,
+                Row(
+                  children: widgets.map<Widget>((p) {
+                    i++;
+                    return Row(
+                      children: [
+                        BaseImgItem(
+                          id: p['id'],
+                          width: 120,
+                          playCount: p['playCount'],
+                          img: p['picUrl'],
+                          describe: p['name'],
+                        ),
+                        i == widgets.length + 1 ? Gaps.hGap15 : Gaps.hGap8,
+                      ],
+                    );
+                  }).toList(),
+                ),
+              ],
             ),
-            NewSongAndDiscWidget(),
-          ],
-        ),
+          ),
+          NewSongAndDiscWidget(),
+        ],
       ),
     );
 
@@ -511,7 +508,15 @@ class ListItem extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          // Navigator.push(context, MaterialPageRoute(builder: (context) {
+          //   return PageDailySpecial();
+          // }));
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (BuildContext context) {
+            return PageDailySpecial();
+          }));
+        },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

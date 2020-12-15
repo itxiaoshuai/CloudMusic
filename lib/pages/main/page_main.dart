@@ -245,7 +245,7 @@ class _MainPageState extends State<MainPage>
   Widget build(BuildContext context) {
     //构建页面
     return buildBottomTabScaffold();
-    // return super.build(context);
+    return super.build(context);
   }
 
   // @override
