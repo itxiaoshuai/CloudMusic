@@ -3,6 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_app/base/CommonLoading.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
 import 'package:common_utils/common_utils.dart';
+import 'dart:ui';
+import 'package:flutter_app/base/ConstImg.dart';
 
 /// 每日推荐
 class PageDailySpecial extends StatefulWidget {
@@ -12,8 +14,9 @@ class PageDailySpecial extends StatefulWidget {
 
 class _PageDailySpecialState extends State<PageDailySpecial> {
   ScrollController _scrollController;
-  bool isAppBarExpanded = false;
-  double radian = 10.0;
+  bool isAppBarExpanded = true;
+  double radian = 6.0;
+  double pixel = 0;
 
   @override
   void initState() {
@@ -22,15 +25,19 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
     _scrollController = ScrollController()
       ..addListener(() => setState(() {
             // radian=_scrollController.offset;
-            // if (_scrollController.hasClients &&
-            //     _scrollController.offset > 0 &&
-            //     _scrollController.offset < (200 - kToolbarHeight)) {
-            //   // print(
-            //       // 'Scroll view Listener is called offset ${_scrollController.offset}');
-            //   radian = 10 / (200 - kToolbarHeight) * _scrollController.offset;
-            //   print('radian----${radian}');
-            // }
-            radian=20/_scrollController.offset/(200 - kToolbarHeight);
+            if (_scrollController.hasClients &&
+                _scrollController.offset > 0 &&
+                _scrollController.offset < (200 - kToolbarHeight)) {
+              // print(
+              // 'Scroll view Listener is called offset ${_scrollController.offset}');
+              radian =
+                  6 - (_scrollController.offset / (200 - kToolbarHeight) * 6);
+              pixel = (_scrollController.offset / (200 - kToolbarHeight) * 12);
+              print('radian----${radian}');
+            }
+
+            isAppBarExpanded=_scrollController.hasClients &&
+                _scrollController.offset <= (200 - kToolbarHeight);
             // if (_scrollController.hasClients &&
             //     _scrollController.offset > (200 - kToolbarHeight)) {
             //   radian = 10 / (200 - kToolbarHeight) * _scrollController.offset;
@@ -38,13 +45,13 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
             //   radian = 10;
             // }
             // print(
-                // 'Scroll view Listener is called offset ${_scrollController.offset}');
+            // 'Scroll view Listener is called offset ${_scrollController.offset}');
           }));
   }
 
   bool get _changecolor {
     return _scrollController.hasClients &&
-        _scrollController.offset > (200 - kToolbarHeight);
+        _scrollController.offset <= (200 - kToolbarHeight);
   }
 
   @override
@@ -53,18 +60,18 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
       controller: _scrollController,
       slivers: [
         SliverAppBar(
+          elevation :0,
           title: Offstage(
             child: Text('每日推荐'),
-            offstage: _changecolor,
+            offstage: isAppBarExpanded,
           ),
           pinned: true,
           expandedHeight: 250.0,
           flexibleSpace: FlexibleDetailBar(
-            background: FlexShadowBackground(
-              child: Image(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                      'https://p4.music.126.net/2R-ib822lFEPSyTh2mDTxw==/109951165358901806.jpg')),
+            background: PlayListHeaderBackground(
+              pixel: pixel,
+              imageUrl:
+                  'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg',
             ),
             content: Container(
               padding: EdgeInsets.only(left: 20, right: 20),
@@ -130,6 +137,17 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
           bottom: MusicListHeader(
             30,
             radian: radian,
+            tail: Container(
+              margin: EdgeInsets.only(right: 15),
+              child: IconButton(
+                icon: Image.asset(
+                  ConstImgResource.multipleSelection,
+                  width: 20,
+                  color: Colors.black,
+                ),
+                onPressed: () {},
+              ),
+            ),
           ),
         ),
         SliverList(
@@ -157,6 +175,30 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
             }),
           ),
         ),
+      ],
+    );
+  }
+}
+
+///播放列表头部背景
+class PlayListHeaderBackground extends StatelessWidget {
+  final String imageUrl;
+  double pixel;
+
+  PlayListHeaderBackground({@required this.imageUrl, Key key, this.pixel})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    print('pixel----->${pixel}');
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        Image(image: NetworkImage(imageUrl), fit: BoxFit.cover),
+        BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: pixel, sigmaY: pixel),
+          child: Container(color: Colors.black.withOpacity(0)),
+        )
       ],
     );
   }
@@ -312,36 +354,40 @@ class MusicListHeader extends StatelessWidget implements PreferredSizeWidget {
     print('radian----MusicListHeader${radian}');
     return ClipRRect(
       borderRadius: BorderRadius.vertical(top: Radius.circular(0)),
-      child: Material(
+      child: Container(
         color: Colors.transparent,
-        elevation: 0,
-        child: InkWell(
-          onTap: () {},
-          child: SizedBox.fromSize(
-            size: preferredSize,
-            child: ClipPath(
-              //路径裁切组件
-              clipper: BottomClipper(radian: radian), //路径
-              child: Container(
-                color: Colors.white,
-                child: Row(
-                  children: <Widget>[
-                    Padding(padding: EdgeInsets.only(left: 16)),
-                    Image.asset(
+        child: SizedBox.fromSize(
+          size: preferredSize,
+          child: ClipPath(
+            //路径裁切组件
+            clipper: BottomClipper(radian: radian), //路径
+            child: Container(
+              color: Colors.white,
+              child: Row(
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.only(left: 16)),
+                  IconButton(
+                    icon: Image.asset(
                       'images/play.png',
-                      color: Colors.red,
                       width: 25,
+                      color: Colors.red,
                     ),
-                    Padding(padding: EdgeInsets.only(left: 4)),
-                    Text(
-                      "播放全部",
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                    Padding(padding: EdgeInsets.only(left: 2)),
-                    Spacer(),
-                    tail,
-                  ]..removeWhere((v) => v == null),
-                ),
+                    onPressed: () {},
+                  ),
+                  // Image.asset(
+                  //   'images/play.png',
+                  //   color: Colors.red,
+                  //   width: 25,
+                  // ),
+                  Padding(padding: EdgeInsets.only(left: 4)),
+                  Text(
+                    "播放全部",
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 2)),
+                  Spacer(),
+                  tail,
+                ]..removeWhere((v) => v == null),
               ),
             ),
           ),
