@@ -13,6 +13,7 @@ class PageDailySpecial extends StatefulWidget {
 class _PageDailySpecialState extends State<PageDailySpecial> {
   ScrollController _scrollController;
   bool isAppBarExpanded = false;
+  double radian = 10.0;
 
   @override
   void initState() {
@@ -20,15 +21,32 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
 
     _scrollController = ScrollController()
       ..addListener(() => setState(() {
-            print(
-                'Scroll view Listener is called offset ${_scrollController.offset}');
+            // radian=_scrollController.offset;
+            // if (_scrollController.hasClients &&
+            //     _scrollController.offset > 0 &&
+            //     _scrollController.offset < (200 - kToolbarHeight)) {
+            //   // print(
+            //       // 'Scroll view Listener is called offset ${_scrollController.offset}');
+            //   radian = 10 / (200 - kToolbarHeight) * _scrollController.offset;
+            //   print('radian----${radian}');
+            // }
+            radian=20/_scrollController.offset/(200 - kToolbarHeight);
+            // if (_scrollController.hasClients &&
+            //     _scrollController.offset > (200 - kToolbarHeight)) {
+            //   radian = 10 / (200 - kToolbarHeight) * _scrollController.offset;
+            // } else {
+            //   radian = 10;
+            // }
+            // print(
+                // 'Scroll view Listener is called offset ${_scrollController.offset}');
           }));
+  }
 
-  }
   bool get _changecolor {
-    return _scrollController.hasClients
-        && _scrollController.offset > (200-kToolbarHeight);
+    return _scrollController.hasClients &&
+        _scrollController.offset > (200 - kToolbarHeight);
   }
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -36,9 +54,9 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
       slivers: [
         SliverAppBar(
           title: Offstage(
-            child: Text('每日推荐'),offstage: _changecolor ,
+            child: Text('每日推荐'),
+            offstage: _changecolor,
           ),
-
           pinned: true,
           expandedHeight: 250.0,
           flexibleSpace: FlexibleDetailBar(
@@ -109,7 +127,10 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
           actions: <Widget>[
             IconButton(icon: Icon(Icons.help_outline), onPressed: () {})
           ],
-          bottom: MusicListHeader(30),
+          bottom: MusicListHeader(
+            30,
+            radian: radian,
+          ),
         ),
         SliverList(
           delegate: SliverChildListDelegate(
@@ -138,6 +159,48 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
         ),
       ],
     );
+  }
+}
+
+//曲线路径
+class BottomClipper extends CustomClipper<Path> {
+  double radian; //弧度
+
+  BottomClipper({
+    this.radian = 5,
+  });
+
+  @override
+  Path getClip(Size size) {
+    print('radian----->${radian}');
+    var paint = Paint();
+
+    paint.color = Colors.lightBlue;
+    paint.style = PaintingStyle.stroke;
+    paint.strokeWidth = 3;
+
+    var startPoint = Offset(0, 0);
+    var controlPoint1 = Offset(size.width / 4, radian);
+    var controlPoint2 = Offset(3 * size.width / 4, radian);
+    var endPoint = Offset(size.width, 0);
+
+    var path = Path();
+    path.moveTo(startPoint.dx, startPoint.dy);
+    path.cubicTo(controlPoint1.dx, controlPoint1.dy, controlPoint2.dx,
+        controlPoint2.dy, endPoint.dx, endPoint.dy);
+    // path.lineTo(0, 50); //第1个点
+    // path.lineTo(0, size.height); //第2个点
+
+    path.lineTo(size.width, size.height); //第3个点
+    path.lineTo(0, size.height); //第4个点
+    path.lineTo(0, 0); //第4个点
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return true;
   }
 }
 
@@ -237,40 +300,49 @@ class TrackItem extends StatelessWidget {
 }
 
 class MusicListHeader extends StatelessWidget implements PreferredSizeWidget {
-  MusicListHeader(this.count, {this.tail});
+  MusicListHeader(this.count, {this.tail, this.radian});
 
-  final int count;
+  int count;
 
-  final Widget tail;
+  Widget tail;
+  double radian; //弧度
 
   @override
   Widget build(BuildContext context) {
+    print('radian----MusicListHeader${radian}');
     return ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      borderRadius: BorderRadius.vertical(top: Radius.circular(0)),
       child: Material(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: Colors.transparent,
         elevation: 0,
         child: InkWell(
           onTap: () {},
           child: SizedBox.fromSize(
             size: preferredSize,
-            child: Row(
-              children: <Widget>[
-                Padding(padding: EdgeInsets.only(left: 16)),
-                Image.asset(
-                  'images/play.png',
-                  color: Colors.red,
-                  width: 25,
+            child: ClipPath(
+              //路径裁切组件
+              clipper: BottomClipper(radian: radian), //路径
+              child: Container(
+                color: Colors.white,
+                child: Row(
+                  children: <Widget>[
+                    Padding(padding: EdgeInsets.only(left: 16)),
+                    Image.asset(
+                      'images/play.png',
+                      color: Colors.red,
+                      width: 25,
+                    ),
+                    Padding(padding: EdgeInsets.only(left: 4)),
+                    Text(
+                      "播放全部",
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    Padding(padding: EdgeInsets.only(left: 2)),
+                    Spacer(),
+                    tail,
+                  ]..removeWhere((v) => v == null),
                 ),
-                Padding(padding: EdgeInsets.only(left: 4)),
-                Text(
-                  "播放全部",
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-                Padding(padding: EdgeInsets.only(left: 2)),
-                Spacer(),
-                tail,
-              ]..removeWhere((v) => v == null),
+              ),
             ),
           ),
         ),
@@ -280,25 +352,4 @@ class MusicListHeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(50);
-}
-
-class _DailyMusicList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverAppBar(
-          title: Text('每日推荐'),
-          titleSpacing: 0,
-          forceElevated: false,
-          elevation: 0,
-          actions: <Widget>[
-            IconButton(icon: Icon(Icons.help_outline), onPressed: () {})
-          ],
-          expandedHeight: 232 - MediaQuery.of(context).padding.top,
-          pinned: true,
-        ),
-      ],
-    );
-  }
 }

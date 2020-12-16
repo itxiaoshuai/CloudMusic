@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/find/PageFind.dart';
+import 'package:flutter_app/pages/my/CurvePage.dart';
+import 'package:flutter_app/pages/my/DrawingPage.dart';
 import 'package:flutter_app/pages/my/MyApp.dart';
 import 'package:flutter_app/pages/my/PageMy.dart';
 import 'package:flutter_app/pages/my/StickyDemo.dart';
@@ -215,8 +217,8 @@ class _MainPageState extends State<MainPage>
     FindPage(),//发现
     PagePodcast(), //播客
     MyPage(),
-    MyApp(),
-    VideoPage(),
+    CurvePage(),
+    DrawingPage(),
   ];
 
   Widget buildBottomTabScaffold() {
