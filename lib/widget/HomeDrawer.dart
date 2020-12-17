@@ -45,16 +45,6 @@ class _HomeDrawerState extends State {
           //圆形渐变
           color: Color(0xFF999999),
           shape: BoxShape.rectangle,
-          // gradient: LinearGradient(
-          //   stops: [0.0,  1.0],
-          //   // begin: FractionalOffset.topCenter,
-          //   // end: FractionalOffset.bottomCenter,// 10% of the width, so there are ten blinds.
-          //   colors: [
-          //     const Color(0xFF999999),
-          //
-          //     const Color(0xFF999999),
-          //   ], // whitish to gray
-          // ),
         ),
         child: Column(
           children: [
@@ -289,6 +279,49 @@ class _HomeDrawerState extends State {
 class DrawerAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return InkWell(
+      onTap: (){
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (BuildContext context) {
+          return LoginMainPage(); //手机号登入
+        }));
+      },
+
+      child: Container(
+        child: Row(
+          children: [
+            Container(
+              height: 30,
+              width: 30,
+              child: Icon(
+                Icons.person_outline_outlined,
+                size: 20,
+                color: Colors.black,
+              ),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 2), // 边色与边宽度
+                color: Colors.redAccent[50], // 底色
+                //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
+                shape: BoxShape.circle, // 默认值也是矩形
+                // borderRadius: new BorderRadius.circular((20.0)), // 圆角度
+              ),
+            ),
+            Gaps.hGap10,
+            Text('立即登录',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black,
+                )),
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 10,
+              color: Colors.black,
+            )
+          ],
+        ),
+      ),
+    );
     return Container(
       child: Row(
         children: [

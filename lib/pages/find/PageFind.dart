@@ -89,63 +89,134 @@ class _FindPageState extends State<FindPage>
   @override
   Widget build(BuildContext context) {
     var i = 1; //排行榜名次
-    return Scaffold(
-      drawer: HomeDrawer(),
-      appBar: PageFindAppBar(),
-      body: ListView(
-        children: <Widget>[
-          FindBanner(bannerData: _bannerData),
-          _buildMenu(context),
-          Gaps.line,
-          // Container(
-          //   height: 100, // 高度
-          //   child: Swiper(
-          //     itemBuilder: (BuildContext context, int index) {
-          //       return Image.network(
-          //         "http://via.placeholder.com/288x188",
-          //         fit: BoxFit.fill,
-          //       );
-          //     },
-          //     itemCount: 3,
-          //     viewportFraction: 0.333,
-          //     scale: 0.4,
-          //   ),
-          // ),
-          Divider(
-            height: 1,
-            color: Colors.grey[300],
+    return Container(
+      child: Scaffold(
+        drawer: HomeDrawer(),
+        appBar: AppBar(
+          elevation: 0,
+          primary: true,
+          leading: IconButton(
+              icon: Icon(Icons.dehaze,color: Colors.black,),
+              onPressed: (){
+                Scaffold.of(context).openDrawer();
+              }
           ),
-          BoxFindRecommend(),
-
-          Container(
-//            padding: EdgeInsets.only(left: 15, right: 0),
-            height: 200,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                Gaps.hGap15,
-                Row(
-                  children: widgets.map<Widget>((p) {
-                    i++;
-                    return Row(
-                      children: [
-                        BaseImgItem(
-                          id: p['id'],
-                          width: 120,
-                          playCount: p['playCount'],
-                          img: p['picUrl'],
-                          describe: p['name'],
+          //为false的时候会影响leading，actions、titile组件，导致向上偏移
+          textTheme: TextTheme(//设置AppBar上面各种字体主题色
+//            title: TextStyle(color: Colors.red),
+          ),
+          actionsIconTheme: IconThemeData(color: Colors.blue, opacity: 0.6),
+          //设置导航右边图标的主题色，此时iconTheme对于右边图标颜色会失效
+          iconTheme: IconThemeData(color: Colors.black, opacity: 0.6),
+          //设置AppBar上面Icon的主题颜色
+          brightness: Brightness.light,
+          //设置导航条上面的状态栏显示字体颜色
+          backgroundColor: Colors.white,
+          //设置背景颜色
+//          shape: CircleBorder(side: BorderSide(color: Colors.red, width: 5, style: BorderStyle.solid)),//设置appbar形状
+//          automaticallyImplyLeading: true,//在leading为null的时候失效
+          centerTitle: true,
+          title: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+            child: Material(
+              color: Colors.grey[100],
+              child: InkWell(
+                onTap: () {
+                  Fluttertoast.showToast(
+                      msg: "搜索",
+                      toastLength: Toast.LENGTH_SHORT,
+                      timeInSecForIos: 1,
+                      textColor: Colors.black12,
+                      gravity: ToastGravity.CENTER);
+                },
+                child: Container(
+                  padding: EdgeInsets.only(left: 15, right: 10),
+                  height: 45.0,
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.search,
+                        size: 25,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 10),
+                        child: Text(
+                          '大家都在搜王一博',
+                          style: TextStyle(color: Colors.black87, fontSize: 14),
                         ),
-                        i == widgets.length + 1 ? Gaps.hGap15 : Gaps.hGap8,
-                      ],
-                    );
-                  }).toList(),
+                      ),
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
           ),
-          NewSongAndDiscWidget(),
-        ],
+
+          actions: <Widget>[
+            IconButton(
+                icon: Image.asset(
+                  'images/drawer_music.png',
+                  color: Colors.black,
+                ),
+                onPressed: () {}),
+          ],
+        ),
+
+        body: ListView(
+          children: <Widget>[
+            FindBanner(bannerData: _bannerData),
+            _buildMenu(context),
+            Gaps.line,
+            // Container(
+            //   height: 100, // 高度
+            //   child: Swiper(
+            //     itemBuilder: (BuildContext context, int index) {
+            //       return Image.network(
+            //         "http://via.placeholder.com/288x188",
+            //         fit: BoxFit.fill,
+            //       );
+            //     },
+            //     itemCount: 3,
+            //     viewportFraction: 0.333,
+            //     scale: 0.4,
+            //   ),
+            // ),
+            Divider(
+              height: 1,
+              color: Colors.grey[300],
+            ),
+            BoxFindRecommend(),
+
+            Container(
+//            padding: EdgeInsets.only(left: 15, right: 0),
+              height: 200,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Gaps.hGap15,
+                  Row(
+                    children: widgets.map<Widget>((p) {
+                      i++;
+                      return Row(
+                        children: [
+                          BaseImgItem(
+                            id: p['id'],
+                            width: 120,
+                            playCount: p['playCount'],
+                            img: p['picUrl'],
+                            describe: p['name'],
+                          ),
+                          i == widgets.length + 1 ? Gaps.hGap15 : Gaps.hGap8,
+                        ],
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+            NewSongAndDiscWidget(),
+          ],
+        ),
       ),
     );
 
@@ -215,86 +286,6 @@ class _FindPageState extends State<FindPage>
   bool get wantKeepAlive => true;
 }
 
-class PageFindAppBar extends StatefulWidget implements PreferredSizeWidget {
-  @override
-  _PageFindAppBarState createState() => _PageFindAppBarState();
-
-  @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
-}
-
-class _PageFindAppBarState extends State<PageFindAppBar> {
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      elevation: 0,
-      primary: true,
-      //为false的时候会影响leading，actions、titile组件，导致向上偏移
-      textTheme: TextTheme(//设置AppBar上面各种字体主题色
-//            title: TextStyle(color: Colors.red),
-          ),
-      actionsIconTheme: IconThemeData(color: Colors.blue, opacity: 0.6),
-      //设置导航右边图标的主题色，此时iconTheme对于右边图标颜色会失效
-      iconTheme: IconThemeData(color: Colors.black, opacity: 0.6),
-      //设置AppBar上面Icon的主题颜色
-      brightness: Brightness.light,
-      //设置导航条上面的状态栏显示字体颜色
-      backgroundColor: Colors.white,
-      //设置背景颜色
-//          shape: CircleBorder(side: BorderSide(color: Colors.red, width: 5, style: BorderStyle.solid)),//设置appbar形状
-//          automaticallyImplyLeading: true,//在leading为null的时候失效
-      centerTitle: true,
-      title: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(30)),
-        child: Material(
-          color: Colors.grey[100],
-          child: InkWell(
-            onTap: () {
-              Fluttertoast.showToast(
-                  msg: "搜索",
-                  toastLength: Toast.LENGTH_SHORT,
-                  timeInSecForIos: 1,
-                  textColor: Colors.black12,
-                  gravity: ToastGravity.CENTER);
-            },
-            child: Container(
-              padding: EdgeInsets.only(left: 15, right: 10),
-              height: 45.0,
-              child: Row(
-                children: <Widget>[
-                  Icon(
-                    Icons.search,
-                    size: 25,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10),
-                    child: Text(
-                      '大家都在搜王一博',
-                      style: TextStyle(color: Colors.black87, fontSize: 14),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-      leading: IconButton(
-          icon: Icon(Icons.dehaze),
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          }),
-      actions: <Widget>[
-        IconButton(
-            icon: Image.asset(
-              'images/drawer_music.png',
-              color: Colors.black,
-            ),
-            onPressed: () {}),
-      ],
-    );
-  }
-}
 
 List<int> getDataList(int count) {
   List<int> list = [];
