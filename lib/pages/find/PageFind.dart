@@ -30,6 +30,9 @@ import '../../r.dart';
 import 'FutureBuilderPage.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
 import 'package:flutter_app/pages/find/PageDailySpecial.dart';
+
+import 'box_find_recommend.dart';
+
 class FindPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _FindPageState();
@@ -112,7 +115,8 @@ class _FindPageState extends State<FindPage>
             height: 1,
             color: Colors.grey[300],
           ),
-          _Header("推荐歌单", () {}),
+          BoxFindRecommend(),
+
           Container(
 //            padding: EdgeInsets.only(left: 15, right: 0),
             height: 200,
@@ -172,7 +176,7 @@ class _FindPageState extends State<FindPage>
             height: 1,
             color: Colors.grey[300],
           ),
-          _Header("推荐歌单", () {}),
+
           Container(
 //            padding: EdgeInsets.only(left: 15, right: 0),
             height: 200,
@@ -310,62 +314,7 @@ Widget getItemContainer(String picUrl) {
   return ListItemCustom(img: picUrl);
 }
 
-class _Header extends StatelessWidget {
-  final String text;
-  final GestureTapCallback onTap;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-//      padding: EdgeInsets.only(top: 10, bottom: 10),
-      margin: EdgeInsets.only(top: 20, bottom: 6),
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-              child: Container(
-            margin: EdgeInsets.only(
-              left: 10,
-            ),
-            child: Text(
-              text,
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle1
-                  .copyWith(fontWeight: FontWeight.w800, fontSize: 18),
-            ),
-          )),
-          Positioned(
-              right: 15,
-              child: Container(
-                padding: EdgeInsets.only(top: 2, bottom: 2, left: 6, right: 6),
-                decoration: new BoxDecoration(
-                  border: new Border.all(color: Colors.grey, width: 0.5),
-                  // 边色与边宽度
-
-                  // 底色
-                  //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
-                  shape: BoxShape.rectangle,
-                  // 默认值也是矩形
-                  borderRadius: new BorderRadius.circular((20.0)), // 圆角度
-                ),
-                margin: EdgeInsets.only(
-                  left: 10,
-                ),
-                child: Text(
-                  '歌单广场',
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle1
-                      .copyWith(fontWeight: FontWeight.w800, fontSize: 14),
-                ),
-              )),
-        ],
-      ),
-    );
-  }
-
-  _Header(this.text, this.onTap);
-}
 
 _buildMenu(BuildContext context) {
   var i = 1; //排行榜名次
@@ -398,104 +347,9 @@ _buildMenu(BuildContext context) {
         ]),
   );
 
-  return Container(
-    padding: EdgeInsets.only(top: 15, bottom: 15),
-//            color: Colors.green,
-    child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
-        children: [
-          InkWell(
-            child: ListItem(
-                image: "images/find/t_dragonball_icn_daily.png", text: "每日推荐"),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return NestedScrollDemoPage();
-              }));
-            },
-          ),
-          InkWell(
-            child: ListItem(
-                image: "images/find/t_dragonball_icn_daily.png", text: "每日推荐"),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return NestedScrollDemoPage();
-              }));
-            },
-          ),
-          InkWell(
-            child: ListItem(
-                image: "images/find/t_dragonball_icn_playlist.png", text: "歌单"),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return SongListPage();
-              }));
-            },
-          ),
-          InkWell(
-            child: ListItem(
-                image: "images/find/t_dragonball_icn_rank.png", text: "排行榜"),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return LeaderBoardPage();
-              }));
-            },
-          ),
-          InkWell(
-            child: ListItem(
-                image: "images/find/t_dragonball_icn_radio.png", text: "电台"),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return RadioPage();
-              }));
-            },
-          ),
-          InkWell(
-            child: ListItem(
-                image: "images/find/t_dragonball_icn_look.png", text: "直播"),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (BuildContext context) {
-                return UserDetailPage(
-                  userId: 1,
-                );
-              }));
-            },
-          ),
-        ]),
-  );
 }
 
-class MyList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.horizontal,
-      children: <Widget>[
-        new Container(
-          width: 180.0,
-          color: Colors.lightBlue,
-        ),
-        new Container(
-          width: 180.0,
-          color: Colors.amber,
-        ),
-        new Container(
-          width: 180.0,
-          color: Colors.deepOrange,
-        ),
-        new Container(
-          width: 180.0,
-          color: Colors.deepPurpleAccent,
-        ),
-      ],
-    );
-  }
-}
+
 
 class ListItem extends StatelessWidget {
   final String text;
