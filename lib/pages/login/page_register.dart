@@ -5,6 +5,8 @@ import 'package:flutter_app/data/protocol/user_info.dart';
 import 'package:flutter_app/data/repository/music_repository.dart';
 import 'package:flutter_app/pages/main/page_main.dart';
 
+import 'page_login_with_auth.dart';
+
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -18,7 +20,17 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('手机号登录'),
+        leading: IconButton(
+            icon: Icon(
+              Icons.close,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(context); // 关闭当前页面
+            }),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Text('手机号登录', style: TextStyles.textDark14,),
       ),
       body: Container(
         padding: EdgeInsets.only(left: 16, right: 16, top: 40),
@@ -66,7 +78,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   ],
                 ),
                 onPressed: () {
-                  _getUserInfo(phone, password);
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return LoginWithAuth(); //手机号登入
+                  }));
                 },
                 shape: StadiumBorder(),
                 color: Theme.of(context).primaryColor,
