@@ -22,43 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38ec1f14-720b-40e4-827c-2890207a7a84" name="Default" comment="推荐歌单展示">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/icons/Icon-192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/icons/Icon-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/flutter/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/Runner.rc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/flutter_window.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/flutter_window.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/resource.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/resources/app_icon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/run_loop.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/run_loop.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/runner.exe.manifest" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/utils.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/utils.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/win32_window.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/runner/win32_window.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CloudMusic.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CloudMusic.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-    </list>
+    <list default="true" id="38ec1f14-720b-40e4-827c-2890207a7a84" name="Default" comment="跟新" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -313,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562210698202</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="跟新">
+      <created>1608303599254</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1608303599254</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -349,9 +320,14 @@
     <MESSAGE value="网易云音乐的加载动画初步效果完成" />
     <MESSAGE value="提交下代码" />
     <MESSAGE value="推荐歌单展示" />
-    <option name="LAST_COMMIT_MESSAGE" value="推荐歌单展示" />
+    <MESSAGE value="跟新" />
+    <option name="LAST_COMMIT_MESSAGE" value="跟新" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="558" y="86" key="CommitChangelistDialog2" timestamp="1608303738306">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="558" y="86" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1608303738306" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1608302922292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -372,6 +348,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1608302844544" />
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1608303603520">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1608303603520" />
   </component>
   <component name="masterDetails">
     <states>
