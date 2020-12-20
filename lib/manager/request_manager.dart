@@ -3,8 +3,7 @@
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/protocol/LeaderboardModel.dart';
-import 'package:flutter_app/data/protocol/playlist_detail.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
+import 'package:flutter_app/net/http.dart';
 
 class RequestManager {
   //获取榜单数据

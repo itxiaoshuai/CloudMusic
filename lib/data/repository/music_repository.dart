@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/net/Http.dart';
-import 'package:flutter_app/data/protocol/playlist_detail.dart';
 import 'package:flutter_app/data/protocol/user_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

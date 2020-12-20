@@ -1,4 +1,4 @@
-class PlaylistDetail {
+class Playlist {
   Creator creator;
 
   @override
@@ -23,7 +23,7 @@ class PlaylistDetail {
   int shareCount; //分享次数
   int commentCount; //评论数
   bool subscribed; //是否收藏
-  PlaylistDetail(
+  Playlist(
       {this.subscribed,
       this.creator,
       this.tracks,
@@ -43,7 +43,7 @@ class PlaylistDetail {
       this.shareCount,
       this.commentCount});
 
-  PlaylistDetail.fromJson(Map<String, dynamic> json) {
+  Playlist.fromJson(Map<String, dynamic> json) {
     subscribed = json['subscribed'];
     creator =
         json['creator'] != null ? new Creator.fromJson(json['creator']) : null;

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/CommonLoading.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
+import 'package:flutter_app/net/http.dart';
 import 'package:flutter_app/pages/video/VideoDetailPage.dart';
 import 'package:flutter_app/route/routes.dart';
 

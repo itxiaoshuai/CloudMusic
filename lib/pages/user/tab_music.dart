@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/protocol/playlist_detail.dart';
+import 'package:flutter_app/data/protocol/playlist.dart';
 import 'package:flutter_app/data/protocol/user_detail_bean.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
+import 'package:flutter_app/net/http.dart';
 
 class TabMusic extends StatefulWidget {
   ///用户ID
@@ -14,7 +14,7 @@ class TabMusic extends StatefulWidget {
 }
 
 class _TabMusicState extends State<TabMusic> {
-  List<PlaylistDetail> mListData = [];
+  List<Playlist> mListData = [];
 
   @override
   void initState() {
@@ -64,7 +64,7 @@ class _TabMusicState extends State<TabMusic> {
 //    playlistDetail = PlaylistDetail.fromJson(response.data['playlist']);
     mListData = (response.data["playlist"] as List)
         .cast<Map>()
-        .map((e) => PlaylistDetail.fromJson(e))
+        .map((e) => Playlist.fromJson(e))
         .toList();
     print(mListData.length);
 

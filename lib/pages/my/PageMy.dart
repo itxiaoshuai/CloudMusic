@@ -6,8 +6,8 @@ import 'package:flutter_app/base/res/colors.dart';
 import 'package:flutter_app/base/res/gaps.dart';
 import 'package:flutter_app/base/res/styles.dart';
 import 'package:flutter_app/data/api/apis.dart';
-import 'package:flutter_app/data/protocol/playlist_detail.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
+import 'package:flutter_app/data/protocol/playlist.dart';
+import 'package:flutter_app/net/http.dart';
 import 'package:flutter_app/route/routes.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';
 import 'package:flutter_app/widget/base_song_img_item.dart';
@@ -28,7 +28,7 @@ class MyPage extends StatefulWidget {
 
 class _MyPageState extends State<MyPage>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  PlaylistDetail playlist;
+  Playlist playlist;
   TabController tabController;
   var tabs = <Tab>[];
 

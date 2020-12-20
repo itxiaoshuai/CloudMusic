@@ -2,8 +2,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/base/ConstImg.dart';
 import 'package:flutter_app/base/utils/utils.dart';
-import 'package:flutter_app/data/protocol/playlist_detail.dart';
+import 'package:flutter_app/data/protocol/playlist.dart';
 import 'package:flutter_app/model/play_list_model.dart';
+import 'package:flutter_app/pages/play_songs/page_play_songs.dart';
 import 'package:flutter_app/provider/layout_state.dart';
 import 'package:flutter_app/provider/provider_widget.dart';
 import 'package:flutter_app/provider/view_state_widget.dart';
@@ -24,7 +25,7 @@ class PlaylistDetailPage extends StatefulWidget {
 }
 
 class _PlayListDetailState extends State<PlaylistDetailPage> {
-  PlaylistDetail playlist;
+  Playlist playlist;
 
   @override
   Widget build(BuildContext context) {
@@ -363,12 +364,15 @@ class CustomWidget extends StatelessWidget {
               SliverChildBuilderDelegate((BuildContext context, int index) {
             Tracks track = model.data.tracks[index];
             return Material(
-              child: new InkWell(
+              child:  InkWell(
                 onTap: () {
                   print(
-                      '###########################点击了##################################');
+                      '播放歌曲');
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return PlaySongsPage();
+                  }));
                 },
-                child: new Container(
+                child:  Container(
                   height: 60,
                   //不要在这里设置背景色，否则会遮挡水波纹效果,如果设置的话尽量设置Material下面的color来实现背景色
                   margin: EdgeInsets.all(0.0),

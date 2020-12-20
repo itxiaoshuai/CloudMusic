@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
+import 'package:flutter_app/pages/playlist/page_playlist_detail.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
 
 class NestedScrollDemoPage extends StatefulWidget {

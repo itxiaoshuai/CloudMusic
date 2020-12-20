@@ -9,7 +9,7 @@ import 'package:flutter_app/base/res/gaps.dart';
 import 'package:flutter_app/base/res/styles.dart';
 import 'package:flutter_app/data/api/apis.dart';
 import 'package:flutter_app/data/protocol/banner_model.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
+import 'package:flutter_app/net/http.dart';
 import 'package:flutter_app/pages/find/widget/FindBanner.dart';
 import 'package:flutter_app/pages/find/widget/LearnInkWell.dart';
 import 'package:flutter_app/pages/find/widget/SpinKitWaveType.dart';

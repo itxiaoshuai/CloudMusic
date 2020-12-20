@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/protocol/playlist_detail.dart';
+import 'package:flutter_app/data/protocol/playlist.dart';
 import 'package:flutter_app/model/play_list_model.dart';
 import 'package:flutter_app/pages/main/page_main.dart';
 import 'package:flutter_app/provider/layout_state.dart';
@@ -20,7 +20,7 @@ class PageUserHome extends StatefulWidget {
 }
 
 class PageUserHomeState extends State<PageUserHome> {
-  PlaylistDetail playlist;
+  Playlist playlist;
 
   @override
   Widget build(BuildContext context) {

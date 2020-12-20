@@ -7,8 +7,8 @@ import 'package:flutter_app/base/res/colors.dart';
 import 'package:flutter_app/base/res/gaps.dart';
 import 'package:flutter_app/base/utils/number_utils.dart';
 import 'package:flutter_app/data/protocol/VideoDetailData.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
-import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
+import 'package:flutter_app/net/http.dart';
+import 'package:flutter_app/pages/playlist/page_playlist_detail.dart';
 import 'package:flutter_app/route/routes.dart';
 import 'package:video_player/video_player.dart';
 

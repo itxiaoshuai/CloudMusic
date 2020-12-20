@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/base/res/colors.dart';
 import 'package:flutter_app/base/res/gaps.dart';
 import 'package:flutter_app/base/res/styles.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
-import 'package:flutter_app/pages/playllist/page_category_song_list.dart';
+import 'package:flutter_app/net/http.dart';
+import 'package:flutter_app/pages/playlist/page_category_song_list.dart';
 import 'package:flutter_app/pages/video/VideoList.dart';
 
 class SongLabelDetailPage extends StatefulWidget {

@@ -5,7 +5,7 @@ import 'package:flutter_app/pages/my/DrawingPage.dart';
 import 'package:flutter_app/pages/my/MyApp.dart';
 import 'package:flutter_app/pages/my/PageMy.dart';
 import 'package:flutter_app/pages/my/StickyDemo.dart';
-import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
+import 'package:flutter_app/pages/playlist/page_playlist_detail.dart';
 import 'package:flutter_app/pages/podcast/PagePodcast.dart';
 import 'package:flutter_app/pages/video/VideoPage.dart';
 import 'package:flutter_app/widget/HomeDrawer.dart';

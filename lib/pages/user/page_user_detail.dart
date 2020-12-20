@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/protocol/user_detail_bean.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
+import 'package:flutter_app/net/http.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

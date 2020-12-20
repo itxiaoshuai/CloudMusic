@@ -7,7 +7,8 @@ class MipMap {
   String get rankingList => 'images/t_dragonball_icn_rank.png'; //排行榜
   String get liveStreaming => 'images/t_dragonball_icn_look.png'; //直播
   String get digitalAlbum => 'images/t_dragonball_icn_digitalalbum.png'; //数字专辑
-
+  String get play => 'images/icon_song_play_normal.png'; //播放
+  String get playSelect => 'images/icon_song_play_touch.png'; //播放
 }
 
 class MipMapText {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/base/CommonLoading.dart';
 import 'package:flutter_app/base/ConstImg.dart';
 import 'package:flutter_app/base/utils/number_utils.dart';
-import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
+import 'package:flutter_app/pages/playlist/page_playlist_detail.dart';
 
 class BaseImgItem extends StatelessWidget {
   final double width; //宽
