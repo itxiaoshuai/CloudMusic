@@ -1,14 +1,14 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_app/base/ConstImg.dart';
-import 'package:flutter_app/base/utils/number_utils.dart';
-import 'package:flutter_app/data/protocol/comment_list.dart';
-import 'package:flutter_app/model/comment_list_model.dart';
-import 'package:flutter_app/provider/layout_state.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
-import 'package:flutter_app/provider/view_state_widget.dart';
-import 'package:flutter_app/route/routes.dart';
+import 'package:cloud_music/base/ConstImg.dart';
+import 'package:cloud_music/base/utils/number_utils.dart';
+import 'package:cloud_music/data/protocol/comment_list.dart';
+import 'package:cloud_music/model/comment_list_model.dart';
+import 'package:cloud_music/provider/layout_state.dart';
+import 'package:cloud_music/provider/provider_widget.dart';
+import 'package:cloud_music/provider/view_state_widget.dart';
+import 'package:cloud_music/route/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommentPage extends StatefulWidget {

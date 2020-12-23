@@ -1,7 +1,7 @@
-import 'package:flutter_app/data/protocol/playlist.dart';
-import 'package:flutter_app/net/http.dart';
-import 'package:flutter_app/provider/layout_state.dart';
-import 'package:flutter_app/provider/layout_state_model.dart';
+import 'package:cloud_music/provider/layout_state_model.dart';
+import 'package:cloud_music/data/protocol/playlist.dart';
+import 'package:cloud_music/net/http.dart';
+import 'package:cloud_music/provider/layout_state.dart';
 
 class PlayListModel extends LayoutStateModel {
   Playlist _playlist;

@@ -1,8 +1,8 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/res/gaps.dart';
-import 'package:flutter_app/data/protocol/RadioCategoryData.dart';
-import 'package:flutter_app/net/http.dart';
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/data/protocol/RadioCategoryData.dart';
+import 'package:cloud_music/net/http.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RadioCategoryPage extends StatefulWidget {

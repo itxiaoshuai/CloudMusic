@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/ConstImg.dart';
-import 'package:flutter_app/base/StringResource.dart';
-import 'package:flutter_app/pages/login/page_phone_login.dart';
-import 'package:flutter_app/pages/login/page_register.dart';
+import 'package:cloud_music/base/ConstImg.dart';
+import 'package:cloud_music/base/StringResource.dart';
+import 'package:cloud_music/pages/login/page_phone_login.dart';
+import 'package:cloud_music/pages/login/page_register.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../WebViewPage.dart';
 

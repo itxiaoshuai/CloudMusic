@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/CommonLoading.dart';
+import 'package:cloud_music/base/CommonLoading.dart';
 
 class MyApp extends StatelessWidget {
   @override

@@ -1,8 +1,9 @@
 import 'dart:io';
+import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/base/route.dart';
-import 'package:flutter_app/route/routes.dart';
+
+import 'base/route.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +18,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',

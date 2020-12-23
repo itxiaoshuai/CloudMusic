@@ -1,9 +1,10 @@
 /*
 请求管理类
  */
-import 'package:flutter/material.dart';
-import 'package:flutter_app/data/protocol/LeaderboardModel.dart';
-import 'package:flutter_app/net/http.dart';
+
+
+import 'package:cloud_music/data/protocol/LeaderboardModel.dart';
+import 'package:cloud_music/net/http.dart';
 
 class RequestManager {
   //获取榜单数据

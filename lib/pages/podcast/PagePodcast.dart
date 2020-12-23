@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/widget/CustomUnderlineTabIndicator.dart';
-import 'package:flutter_app/widget/HomeDrawer.dart';
+import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';
+import 'package:cloud_music/widget/HomeDrawer.dart';
 class PagePodcast extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => PagePodcastState();

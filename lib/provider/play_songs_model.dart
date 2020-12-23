@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/protocol/song.dart';
+import 'package:cloud_music/data/protocol/song.dart';
 
 
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/protocol/user_detail_bean.dart';
-import 'package:flutter_app/net/http.dart';
-import 'package:flutter_app/widget/flexible_app_bar.dart';
+import 'package:cloud_music/data/protocol/user_detail_bean.dart';
+import 'package:cloud_music/net/http.dart';
+import 'package:cloud_music/widget/flexible_app_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'tab_music.dart';

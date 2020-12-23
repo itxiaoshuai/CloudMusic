@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/find/PageFind.dart';
-import 'package:flutter_app/pages/my/CurvePage.dart';
-import 'package:flutter_app/pages/my/DrawingPage.dart';
-import 'package:flutter_app/pages/my/MyApp.dart';
-import 'package:flutter_app/pages/my/PageMy.dart';
-import 'package:flutter_app/pages/my/StickyDemo.dart';
-import 'package:flutter_app/pages/playlist/page_playlist_detail.dart';
-import 'package:flutter_app/pages/podcast/PagePodcast.dart';
-import 'package:flutter_app/pages/video/VideoPage.dart';
-import 'package:flutter_app/widget/HomeDrawer.dart';
+import 'package:cloud_music/pages/find/PageFind.dart';
+import 'package:cloud_music/pages/my/CurvePage.dart';
+import 'package:cloud_music/pages/my/DrawingPage.dart';
+import 'package:cloud_music/pages/my/MyApp.dart';
+import 'package:cloud_music/pages/my/PageMy.dart';
+import 'package:cloud_music/pages/my/StickyDemo.dart';
+import 'package:cloud_music/pages/playlist/page_playlist_detail.dart';
+import 'package:cloud_music/pages/podcast/PagePodcast.dart';
+import 'package:cloud_music/pages/video/VideoPage.dart';
+import 'package:cloud_music/widget/HomeDrawer.dart';
 import 'ChildItemView.dart';
 
 class MainPage extends StatefulWidget {

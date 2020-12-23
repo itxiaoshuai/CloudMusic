@@ -1,14 +1,14 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/protocol/playlist.dart';
-import 'package:flutter_app/model/play_list_model.dart';
-import 'package:flutter_app/pages/main/page_main.dart';
-import 'package:flutter_app/provider/layout_state.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
-import 'package:flutter_app/provider/view_state_widget.dart';
-import 'package:flutter_app/route/routes.dart';
-import 'package:flutter_app/widget/flexible_app_bar.dart';
+import 'package:cloud_music/data/protocol/playlist.dart';
+import 'package:cloud_music/model/play_list_model.dart';
+import 'package:cloud_music/pages/main/page_main.dart';
+import 'package:cloud_music/provider/layout_state.dart';
+import 'package:cloud_music/provider/provider_widget.dart';
+import 'package:cloud_music/provider/view_state_widget.dart';
+import 'package:cloud_music/route/routes.dart';
+import 'package:cloud_music/widget/flexible_app_bar.dart';
 
 class PageUserHome extends StatefulWidget {
   PageUserHome(

@@ -1,22 +1,22 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/ConstImg.dart';
-import 'package:flutter_app/base/res/colors.dart';
-import 'package:flutter_app/base/res/gaps.dart';
-import 'package:flutter_app/base/res/styles.dart';
-import 'package:flutter_app/data/api/apis.dart';
-import 'package:flutter_app/data/protocol/playlist.dart';
-import 'package:flutter_app/net/http.dart';
-import 'package:flutter_app/route/routes.dart';
-import 'package:flutter_app/widget/HomeDrawer.dart';
-import 'package:flutter_app/widget/base_song_img_item.dart';
-import 'package:flutter_app/widget/flexible_app_bar.dart';
-import 'package:flutter_app/widget/item/menu_item.dart';
+import 'package:cloud_music/base/ConstImg.dart';
+import 'package:cloud_music/base/res/colors.dart';
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/base/res/styles.dart';
+import 'package:cloud_music/data/api/apis.dart';
+import 'package:cloud_music/data/protocol/playlist.dart';
+import 'package:cloud_music/net/http.dart';
+import 'package:cloud_music/route/routes.dart';
+import 'package:cloud_music/widget/HomeDrawer.dart';
+import 'package:cloud_music/widget/base_song_img_item.dart';
+import 'package:cloud_music/widget/flexible_app_bar.dart';
+import 'package:cloud_music/widget/item/menu_item.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-import 'package:flutter_app/widget/RoundUnderlineTabIndicator.dart';
-import 'package:flutter_app/widget/CustomRRecTabIndicator.dart';
-import 'package:flutter_app/widget/CustomUnderlineTabIndicator.dart';
+import 'package:cloud_music/widget/RoundUnderlineTabIndicator.dart';
+import 'package:cloud_music/widget/CustomRRecTabIndicator.dart';
+import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';
 import '../../r.dart';
 
 List widgets = [];

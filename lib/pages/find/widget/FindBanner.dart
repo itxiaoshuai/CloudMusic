@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/CommonLoading.dart';
-import 'package:flutter_app/data/protocol/banner_model.dart';
+import 'package:cloud_music/base/CommonLoading.dart';
+import 'package:cloud_music/data/protocol/banner_model.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 import '../../WebViewPage.dart';

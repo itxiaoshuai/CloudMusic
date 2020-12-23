@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_app/data/protocol/user_detail_bean.dart';
-import 'package:flutter_app/pages/album/comment_page.dart';
-import 'package:flutter_app/pages/radio/page_radio_category.dart';
-import 'package:flutter_app/pages/user/page_user_detail.dart';
-import 'package:flutter_app/pages/user/page_user_home.dart';
-import 'package:flutter_app/route/page_route_anim.dart';
+import 'package:cloud_music/data/protocol/user_detail_bean.dart';
+import 'package:cloud_music/pages/album/comment_page.dart';
+import 'package:cloud_music/pages/radio/page_radio_category.dart';
+import 'package:cloud_music/pages/user/page_user_detail.dart';
+import 'package:cloud_music/pages/user/page_user_home.dart';
+import 'package:cloud_music/route/page_route_anim.dart';
 
 class RouteName {
   static const String comment = 'comment';

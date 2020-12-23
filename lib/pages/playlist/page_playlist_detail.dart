@@ -1,16 +1,16 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/ConstImg.dart';
-import 'package:flutter_app/base/utils/utils.dart';
-import 'package:flutter_app/data/protocol/playlist.dart';
-import 'package:flutter_app/model/play_list_model.dart';
-import 'package:flutter_app/pages/play_songs/page_play_songs.dart';
-import 'package:flutter_app/provider/layout_state.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
-import 'package:flutter_app/provider/view_state_widget.dart';
-import 'package:flutter_app/route/routes.dart';
-import 'package:flutter_app/widget/ListItemCustom.dart';
-import 'package:flutter_app/widget/flexible_app_bar.dart';
+import 'package:cloud_music/base/ConstImg.dart';
+import 'package:cloud_music/base/utils/utils.dart';
+import 'package:cloud_music/data/protocol/playlist.dart';
+import 'package:cloud_music/model/play_list_model.dart';
+import 'package:cloud_music/pages/play_songs/page_play_songs.dart';
+import 'package:cloud_music/provider/layout_state.dart';
+import 'package:cloud_music/provider/provider_widget.dart';
+import 'package:cloud_music/provider/view_state_widget.dart';
+import 'package:cloud_music/route/routes.dart';
+import 'package:cloud_music/widget/ListItemCustom.dart';
+import 'package:cloud_music/widget/flexible_app_bar.dart';
 
 import 'item_music_list_track.dart';
 

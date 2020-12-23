@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/CommonLoading.dart';
-import 'package:flutter_app/net/http.dart';
-import 'package:flutter_app/pages/video/VideoDetailPage.dart';
-import 'package:flutter_app/route/routes.dart';
+import 'package:cloud_music/base/CommonLoading.dart';
+import 'package:cloud_music/net/http.dart';
+import 'package:cloud_music/pages/video/VideoDetailPage.dart';
+import 'package:cloud_music/route/routes.dart';
 
 class VideoList extends StatefulWidget {
   final int id;

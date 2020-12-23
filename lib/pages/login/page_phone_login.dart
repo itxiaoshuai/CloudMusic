@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/protocol/user_info.dart';
-import 'package:flutter_app/data/repository/music_repository.dart';
-import 'package:flutter_app/pages/main/page_main.dart';
+import 'package:cloud_music/data/protocol/user_info.dart';
+import 'package:cloud_music/data/repository/music_repository.dart';
+import 'package:cloud_music/pages/main/page_main.dart';
 
 
 class PhoneLoginPage extends StatefulWidget {

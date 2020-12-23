@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
@@ -19,388 +27,227 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
+    <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38ec1f14-720b-40e4-827c-2890207a7a84" name="Default" comment="跟新">
+    <list default="true" id="1dde761c-d3d2-48e6-a88c-deeffd0bb70c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsonSchemas.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.metadata" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CloudMusic.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/com/cloud/flutter_app/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/profile/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings_aar.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/county.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/main.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/base/route.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/base/route.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/blocs/FindBloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/blocs/FindBloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/dao/EventDao.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/dao/EventDao.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/net/Http.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/net/Http.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repository/music_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repository/music_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/manager/request_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/manager/request_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/comment_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/comment_list_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/play_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/play_list_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/top_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/top_list_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/album/SongLabelDetailPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/album/SongLabelDetailPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/album/SongLabelPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/album/SongLabelPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/album/comment_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/album/comment_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/FutureBuilderPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/FutureBuilderPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/PageDailySpecial.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/PageDailySpecial.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/PageFind.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/PageFind.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/box_find_recommend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/box_find_recommend.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/widget/FindBanner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/widget/FindBanner.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/leaderboard/LeaderboardPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/leaderboard/LeaderboardPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login/LoginMainPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login/LoginMainPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login/page_login_with_auth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login/page_login_with_auth.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login/page_phone_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login/page_phone_login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login/page_register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login/page_register.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/main/page_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/main/page_main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/MyApp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/MyApp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/PageMy.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/PageMy.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/StickyDemo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/StickyDemo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/page_songlist.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/page_songlist.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/play_songs/page_play_songs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/play_songs/page_play_songs.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/playlist/item_music_list_track.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/playlist/item_music_list_track.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/playlist/page_category_song_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/playlist/page_category_song_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/playlist/page_playlist_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/playlist/page_playlist_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/podcast/PagePodcast.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/podcast/PagePodcast.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/radio/page_radio.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/radio/page_radio.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/radio/page_radio_category.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/radio/page_radio_category.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/user/page_user_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/user/page_user_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/user/page_user_home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/user/page_user_home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/user/tab_music.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/user/tab_music.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/video/VideoDetailPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/video/VideoDetailPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/video/VideoList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/video/VideoList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/video/VideoPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/video/VideoPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/layout_state_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/layout_state_list_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/layout_state_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/layout_state_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/layout_state_refresh_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/layout_state_refresh_list_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/play_songs_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/play_songs_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/view_state_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/view_state_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/r.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/r.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/route/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/route/routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/HomeDrawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/HomeDrawer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/ListItemCustom.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/ListItemCustom.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/base_song_img_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/base_song_img_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/item/DrawerListItem.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/item/DrawerListItem.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/item/list_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/item/list_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/item/menu_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/item/menu_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/widget_play_bottom_menu.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/widget_play_bottom_menu.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/runner/Runner.rc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/runner/Runner.rc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$">
-      <ProjectState />
-    </projectState>
-  </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view />
-      </state>
-    </system>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Dart File" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>BoxDecoration</find>
-      <find>bgSongList</find>
-      <find>CachedNetworkImage</find>
-      <find>Expanded</find>
-      <find>get</find>
-      <find>commentThreadId</find>
-      <find>for</find>
-      <find>tracks</find>
-      <find>Sky High</find>
-      <find>tracksName</find>
-      <find>response====</find>
-      <find>playlist====</find>
-      <find>buildItem</find>
-      <find>songListDetail====</find>
-      <find>listTitle====</find>
-      <find>setState</find>
-      <find>_listTitle====</find>
-      <find>title====</find>
-      <find>_listTitle.length</find>
-      <find>Bar</find>
-      <find>BarChartPainter</find>
-      <find>new</find>
-      <find>waiting</find>
-      <find>done</find>
-    </findStrings>
-  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@127.0.0.1:21503]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="219" />
-    <option name="width" value="1936" />
-    <option name="height" value="1176" />
-  </component>
-  <component name="ProjectId" id="1lpnIjzcGcuKBrYxJ7TDb7U0dQJ" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1m00U5rxiWTYPk5TyxrC60pu4A4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="android.project.structure.last.selected" value="SDK Location" />
-    <property name="android.project.structure.proportion" value="0.15" />
-    <property name="android.sdk.path" value="$PROJECT_DIR$/../../Android/sdk" />
-    <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="android.sdk.path" value="D:/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="flutter.settings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/android/app/src/main/res" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\open_source\cloud_music_dev\CloudMusic" />
-      <recent name="H:\CloudMusic\lib\pages\playllist" />
-      <recent name="H:\CloudMusic\lib\widget\item" />
-      <recent name="H:\CloudMusic\lib\data" />
-      <recent name="H:\CloudMusic\lib\data\protocol" />
+      <recent name="E:\ProjectFlutter\cloud_music\android\app\src\main\res" />
+      <recent name="E:\ProjectFlutter\cloud_music\android\app\src\main\res\mipmap-mdpi" />
+      <recent name="E:\ProjectFlutter\cloud_music\android\app\src\main\res\mipmap-xhdpi" />
+      <recent name="E:\ProjectFlutter\cloud_music\android\app\src\main\res\mipmap-xxhdpi" />
+      <recent name="E:\ProjectFlutter\cloud_music\android\app\src\main\res\mipmap-xxxhdpi" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-    </configuration>
-    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="38ec1f14-720b-40e4-827c-2890207a7a84" name="Default" comment="" />
-      <created>1561358217856</created>
+      <changelist id="1dde761c-d3d2-48e6-a88c-deeffd0bb70c" name="Default Changelist" comment="" />
+      <created>1608615214697</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1561358217856</updated>
+      <updated>1608615214697</updated>
     </task>
-    <task id="LOCAL-00001" summary="登入页面布局完成">
-      <created>1561457845633</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1561457845633</updated>
-    </task>
-    <task id="LOCAL-00002" summary="登入页面用户协议展示">
-      <created>1561512685886</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1561512685886</updated>
-    </task>
-    <task id="LOCAL-00003" summary="登入页面勾选框实现">
-      <created>1561521038948</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1561521038948</updated>
-    </task>
-    <task id="LOCAL-00004" summary="排行榜页面初步">
-      <created>1561632110853</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1561632110853</updated>
-    </task>
-    <task id="LOCAL-00005" summary="排行榜页面item 布局">
-      <created>1561685392847</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1561685392847</updated>
-    </task>
-    <task id="LOCAL-00006" summary="排行榜页面分类展示">
-      <created>1561713387460</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1561713387460</updated>
-    </task>
-    <task id="LOCAL-00007" summary="排行榜数据展示完成">
-      <created>1561972037152</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1561972037152</updated>
-    </task>
-    <task id="LOCAL-00008" summary="排行榜详情页">
-      <created>1561975785507</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1561975785507</updated>
-    </task>
-    <task id="LOCAL-00009" summary="排行榜数据展示完成">
-      <created>1561975870147</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1561975870147</updated>
-    </task>
-    <task id="LOCAL-00010" summary="FutureBuilder 的基本使用">
-      <created>1562037050790</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1562037050790</updated>
-    </task>
-    <task id="LOCAL-00011" summary="网易云音乐的加载动画初步效果完成">
-      <created>1562062777266</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1562062777266</updated>
-    </task>
-    <task id="LOCAL-00012" summary="提交下代码">
-      <created>1562149137977</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1562149137977</updated>
-    </task>
-    <task id="LOCAL-00013" summary="推荐歌单展示">
-      <created>1562210698202</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1562210698202</updated>
-    </task>
-    <task id="LOCAL-00014" summary="跟新">
-      <created>1608303599254</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1608303599254</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="登入页面布局完成" />
-    <MESSAGE value="登入页面用户协议展示" />
-    <MESSAGE value="登入页面勾选框实现" />
-    <MESSAGE value="排行榜页面初步" />
-    <MESSAGE value="排行榜页面item 布局" />
-    <MESSAGE value="排行榜页面分类展示" />
-    <MESSAGE value="排行榜详情页" />
-    <MESSAGE value="排行榜数据展示完成" />
-    <MESSAGE value="FutureBuilder 的基本使用" />
-    <MESSAGE value="网易云音乐的加载动画初步效果完成" />
-    <MESSAGE value="提交下代码" />
-    <MESSAGE value="推荐歌单展示" />
-    <MESSAGE value="跟新" />
-    <option name="LAST_COMMIT_MESSAGE" value="跟新" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="558" y="86" key="CommitChangelistDialog2" timestamp="1608303738306">
+    <state x="581" y="106" key="CommitChangelistDialog2" timestamp="1608694251113">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="558" y="86" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1608303738306" />
-    <state width="1876" height="251" key="GridCell.Tab.0.bottom" timestamp="1608600334547">
+    <state x="581" y="106" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1608694251113" />
+    <state x="184" y="85" key="DiffContextDialog" timestamp="1608694246794">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="251" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608600334547" />
-    <state width="1876" height="251" key="GridCell.Tab.0.center" timestamp="1608600334546">
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608694246794" />
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom" timestamp="1608694724174">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="251" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608600334546" />
-    <state width="1876" height="251" key="GridCell.Tab.0.left" timestamp="1608600334546">
+    <state width="1876" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608694724174" />
+    <state width="1876" height="277" key="GridCell.Tab.0.center" timestamp="1608694724174">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="251" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608600334546" />
-    <state width="1876" height="251" key="GridCell.Tab.0.right" timestamp="1608600334546">
+    <state width="1876" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608694724174" />
+    <state width="1876" height="277" key="GridCell.Tab.0.left" timestamp="1608694724174">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="251" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608600334546" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1608302844544">
+    <state width="1876" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608694724174" />
+    <state width="1876" height="277" key="GridCell.Tab.0.right" timestamp="1608694724174">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1608302844544" />
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1608303603520">
+    <state width="1876" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608694724174" />
+    <state x="461" y="151" key="SettingsEditor" timestamp="1608693816815">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1608303603520" />
-    <state x="497" y="202" key="new project wizard" timestamp="1608600263092">
+    <state x="461" y="151" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1608693816815" />
+    <state x="763" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608693933083">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="497" y="202" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1608600263092" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <state x="763" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1608693933083" />
+    <state x="662" y="223" width="596" height="594" key="find.popup" timestamp="1608694648514">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="662" y="223" width="596" height="594" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608694648514" />
   </component>
 </project>

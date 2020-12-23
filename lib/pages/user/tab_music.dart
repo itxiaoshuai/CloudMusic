@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/protocol/playlist.dart';
-import 'package:flutter_app/data/protocol/user_detail_bean.dart';
-import 'package:flutter_app/net/http.dart';
+import 'package:cloud_music/data/protocol/playlist.dart';
+import 'package:cloud_music/data/protocol/user_detail_bean.dart';
+import 'package:cloud_music/net/http.dart';
 
 class TabMusic extends StatefulWidget {
   ///用户ID

@@ -1,5 +1,5 @@
+import 'package:cloud_music/common/event/LoadingEvent.dart';
 import 'package:event_bus/event_bus.dart';
-import 'package:flutter_app/common/event/LoadingEvent.dart';
 
 class Loading{
   static final EventBus eventBus = EventBus();

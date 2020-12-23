@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/res/gaps.dart';
-import 'package:flutter_app/pages/playlist/background_blur.dart';
-import 'package:flutter_app/pages/playlist/item_music_list_track.dart';
-import 'package:flutter_app/pages/playlist/page_category_song_list.dart';
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/pages/playlist/background_blur.dart';
+import 'package:cloud_music/pages/playlist/item_music_list_track.dart';
+import 'package:cloud_music/pages/playlist/page_category_song_list.dart';
 
 import 'album/SongLabelPage.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_app/base/CommonLoading.dart';
-import 'package:flutter_app/widget/flexible_app_bar.dart';
+import 'package:cloud_music/base/CommonLoading.dart';
+import 'package:cloud_music/widget/flexible_app_bar.dart';
 import 'package:common_utils/common_utils.dart';
 import 'dart:ui';
-import 'package:flutter_app/base/ConstImg.dart';
+import 'package:cloud_music/base/ConstImg.dart';
 
 /// 每日推荐
 class PageDailySpecial extends StatefulWidget {

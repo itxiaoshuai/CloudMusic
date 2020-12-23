@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/res/gaps.dart';
-import 'package:flutter_app/base/res/styles.dart';
-import 'package:flutter_app/widget/cloud_password_input.dart';
-import 'package:flutter_app/widget/item/DrawerListItem.dart';
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/base/res/styles.dart';
+import 'package:cloud_music/widget/cloud_password_input.dart';
+import 'package:cloud_music/widget/item/DrawerListItem.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginWithAuth extends StatefulWidget {

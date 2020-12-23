@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/widget/widget_img_menu.dart';
+import 'package:cloud_music/widget/widget_img_menu.dart';
 import '../r.dart';
 
 class PlayBottomMenuWidget extends StatefulWidget {
@@ -31,15 +31,13 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
               default:
                 _audioPlayerMode = AudioPlayerMode.RANDOM_PLAY;
             }
-            setState(() {
-
-            });
+            setState(() {});
           },
         );
       case AudioPlayerMode.RANDOM_PLAY: //随机播放
         return ImageTapWidget(
-          'images/icon_random_play_normal.png',
-          'images/icon_random_play_select.png',
+          R.mipmap.randomPlayNormal,
+          R.mipmap.randomPlaySelect,
           40,
           onTap: () {
             switch (_audioPlayerMode) {
@@ -55,16 +53,14 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
               default:
                 _audioPlayerMode = AudioPlayerMode.RANDOM_PLAY;
             }
-            setState(() {
-
-            });
+            setState(() {});
           },
         );
 
       case AudioPlayerMode.SINGLE_CYCLE: //单曲循环
         return ImageTapWidget(
-          'images/icon_single_cycle_normal.png',
-          'images/icon_single_cycle_select.png',
+          R.mipmap.singleCycleNormal,
+          R.mipmap.singleCycleSelect,
           40,
           onTap: () {
             switch (_audioPlayerMode) {
@@ -80,15 +76,13 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
               default:
                 _audioPlayerMode = AudioPlayerMode.RANDOM_PLAY;
             }
-            setState(() {
-
-            });
+            setState(() {});
           },
         );
     }
     return ImageTapWidget(
-      'images/icon_list_cycle_normal.png',
-      'images/icon_list_cycle_select.png',
+      R.mipmap.listCycleNormal,
+      R.mipmap.listCycleSelect,
       40,
       onTap: () {
         switch (_audioPlayerMode) {
@@ -104,9 +98,7 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
           default:
             _audioPlayerMode = AudioPlayerMode.RANDOM_PLAY;
         }
-        setState(() {
-
-        });
+        setState(() {});
       },
     );
   }
@@ -119,10 +111,9 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
       child: Row(
         children: <Widget>[
           _buildPlayModeWidget(),
-
           ImageTapWidget(
-            'images/icon_song_left_normal.png',
-            'images/icon_song_left_select.png',
+            R.mipmap.prevNormal,
+            R.mipmap.prevSelect,
             40,
             onTap: () {
               print('上一曲');
@@ -135,16 +126,19 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
             onTap: () {},
           ),
           ImageTapWidget(
-            'images/icon_song_right_normal.png',
-            'images/icon_song_right_select.png',
+            R.mipmap.nextNormal,
+            R.mipmap.nextSelect,
             40,
             onTap: () {
               print('上一曲');
             },
           ),
-
-          ImageTapWidget('images/icon_play_songs_normal.png',
-              'images/icon_play_songs_select.png', 40),
+          ImageTapWidget(
+            R.mipmap.songsNormal,
+            R.mipmap.songsSelect,
+            40,
+            onTap: () {},
+          ),
         ],
       ),
     );

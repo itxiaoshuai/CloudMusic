@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/net/http.dart';
-import 'package:flutter_app/widget/ListItemCustom.dart';
-import 'package:flutter_app/widget/base_song_img_item.dart';
+import 'package:cloud_music/net/http.dart';
+import 'package:cloud_music/widget/ListItemCustom.dart';
+import 'package:cloud_music/widget/base_song_img_item.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class PlaylistCategoryPage extends StatefulWidget {

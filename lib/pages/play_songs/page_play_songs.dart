@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/res/gaps.dart';
+import 'package:cloud_music/base/res/gaps.dart';
 import 'dart:ui';
-import 'package:flutter_app/base/res/styles.dart';
-import 'package:flutter_app/widget/widget_play_bottom_menu.dart';
+import 'package:cloud_music/base/res/styles.dart';
+import 'package:cloud_music/widget/widget_play_bottom_menu.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:common_utils/common_utils.dart';
-import 'package:flutter_app/widget/widget_img_menu.dart';
-import 'package:flutter_app/widget/widget_round_img.dart';
+import 'package:cloud_music/widget/widget_img_menu.dart';
+import 'package:cloud_music/widget/widget_round_img.dart';
 
 class PlaySongsPage extends StatefulWidget {
   @override
