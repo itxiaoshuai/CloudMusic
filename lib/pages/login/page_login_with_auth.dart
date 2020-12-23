@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/base/res/styles.dart';
 import 'package:cloud_music/widget/cloud_password_input.dart';
-import 'package:cloud_music/widget/item/DrawerListItem.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginWithAuth extends StatefulWidget {
   @override
@@ -136,7 +134,7 @@ class _LoginWithAuthBodyState extends State<LoginWithAuthBody> {
             onChange: (text) {
               print(text);
               if (text.toString().length == 6) {
-                Fluttertoast.showToast(msg: "xxxxxxxxxxx");
+
               }
             },
           ),

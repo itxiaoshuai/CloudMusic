@@ -1,4 +1,6 @@
 import 'dart:ui';
+import 'package:cloud_music/data/protocol/tracks.dart';
+import 'package:cloud_music/manager/audio_paly_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/base/ConstImg.dart';
 import 'package:cloud_music/base/utils/utils.dart';
@@ -11,6 +13,8 @@ import 'package:cloud_music/provider/view_state_widget.dart';
 import 'package:cloud_music/route/routes.dart';
 import 'package:cloud_music/widget/ListItemCustom.dart';
 import 'package:cloud_music/widget/flexible_app_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'item_music_list_track.dart';
 
@@ -328,6 +332,7 @@ class CustomWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var audioPlayManager = Provider.of<AudioPlayManager>(context);
     return CustomScrollView(
       slivers: <Widget>[
         SliverAppBar(
@@ -364,21 +369,17 @@ class CustomWidget extends StatelessWidget {
               SliverChildBuilderDelegate((BuildContext context, int index) {
             Tracks track = model.data.tracks[index];
             return Material(
-              child:  InkWell(
+              child: InkWell(
                 onTap: () {
-                  print(
-                      '播放歌曲');
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return PlaySongsPage();
-                  }));
+                  playSongs(context, audioPlayManager, index);
                 },
-                child:  Container(
+                child: Container(
                   height: 60,
                   //不要在这里设置背景色，否则会遮挡水波纹效果,如果设置的话尽量设置Material下面的color来实现背景色
                   margin: EdgeInsets.all(0.0),
                   child: TrackItem(
                     index: index + 1,
-                    tracks: track,
+                    track: track,
                   ),
                 ),
               ),
@@ -393,5 +394,26 @@ class CustomWidget extends StatelessWidget {
 
   Widget _buildListHeader(BuildContext context) {
     return MusicListHeader();
+  }
+
+  void playSongs(
+      BuildContext context, AudioPlayManager audioPlayManager, int index) {
+    // model.data.tracks
+    // audioPlayManager.
+    audioPlayManager.playSong(model.data.tracks[index]);
+    // model.playSongs(
+    //   model
+    //       .map((r) => Song(
+    //     r.id,
+    //     name: r.name,
+    //     picUrl: r.al.picUrl,
+    //     artists: '${r.ar.map((a) => a.name).toList().join('/')}',
+    //   ))
+    //       .toList(),
+    //   index: index,
+    // );
+    Navigator.of(context).pushNamed(
+      RouteName.PAGE_SONGS,
+    );
   }
 }

@@ -1,17 +1,16 @@
+import 'package:cloud_music/data/protocol/tracks.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/base/ConstImg.dart';
 import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/base/res/styles.dart';
-import 'package:cloud_music/data/protocol/playlist.dart';
 import 'package:cloud_music/widget/item/list_item.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 
 ///单个歌曲(item)
 class TrackItem extends StatelessWidget {
   final int index;
-  final Tracks tracks;
+  final Tracks track;
 
-  TrackItem({this.index, this.tracks});
+  TrackItem({this.index, this.track});
 
   String getText(Tracks tracks) {
     StringBuffer stringBuffer = new StringBuffer();
@@ -65,7 +64,7 @@ class TrackItem extends StatelessWidget {
                         child: Align(
                           alignment: FractionalOffset.centerLeft,
                           child: Text(
-                            tracks.name,
+                            track.name,
                             style: TextStyle(fontSize: 12, color: Colors.black),
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -79,7 +78,7 @@ class TrackItem extends StatelessWidget {
                         child: Align(
                           alignment: FractionalOffset.centerLeft,
                           child: Text(
-                            getText(tracks),
+                            getText(track),
                             style:
                                 TextStyle(fontSize: 8, color: Colors.grey[600]),
                             overflow: TextOverflow.ellipsis,

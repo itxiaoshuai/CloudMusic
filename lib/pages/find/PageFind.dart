@@ -25,7 +25,6 @@ import 'package:cloud_music/widget/item/DrawerListItem.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:cloud_music/widget/SAppBarSearch.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import '../../r.dart';
 import 'FutureBuilderPage.dart';
 import 'package:cloud_music/widget/HomeDrawer.dart';
@@ -122,12 +121,7 @@ class _FindPageState extends State<FindPage>
               color: Colors.grey[100],
               child: InkWell(
                 onTap: () {
-                  Fluttertoast.showToast(
-                      msg: "搜索",
-                      toastLength: Toast.LENGTH_SHORT,
-                      timeInSecForIos: 1,
-                      textColor: Colors.black12,
-                      gravity: ToastGravity.CENTER);
+
                 },
                 child: Container(
                   padding: EdgeInsets.only(left: 15, right: 10),

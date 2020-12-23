@@ -2,9 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/base/ConstImg.dart';
 import 'package:cloud_music/base/StringResource.dart';
-import 'package:cloud_music/pages/login/page_phone_login.dart';
 import 'package:cloud_music/pages/login/page_register.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:oktoast/oktoast.dart';
 import '../WebViewPage.dart';
 
 bool visible = true;
@@ -43,12 +42,7 @@ class LoginMainPage extends StatelessWidget {
                             child: RaisedButton(
                               onPressed: () {
                                 if (visible) {
-                                  Fluttertoast.showToast(
-                                      msg:
-                                          "请先勾选同意 《用户协议》 《隐私政策》 《儿童隐私政策》",
-                                      toastLength: Toast.LENGTH_SHORT,
-                                      timeInSecForIos: 1,
-                                      textColor: Colors.white);
+                                  showToast("请先勾选同意 《用户协议》 《隐私政策》 《儿童隐私政策》");
                                 } else {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (BuildContext context) {

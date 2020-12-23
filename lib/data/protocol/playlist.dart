@@ -1,3 +1,5 @@
+import 'tracks.dart';
+
 class Playlist {
   Creator creator;
 
@@ -48,15 +50,15 @@ class Playlist {
     creator =
         json['creator'] != null ? new Creator.fromJson(json['creator']) : null;
     if (json['tracks'] != null) {
-      tracks = new List<Tracks>();
+      tracks = <Tracks>[];
       json['tracks'].forEach((v) {
-        tracks.add(new Tracks.fromJson(v));
+        tracks.add(Tracks.fromJson(v));
       });
     }
     if (json['trackIds'] != null) {
-      trackIds = new List<TrackIds>();
+      trackIds = <TrackIds>[];
       json['trackIds'].forEach((v) {
-        trackIds.add(new TrackIds.fromJson(v));
+        trackIds.add(TrackIds.fromJson(v));
       });
     }
 
@@ -173,101 +175,6 @@ class Experts {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['2'] = this.s2;
-    return data;
-  }
-}
-
-class Tracks {
-  String name;
-  int id;
-  List<Ar> ar;
-  Al al;
-  int mv;
-
-  Tracks({
-    this.name,
-    this.id,
-    this.ar,
-    this.al,
-    this.mv,
-  });
-
-  Tracks.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    id = json['id'];
-    if (json['ar'] != null) {
-      ar = new List<Ar>();
-      json['ar'].forEach((v) {
-        ar.add(new Ar.fromJson(v));
-      });
-    }
-
-    al = json['al'] != null ? new Al.fromJson(json['al']) : null;
-
-    mv = json['mv'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['id'] = this.id;
-    if (this.ar != null) {
-      data['ar'] = this.ar.map((v) => v.toJson()).toList();
-    }
-
-    if (this.al != null) {
-      data['al'] = this.al.toJson();
-    }
-
-    data['mv'] = this.mv;
-    return data;
-  }
-}
-
-class Ar {
-  int id;
-  String name;
-
-  Ar({
-    this.id,
-    this.name,
-  });
-
-  Ar.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    return data;
-  }
-}
-
-class Al {
-  int id;
-  String name;
-  String picUrl;
-
-  Al({
-    this.id,
-    this.name,
-    this.picUrl,
-  });
-
-  Al.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    picUrl = json['picUrl'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['picUrl'] = this.picUrl;
     return data;
   }
 }

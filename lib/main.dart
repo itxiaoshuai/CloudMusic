@@ -2,8 +2,11 @@ import 'dart:io';
 import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:oktoast/oktoast.dart';
+import 'package:provider/provider.dart';
 
 import 'base/route.dart';
+import 'manager/provider_manager.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,15 +21,30 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: routes,
-      onGenerateRoute: Routers.generateRoute,
-      theme: ThemeData(
-        backgroundColor: Colors.grey[100],
-        primarySwatch: Colors.red,
+    return OKToast(
+      child: MultiProvider(
+        providers: providers,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/',
+          routes: routes,
+          onGenerateRoute: Routers.generateRoute,
+          theme: ThemeData(
+            backgroundColor: Colors.grey[100],
+            primarySwatch: Colors.red,
+          ),
+        ),
       ),
     );
+    // return MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   initialRoute: '/',
+    //   routes: routes,
+    //   onGenerateRoute: Routers.generateRoute,
+    //   theme: ThemeData(
+    //     backgroundColor: Colors.grey[100],
+    //     primarySwatch: Colors.red,
+    //   ),
+    // );
   }
 }

@@ -31,4 +31,11 @@ class RequestManager {
         await http.get('/comment/playlist', queryParameters: queryParameters);
     return response.data;
   }
+
+  /// Music
+  static Future<String> getMusicURL(Map<String, dynamic> queryParameters) async {
+    var response =
+    await http.get('/song/url', queryParameters: queryParameters);
+    return response.data['data'][0]["url"];
+  }
 }
