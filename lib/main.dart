@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/screenutil_init.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
@@ -24,14 +25,18 @@ class MyApp extends StatelessWidget {
     return OKToast(
       child: MultiProvider(
         providers: providers,
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          initialRoute: '/',
-          routes: routes,
-          onGenerateRoute: Routers.generateRoute,
-          theme: ThemeData(
-            backgroundColor: Colors.grey[100],
-            primarySwatch: Colors.red,
+        child: ScreenUtilInit(
+          designSize: Size(1080, 2400),
+          allowFontScaling: false,
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            initialRoute: '/',
+            routes: routes,
+            onGenerateRoute: Routers.generateRoute,
+            theme: ThemeData(
+              backgroundColor: Colors.grey[100],
+              primarySwatch: Colors.red,
+            ),
           ),
         ),
       ),

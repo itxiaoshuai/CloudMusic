@@ -39,7 +39,7 @@ dependencies:
   shared_preferences: ^0.5.1+2
   pull_to_refresh: ^1.6.0
   provider: ^4.3.1
-  flutter_screenutil: ^2.3.1
+  flutter_screenutil: ^4.0.2+1
   date_format: ^1.0.8
   common_utils: ^1.2.1
   chewie: ^0.9.10

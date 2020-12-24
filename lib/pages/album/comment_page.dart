@@ -30,8 +30,6 @@ class _CommentPageState extends State<CommentPage> {
   @override
   Widget build(BuildContext context) {
     CommentList commentList;
-    ScreenUtil.init(context,
-        width: 1080, height: 2400, allowFontScaling: false);
 
     return Scaffold(
       appBar: AppBar(),

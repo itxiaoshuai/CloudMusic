@@ -563,7 +563,6 @@ class ImgItem extends StatelessWidget {
 class _UserDetailAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 720, height: 1080, allowFontScaling: false);
     return SliverAppBar(
 //      leading: GestureDetector(
 //        child: Icon(Icons.arrow_back),

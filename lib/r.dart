@@ -10,6 +10,9 @@ class MipMap {
   String get play => 'images/icon_song_play_normal.png'; //播放
   String get playSelect => 'images/icon_song_play_touch.png'; //播放
 
+  String get pauseNormal => 'images/icon_song_pause.png'; //暂停
+  String get pauseSelect => 'images/icon_song_pause.png'; //暂停
+
   String get nextNormal => 'images/icon_song_right_normal.png'; //下一曲
   String get nextSelect => 'images/icon_song_right_select.png'; //下一曲
 

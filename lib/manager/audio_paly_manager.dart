@@ -22,10 +22,13 @@ class AudioPlayManager extends ChangeNotifier {
 
   int get totalDuration => _totalDuration;
 
+  AudioPlayerState _curState;
+  AudioPlayerState get curState => _curState;
   AudioPlayManager() {
     _audioPlayer.setReleaseMode(ReleaseMode.STOP);
     // 播放状态监听
     _audioPlayer.onPlayerStateChanged.listen((state) {
+      _curState = state;
       notifyListeners();
       print('state==${state.index}');
     });

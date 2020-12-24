@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'api.dart';
@@ -10,6 +9,8 @@ class Http extends BaseHttp {
   void init() {
     options.baseUrl = "http://118.24.63.15:1020";
     interceptors..add(ApiInterceptor());
+
+    // httpClientAdapter = BrowserHttpClientAdapter();
 //       cookie持久化 异步
 //      ..add(CookieManager(
 //          PersistCookieJar(dir: StorageManager.temporaryDirectory.path)));

@@ -5,11 +5,10 @@ import 'package:cloud_music/base/res/gaps.dart';
 import 'dart:ui';
 import 'package:cloud_music/base/res/styles.dart';
 import 'package:cloud_music/widget/widget_play_bottom_menu.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 import 'package:common_utils/common_utils.dart';
-import 'package:cloud_music/widget/widget_img_menu.dart';
 import 'package:cloud_music/widget/widget_round_img.dart';
 import 'package:provider/provider.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class PlaySongsPage extends StatefulWidget {
   @override
@@ -20,6 +19,7 @@ class _PlaySongsPageState extends State<PlaySongsPage>
     with TickerProviderStateMixin {
   Animation<double> _stylusAnimation;
   AnimationController _stylusController; //唱针控制器
+  AnimationController _controller; // 封面旋转控制器
   @override
   void initState() {
     super.initState();
@@ -27,11 +27,30 @@ class _PlaySongsPageState extends State<PlaySongsPage>
         AnimationController(vsync: this, duration: Duration(milliseconds: 400));
     _stylusAnimation =
         Tween<double>(begin: -0.03, end: -0.10).animate(_stylusController);
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 20));
+    _controller.addStatusListener((status) {
+      // 转完一圈之后继续
+      if (status == AnimationStatus.completed) {
+        _controller.reset();
+        _controller.forward();
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<AudioPlayManager>(builder: (context, model, child) {
+
+      if (model.curState == AudioPlayerState.PLAYING) {
+        // 如果当前状态是在播放当中，则唱片一直旋转，
+        // 并且唱针是移除状态
+        _controller.forward();
+        _stylusController.reverse();
+      } else {
+        _controller.stop();
+        _stylusController.forward();
+      }
       return Scaffold(
           body: Stack(
         fit: StackFit.expand,
@@ -92,20 +111,48 @@ class _PlaySongsPageState extends State<PlaySongsPage>
                         Align(
                           child: Container(
                             margin: EdgeInsets.only(top: 0),
-                            child: Stack(
+                            child:Stack(
                               alignment: Alignment.center,
                               children: <Widget>[
                                 RoundImgWidget(
                                     'http://p3.music.126.net/JL0hXL3TNcjcfi0uJTKM-A==/109951163300299605.jpg',
                                     MediaQuery.of(context).size.width - 140),
+                                RotationTransition(
+                                  turns: _controller,
+                                  child: RoundImgWidget(
+                                      'http://p3.music.126.net/JL0hXL3TNcjcfi0uJTKM-A==/109951163300299605.jpg',
+                                      MediaQuery.of(context).size.width - 140),
+                                ),
                                 Image.asset(
                                   'images/bet.png',
                                   width: MediaQuery.of(context).size.width - 90,
                                 ),
                               ],
                             ),
+
                           ),
                         ),
+                        // Align(
+                        //   child: Container(
+                        //     margin: EdgeInsets.only(top: 0),
+                        //     child:RotationTransition(
+                        //       turns: _controller,
+                        //       child: Stack(
+                        //         alignment: Alignment.center,
+                        //         children: <Widget>[
+                        //           RoundImgWidget(
+                        //               'http://p3.music.126.net/JL0hXL3TNcjcfi0uJTKM-A==/109951163300299605.jpg',
+                        //               MediaQuery.of(context).size.width - 140),
+                        //           Image.asset(
+                        //             'images/bet.png',
+                        //             width: MediaQuery.of(context).size.width - 90,
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ),
+                        //
+                        //   ),
+                        // ),
                         Align(
                           child: Container(
                             // color: Colors.red,

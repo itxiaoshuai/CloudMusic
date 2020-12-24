@@ -1,5 +1,11 @@
-import 'package:flutter/material.dart';
+
+
+import 'package:audioplayers/audioplayers.dart';
+import 'package:cloud_music/manager/audio_paly_manager.dart';
 import 'package:cloud_music/widget/widget_img_menu.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '../r.dart';
 
 class PlayBottomMenuWidget extends StatefulWidget {
@@ -103,45 +109,66 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
     );
   }
 
+  Widget _buildPlayStateWidget(AudioPlayManager manager) {
+    if (manager.curState == AudioPlayerState.PAUSED) {
+      return ImageTapWidget(
+        R.mipmap.play,
+        R.mipmap.playSelect,
+        75,
+        onTap: () {},
+      );
+    } else {
+      return ImageTapWidget(
+        R.mipmap.pauseNormal,
+        R.mipmap.pauseSelect,
+        75,
+        onTap: () {},
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.yellow,
-      alignment: Alignment.topCenter,
-      child: Row(
-        children: <Widget>[
-          _buildPlayModeWidget(),
-          ImageTapWidget(
-            R.mipmap.prevNormal,
-            R.mipmap.prevSelect,
-            40,
-            onTap: () {
-              print('上一曲');
-            },
-          ),
-          ImageTapWidget(
-            R.mipmap.play,
-            R.mipmap.playSelect,
-            75,
-            onTap: () {},
-          ),
-          ImageTapWidget(
-            R.mipmap.nextNormal,
-            R.mipmap.nextSelect,
-            40,
-            onTap: () {
-              print('上一曲');
-            },
-          ),
-          ImageTapWidget(
-            R.mipmap.songsNormal,
-            R.mipmap.songsSelect,
-            40,
-            onTap: () {},
-          ),
-        ],
-      ),
-    );
+    return Consumer<AudioPlayManager>(builder: (context, model, child) {
+      return Container(
+        // color: Colors.yellow,
+        alignment: Alignment.topCenter,
+        child: Row(
+          children: <Widget>[
+            _buildPlayModeWidget(),
+            ImageTapWidget(
+              R.mipmap.prevNormal,
+              R.mipmap.prevSelect,
+              40,
+              onTap: () {
+                print('上一曲');
+              },
+            ),
+            _buildPlayStateWidget(model),
+            // ImageTapWidget(
+            //   R.mipmap.play,
+            //   R.mipmap.playSelect,
+            //   75,
+            //   onTap: () {},
+            // ),
+            ImageTapWidget(
+              R.mipmap.nextNormal,
+              R.mipmap.nextSelect,
+              40,
+              onTap: () {
+                print('上一曲');
+              },
+            ),
+            ImageTapWidget(
+              R.mipmap.songsNormal,
+              R.mipmap.songsSelect,
+              40,
+              onTap: () {},
+            ),
+          ],
+        ),
+      );
+    });
   }
 }
 
