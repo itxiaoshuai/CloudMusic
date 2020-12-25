@@ -304,7 +304,7 @@ packages:
       name: flutter_screenutil
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.1"
+    version: "4.0.2+1"
   flutter_spinkit:
     dependency: "direct main"
     description:
@@ -336,13 +336,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.11"
-  fluttertoast:
-    dependency: "direct main"
-    description:
-      name: fluttertoast
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "3.1.3"
   fuchsia_remote_debug_protocol:
     dependency: transitive
     description: flutter
@@ -493,6 +486,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.3.0"
+  oktoast:
+    dependency: "direct main"
+    description:
+      name: oktoast
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.3.2"
   open_iconic_flutter:
     dependency: transitive
     description:

@@ -31,40 +31,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1dde761c-d3d2-48e6-a88c-deeffd0bb70c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/a9a0a5596609ae40a3b2b8b1e622c26b/gen_localizations.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/last_build_run.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/repository/music_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repository/music_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/manager/audio_paly_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/manager/audio_paly_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/net/http.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/net/http.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/album/comment_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/album/comment_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/find/widget/SpinKitWaveType.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/widget/SpinKitWaveType.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/my/PageMy.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/PageMy.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/play_songs/page_play_songs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/play_songs/page_play_songs.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/radio/page_radio_category.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/radio/page_radio_category.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/user/page_user_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/user/page_user_detail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/r.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/r.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/widget_play_bottom_menu.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/widget_play_bottom_menu.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@HBX4C19C06003900]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@127.0.0.1:21503]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -131,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608717805453</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="完善">
+      <created>1608804923131</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608804923131</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -159,37 +144,38 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="提交" />
     <MESSAGE value="播放进度的显示" />
-    <option name="LAST_COMMIT_MESSAGE" value="播放进度的显示" />
+    <MESSAGE value="完善" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608794519355">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608794519355" />
-    <state x="581" y="106" key="CommitChangelistDialog2" timestamp="1608717804513">
+    <state x="581" y="106" key="CommitChangelistDialog2" timestamp="1608804922113">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="581" y="106" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1608717804513" />
-    <state x="184" y="85" width="1536" height="832" key="DiffContextDialog" timestamp="1608804627861">
+    <state x="581" y="106" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1608804922113" />
+    <state x="184" y="85" width="1536" height="832" key="DiffContextDialog" timestamp="1608804902554">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="85" width="1536" height="832" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608804627861" />
-    <state width="1876" height="347" key="GridCell.Tab.0.bottom" timestamp="1608804546943">
+    <state x="184" y="85" width="1536" height="832" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608804902554" />
+    <state width="1876" height="347" key="GridCell.Tab.0.bottom" timestamp="1608858961608">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608804546943" />
-    <state width="1876" height="347" key="GridCell.Tab.0.center" timestamp="1608804546943">
+    <state width="1876" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608858961608" />
+    <state width="1876" height="347" key="GridCell.Tab.0.center" timestamp="1608858961608">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608804546943" />
-    <state width="1876" height="347" key="GridCell.Tab.0.left" timestamp="1608804546942">
+    <state width="1876" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608858961608" />
+    <state width="1876" height="347" key="GridCell.Tab.0.left" timestamp="1608858961608">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608804546942" />
-    <state width="1876" height="347" key="GridCell.Tab.0.right" timestamp="1608804546943">
+    <state width="1876" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608858961608" />
+    <state width="1876" height="347" key="GridCell.Tab.0.right" timestamp="1608858961608">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608804546943" />
+    <state width="1876" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608858961608" />
     <state x="461" y="151" key="SettingsEditor" timestamp="1608796576777">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -198,10 +184,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608802715934" />
-    <state x="552" y="238" key="Vcs.Push.Dialog.v2" timestamp="1608717806727">
+    <state x="552" y="238" key="Vcs.Push.Dialog.v2" timestamp="1608804924236">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="238" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1608717806727" />
+    <state x="552" y="238" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1608804924236" />
     <state x="763" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608804414265">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -210,9 +196,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="662" y="223" width="596" height="594" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608694648514" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1608803564649">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1608804977576">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608803564649" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608804977576" />
   </component>
 </project>
