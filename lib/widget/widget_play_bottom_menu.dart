@@ -1,5 +1,3 @@
-
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_music/manager/audio_paly_manager.dart';
 import 'package:cloud_music/widget/widget_img_menu.dart';
@@ -115,14 +113,18 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
         R.mipmap.play,
         R.mipmap.playSelect,
         75,
-        onTap: () {},
+        onTap: () {
+          manager.togglePlay();
+        },
       );
     } else {
       return ImageTapWidget(
         R.mipmap.pauseNormal,
         R.mipmap.pauseSelect,
         75,
-        onTap: () {},
+        onTap: () {
+          manager.togglePlay();
+        },
       );
     }
   }

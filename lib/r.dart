@@ -1,3 +1,7 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+
 class MipMap {
   const MipMap() : super();
 
@@ -22,18 +26,14 @@ class MipMap {
   String get prevNormal => 'images/icon_song_left_normal.png'; //上一曲
   String get prevSelect => 'images/icon_song_left_select.png';
 
-
   String get randomPlayNormal => 'images/icon_random_play_normal.png'; //随机播放
   String get randomPlaySelect => 'images/icon_random_play_select.png';
-
 
   String get singleCycleNormal => 'images/icon_single_cycle_normal.png'; //单曲循环
   String get singleCycleSelect => 'images/icon_single_cycle_select.png';
 
-
   String get listCycleNormal => 'images/icon_list_cycle_normal.png'; //列表循环
   String get listCycleSelect => 'images/icon_list_cycle_select.png';
-
 }
 
 class MipMapText {
@@ -52,7 +52,20 @@ class MipMapText {
   String get digitalAlbum => '数字专辑';
 }
 
+class Style {
+  const Style() : super();
+
+  get commonGrayTextStyle => TextStyle(fontSize: 16, color: Colors.grey);
+
+  get commonWhiteTextStyle => TextStyle(fontSize: 16, color: Colors.white);
+
+  get commonWhite70TextStyle => TextStyle(fontSize: 16, color: Colors.white70);
+
+  get smallGrayTextStyle => TextStyle(fontSize: 12, color: Colors.grey);
+}
+
 class R {
   static const MipMap mipmap = MipMap();
   static const MipMapText string = MipMapText();
+  static const Style style = Style();
 }

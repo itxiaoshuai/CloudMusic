@@ -1,0 +1,1189 @@
+{
+  "常": [
+    {
+      "enKey": "China",
+      "cnKey": "中国",
+      "shKey": "CN",
+      "codeKey": 86
+    },
+    {
+      "enKey": "Hong Kong",
+      "cnKey": "中国香港",
+      "shKey": "HK",
+      "codeKey": 852.0
+    },
+    {
+      "enKey": "Macau",
+      "cnKey": "中国澳门",
+      "shKey": "MO",
+      "codeKey": 853.0
+    },
+    {
+      "enKey": "Taiwan",
+      "cnKey": "中国台湾",
+      "shKey": "TW",
+      "codeKey": 886.0
+    }
+  ],
+  "A": [
+    {
+      "enKey": "Albania",
+      "cnKey": "阿尔巴尼亚",
+      "shKey": "AL",
+      "codeKey": 355.0
+    },
+    {
+      "enKey": "Algeria",
+      "cnKey": "阿尔及利亚",
+      "shKey": "DZ",
+      "codeKey": 213.0
+    },
+    {
+      "enKey": "Afghanistan",
+      "cnKey": "阿富汗",
+      "shKey": "AF",
+      "codeKey": 93.0
+    },
+    {
+      "enKey": "Argentina",
+      "cnKey": "阿根廷",
+      "shKey": "AR",
+      "codeKey": 54.0
+    },
+    {
+      "enKey": "United Arab Emirates",
+      "cnKey": "阿拉伯联合酋长国",
+      "shKey": "AE",
+      "codeKey": 971.0
+    },
+    {
+      "enKey": "Oman",
+      "cnKey": "阿曼",
+      "shKey": "OM",
+      "codeKey": 968.0
+    },
+    {
+      "enKey": "Azerbaijan",
+      "cnKey": "阿塞拜疆",
+      "shKey": "AZ",
+      "codeKey": 994.0
+    },
+    {
+      "enKey": "Ascension",
+      "cnKey": "阿森松",
+      "shKey": "",
+      "codeKey": 247.0
+    },
+    {
+      "enKey": "Egypt",
+      "cnKey": "埃及",
+      "shKey": "EG",
+      "codeKey": 20.0
+    },
+    {
+      "enKey": "Ethiopia",
+      "cnKey": "埃塞俄比亚",
+      "shKey": "ET",
+      "codeKey": 251.0
+    },
+    {
+      "enKey": "Ireland",
+      "cnKey": "爱尔兰",
+      "shKey": "IE",
+      "codeKey": 353.0
+    },
+    {
+      "enKey": "Estonia",
+      "cnKey": "爱沙尼亚",
+      "shKey": "EE",
+      "codeKey": 372.0
+    },
+    {
+      "enKey": "Andorra",
+      "cnKey": "安道尔共和国",
+      "shKey": "AD",
+      "codeKey": 376.0
+    },
+    {
+      "enKey": "Angola",
+      "cnKey": "安哥拉",
+      "shKey": "AO",
+      "codeKey": 244.0
+    },
+    {
+      "enKey": "Anguilla",
+      "cnKey": "安圭拉岛",
+      "shKey": "AI",
+      "codeKey": 1264.0
+    },
+    {
+      "enKey": "Antigua and Barbuda",
+      "cnKey": "安提瓜和巴布达",
+      "shKey": "AG",
+      "codeKey": 1268.0
+    },
+    {
+      "enKey": "Austria",
+      "cnKey": "奥地利",
+      "shKey": "AT",
+      "codeKey": 43.0
+    },
+    {
+      "enKey": "Australia",
+      "cnKey": "澳大利亚",
+      "shKey": "AU",
+      "codeKey": 61.0
+    }
+  ],
+  "B": [
+    {
+      "enKey": "Barbados",
+      "cnKey": "巴巴多斯",
+      "shKey": "BB",
+      "codeKey": 1246.0
+    },
+    {
+      "enKey": "Papua New Guinea",
+      "cnKey": "巴布亚新几内亚",
+      "shKey": "PG",
+      "codeKey": 675.0
+    },
+    {
+      "enKey": "Bahamas",
+      "cnKey": "巴哈马",
+      "shKey": "BS",
+      "codeKey": 1242.0
+    },
+    {
+      "enKey": "Pakistan",
+      "cnKey": "巴基斯坦",
+      "shKey": "PK",
+      "codeKey": 92.0
+    },
+    {
+      "enKey": "Paraguay",
+      "cnKey": "巴拉圭",
+      "shKey": "PY",
+      "codeKey": 595.0
+    },
+    {
+      "enKey": "Bahrain",
+      "cnKey": "巴林",
+      "shKey": "BH",
+      "codeKey": 973.0
+    },
+    {
+      "enKey": "Panama",
+      "cnKey": "巴拿马",
+      "shKey": "PA",
+      "codeKey": 507.0
+    },
+    {
+      "enKey": "Brazil",
+      "cnKey": "巴西",
+      "shKey": "BR",
+      "codeKey": 55.0
+    },
+    {
+      "enKey": "Belarus",
+      "cnKey": "白俄罗斯",
+      "shKey": "BY",
+      "codeKey": 375.0
+    },
+    {
+      "enKey": "Bermuda",
+      "cnKey": "百慕大群岛",
+      "shKey": "BM",
+      "codeKey": 1441.0
+    },
+    {
+      "enKey": "Bulgaria",
+      "cnKey": "保加利亚",
+      "shKey": "BG",
+      "codeKey": 359.0
+    },
+    {
+      "enKey": "Mariana Is",
+      "cnKey": "马里亚那群岛",
+      "shKey": "",
+      "codeKey": 1670
+    },
+    {
+      "enKey": "Benin",
+      "cnKey": "贝宁",
+      "shKey": "BJ",
+      "codeKey": 229.0
+    },
+    {
+      "enKey": "Belgium",
+      "cnKey": "比利时",
+      "shKey": "BE",
+      "codeKey": 32.0
+    },
+    {
+      "enKey": "Iceland",
+      "cnKey": "冰岛",
+      "shKey": "IS",
+      "codeKey": 354.0
+    },
+    {
+      "enKey": "Puerto Rico",
+      "cnKey": "波多黎各",
+      "shKey": "PR",
+      "codeKey": 1787.0
+    },
+    {
+      "enKey": "Poland",
+      "cnKey": "波兰",
+      "shKey": "PL",
+      "codeKey": 48.0
+    },
+    {
+      "enKey": "Bolivia",
+      "cnKey": "玻利维亚",
+      "shKey": "BO",
+      "codeKey": 591.0
+    },
+    {
+      "enKey": "Belize",
+      "cnKey": "伯利兹",
+      "shKey": "BZ",
+      "codeKey": 501.0
+    },
+    {
+      "enKey": "Botswana",
+      "cnKey": "博茨瓦纳",
+      "shKey": "BW",
+      "codeKey": 267.0
+    },
+    {
+      "enKey": "Burkina Faso",
+      "cnKey": "布基纳法索",
+      "shKey": "BF",
+      "codeKey": 226.0
+    },
+    {
+      "enKey": "Burundi",
+      "cnKey": "布隆迪",
+      "shKey": "BI",
+      "codeKey": 257.0
+    }
+  ],
+  "C": [
+    {
+      "enKey": "North Korea",
+      "cnKey": "朝鲜",
+      "shKey": "KP",
+      "codeKey": 850
+    }
+  ],
+  "D": [
+    {
+      "enKey": "Denmark",
+      "cnKey": "丹麦",
+      "shKey": "DK",
+      "codeKey": 45.0
+    },
+    {
+      "enKey": "Germany",
+      "cnKey": "德国",
+      "shKey": "DE",
+      "codeKey": 49.0
+    },
+    {
+      "enKey": "Samoa Eastern",
+      "cnKey": "东萨摩亚(美)",
+      "shKey": "AS",
+      "codeKey": 684.0
+    },
+    {
+      "enKey": "Togo",
+      "cnKey": "多哥",
+      "shKey": "TG",
+      "codeKey": 228.0
+    },
+    {
+      "enKey": "Dominican Republic",
+      "cnKey": "多米尼加共和国",
+      "shKey": "DO",
+      "codeKey": 1809.0
+    }
+  ],
+  "E": [
+    {
+      "enKey": "Russia",
+      "cnKey": "俄罗斯",
+      "shKey": "RU",
+      "codeKey": 7.0
+    },
+    {
+      "enKey": "Ecuador",
+      "cnKey": "厄瓜多尔",
+      "shKey": "EC",
+      "codeKey": 593.0
+    }
+  ],
+  "F": [
+    {
+      "enKey": "France",
+      "cnKey": "法国",
+      "shKey": "FR",
+      "codeKey": 33.0
+    },
+    {
+      "enKey": "French Polynesia",
+      "cnKey": "法属波利尼西亚",
+      "shKey": "PF",
+      "codeKey": 689.0
+    },
+    {
+      "enKey": "French Guiana",
+      "cnKey": "法属圭亚那",
+      "shKey": "GF",
+      "codeKey": 594.0
+    },
+    {
+      "enKey": "Philippines",
+      "cnKey": "菲律宾",
+      "shKey": "PH",
+      "codeKey": 63.0
+    },
+    {
+      "enKey": "Fiji",
+      "cnKey": "斐济",
+      "shKey": "FJ",
+      "codeKey": 679.0
+    },
+    {
+      "enKey": "Finland",
+      "cnKey": "芬兰",
+      "shKey": "FI",
+      "codeKey": 358.0
+    }
+  ],
+  "G": [
+    {
+      "enKey": "Gambia",
+      "cnKey": "冈比亚",
+      "shKey": "GM",
+      "codeKey": 220.0
+    },
+    {
+      "enKey": "Congo",
+      "cnKey": "刚果",
+      "shKey": "CG",
+      "codeKey": 242.0
+    },
+    {
+      "enKey": "Democratic Republic of the Congo",
+      "cnKey": "刚果民主共和国",
+      "shKey": "CD",
+      "codeKey": 243.0
+    },
+    {
+      "enKey": "Colombia",
+      "cnKey": "哥伦比亚",
+      "shKey": "CO",
+      "codeKey": 57.0
+    },
+    {
+      "enKey": "Costa Rica",
+      "cnKey": "哥斯达黎加",
+      "shKey": "CR",
+      "codeKey": 506.0
+    },
+    {
+      "enKey": "Grenada",
+      "cnKey": "格林纳达",
+      "shKey": "GD",
+      "codeKey": 1473.0
+    },
+    {
+      "enKey": "Georgia",
+      "cnKey": "格鲁吉亚",
+      "shKey": "GE",
+      "codeKey": 995.0
+    },
+    {
+      "enKey": "Cuba",
+      "cnKey": "古巴",
+      "shKey": "CU",
+      "codeKey": 53.0
+    },
+    {
+      "enKey": "Guam",
+      "cnKey": "关岛",
+      "shKey": "GU",
+      "codeKey": 1671.0
+    },
+    {
+      "enKey": "Guyana",
+      "cnKey": "圭亚那",
+      "shKey": "GY",
+      "codeKey": 592.0
+    }
+  ],
+  "H": [
+    {
+      "enKey": "Kazakhstan",
+      "cnKey": "哈萨克斯坦",
+      "shKey": "KZ",
+      "codeKey": 327
+    },
+    {
+      "enKey": "Haiti",
+      "cnKey": "海地",
+      "shKey": "HT",
+      "codeKey": 509.0
+    },
+    {
+      "enKey": "South Korea",
+      "cnKey": "韩国",
+      "shKey": "KR",
+      "codeKey": 82.0
+    },
+    {
+      "enKey": "Netherlands",
+      "cnKey": "荷兰",
+      "shKey": "NL",
+      "codeKey": 31.0
+    },
+    {
+      "enKey": "Honduras",
+      "cnKey": "洪都拉斯",
+      "shKey": "HN",
+      "codeKey": 504.0
+    }
+  ],
+  "J": [
+    {
+      "enKey": "Djibouti",
+      "cnKey": "吉布提",
+      "shKey": "DJ",
+      "codeKey": 253.0
+    },
+    {
+      "enKey": "Kyrgyzstan",
+      "cnKey": "吉尔吉斯斯坦",
+      "shKey": "KG",
+      "codeKey": 996.0
+    },
+    {
+      "enKey": "Guinea",
+      "cnKey": "几内亚",
+      "shKey": "GN",
+      "codeKey": 224.0
+    },
+    {
+      "enKey": "Canada",
+      "cnKey": "加拿大",
+      "shKey": "CA",
+      "codeKey": 1.0
+    },
+    {
+      "enKey": "Ghana",
+      "cnKey": "加纳",
+      "shKey": "GH",
+      "codeKey": 233.0
+    },
+    {
+      "enKey": "Gabon",
+      "cnKey": "加蓬",
+      "shKey": "GA",
+      "codeKey": 241.0
+    },
+    {
+      "enKey": "Cambodia",
+      "cnKey": "柬埔寨",
+      "shKey": "KH",
+      "codeKey": 855.0
+    },
+    {
+      "enKey": "Czech Republic",
+      "cnKey": "捷克",
+      "shKey": "CZ",
+      "codeKey": 420
+    },
+    {
+      "enKey": "Zimbabwe",
+      "cnKey": "津巴布韦",
+      "shKey": "ZW",
+      "codeKey": 263.0
+    }
+  ],
+
+  "K": [
+    {
+      "enKey": "Cameroon",
+      "cnKey": "喀麦隆",
+      "shKey": "CM",
+      "codeKey": 237.0
+    },
+    {
+      "enKey": "Qatar",
+      "cnKey": "卡塔尔",
+      "shKey": "QA",
+      "codeKey": 974.0
+    },
+    {
+      "enKey": "Cayman Islands",
+      "cnKey": "开曼群岛",
+      "shKey": "KY",
+      "codeKey": 1345.0
+    },
+    {
+      "enKey": "Ivory Coast",
+      "cnKey": "科特迪瓦",
+      "shKey": "",
+      "codeKey": 225
+    },
+    {
+      "enKey": "Kuwait",
+      "cnKey": "科威特",
+      "shKey": "KW",
+      "codeKey": 965.0
+    },
+    {
+      "enKey": "Kenya",
+      "cnKey": "肯尼亚",
+      "shKey": "KE",
+      "codeKey": 254.0
+    },
+    {
+      "enKey": "Cook Islands",
+      "cnKey": "库克群岛",
+      "shKey": "CK",
+      "codeKey": 682.0
+    }
+  ],
+  "L": [
+    {
+      "enKey": "Latvia",
+      "cnKey": "拉脱维亚",
+      "shKey": "LV",
+      "codeKey": 371.0
+    },
+    {
+      "enKey": "Lesotho",
+      "cnKey": "莱索托",
+      "shKey": "LS",
+      "codeKey": 266.0
+    },
+    {
+      "enKey": "Laos",
+      "cnKey": "老挝",
+      "shKey": "LA",
+      "codeKey": 856.0
+    },
+    {
+      "enKey": "Lebanon",
+      "cnKey": "黎巴嫩",
+      "shKey": "LB",
+      "codeKey": 961.0
+    },
+    {
+      "enKey": "Lithuania",
+      "cnKey": "立陶宛",
+      "shKey": "LT",
+      "codeKey": 370.0
+    },
+    {
+      "enKey": "Liberia",
+      "cnKey": "利比里亚",
+      "shKey": "LR",
+      "codeKey": 231.0
+    },
+    {
+      "enKey": "Libya",
+      "cnKey": "利比亚",
+      "shKey": "LY",
+      "codeKey": 218.0
+    },
+    {
+      "enKey": "Liechtenstein",
+      "cnKey": "列支敦士登",
+      "shKey": "LI",
+      "codeKey": 423.0
+    },
+    {
+      "enKey": "Réunion Island",
+      "cnKey": "留尼汪",
+      "shKey": "RE",
+      "codeKey": 262.0
+    },
+    {
+      "enKey": "Luxembourg",
+      "cnKey": "卢森堡",
+      "shKey": "LU",
+      "codeKey": 352.0
+    },
+    {
+      "enKey": "Romania",
+      "cnKey": "罗马尼亚",
+      "shKey": "RO",
+      "codeKey": 40.0
+    }
+  ],
+  "M": [
+    {
+      "enKey": "Madagascar",
+      "cnKey": "马达加斯加",
+      "shKey": "MG",
+      "codeKey": 261.0
+    },
+    {
+      "enKey": "Maldives",
+      "cnKey": "马尔代夫",
+      "shKey": "MV",
+      "codeKey": 960.0
+    },
+    {
+      "enKey": "Malta",
+      "cnKey": "马耳他",
+      "shKey": "MT",
+      "codeKey": 356.0
+    },
+    {
+      "enKey": "Malawi",
+      "cnKey": "马拉维",
+      "shKey": "MW",
+      "codeKey": 265.0
+    },
+    {
+      "enKey": "Malaysia",
+      "cnKey": "马来西亚",
+      "shKey": "MY",
+      "codeKey": 60.0
+    },
+    {
+      "enKey": "Mali",
+      "cnKey": "马里",
+      "shKey": "ML",
+      "codeKey": 223.0
+    },
+    {
+      "enKey": "Martinique",
+      "cnKey": "马提尼克",
+      "shKey": "MQ",
+      "codeKey": 596.0
+    },
+    {
+      "enKey": "Mauritius",
+      "cnKey": "毛里求斯",
+      "shKey": "MU",
+      "codeKey": 230.0
+    },
+    {
+      "enKey": "United States",
+      "cnKey": "美国",
+      "shKey": "US",
+      "codeKey": 1.0
+    },
+    {
+      "enKey": "Mongolia",
+      "cnKey": "蒙古",
+      "shKey": "MN",
+      "codeKey": 976.0
+    },
+    {
+      "enKey": "Montserrat",
+      "cnKey": "蒙特塞拉特岛",
+      "shKey": "MS",
+      "codeKey": 1664.0
+    },
+    {
+      "enKey": "Bangladesh",
+      "cnKey": "孟加拉国",
+      "shKey": "BD",
+      "codeKey": 880.0
+    },
+    {
+      "enKey": "Peru",
+      "cnKey": "秘鲁",
+      "shKey": "PE",
+      "codeKey": 51.0
+    },
+    {
+      "enKey": "Myanmar",
+      "cnKey": "缅甸",
+      "shKey": "MM",
+      "codeKey": 95.0
+    },
+    {
+      "enKey": "Moldova",
+      "cnKey": "摩尔多瓦",
+      "shKey": "MD",
+      "codeKey": 373.0
+    },
+    {
+      "enKey": "Morocco",
+      "cnKey": "摩洛哥",
+      "shKey": "MA",
+      "codeKey": 212.0
+    },
+    {
+      "enKey": "Monaco",
+      "cnKey": "摩纳哥",
+      "shKey": "MC",
+      "codeKey": 377.0
+    },
+    {
+      "enKey": "Mozambique",
+      "cnKey": "莫桑比克",
+      "shKey": "MZ",
+      "codeKey": 258.0
+    },
+    {
+      "enKey": "Mexico",
+      "cnKey": "墨西哥",
+      "shKey": "MX",
+      "codeKey": 52.0
+    }
+  ],
+  "N": [
+    {
+      "enKey": "Namibia",
+      "cnKey": "纳米比亚",
+      "shKey": "NA",
+      "codeKey": 264.0
+    },
+    {
+      "enKey": "South Africa",
+      "cnKey": "南非",
+      "shKey": "ZA",
+      "codeKey": 27.0
+    },
+    {
+      "enKey": "Nauru",
+      "cnKey": "瑙鲁",
+      "shKey": "NR",
+      "codeKey": 674
+    },
+    {
+      "enKey": "Nepal",
+      "cnKey": "尼泊尔",
+      "shKey": "NP",
+      "codeKey": 977.0
+    },
+    {
+      "enKey": "Nicaragua",
+      "cnKey": "尼加拉瓜",
+      "shKey": "NI",
+      "codeKey": 505.0
+    },
+    {
+      "enKey": "Niger",
+      "cnKey": "尼日尔",
+      "shKey": "NE",
+      "codeKey": 227.0
+    },
+    {
+      "enKey": "Nigeria",
+      "cnKey": "尼日利亚",
+      "shKey": "NG",
+      "codeKey": 234.0
+    },
+    {
+      "enKey": "Norway",
+      "cnKey": "挪威",
+      "shKey": "NO",
+      "codeKey": 47.0
+    }
+  ],
+  "P": [
+    {
+      "enKey": "Portugal",
+      "cnKey": "葡萄牙",
+      "shKey": "PT",
+      "codeKey": 351.0
+    }
+  ],
+  "R": [
+    {
+      "enKey": "Japan",
+      "cnKey": "日本",
+      "shKey": "JP",
+      "codeKey": 81.0
+    },
+    {
+      "enKey": "Sweden",
+      "cnKey": "瑞典",
+      "shKey": "SE",
+      "codeKey": 46.0
+    },
+    {
+      "enKey": "Switzerland",
+      "cnKey": "瑞士",
+      "shKey": "CH",
+      "codeKey": 41.0
+    }
+  ],
+  "S": [
+    {
+      "enKey": "El Salvador",
+      "cnKey": "萨尔瓦多",
+      "shKey": "SV",
+      "codeKey": 503.0
+    },
+    {
+      "enKey": "Sierra Leone",
+      "cnKey": "塞拉利昂",
+      "shKey": "SL",
+      "codeKey": 232.0
+    },
+    {
+      "enKey": "Senegal",
+      "cnKey": "塞内加尔",
+      "shKey": "SN",
+      "codeKey": 221.0
+    },
+    {
+      "enKey": "Cyprus",
+      "cnKey": "塞浦路斯",
+      "shKey": "CY",
+      "codeKey": 357.0
+    },
+    {
+      "enKey": "Seychelles",
+      "cnKey": "塞舌尔",
+      "shKey": "SC",
+      "codeKey": 248.0
+    },
+    {
+      "enKey": "Saudi Arabia",
+      "cnKey": "沙特阿拉伯",
+      "shKey": "SA",
+      "codeKey": 966.0
+    },
+    {
+      "enKey": "Sao Tome and Principe",
+      "cnKey": "圣多美和普林西比",
+      "shKey": "ST",
+      "codeKey": 239.0
+    },
+    {
+      "enKey": "Saint Lucia",
+      "cnKey": "圣卢西亚",
+      "shKey": "LC",
+      "codeKey": 1758.0
+    },
+    {
+      "enKey": "San Marino",
+      "cnKey": "圣马力诺",
+      "shKey": "SM",
+      "codeKey": 378.0
+    },
+
+    {
+      "enKey": "Saint Vincent",
+      "cnKey": "圣文森特岛",
+      "shKey": "VC",
+      "codeKey": 1784.0
+    },
+    {
+      "enKey": "Sri Lanka",
+      "cnKey": "斯里兰卡",
+      "shKey": "LK",
+      "codeKey": 94.0
+    },
+    {
+      "enKey": "Slovakia",
+      "cnKey": "斯洛伐克",
+      "shKey": "SK",
+      "codeKey": 421.0
+    },
+    {
+      "enKey": "Slovenia",
+      "cnKey": "斯洛文尼亚",
+      "shKey": "SI",
+      "codeKey": 386.0
+    },
+    {
+      "enKey": "Swaziland",
+      "cnKey": "斯威士兰",
+      "shKey": "SZ",
+      "codeKey": 268.0
+    },
+    {
+      "enKey": "Sudan",
+      "cnKey": "苏丹",
+      "shKey": "SD",
+      "codeKey": 249.0
+    },
+    {
+      "enKey": "Suriname",
+      "cnKey": "苏里南",
+      "shKey": "SR",
+      "codeKey": 597.0
+    },
+    {
+      "enKey": "Solomon Islands",
+      "cnKey": "所罗门群岛",
+      "shKey": "SB",
+      "codeKey": 677.0
+    },
+    {
+      "enKey": "Somalia",
+      "cnKey": "索马里",
+      "shKey": "SO",
+      "codeKey": 252.0
+    }
+  ],
+  "T": [
+    {
+      "enKey": "Tajikistan",
+      "cnKey": "塔吉克斯坦",
+      "shKey": "TJ",
+      "codeKey": 992.0
+    },
+    {
+      "enKey": "Thailand",
+      "cnKey": "泰国",
+      "shKey": "TH",
+      "codeKey": 66.0
+    },
+    {
+      "enKey": "Tanzania",
+      "cnKey": "坦桑尼亚",
+      "shKey": "TZ",
+      "codeKey": 255.0
+    },
+    {
+      "enKey": "Tonga",
+      "cnKey": "汤加",
+      "shKey": "TO",
+      "codeKey": 676.0
+    },
+    {
+      "enKey": "Trinidad and Tobago",
+      "cnKey": "特立尼达和多巴哥",
+      "shKey": "TT",
+      "codeKey": 1868.0
+    },
+    {
+      "enKey": "Tunisia",
+      "cnKey": "突尼斯",
+      "shKey": "TN",
+      "codeKey": 216.0
+    },
+    {
+      "enKey": "Turkey",
+      "cnKey": "土耳其",
+      "shKey": "TR",
+      "codeKey": 90.0
+    },
+    {
+      "enKey": "Turkmenistan",
+      "cnKey": "土库曼斯坦",
+      "shKey": "TM",
+      "codeKey": 993.0
+    }
+  ],
+  "W": [
+    {
+      "enKey": "Guatemala",
+      "cnKey": "危地马拉",
+      "shKey": "GT",
+      "codeKey": 502
+    },
+    {
+      "enKey": "Venezuela",
+      "cnKey": "委内瑞拉",
+      "shKey": "VE",
+      "codeKey": 58.0
+    },
+    {
+      "enKey": "Brunei",
+      "cnKey": "文莱",
+      "shKey": "BN",
+      "codeKey": 673.0
+    },
+    {
+      "enKey": "Uganda",
+      "cnKey": "乌干达",
+      "shKey": "UG",
+      "codeKey": 256.0
+    },
+    {
+      "enKey": "Ukraine",
+      "cnKey": "乌克兰",
+      "shKey": "UA",
+      "codeKey": 380.0
+    },
+    {
+      "enKey": "Uruguay",
+      "cnKey": "乌拉圭",
+      "shKey": "UY",
+      "codeKey": 598.0
+    },
+    {
+      "enKey": "Uzbekistan",
+      "cnKey": "乌兹别克斯坦",
+      "shKey": "UZ",
+      "codeKey": 998.0
+    }
+  ],
+
+  "X": [
+    {
+      "enKey": "Spain",
+      "cnKey": "西班牙",
+      "shKey": "ES",
+      "codeKey": 34.0
+    },
+    {
+      "enKey": "Samoa Western",
+      "cnKey": "西萨摩亚",
+      "shKey": "",
+      "codeKey": 685
+    },
+    {
+      "enKey": "Greece",
+      "cnKey": "希腊",
+      "shKey": "GR",
+      "codeKey": 30.0
+    },
+    {
+      "enKey": "Singapore",
+      "cnKey": "新加坡",
+      "shKey": "SG",
+      "codeKey": 65.0
+    },
+    {
+      "enKey": "New Zealand",
+      "cnKey": "新西兰",
+      "shKey": "NZ",
+      "codeKey": 64.0
+    },
+    {
+      "enKey": "Hungary",
+      "cnKey": "匈牙利",
+      "shKey": "HU",
+      "codeKey": 36.0
+    },
+    {
+      "enKey": "Syria",
+      "cnKey": "叙利亚",
+      "shKey": "SY",
+      "codeKey": 963.0
+    },
+    {
+      "enKey": "United Kingdom",
+      "cnKey": "英国",
+      "shKey": "GB",
+      "codeKey": 44.0
+    },
+    {
+      "enKey": "Yemen",
+      "cnKey": "也门",
+      "shKey": "YE",
+      "codeKey": 967.0
+    }
+  ],
+  "Y": [
+    {
+      "enKey": "Jamaica",
+      "cnKey": "牙买加",
+      "shKey": "JM",
+      "codeKey": 1876.0
+    },
+    {
+      "enKey": "Armenia",
+      "cnKey": "亚美尼亚",
+      "shKey": "AM",
+      "codeKey": 374.0
+    },
+    {
+      "enKey": "Yemen",
+      "cnKey": "也门",
+      "shKey": "YE",
+      "codeKey": 967.0
+    },
+    {
+      "enKey": "Iraq",
+      "cnKey": "伊拉克",
+      "shKey": "IQ",
+      "codeKey": 964.0
+    },
+    {
+      "enKey": "Iran",
+      "cnKey": "伊朗",
+      "shKey": "IR",
+      "codeKey": 98.0
+    },
+    {
+      "enKey": "Israel",
+      "cnKey": "以色列",
+      "shKey": "IL",
+      "codeKey": 972.0
+    },
+    {
+      "enKey": "Italy",
+      "cnKey": "意大利",
+      "shKey": "IT",
+      "codeKey": 39.0
+    },
+    {
+      "enKey": "India",
+      "cnKey": "印度",
+      "shKey": "IN",
+      "codeKey": 91.0
+    },
+    {
+      "enKey": "Indonesia",
+      "cnKey": "印度尼西亚",
+      "shKey": "ID",
+      "codeKey": 62.0
+    },
+    {
+      "enKey": "United Kingdom",
+      "cnKey": "英国",
+      "shKey": "GB",
+      "codeKey": 44.0
+    },
+    {
+      "enKey": "Jordan",
+      "cnKey": "约旦",
+      "shKey": "JO",
+      "codeKey": 962.0
+    },
+    {
+      "enKey": "Vietnam",
+      "cnKey": "越南",
+      "shKey": "VN",
+      "codeKey": 84.0
+    }
+  ],
+  "Z": [
+    {
+      "enKey": "Zambia",
+      "cnKey": "赞比亚",
+      "shKey": "ZM",
+      "codeKey": 260.0
+    },
+    {
+      "enKey": "Chad",
+      "cnKey": "乍得",
+      "shKey": "TD",
+      "codeKey": 235.0
+    },
+    {
+      "enKey": "Gibraltar",
+      "cnKey": "直布罗陀",
+      "shKey": "GI",
+      "codeKey": 350.0
+    },
+    {
+      "enKey": "Chile",
+      "cnKey": "智利",
+      "shKey": "CL",
+      "codeKey": 56.0
+    },
+    {
+      "enKey": "Central African Republic",
+      "cnKey": "中非共和国",
+      "shKey": "CF",
+      "codeKey": 236.0
+    }
+  ]
+}

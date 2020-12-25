@@ -9,6 +9,7 @@ import 'package:common_utils/common_utils.dart';
 import 'package:cloud_music/widget/widget_round_img.dart';
 import 'package:provider/provider.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:cloud_music/pages/play_songs/lyric_page.dart';
 
 class PlaySongsPage extends StatefulWidget {
   @override
@@ -20,6 +21,7 @@ class _PlaySongsPageState extends State<PlaySongsPage>
   Animation<double> _stylusAnimation;
   AnimationController _stylusController; //唱针控制器
   AnimationController _controller; // 封面旋转控制器
+  int switchIndex = 1; //用于切换歌词
   @override
   void initState() {
     super.initState();
@@ -41,7 +43,6 @@ class _PlaySongsPageState extends State<PlaySongsPage>
   @override
   Widget build(BuildContext context) {
     return Consumer<AudioPlayManager>(builder: (context, model, child) {
-
       if (model.curState == AudioPlayerState.PLAYING) {
         // 如果当前状态是在播放当中，则唱片一直旋转，
         // 并且唱针是移除状态
@@ -98,90 +99,100 @@ class _PlaySongsPageState extends State<PlaySongsPage>
             ],
           ),
           Container(
+            margin: EdgeInsets.only(
+                top: kToolbarHeight +
+                    MediaQuery.of(context).padding.top),
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
+                    child: GestureDetector(
+                  ///点击穿透
+                  behavior: HitTestBehavior.translucent,
+                  onTap: () {
+                    // setState(() {
+                    //   if (switchIndex == 0) {
+                    //     switchIndex = 1;
+                    //   } else {
+                    //     switchIndex = 0;
+                    //   }
+                    // });
+                  },
                   child: Container(
-                    margin: EdgeInsets.only(
-                        top: kToolbarHeight +
-                            MediaQuery.of(context).padding.top),
-                    child: Stack(
-                      children: [
-                        Align(
-                          child: Container(
-                            margin: EdgeInsets.only(top: 0),
-                            child:Stack(
-                              alignment: Alignment.center,
-                              children: <Widget>[
-                                RoundImgWidget(
-                                    'http://p3.music.126.net/JL0hXL3TNcjcfi0uJTKM-A==/109951163300299605.jpg',
-                                    MediaQuery.of(context).size.width - 140),
-                                RotationTransition(
-                                  turns: _controller,
-                                  child: RoundImgWidget(
-                                      'http://p3.music.126.net/JL0hXL3TNcjcfi0uJTKM-A==/109951163300299605.jpg',
-                                      MediaQuery.of(context).size.width - 140),
-                                ),
-                                Image.asset(
-                                  'images/bet.png',
-                                  width: MediaQuery.of(context).size.width - 90,
-                                ),
-                              ],
-                            ),
 
-                          ),
-                        ),
-                        // Align(
-                        //   child: Container(
-                        //     margin: EdgeInsets.only(top: 0),
-                        //     child:RotationTransition(
-                        //       turns: _controller,
-                        //       child: Stack(
-                        //         alignment: Alignment.center,
-                        //         children: <Widget>[
-                        //           RoundImgWidget(
-                        //               'http://p3.music.126.net/JL0hXL3TNcjcfi0uJTKM-A==/109951163300299605.jpg',
-                        //               MediaQuery.of(context).size.width - 140),
-                        //           Image.asset(
-                        //             'images/bet.png',
-                        //             width: MediaQuery.of(context).size.width - 90,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //
-                        //   ),
-                        // ),
-                        Align(
-                          child: Container(
-                            // color: Colors.red,
-                            child: Image.asset(
-                              'images/bgm.png',
-                              width: 70,
+                    child: IndexedStack(
+                      index: switchIndex,
+                      children: [
+                        Stack(
+                          children: [
+                            Align(
+                              child: Container(
+                                margin: EdgeInsets.only(top: 0),
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: <Widget>[
+                                    RoundImgWidget(
+                                        'http://p3.music.126.net/JL0hXL3TNcjcfi0uJTKM-A==/109951163300299605.jpg',
+                                        MediaQuery.of(context).size.width -
+                                            140),
+                                    RotationTransition(
+                                      turns: _controller,
+                                      child: RoundImgWidget(
+                                          'http://p3.music.126.net/JL0hXL3TNcjcfi0uJTKM-A==/109951163300299605.jpg',
+                                          MediaQuery.of(context).size.width -
+                                              140),
+                                    ),
+                                    Image.asset(
+                                      'images/bet.png',
+                                      width: MediaQuery.of(context).size.width -
+                                          90,
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
-                          //这里也可以用Alignment ，FractionalOffset 继承自 Alignment，它和 Alignment唯一的区别就是坐标原点不同！
-                          // FractionalOffset 的坐标原点为矩形的左侧顶点，这和布局系统的一致，所以理解起来会比较容易。
-                          alignment: FractionalOffset(
-                              0.5 + 100 / MediaQuery.of(context).size.width / 2,
-                              0),
+                            Align(
+                              child: Container(
+                                // color: Colors.red,
+                                child: Image.asset(
+                                  'images/bgm.png',
+                                  width: 70,
+                                ),
+                              ),
+                              //这里也可以用Alignment ，FractionalOffset 继承自 Alignment，它和 Alignment唯一的区别就是坐标原点不同！
+                              // FractionalOffset 的坐标原点为矩形的左侧顶点，这和布局系统的一致，所以理解起来会比较容易。
+                              alignment: FractionalOffset(
+                                  0.5 +
+                                      100 /
+                                          MediaQuery.of(context).size.width /
+                                          2,
+                                  0),
+                            ),
+                          ],
                         ),
+                        LyricPage(model),
                       ],
                     ),
                   ),
-                ),
+                )),
                 // _buildSongsHandle(),
                 StreamBuilder<String>(
                   stream: model.curPositionStream,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      var totalTime =
-                      snapshot.data.substring(snapshot.data.indexOf('-') + 1);
-                      var startTime = double.parse(snapshot.data.substring(0, snapshot.data.indexOf('-')));
-                      return _buildProgress(startTime, totalTime, );
+                      var totalTime = snapshot.data
+                          .substring(snapshot.data.indexOf('-') + 1);
+                      var startTime = double.parse(snapshot.data
+                          .substring(0, snapshot.data.indexOf('-')));
+                      return _buildProgress(
+                        startTime,
+                        totalTime,
+                      );
                     } else {
-                      return _buildProgress(0, "0", );
+                      return _buildProgress(
+                        0,
+                        "0",
+                      );
                     }
                   },
                 ),
@@ -271,7 +282,6 @@ class _PlaySongsPageState extends State<PlaySongsPage>
   // }
 
   Widget _buildProgress(double startTime, String totalTime) {
-
     return Container(
       // color: Colors.green,
       child: Row(

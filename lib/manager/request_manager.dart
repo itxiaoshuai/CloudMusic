@@ -2,10 +2,9 @@
 请求管理类
  */
 
-
 import 'package:cloud_music/data/protocol/LeaderboardModel.dart';
 import 'package:cloud_music/net/http.dart';
-
+import 'package:cloud_music/data/protocol/lyric.dart';
 class RequestManager {
   //获取榜单数据
   static Future<List<LeaderBoardList>> fetchTopList() async {
@@ -32,10 +31,19 @@ class RequestManager {
     return response.data;
   }
 
-  /// Music
-  static Future<String> getMusicURL(Map<String, dynamic> queryParameters) async {
+  // Music
+  static Future<String> getMusicURL(
+      Map<String, dynamic> queryParameters) async {
     var response =
-    await http.get('/song/url', queryParameters: queryParameters);
+        await http.get('/song/url', queryParameters: queryParameters);
     return response.data['data'][0]["url"];
+  }
+
+  // 歌词
+  static Future<LyricData> getLyricData(
+      Map<String, dynamic> queryParameters) async {
+    var response =
+        await http.get('/lyric', queryParameters: queryParameters);
+    return LyricData.fromJson(response.data);;
   }
 }

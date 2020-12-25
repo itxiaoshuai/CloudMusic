@@ -8,7 +8,8 @@ import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 
 class AudioPlayManager extends ChangeNotifier {
-  StreamController<String> _curPositionController = StreamController<String>.broadcast();
+  StreamController<String> _curPositionController =
+      StreamController<String>.broadcast();
   AudioPlayer _audioPlayer = AudioPlayer(); //播放器
   List<Tracks> _tracks = []; //播放列表
   int curIndex = 0;
@@ -22,8 +23,12 @@ class AudioPlayManager extends ChangeNotifier {
 
   int get totalDuration => _totalDuration;
 
+  Tracks get curSong => _tracks[curIndex];
+
   AudioPlayerState _curState;
+
   AudioPlayerState get curState => _curState;
+
   AudioPlayManager() {
     _audioPlayer.setReleaseMode(ReleaseMode.STOP);
     // 播放状态监听
@@ -55,7 +60,11 @@ class AudioPlayManager extends ChangeNotifier {
     _tracks.insert(curIndex, track);
     play();
   }
-
+  /// 跳转到固定时间
+  void seekPlay(int milliseconds){
+    _audioPlayer.seek(Duration(milliseconds: milliseconds));
+    resumePlay();
+  }
   /// 播放
   void play() async {
     var songId = this._tracks[curIndex].id;
@@ -66,6 +75,25 @@ class AudioPlayManager extends ChangeNotifier {
     print('播放---->${this._tracks[curIndex].name}');
     print('播放---->${url}');
     _audioPlayer.play(url);
+  }
+
+  /// 暂停、恢复
+  void togglePlay() {
+    if (_audioPlayer.state == AudioPlayerState.PAUSED) {
+      resumePlay();
+    } else {
+      pausePlay();
+    }
+  }
+
+  // 暂停
+  void pausePlay() {
+    _audioPlayer.pause();
+  }
+
+  /// 恢复播放
+  void resumePlay() {
+    _audioPlayer.resume();
   }
 
   @override
