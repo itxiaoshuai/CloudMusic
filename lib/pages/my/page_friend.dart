@@ -1,6 +1,8 @@
 import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';
 import 'package:flutter/material.dart';
 
+import 'page_friend_attention.dart';
+
 class FriendPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _FriendPageState();
@@ -74,7 +76,7 @@ class _FriendPageState extends State<FriendPage>
         controller: this.tabController,
         children: <Widget>[
           Text('第一个tab'),
-          Text("第二个tab"),
+          FriendAttentionPage(),
           Text("第三个tab"),
         ],
       ),

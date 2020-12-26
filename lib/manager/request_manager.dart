@@ -46,4 +46,11 @@ class RequestManager {
         await http.get('/lyric', queryParameters: queryParameters);
     return LyricData.fromJson(response.data);;
   }
+
+  //获取用户关注列表
+  static Future fetchFollows(Map<String, dynamic> queryParameters) async {
+    var response =
+    await http.get('/user/follows', queryParameters: queryParameters);
+    return response.data;
+  }
 }

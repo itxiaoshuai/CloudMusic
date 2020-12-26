@@ -2,6 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import 'base/res/colors.dart';
+import 'base/res/dimens.dart';
+
 class MipMap {
   const MipMap() : super();
 
@@ -62,6 +65,21 @@ class Style {
   get commonWhite70TextStyle => TextStyle(fontSize: 16, color: Colors.white70);
 
   get smallGrayTextStyle => TextStyle(fontSize: 12, color: Colors.grey);
+
+  get textDark16 => TextStyle(
+        fontSize: Dimens.font_sp16,
+        color: Colours.text_dark,
+      );
+
+  get textGray10 => TextStyle(
+        fontSize: Dimens.font_sp10,
+        color: Colours.text_gray,
+      );
+
+  get textGray12 => TextStyle(
+        fontSize: Dimens.font_sp12,
+        color: Colours.text_gray,
+      );
 }
 
 class R {
