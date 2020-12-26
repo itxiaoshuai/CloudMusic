@@ -94,12 +94,10 @@ class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
             _lyricWidget.curLine = curLine;
             return Subtitle(
               _subtitleList,
-              diameterRatio: 2,
-              selectedTextStyle: TextStyle(color: Colors.white, fontSize: 18),
-              unSelectedTextStyle: TextStyle(
-                color: Colors.black.withOpacity(.6),
-              ),
-              itemExtent: 45,
+              diameterRatio: 20,
+              selectedTextStyle: R.style.commonWhiteTextStyle,
+              unSelectedTextStyle: R.style.commonWhite70TextStyle,
+              itemExtent: 30,
             );
           } else {
             return Container();

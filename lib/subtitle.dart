@@ -1,4 +1,5 @@
 import 'package:cloud_music/subtitle_entry.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 ///
@@ -49,7 +50,7 @@ class _SubtitleState extends State<Subtitle> {
   @override
   void initState() {
     _controller = ScrollController();
-    _startAni();
+    // _startAni();
     super.initState();
   }
 
@@ -125,16 +126,20 @@ class _SubtitleState extends State<Subtitle> {
     return ListWheelScrollView.useDelegate(
       controller: _controller,
       diameterRatio: widget.diameterRatio,
-      itemExtent: widget.itemExtent,
+      itemExtent: 50,
       childDelegate: ListWheelChildBuilderDelegate(
           builder: (context, index) {
             return Container(
+              padding: EdgeInsets.only(left: 30,right: 30),
+              // color: Colors.amber,
               alignment: Alignment.center,
               child: Text(
+
                 '${widget.data[index].content}',
                 style: _currentIndex == index
                     ? widget.selectedTextStyle
                     : widget.unSelectedTextStyle,
+                textAlign: TextAlign.center,
               ),
             );
           },

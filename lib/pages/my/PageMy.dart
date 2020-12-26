@@ -64,9 +64,16 @@ class _MyPageState extends State<MyPage>
   final List<Widget> bottomNavItems = [
     MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "本地/下载"),
     MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "云盘"),
-    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "已购"),
+    MenuItem(
+      image: "images/find/t_dragonball_icn_daily.png",
+      text: "已购",
+    ),
     MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "最近播放"),
-    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "我的好友"),
+    MenuItem(
+      image: "images/find/t_dragonball_icn_daily.png",
+      text: "我的好友",
+      route: RouteName.PAGE_FRIEND,
+    ),
     MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "收藏和赞"),
     MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "我的播客"),
   ];
@@ -306,7 +313,6 @@ class _MyPageState extends State<MyPage>
             ),
           ),
         ),
-
       ],
     );
   }

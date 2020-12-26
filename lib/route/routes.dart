@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cloud_music/pages/my/page_friend.dart';
 import 'package:cloud_music/pages/play_songs/page_play_songs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +16,7 @@ class RouteName {
   static const String RADIO_CATEGORY = 'radio_category';
   static const String USER_HOME = 'user_home'; //主页
   static const String PAGE_SONGS = 'page_songs'; //播放页面
+  static const String PAGE_FRIEND = 'page_friend'; //我的好友
 }
 
 class Routers {
@@ -33,6 +35,8 @@ class Routers {
         ));
       case RouteName.PAGE_SONGS:
         return NoAnimRouteBuilder(PlaySongsPage());
+      case RouteName.PAGE_FRIEND:
+        return NoAnimRouteBuilder(FriendPage());
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(
