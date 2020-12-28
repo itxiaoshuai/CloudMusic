@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:cloud_music/pages/login/page_phone_login.dart';
 import 'package:cloud_music/pages/my/page_friend.dart';
@@ -11,7 +10,7 @@ import 'package:cloud_music/pages/radio/page_radio_category.dart';
 import 'package:cloud_music/pages/user/page_user_detail.dart';
 import 'package:cloud_music/pages/user/page_user_home.dart';
 import 'package:cloud_music/route/page_route_anim.dart';
-
+import 'package:cloud_music/pages/my/page_cloud_storage.dart';
 class RouteName {
   static const String comment = 'comment';
   static const String RADIO_CATEGORY = 'radio_category';
@@ -19,6 +18,7 @@ class RouteName {
   static const String PAGE_SONGS = 'page_songs'; //播放页面
   static const String PAGE_FRIEND = 'page_friend'; //我的好友
   static const String PAGE_LOGIN_PHONE = 'page_login_phone'; //手机号登入
+  static const String PAGE_CLOUD_STORAGE = 'cloud_storage'; //云盘
 }
 
 class Routers {
@@ -41,6 +41,8 @@ class Routers {
         return NoAnimRouteBuilder(FriendPage());
       case RouteName.PAGE_LOGIN_PHONE:
         return NoAnimRouteBuilder(PhoneLoginPage());
+      case RouteName.PAGE_CLOUD_STORAGE:
+        return NoAnimRouteBuilder(CloudStoragePage());
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(

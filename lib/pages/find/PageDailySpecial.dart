@@ -1,6 +1,8 @@
+import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/data/protocol/daily_recommend.dart';
 import 'package:cloud_music/model/daily_recommend_model.dart';
 import 'package:cloud_music/model/friend_fans_list_model.dart';
+import 'package:cloud_music/pages/playlist/item_music_list_track.dart';
 import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/provider_widget.dart';
 import 'package:cloud_music/provider/view_state_widget.dart';
@@ -11,6 +13,8 @@ import 'package:cloud_music/widget/flexible_app_bar.dart';
 import 'package:common_utils/common_utils.dart';
 import 'dart:ui';
 import 'package:cloud_music/base/ConstImg.dart';
+import 'package:cloud_music/widget/item/list_item.dart';
+import '../../r.dart';
 
 /// 每日推荐
 class PageDailySpecial extends StatefulWidget {
@@ -386,6 +390,7 @@ class TrackItem extends StatelessWidget {
                     builder: (BuildContext context) {
                       return Container(
                         height: 406.0,
+                        child: BottomSheetWidget(),
                       );
                     },
                   ).then((val) {

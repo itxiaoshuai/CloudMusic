@@ -360,7 +360,7 @@ class CustomWidget extends StatelessWidget {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  /* ... */
+
                 },
               )
             ]),

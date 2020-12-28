@@ -63,7 +63,7 @@ class _MyPageState extends State<MyPage>
   //底部导航栏显示的内容
   final List<Widget> bottomNavItems = [
     MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "本地/下载"),
-    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "云盘"),
+    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "云盘", route: RouteName.PAGE_CLOUD_STORAGE,),
     MenuItem(
       image: "images/find/t_dragonball_icn_daily.png",
       text: "已购",

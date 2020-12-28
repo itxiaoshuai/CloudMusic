@@ -6,7 +6,7 @@ import 'package:cloud_music/data/protocol/LeaderboardModel.dart';
 import 'package:cloud_music/data/protocol/daily_recommend.dart';
 import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/data/protocol/lyric.dart';
-
+import 'package:cloud_music/data/protocol/cloud_storage_bean.dart';
 class RequestManager {
   //获取榜单数据
   static Future<List<LeaderBoardList>> fetchTopList() async {
@@ -67,5 +67,11 @@ class RequestManager {
   static Future<DailyRecommend> fetchRecommend() async {
     var response = await http.get('/recommend/songs');
     return DailyRecommend.fromJson(response.data);
+  }
+
+  //云盘
+  static Future<CloudStorageBean> fetchCloud() async {
+    var response = await http.get('/user/cloud');
+    return CloudStorageBean.fromJson(response.data);
   }
 }

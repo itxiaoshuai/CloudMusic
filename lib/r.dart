@@ -37,6 +37,8 @@ class MipMap {
 
   String get listCycleNormal => 'images/icon_list_cycle_normal.png'; //列表循环
   String get listCycleSelect => 'images/icon_list_cycle_select.png';
+
+  String get multiple => 'images/album/album_multiple_selection.png'; //多选
 }
 
 class MipMapText {
@@ -80,6 +82,11 @@ class Style {
         fontSize: Dimens.font_sp12,
         color: Colours.text_gray,
       );
+
+  get textBoldDark14 => TextStyle(
+      fontSize: Dimens.font_sp14,
+      color: Colours.text_dark,
+      fontWeight: FontWeight.bold);
 }
 
 class R {
