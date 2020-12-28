@@ -1,3 +1,4 @@
+import 'package:cloud_music/pages/my/page_friend_fans.dart';
 import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';
 import 'package:flutter/material.dart';
 
@@ -77,7 +78,7 @@ class _FriendPageState extends State<FriendPage>
         children: <Widget>[
           Text('第一个tab'),
           FriendAttentionPage(),
-          Text("第三个tab"),
+          FriendFansPage(),
         ],
       ),
     );

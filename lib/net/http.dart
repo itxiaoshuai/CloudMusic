@@ -1,19 +1,28 @@
+import 'dart:io';
+
+import 'package:cloud_music/base/storage_manager.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:path_provider/path_provider.dart';
 import 'api.dart';
+import 'package:cookie_jar/cookie_jar.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 
 final Http http = Http();
 
 class Http extends BaseHttp {
   @override
-  void init() {
+  Future<void> init() async {
     options.baseUrl = "http://118.24.63.15:1020";
-    interceptors..add(ApiInterceptor());
+    options.followRedirects = false;
 
-    // httpClientAdapter = BrowserHttpClientAdapter();
-//       cookie持久化 异步
-//      ..add(CookieManager(
-//          PersistCookieJar(dir: StorageManager.temporaryDirectory.path)));
+    interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+    CookieJar cj = PersistCookieJar(dir: tempPath);
+    interceptors..add(ApiInterceptor());
+    interceptors.add(CookieManager(cj));
+
   }
 }
 

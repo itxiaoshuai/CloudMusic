@@ -1,3 +1,4 @@
+import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/base/res/styles.dart';
@@ -33,7 +34,9 @@ class _LoginWithAuthState extends State<LoginWithAuth> {
               borderRadius: BorderRadius.all(Radius.circular(30)),
               child: Material(
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushNamed(RouteName.PAGE_LOGIN_PHONE);
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey, width: 0.5),

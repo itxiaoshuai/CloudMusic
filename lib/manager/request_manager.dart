@@ -3,8 +3,10 @@
  */
 
 import 'package:cloud_music/data/protocol/LeaderboardModel.dart';
+import 'package:cloud_music/data/protocol/daily_recommend.dart';
 import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/data/protocol/lyric.dart';
+
 class RequestManager {
   //获取榜单数据
   static Future<List<LeaderBoardList>> fetchTopList() async {
@@ -42,15 +44,28 @@ class RequestManager {
   // 歌词
   static Future<LyricData> getLyricData(
       Map<String, dynamic> queryParameters) async {
-    var response =
-        await http.get('/lyric', queryParameters: queryParameters);
-    return LyricData.fromJson(response.data);;
+    var response = await http.get('/lyric', queryParameters: queryParameters);
+    return LyricData.fromJson(response.data);
+    ;
   }
 
   //获取用户关注列表
   static Future fetchFollows(Map<String, dynamic> queryParameters) async {
     var response =
-    await http.get('/user/follows', queryParameters: queryParameters);
+        await http.get('/user/follows', queryParameters: queryParameters);
     return response.data;
+  }
+
+  //获获取用户粉丝列表
+  static Future fetchFans(Map<String, dynamic> queryParameters) async {
+    var response =
+        await http.get('/user/followeds', queryParameters: queryParameters);
+    return response.data;
+  }
+
+  //每日推荐
+  static Future<DailyRecommend> fetchRecommend() async {
+    var response = await http.get('/recommend/songs');
+    return DailyRecommend.fromJson(response.data);
   }
 }

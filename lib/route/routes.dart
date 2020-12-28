@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cloud_music/pages/login/page_phone_login.dart';
 import 'package:cloud_music/pages/my/page_friend.dart';
 import 'package:cloud_music/pages/play_songs/page_play_songs.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class RouteName {
   static const String USER_HOME = 'user_home'; //主页
   static const String PAGE_SONGS = 'page_songs'; //播放页面
   static const String PAGE_FRIEND = 'page_friend'; //我的好友
+  static const String PAGE_LOGIN_PHONE = 'page_login_phone'; //手机号登入
 }
 
 class Routers {
@@ -37,6 +39,8 @@ class Routers {
         return NoAnimRouteBuilder(PlaySongsPage());
       case RouteName.PAGE_FRIEND:
         return NoAnimRouteBuilder(FriendPage());
+      case RouteName.PAGE_LOGIN_PHONE:
+        return NoAnimRouteBuilder(PhoneLoginPage());
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(

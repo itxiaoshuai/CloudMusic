@@ -1,8 +1,9 @@
+import 'package:cloud_music/data/api/apis.dart';
+import 'package:cloud_music/net/http.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/data/protocol/user_info.dart';
 import 'package:cloud_music/data/repository/music_repository.dart';
 import 'package:cloud_music/pages/main/page_main.dart';
-
 
 class PhoneLoginPage extends StatefulWidget {
   @override
@@ -84,13 +85,16 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
   }
 
   _getUserInfo(String phone, String password) async {
+    var result = await Http().get(MusicApi.LOGIN,
+        queryParameters: {"phone": phone, "password": password});
+    print(result.toString());
     UserInfo userInfo = await MusicRepository.logoin(phone, password);
-    if (userInfo != null) {
-      Navigator.pushAndRemoveUntil(context, new MaterialPageRoute(
-        builder: (BuildContext context) {
-          return MainPage();
-        },
-      ), (route) => route == null);
-    }
+    // if (userInfo != null) {
+    //   Navigator.pushAndRemoveUntil(context, new MaterialPageRoute(
+    //     builder: (BuildContext context) {
+    //       return MainPage();
+    //     },
+    //   ), (route) => route == null);
+    // }
   }
 }
