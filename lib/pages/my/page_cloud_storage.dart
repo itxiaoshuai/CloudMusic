@@ -8,6 +8,7 @@ import 'package:cloud_music/provider/view_state_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/model/cloud_list_model.dart';
+import 'package:provider/provider.dart';
 import '../../r.dart';
 import 'package:cloud_music/data/protocol/cloud_storage_bean.dart';
 
@@ -18,12 +19,15 @@ class CloudStoragePage extends StatefulWidget {
 
 class _CloudStoragePageState extends State {
   CloudStorageBean _cloudStorageBean;
+  CloudListModel _counterProvider = new CloudListModel();
 
   @override
   Widget build(BuildContext context) {
     // 列表项
-    Widget _buildListItem(BuildContext context,
-        int index,) {
+    Widget _buildListItem(
+      BuildContext context,
+      int index,
+    ) {
       return Container(
 //      color: Colors.redAccent,
         child: Row(
@@ -48,37 +52,35 @@ class _CloudStoragePageState extends State {
                         child: Container(
 //                      color: Colors.green,
                             child: Center(
-                              child: Align(
-                                alignment: FractionalOffset.centerLeft,
-                                child: Text(
-                                  _cloudStorageBean.data[index].songName,
-                                  style:
+                          child: Align(
+                            alignment: FractionalOffset.centerLeft,
+                            child: Text(
+                              _cloudStorageBean.data[index].songName,
+                              style:
                                   TextStyle(fontSize: 12, color: Colors.black),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            )),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        )),
                       ),
                       Expanded(
                         child: Container(
 //                      color: Colors.green,
                             child: Center(
-                              child: Align(
-                                alignment: FractionalOffset.centerLeft,
-                                child: Text(
-                                  (_cloudStorageBean.data[index].artist
-                                      .isEmpty &&
-                                      _cloudStorageBean.data[index].album
-                                          .isEmpty) ?
-                                  "未知": "${_cloudStorageBean.data[index]
-                                      .artist}-${_cloudStorageBean.data[index]
-                                      .album}",
-                                  style: TextStyle(
-                                      fontSize: 8, color: Colors.grey[600]),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            )),
+                          child: Align(
+                            alignment: FractionalOffset.centerLeft,
+                            child: Text(
+                              (_cloudStorageBean.data[index].artist.isEmpty &&
+                                      _cloudStorageBean
+                                          .data[index].album.isEmpty)
+                                  ? "未知"
+                                  : "${_cloudStorageBean.data[index].artist}-${_cloudStorageBean.data[index].album}",
+                              style: TextStyle(
+                                  fontSize: 8, color: Colors.grey[600]),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        )),
                       ),
                     ]),
               ),
@@ -123,45 +125,41 @@ class _CloudStoragePageState extends State {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        iconTheme: IconThemeData(
-          color: Colors.black, //修改颜色
-        ),
-        backgroundColor: Colors.white,
-        title: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '音乐云盘',
-                style: R.style.textBoldDark14,
-              ),
-              Text(
-                ,
-                style: R.style.textGray10,
-              ),
-            ],
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: Image.asset(
-              'images/setting.png',
-              width: 24,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.search_sharp,
-              size: 24,
-              color: Colors.black,
-            ),
-            onPressed: () {},
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   iconTheme: IconThemeData(
+      //     color: Colors.black, //修改颜色
+      //   ),
+      //   backgroundColor: Colors.white,
+      //   title: Container(
+      //     child: Column(
+      //       crossAxisAlignment: CrossAxisAlignment.start,
+      //       children: [
+      //         Text(
+      //           '音乐云盘',
+      //           style: R.style.textBoldDark14,
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      //   actions: [
+      //     IconButton(
+      //       icon: Image.asset(
+      //         'images/setting.png',
+      //         width: 24,
+      //       ),
+      //       onPressed: () {},
+      //     ),
+      //     IconButton(
+      //       icon: Icon(
+      //         Icons.search_sharp,
+      //         size: 24,
+      //         color: Colors.black,
+      //       ),
+      //       onPressed: () {},
+      //     ),
+      //   ],
+      // ),
       body: ProviderWidget<CloudListModel>(
         model: CloudListModel(),
         onModelReady: (model) {
@@ -172,18 +170,53 @@ class _CloudStoragePageState extends State {
           debugPrint('---当前状态--> ${model}');
           switch (model.layoutState) {
             case LayoutState.IDLE:
+              return AppBar(
+                elevation: 0,
+                iconTheme: IconThemeData(
+                  color: Colors.black, //修改颜色
+                ),
+                backgroundColor: Colors.white,
+                title: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '音乐云盘',
+                        style: R.style.textBoldDark14,
+                      ),
+                    ],
+                  ),
+                ),
+                actions: [
+                  IconButton(
+                    icon: Image.asset(
+                      'images/setting.png',
+                      width: 24,
+                    ),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.search_sharp,
+                      size: 24,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              );
               break;
             case LayoutState.LOADING:
               return ViewStateLoadingWidget();
               break;
             case LayoutState.EMPTY:
-            // TODO: Handle this case.
+              // TODO: Handle this case.
               break;
             case LayoutState.ERROR:
-            // TODO: Handle this case.
+              // TODO: Handle this case.
               break;
             case LayoutState.UNAUTHORIZED:
-            // TODO: Handle this case.
+              // TODO: Handle this case.
               break;
             case LayoutState.SUCCESS:
               _cloudStorageBean = model.data;
@@ -193,6 +226,47 @@ class _CloudStoragePageState extends State {
           return CustomScrollView(
             slivers: <Widget>[
               // 如果不是Sliver家族的Widget，需要使用SliverToBoxAdapter做层包裹
+              SliverAppBar(
+                elevation: 0,
+                iconTheme: IconThemeData(
+                  color: Colors.black, //修改颜色
+                ),
+                backgroundColor: Colors.white,
+                actions: [
+                  IconButton(
+                    icon: Image.asset(
+                      'images/setting.png',
+                      width: 24,
+                    ),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.search_sharp,
+                      size: 24,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+                title: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '音乐云盘',
+                        style: R.style.textBoldDark14,
+                      ),
+                      Text(
+                        _cloudStorageBean==null?"": "${NumberUtils.amountCapacity(int.parse(_cloudStorageBean.size))}-${NumberUtils.amountCapacity(int.parse(_cloudStorageBean.maxSize))}",
+                        style: R.style.textBoldDark14,
+                      ),
+                    ],
+                  ),
+                ),
+                pinned: true,
+                snap: false,
+              ),
               SliverToBoxAdapter(
                 child: Container(
                   child: Row(
@@ -229,8 +303,7 @@ class _CloudStoragePageState extends State {
                           onPressed: () {},
                         ),
                       )
-                    ]
-                      ..removeWhere((v) => v == null),
+                    ]..removeWhere((v) => v == null),
                   ),
                 ),
               ),
