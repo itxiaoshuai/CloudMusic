@@ -13,7 +13,8 @@ final Http http = Http();
 class Http extends BaseHttp {
   @override
   Future<void> init() async {
-    options.baseUrl = "http://118.24.63.15:1020";
+    // options.baseUrl = "http://118.24.63.15:1020";
+    options.baseUrl = "http://192.168.182.1:3000";
     options.followRedirects = false;
 
     interceptors.add(LogInterceptor(responseBody: true, requestBody: true));

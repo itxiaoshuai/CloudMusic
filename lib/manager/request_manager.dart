@@ -4,6 +4,7 @@
 
 import 'package:cloud_music/data/protocol/LeaderboardModel.dart';
 import 'package:cloud_music/data/protocol/daily_recommend.dart';
+import 'package:cloud_music/data/protocol/yun_task.dart';
 import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/data/protocol/lyric.dart';
 import 'package:cloud_music/data/protocol/cloud_storage_bean.dart';
@@ -73,5 +74,11 @@ class RequestManager {
   static Future<CloudStorageBean> fetchCloud() async {
     var response = await http.get('/user/cloud');
     return CloudStorageBean.fromJson(response.data);
+  }
+
+  //云呗任务
+  static Future<YunCoinTask> fetchTasks() async {
+    var response = await http.get('/yunbei/tasks');
+    return YunCoinTask.fromJson(response.data);
   }
 }

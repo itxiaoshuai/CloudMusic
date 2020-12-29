@@ -1,4 +1,5 @@
 
+import 'package:cloud_music/pages/drawer/page_yunbei.dart';
 import 'package:cloud_music/pages/login/page_phone_login.dart';
 import 'package:cloud_music/pages/my/page_friend.dart';
 import 'package:cloud_music/pages/play_songs/page_play_songs.dart';
@@ -19,6 +20,7 @@ class RouteName {
   static const String PAGE_FRIEND = 'page_friend'; //我的好友
   static const String PAGE_LOGIN_PHONE = 'page_login_phone'; //手机号登入
   static const String PAGE_CLOUD_STORAGE = 'cloud_storage'; //云盘
+  static const String PAGE_CLOUD_COIN = 'cloud_coin'; //云呗
 }
 
 class Routers {
@@ -43,6 +45,8 @@ class Routers {
         return NoAnimRouteBuilder(PhoneLoginPage());
       case RouteName.PAGE_CLOUD_STORAGE:
         return NoAnimRouteBuilder(CloudStoragePage());
+      case RouteName.PAGE_CLOUD_COIN:
+        return NoAnimRouteBuilder(YunBeiPage());
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(

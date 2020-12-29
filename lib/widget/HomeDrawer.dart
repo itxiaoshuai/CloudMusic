@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/base/res/gaps.dart';
@@ -130,7 +131,7 @@ class _HomeDrawerState extends State {
         children: [
           DrawerListItem(image: "images/drawer_music.png", text: "我的消息"),
           Gaps.line,
-          DrawerListItem(image: "images/cloud_center.png", text: "云贝中心"),
+          DrawerListItem(image: "images/cloud_center.png", text: "云贝中心",route: RouteName.PAGE_CLOUD_COIN,),
         ],
       ),
     );
