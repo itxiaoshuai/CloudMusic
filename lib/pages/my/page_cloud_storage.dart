@@ -1,14 +1,12 @@
 import 'package:cloud_music/base/ConstImg.dart';
 import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/base/utils/number_utils.dart';
-import 'package:cloud_music/model/play_list_model.dart';
 import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/provider_widget.dart';
 import 'package:cloud_music/provider/view_state_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/model/cloud_list_model.dart';
-import 'package:provider/provider.dart';
 import '../../r.dart';
 import 'package:cloud_music/data/protocol/cloud_storage_bean.dart';
 

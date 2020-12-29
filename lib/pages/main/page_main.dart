@@ -10,7 +10,7 @@ import 'package:cloud_music/pages/podcast/PagePodcast.dart';
 import 'package:cloud_music/pages/video/VideoPage.dart';
 import 'package:cloud_music/widget/HomeDrawer.dart';
 import 'ChildItemView.dart';
-
+import 'package:cloud_music/pages/yuncun/page_yuncun.dart';
 class MainPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _MainPageState();
@@ -218,7 +218,7 @@ class _MainPageState extends State<MainPage>
     PagePodcast(), //播客
     MyPage(),
     CurvePage(),
-    DrawingPage(),
+    YunCunPage(),
   ];
 
   Widget buildBottomTabScaffold() {
