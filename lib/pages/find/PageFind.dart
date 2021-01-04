@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_music/route/routes.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:date_format/date_format.dart';
 import 'package:dio/dio.dart';
@@ -95,15 +96,17 @@ class _FindPageState extends State<FindPage>
           elevation: 0,
           primary: true,
           leading: IconButton(
-              icon: Icon(Icons.dehaze,color: Colors.black,),
-              onPressed: (){
+              icon: Icon(
+                Icons.dehaze,
+                color: Colors.black,
+              ),
+              onPressed: () {
                 Scaffold.of(context).openDrawer();
-              }
-          ),
+              }),
           //为false的时候会影响leading，actions、titile组件，导致向上偏移
           textTheme: TextTheme(//设置AppBar上面各种字体主题色
 //            title: TextStyle(color: Colors.red),
-          ),
+              ),
           actionsIconTheme: IconThemeData(color: Colors.blue, opacity: 0.6),
           //设置导航右边图标的主题色，此时iconTheme对于右边图标颜色会失效
           iconTheme: IconThemeData(color: Colors.black, opacity: 0.6),
@@ -120,9 +123,7 @@ class _FindPageState extends State<FindPage>
             child: Material(
               color: Colors.grey[100],
               child: InkWell(
-                onTap: () {
-
-                },
+                onTap: () {},
                 child: Container(
                   padding: EdgeInsets.only(left: 15, right: 10),
                   height: 45.0,
@@ -155,7 +156,6 @@ class _FindPageState extends State<FindPage>
                 onPressed: () {}),
           ],
         ),
-
         body: ListView(
           children: <Widget>[
             FindBanner(bannerData: _bannerData),
@@ -241,7 +241,6 @@ class _FindPageState extends State<FindPage>
             height: 1,
             color: Colors.grey[300],
           ),
-
           Container(
 //            padding: EdgeInsets.only(left: 15, right: 0),
             height: 200,
@@ -280,7 +279,6 @@ class _FindPageState extends State<FindPage>
   bool get wantKeepAlive => true;
 }
 
-
 List<int> getDataList(int count) {
   List<int> list = [];
   for (int i = 0; i < count; i++) {
@@ -298,8 +296,6 @@ List<Widget> getWidgetList(List list) {
 Widget getItemContainer(String picUrl) {
   return ListItemCustom(img: picUrl);
 }
-
-
 
 _buildMenu(BuildContext context) {
   var i = 1; //排行榜名次
@@ -321,7 +317,11 @@ _buildMenu(BuildContext context) {
 
                   return Row(
                     children: [
-                      ListItem(image: e.img, text: e.title),
+                      ListItem(
+                        image: e.img,
+                        text: e.title,
+                        route: e.path,
+                      ),
                       i == widgets.length + 1 ? Gaps.hGap15 : Gaps.hGap15,
                     ],
                   );
@@ -331,16 +331,14 @@ _buildMenu(BuildContext context) {
           ),
         ]),
   );
-
 }
-
-
 
 class ListItem extends StatelessWidget {
   final String text;
   final String image;
+  final String route;
 
-  ListItem({this.image, this.text});
+  ListItem({this.image, this.text, this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -348,13 +346,7 @@ class ListItem extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context) {
-          //   return PageDailySpecial();
-          // }));
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (BuildContext context) {
-            return PageDailySpecial();
-          }));
+          Navigator.of(context).pushNamed(route);
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -986,7 +978,7 @@ List<Menu> videoCategoryList = <Menu>[
   Menu(
     title: R.string.digitalAlbum,
     img: R.mipmap.digitalAlbum,
-    path: '',
+    path: RouteName.PAGE_DIGITAL_ALBUM,
   ),
   Menu(
     title: '唱聊',

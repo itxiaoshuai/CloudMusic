@@ -1,0 +1,396 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_music/base/CommonLoading.dart';
+import 'package:cloud_music/data/protocol/banner_model.dart';
+import 'package:cloud_music/data/protocol/new_album.dart';
+import 'package:cloud_music/manager/request_manager.dart';
+import 'package:cloud_music/pages/album/InfiniteGridView.dart';
+import 'package:cloud_music/pages/find/PageFind.dart';
+import 'package:cloud_music/route/routes.dart';
+import 'package:cloud_music/widget/base_song_img_item.dart';
+import 'package:common_utils/common_utils.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:cloud_music/pages/find/widget/FindBanner.dart';
+
+import '../../r.dart';
+import 'album_digital.dart';
+
+class DigitalAlbumPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _DigitalAlbumPageState();
+}
+
+class _DigitalAlbumPageState extends State<DigitalAlbumPage> {
+  List<Banners> _bannerData = [];
+  NewAlbum _album;
+
+  @override
+  void initState() {
+    getHttp();
+    // loadData();
+    super.initState();
+  }
+
+  Future getHttp() async {
+    var dio = Dio();
+    var response =
+        await dio.get("http://www.mocky.io/v2/5cee0154300000592c6e9825");
+
+    List<Banners> banners = BannerModel.fromJson(response.data).banners;
+
+    _bannerData = banners;
+    if (banners != null && mounted) {
+      setState(() {
+        _bannerData = banners;
+      });
+    }
+  }
+
+  loadData() async {
+    _album = await RequestManager.fetchNewPlate();
+    setState(() {});
+  }
+
+  _buildDigitalAlbum(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Container(
+            child: Row(
+              children: [
+                Row(
+                  children: [
+                    Text('数字专辑榜'),
+                    Icon(Icons.chevron_right),
+                  ],
+                ),
+                Spacer(),
+                Container(
+                  margin: EdgeInsets.only(left: 15, right: 15),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        child: Text(
+                          '日榜',
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 5, right: 5),
+                        color: Colors.grey,
+                        height: 15,
+                        width: 1,
+                      ),
+                      InkWell(
+                        child: Text(
+                          '周榜',
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 5, right: 5),
+                        color: Colors.grey,
+                        height: 15,
+                        width: 1,
+                      ),
+                      InkWell(
+                        child: Text(
+                          '总榜',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+              ],
+            ),
+          ),
+          Container(
+            height: 60,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Center(
+                    child: Container(
+                  width: 40,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(circular),
+                    child: CachedNetworkImage(
+                      fit: BoxFit.fill,
+                      imageUrl:
+                          'http://p3.music.126.net/jOrfzq4tB9ENWQVWLhi3Ag==/109951165591010361.jpg',
+                      placeholder: (context, url) => ProgressView(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
+                  ),
+                )),
+                Expanded(
+                  child: Container(
+//                                color: Colors.amberAccent,
+                    padding: EdgeInsets.only(top: 10, bottom: 10, left: 8),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
+                        children: [
+                          Expanded(
+                            child: Container(
+//                      color: Colors.green,
+                                child: Center(
+                              child: Align(
+                                alignment: FractionalOffset.centerLeft,
+                                child: Text(
+                                  '新世界NEW WORLD',
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.black),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            )),
+                          ),
+                          Expanded(
+                            child: Container(
+//                                            color: Colors.green,
+                                child: Center(
+                              child: Align(
+                                alignment: FractionalOffset.centerLeft,
+                                child: Text(
+                                  '华晨宇',
+                                  style: TextStyle(
+                                      fontSize: 8, color: Colors.grey[600]),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            )),
+                          ),
+                        ]),
+                  ),
+                ),
+                Container(
+                  padding:
+                      EdgeInsets.only(top: 2, bottom: 2, left: 15, right: 15),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.red, width: 0.5),
+                    shape: BoxShape.rectangle,
+                    // 默认值也是矩形
+                    borderRadius: BorderRadius.circular((20.0)), // 圆角度
+                  ),
+                  margin: EdgeInsets.only(
+                    left: 10,
+                  ),
+                  child: Text(
+                    '支持',
+                    style: Theme.of(context).textTheme.subtitle1.copyWith(
+                        color: Colors.red,
+                        fontWeight: FontWeight.w100,
+                        fontSize: 12),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          AlbumDigitalWidget(),
+        ],
+      ),
+    );
+  }
+
+  //最新上架
+  _buildNewPlate(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text('新碟上架'),
+              Icon(Icons.chevron_right),
+            ],
+          ),
+          _album == null
+              ? Container()
+              : Container(
+                  margin: EdgeInsets.only(top: 15, bottom: 30),
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    // 添加
+                    physics: NeverScrollableScrollPhysics(),
+                    // 添加
+                    itemCount: _album.albums.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3, // 横轴元素个数
+                      childAspectRatio: 0.7, //宽高比为1:2
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      Album album = _album.albums[index];
+                      return Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            InkWell(
+                              child: Center(
+                                  child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                    height: 100,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(circular)),
+                                      color: Color(0xffd6d8da),
+                                    ),
+                                  ),
+                                  Positioned(
+                                      left: 0,
+                                      top: 0,
+                                      bottom: 0,
+                                      right: 0,
+                                      child: Center(
+                                          child: Container(
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(circular),
+                                          child: CachedNetworkImage(
+                                            fit: BoxFit.fill,
+                                            imageUrl: album.blurPicUrl,
+                                            placeholder: (context, url) =>
+                                                ProgressView(),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    Icon(Icons.error),
+                                          ),
+                                        ),
+                                      ))),
+                                ],
+                              )),
+                            ),
+                            Text(
+                              album.name,
+                              style: R.style.textDark16,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                            Text(
+                              album.artist.name,
+                              style: R.style.textGray10,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                )
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: ListView(
+        children: [
+          FindBanner(bannerData: _bannerData),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: videoCategoryList.map((e) {
+              return ListItem(
+                image: e.img,
+                text: e.title,
+                route: e.path,
+              );
+            }).toList(),
+          ),
+          _buildNewPlate(context),
+          _buildDigitalAlbum(context),
+        ],
+      ),
+    );
+  }
+}
+
+List<Menu> videoCategoryList = <Menu>[
+  Menu(
+    title: R.string.dailySpecial,
+    img: R.mipmap.dailySpecial,
+    path: '',
+  ),
+  Menu(
+    title: R.string.fm,
+    img: R.mipmap.fm,
+    path: '',
+  ),
+  Menu(
+    title: R.string.playlist,
+    img: R.mipmap.playlist,
+    path: '',
+  ),
+];
+
+class ListItem extends StatelessWidget {
+  final String text;
+  final String image;
+  final String route;
+
+  ListItem({this.image, this.text, this.route});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).pushNamed(route);
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                Container(
+                  width: 45.0,
+                  decoration: BoxDecoration(
+                    //圆形渐变
+                    color: Colors.pink[50].withOpacity(0.8),
+                    shape: BoxShape.circle,
+                    // gradient: const LinearGradient(colors: [
+                    //   Colors.redAccent,
+                    //   Colors.redAccent,
+                    //   Colors.red,
+                    // ]),
+                  ),
+                  child: Image.asset(
+                    image,
+                    color: Colors.red,
+                    width: 50,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 5),
+                  child: text == '每日推荐'
+                      ? Text(
+                          '${DateUtil.formatDate(DateTime.now(), format: 'd')}',
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        )
+                      : Text(''),
+                )
+              ],
+            ),
+            Container(
+                margin: EdgeInsets.only(top: 5), //上边距
+                child: Text(text,
+                    style: TextStyle(
+                      fontSize: 12,
+                    )))
+          ],
+        ),
+      ),
+    );
+  }
+}
