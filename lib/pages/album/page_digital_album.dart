@@ -21,6 +21,10 @@ class DigitalAlbumPage extends StatefulWidget {
   State<StatefulWidget> createState() => _DigitalAlbumPageState();
 }
 
+bool isDaily = true; //新歌
+bool isWeek = false; //新歌
+bool isTotal = false; //新歌
+
 class _DigitalAlbumPageState extends State<DigitalAlbumPage> {
   List<Banners> _bannerData = [];
   NewAlbum _album;
@@ -74,7 +78,15 @@ class _DigitalAlbumPageState extends State<DigitalAlbumPage> {
                       InkWell(
                         child: Text(
                           '日榜',
+                          style:
+                              isDaily ? R.style.textRed16 : R.style.textDark16,
                         ),
+                        onTap: () {
+                          isDaily = true;
+                          isWeek = false;
+                          isTotal = false;
+                          setState(() {});
+                        },
                       ),
                       Container(
                         margin: EdgeInsets.only(left: 5, right: 5),
@@ -85,7 +97,15 @@ class _DigitalAlbumPageState extends State<DigitalAlbumPage> {
                       InkWell(
                         child: Text(
                           '周榜',
+                          style:
+                              isWeek ? R.style.textRed16 : R.style.textDark16,
                         ),
+                        onTap: () {
+                          isDaily = false;
+                          isWeek = true;
+                          isTotal = false;
+                          setState(() {});
+                        },
                       ),
                       Container(
                         margin: EdgeInsets.only(left: 5, right: 5),
@@ -96,94 +116,17 @@ class _DigitalAlbumPageState extends State<DigitalAlbumPage> {
                       InkWell(
                         child: Text(
                           '总榜',
+                          style:
+                              isTotal ? R.style.textRed16 : R.style.textDark16,
                         ),
+                        onTap: () {
+                          isDaily = false;
+                          isWeek = false;
+                          isTotal = true;
+                          setState(() {});
+                        },
                       ),
                     ],
-                  ),
-                ),
-
-              ],
-            ),
-          ),
-          Container(
-            height: 60,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Center(
-                    child: Container(
-                  width: 40,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(circular),
-                    child: CachedNetworkImage(
-                      fit: BoxFit.fill,
-                      imageUrl:
-                          'http://p3.music.126.net/jOrfzq4tB9ENWQVWLhi3Ag==/109951165591010361.jpg',
-                      placeholder: (context, url) => ProgressView(),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                    ),
-                  ),
-                )),
-                Expanded(
-                  child: Container(
-//                                color: Colors.amberAccent,
-                    padding: EdgeInsets.only(top: 10, bottom: 10, left: 8),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
-                        children: [
-                          Expanded(
-                            child: Container(
-//                      color: Colors.green,
-                                child: Center(
-                              child: Align(
-                                alignment: FractionalOffset.centerLeft,
-                                child: Text(
-                                  '新世界NEW WORLD',
-                                  style: TextStyle(
-                                      fontSize: 12, color: Colors.black),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            )),
-                          ),
-                          Expanded(
-                            child: Container(
-//                                            color: Colors.green,
-                                child: Center(
-                              child: Align(
-                                alignment: FractionalOffset.centerLeft,
-                                child: Text(
-                                  '华晨宇',
-                                  style: TextStyle(
-                                      fontSize: 8, color: Colors.grey[600]),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            )),
-                          ),
-                        ]),
-                  ),
-                ),
-                Container(
-                  padding:
-                      EdgeInsets.only(top: 2, bottom: 2, left: 15, right: 15),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.red, width: 0.5),
-                    shape: BoxShape.rectangle,
-                    // 默认值也是矩形
-                    borderRadius: BorderRadius.circular((20.0)), // 圆角度
-                  ),
-                  margin: EdgeInsets.only(
-                    left: 10,
-                  ),
-                  child: Text(
-                    '支持',
-                    style: Theme.of(context).textTheme.subtitle1.copyWith(
-                        color: Colors.red,
-                        fontWeight: FontWeight.w100,
-                        fontSize: 12),
                   ),
                 ),
               ],
@@ -304,6 +247,7 @@ class _DigitalAlbumPageState extends State<DigitalAlbumPage> {
             }).toList(),
           ),
           _buildNewPlate(context),
+          _buildDigitalAlbum(context),
           _buildDigitalAlbum(context),
         ],
       ),

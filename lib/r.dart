@@ -73,9 +73,19 @@ class Style {
         color: Colours.text_dark,
       );
 
+  get textRed16 => TextStyle(
+        fontSize: Dimens.font_sp16,
+        color: Colours.text_red,
+      );
+
   get textGray10 => TextStyle(
         fontSize: Dimens.font_sp10,
         color: Colours.text_gray,
+      );
+
+  get textRed10 => TextStyle(
+        fontSize: Dimens.font_sp10,
+        color: Colours.text_red,
       );
 
   get textGray12 => TextStyle(

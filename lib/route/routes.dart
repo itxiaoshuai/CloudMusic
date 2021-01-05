@@ -12,7 +12,7 @@ import 'package:cloud_music/pages/user/page_user_detail.dart';
 import 'package:cloud_music/pages/user/page_user_home.dart';
 import 'package:cloud_music/route/page_route_anim.dart';
 import 'package:cloud_music/pages/my/page_cloud_storage.dart';
-
+import 'package:cloud_music/pages/leaderboard/LeaderboardPage.dart';
 class RouteName {
   static const String comment = 'comment';
   static const String RADIO_CATEGORY = 'radio_category';
@@ -23,6 +23,7 @@ class RouteName {
   static const String PAGE_CLOUD_STORAGE = 'cloud_storage'; //云盘
   static const String PAGE_CLOUD_COIN = 'cloud_coin'; //云呗
   static const String PAGE_DIGITAL_ALBUM = 'page_digital_album'; //数字专辑
+  static const String PAGE_RANKING_LIST = 'ranking_list'; //排行榜
 
 }
 
@@ -52,6 +53,8 @@ class Routers {
         return NoAnimRouteBuilder(YunBeiPage());
       case RouteName.PAGE_DIGITAL_ALBUM:
         return NoAnimRouteBuilder(DigitalAlbumPage());
+      case RouteName.PAGE_RANKING_LIST:
+        return NoAnimRouteBuilder(LeaderBoardPage());
       default:
         return CupertinoPageRoute(
             builder: (_) =>

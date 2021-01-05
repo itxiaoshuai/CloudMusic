@@ -3,13 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'package:cloud_music/data/protocol/LeaderboardModel.dart';
 import 'package:cloud_music/model/top_list_model.dart';
-import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/pages/playlist/page_playlist_detail.dart';
 import 'package:cloud_music/provider/provider_widget.dart';
 import 'package:cloud_music/widget/ListItemCustom.dart';
-import 'package:provider/provider.dart';
 
-import 'LeaderboardDetailPage.dart';
 
 class LeaderBoardPage extends StatefulWidget {
   @override

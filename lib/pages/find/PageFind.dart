@@ -30,7 +30,7 @@ import '../../r.dart';
 import 'FutureBuilderPage.dart';
 import 'package:cloud_music/widget/HomeDrawer.dart';
 import 'package:cloud_music/pages/find/PageDailySpecial.dart';
-
+import 'package:cloud_music/pages/leaderboard/LeaderboardPage.dart';
 import 'box_find_recommend.dart';
 
 class FindPage extends StatefulWidget {
@@ -963,12 +963,11 @@ List<Menu> videoCategoryList = <Menu>[
   Menu(
     title: R.string.playlist,
     img: R.mipmap.playlist,
-    path: '',
   ),
   Menu(
     title: R.string.rankingList,
     img: R.mipmap.rankingList,
-    path: '',
+    path: RouteName.PAGE_RANKING_LIST,
   ),
   Menu(
     title: R.string.liveStreaming,
