@@ -1,6 +1,8 @@
+import 'dart:collection';
 import 'dart:ui';
 
 import 'package:cloud_music/base/CommonLoading.dart';
+import 'package:cloud_music/pages/playlist/item_music_list_track.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/base/ConstImg.dart';
 import 'package:cloud_music/base/res/colors.dart';
@@ -68,9 +70,9 @@ class _MyPageState extends State<MyPage>
 
     print(mListData.length);
     mListData.forEach((item) {
-      if(item.subscribed){
+      if (item.subscribed) {
         mSubscribedListData.add(item);
-      }else{
+      } else {
         mCreatedListData.add(item);
       }
     });
@@ -358,7 +360,21 @@ class _MyPageState extends State<MyPage>
                             ),
                             Material(
                               child: InkWell(
-                                onTap: () {},
+                                onTap: () {
+
+                                  showModalBottomSheet(
+                                    backgroundColor: Colors.transparent,
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return Container(
+                                        height: 240,
+                                        child: BottomSheetWidget(),
+                                      );
+                                    },
+                                  ).then((val) {
+                                    print(val);
+                                  });
+                                },
                                 child: Icon(
                                   Icons.more_vert,
                                   size: 30,
@@ -432,92 +448,98 @@ class _MyPageState extends State<MyPage>
                 Gaps.vGap15,
                 Container(
 //                  color: color,
-                  child: mSubscribedListData.length>0?Column(
-                    children: mSubscribedListData.map((e) {
-                      return Container(
-                        height: 60,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: <Widget>[
-                            Center(
-                                child: Container(
-                                  width: 40,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(6),
-                                    child: CachedNetworkImage(
-                                      fit: BoxFit.fill,
-                                      imageUrl: e.coverImgUrl,
-                                      placeholder: (context, url) => ProgressView(),
-                                      errorWidget: (context, url, error) =>
-                                          Icon(Icons.error),
+                  child: mSubscribedListData.length > 0
+                      ? Column(
+                          children: mSubscribedListData.map((e) {
+                            return Container(
+                              height: 60,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Center(
+                                      child: Container(
+                                    width: 40,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(6),
+                                      child: CachedNetworkImage(
+                                        fit: BoxFit.fill,
+                                        imageUrl: e.coverImgUrl,
+                                        placeholder: (context, url) =>
+                                            ProgressView(),
+                                        errorWidget: (context, url, error) =>
+                                            Icon(Icons.error),
+                                      ),
+                                    ),
+                                  )),
+                                  Expanded(
+                                    child: Container(
+//                                color: Colors.amberAccent,
+                                      padding: EdgeInsets.only(
+                                          top: 10, bottom: 10, left: 8),
+                                      child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
+                                          children: [
+                                            Expanded(
+                                              child: Container(
+//                      color: Colors.green,
+                                                  child: Center(
+                                                child: Align(
+                                                  alignment: FractionalOffset
+                                                      .centerLeft,
+                                                  child: Text(
+                                                    e.name,
+                                                    style: TextStyle(
+                                                        fontSize: 12,
+                                                        color: Colors.black),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                  ),
+                                                ),
+                                              )),
+                                            ),
+                                            Expanded(
+                                              child: Container(
+//                                            color: Colors.green,
+                                                  child: Center(
+                                                child: Align(
+                                                  alignment: FractionalOffset
+                                                      .centerLeft,
+                                                  child: Text(
+                                                    '${e.trackCount}首,by ${e.creator.nickname}',
+                                                    style: TextStyle(
+                                                        fontSize: 8,
+                                                        color:
+                                                            Colors.grey[600]),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                  ),
+                                                ),
+                                              )),
+                                            ),
+                                          ]),
                                     ),
                                   ),
-                                )),
-                            Expanded(
-                              child: Container(
-//                                color: Colors.amberAccent,
-                                padding: EdgeInsets.only(
-                                    top: 10, bottom: 10, left: 8),
-                                child: Column(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
-                                    children: [
-                                      Expanded(
-                                        child: Container(
-//                      color: Colors.green,
-                                            child: Center(
-                                              child: Align(
-                                                alignment:
-                                                FractionalOffset.centerLeft,
-                                                child: Text(
-                                                  e.name,
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      color: Colors.black),
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                              ),
-                                            )),
+                                  Material(
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: Icon(
+                                        Icons.more_vert,
+                                        size: 30,
+                                        color: Colors.grey,
                                       ),
-                                      Expanded(
-                                        child: Container(
-//                                            color: Colors.green,
-                                            child: Center(
-                                              child: Align(
-                                                alignment:
-                                                FractionalOffset.centerLeft,
-                                                child: Text(
-                                                  '${e.trackCount}首,by ${e.creator.nickname}',
-                                                  style: TextStyle(
-                                                      fontSize: 8,
-                                                      color: Colors.grey[600]),
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                              ),
-                                            )),
-                                      ),
-                                    ]),
+                                    ),
+                                    color: Colors.transparent,
+                                  ),
+                                ],
                               ),
-                            ),
-                            Material(
-                              child: InkWell(
-                                onTap: () {},
-                                child: Icon(
-                                  Icons.more_vert,
-                                  size: 30,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              color: Colors.transparent,
-                            ),
-                          ],
-                        ),
-                      );
-                    }).toList(),
-                  ):   Text('暂无收藏歌曲'),
+                            );
+                          }).toList(),
+                        )
+                      : Text('暂无收藏歌曲'),
                 ),
               ],
             ),
@@ -530,28 +552,48 @@ class _MyPageState extends State<MyPage>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[100],
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            _buildHead(context),
-            _buildMenu(context),
-            _buildMusicLike(context),
-            _buildTable(context),
-            _buildBottomListWidget(context),
-            // _DetailPage(),
-          ],
+        child: Scaffold(
+      drawer: HomeDrawer(),
+      backgroundColor: Colors.transparent,
+
+      //把scaffold的背景色改成透明
+      appBar: AppBar(
+        brightness: Brightness.light,
+        leading: IconButton(
+            icon: Icon(
+              Icons.dehaze,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            }),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        // backgroundColor:
+        // _tabController.index == 0 ? Colors.transparent : Colors.red,
+        elevation: 0,
+        //appbar的阴影
+      ),
+      body: Container(
+        color: Colors.grey[100],
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              _buildHead(context),
+              _buildMenu(context),
+              _buildMusicLike(context),
+              _buildTable(context),
+              _buildBottomListWidget(context),
+              // _DetailPage(),
+            ],
+          ),
         ),
       ),
-    );
+    ));
 
     return super.build(context);
   }
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return _DetailPage();
-  // }
 
   @override
   bool get wantKeepAlive => true;
@@ -659,3 +701,169 @@ const List<Menu> videoCategoryList = const <Menu>[
     path: '',
   ),
 ];
+
+class BottomSheetWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            height: 56,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15))),
+            child: Row(children: <Widget>[
+              Gaps.hGap15,
+              Expanded(
+                child: Text(
+                  "已选类别",
+                  style: TextStyles.textBoldDark14,
+                ),
+              ),
+              Gaps.hGap15,
+            ]),
+          ),
+          Gaps.line,
+          Column(
+            children: [
+
+              Row(
+                children: [
+                  Material(
+                    color: Colors.white,
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                        padding: EdgeInsets.only(left: 15, right: 10),
+                        height: 45.0,
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          children: <Widget>[
+                            Image.asset(
+                              R.mipmap.download,
+                              width: 18,
+                              height: 18,
+                              color: Colors.black,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 10),
+                              child: Text(
+                                '下载',
+                                style: TextStyle(color: Colors.black87, fontSize: 14),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  Material(
+                    color: Colors.white,
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                        padding: EdgeInsets.only(left: 15, right: 10),
+                        height: 45.0,
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          children: <Widget>[
+                            Image.asset(
+                             R.mipmap.share,
+                              width: 18,
+                              height: 18,
+                              color: Colors.black,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 10),
+                              child: Text(
+                                '分享',
+                                style: TextStyle(color: Colors.black87, fontSize: 14),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  Material(
+                    color: Colors.white,
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                        padding: EdgeInsets.only(left: 15, right: 10),
+                        height: 45.0,
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          children: <Widget>[
+                            Image.asset(
+                              'images/ticket.png',
+                              width: 18,
+                              height: 18,
+                              color: Colors.black,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 10),
+                              child: Text(
+                                '编辑歌单信息',
+                                style: TextStyle(color: Colors.black87, fontSize: 14),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  Material(
+                    color: Colors.white,
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                        padding: EdgeInsets.only(left: 15, right: 10),
+                        height: 45.0,
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          children: <Widget>[
+                            Image.asset(
+                              'images/ticket.png',
+                              width: 18,
+                              height: 18,
+                              color: Colors.black,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 10),
+                              child: Text(
+                                '删除',
+                                style: TextStyle(color: Colors.black87, fontSize: 14),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
