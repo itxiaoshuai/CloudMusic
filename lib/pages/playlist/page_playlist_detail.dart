@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/data/protocol/tracks.dart';
 import 'package:cloud_music/manager/audio_paly_manager.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ import 'package:cloud_music/widget/flexible_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../r.dart';
 import 'item_music_list_track.dart';
 
 class PlaylistDetailPage extends StatefulWidget {
@@ -82,7 +84,7 @@ class PlayListHeaderBackground extends StatelessWidget {
       children: <Widget>[
         Image(image: NetworkImage(imageUrl), fit: BoxFit.cover),
         BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
+          filter: ImageFilter.blur(sigmaX: 100, sigmaY: 100),
           child: Container(color: Colors.black.withOpacity(0.1)),
         )
       ],
@@ -102,157 +104,259 @@ class _PlaylistDetailHeader extends StatelessWidget {
     return FlexibleDetailBar(
       background: PlayListHeaderBackground(
           imageUrl:
-              'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg'),
+             model.data.coverImgUrl),
       content: _buildContent(context),
     );
   }
 
   Widget _buildContent(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: Text(''),
-      ),
-      body: Container(
-        padding: const EdgeInsets.only(left: 15, top: 0, bottom: 4, right: 15),
-        color: Colors.transparent,
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                ListItemCustom(
-                  width: 124,
-                  height: 124,
-                  img: model.data == null ? "" : model.data.coverImgUrl,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: Text(''),
+        ),
+        body: Stack(
+          children: [
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: Row(
+                      children: <Widget>[
+                        Gaps.hGap15,
+                        ListItemCustom(
+                          width: 120,
+                          height: 120,
+                          img: model.data == null ? "" : model.data.coverImgUrl,
+                        ),
+                        SizedBox(width: 16),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                model.data == null ? "" : model.data.name,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Container(
+                                // color: Colors.orangeAccent,
+                                margin: const EdgeInsets.only(
+                                    left: 0, top: 4, bottom: 4, right: 0),
+                                child: InkWell(
+                                  onTap: () => {},
+                                  child: Container(
+                                    padding: const EdgeInsets.only(
+                                        left: 0, top: 6, bottom: 6, right: 0),
+//                            color: Colors.blue,
+                                    child: Row(
+                                      children: <Widget>[
+                                        Container(
+                                          child: CircleAvatar(
+                                            backgroundImage: NetworkImage(
+                                              model.data == null
+                                                  ? ""
+                                                  : model
+                                                      .data.creator.avatarUrl,
+                                            ),
+                                            backgroundColor: Colors.black,
+                                            radius: 15.0,
+                                          ),
+                                        ),
+                                        Padding(
+                                            padding: EdgeInsets.only(left: 6)),
+                                        Expanded(
+                                          child: Container(
+                                            child: Text(
+                                              model.data == null
+                                                  ? ""
+                                                  : model.data.creator.nickname,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.black),
+                                            ),
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.chevron_right,
+                                          color: Theme.of(context)
+                                              .primaryIconTheme
+                                              .color,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Container(
+                                      // color: Colors.green,
+                                      child: Text(
+                                        model.data == null
+                                            ? ""
+                                            : stringFilter(
+                                                model.data.description),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.chevron_right,
+                                    color: Theme.of(context)
+                                        .primaryIconTheme
+                                        .color,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Gaps.hGap15,
+                      ],
+                    ),
+                    // color: Colors.blue,
+                  ),
+                  SizedBox(height: 50),
+                  Expanded(
+                    child: Container(
+                      color: Colors.white,
+                      child: Stack(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                                left: 15, right: 15, top: 45, bottom: 5),
+                            height: 44,
+                            //边框设置
+                            decoration: BoxDecoration(
+                              //背景
+                              color: Colors.white,
+                              //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
+                              //设置四周边框
+                              border: Border.all(width: 1, color: Colors.grey),
+                            ),
+                            child: Row(
+                              children: [
+                                Text('含7首VIP专享歌曲'),
+                                Spacer(),
+                                Text('首开VIP仅5元'),
+                                Icon(Icons.chevron_right),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: 140,
+              left: 50,
+              right: 50,
+              child: Card(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
                 ),
-                SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                // 抗锯齿
+                clipBehavior: Clip.antiAlias,
+                elevation: 10,
+                // 阴影大小
+                child: Container(
+                  height: 44,
+                  //边框设置
+                  decoration: BoxDecoration(
+                    //背景
+                    color: Colors.white,
+                    //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
+                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                    //设置四周边框
+                    border: Border.all(width: 1, color: Colors.white),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Text(
-                        model.data == null ? "" : model.data.name,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 18,
+                      Material(
+                        child: InkWell(
+                          //点击事件回调
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(RouteName.comment, arguments: id);
+                          },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                ConstImgResource.comment,
+                                color: Colors.black,
+                                width: 20,
+                              ),
+                              Text(model.data.commentCount.toString(),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                  ))
+                            ],
+                          ),
                         ),
                       ),
                       Container(
-                        color: Colors.orangeAccent,
-                        margin: const EdgeInsets.only(
-                            left: 0, top: 4, bottom: 4, right: 0),
-                        child: InkWell(
-                          onTap: () => {},
-                          child: Container(
-                            padding: const EdgeInsets.only(
-                                left: 0, top: 6, bottom: 6, right: 0),
-//                            color: Colors.blue,
-                            child: Row(
-                              children: <Widget>[
-                                Container(
-                                  child: CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                      model.data == null
-                                          ? ""
-                                          : model.data.creator.avatarUrl,
-                                    ),
-                                    backgroundColor: Colors.black,
-                                    radius: 15.0,
-                                  ),
-                                ),
-                                Padding(padding: EdgeInsets.only(left: 6)),
-                                Expanded(
-                                  child: Container(
-                                    child: Text(
-                                      model.data == null
-                                          ? ""
-                                          : model.data.creator.nickname,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontSize: 14, color: Colors.black),
-                                    ),
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.chevron_right,
-                                  color:
-                                      Theme.of(context).primaryIconTheme.color,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
+                        height: 20,
+                        width: 0.5,
+                        color: Colors.grey[500],
                       ),
                       Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Container(
-                              color: Colors.green,
-                              child: Text(
-                                model.data == null
-                                    ? ""
-                                    : stringFilter(model.data.description),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ),
+                        children: [
+                          Image.asset(
+                            ConstImgResource.comment,
+                            color: Colors.black,
+                            width: 20,
                           ),
-                          Icon(
-                            Icons.chevron_right,
-                            color: Theme.of(context).primaryIconTheme.color,
-                          )
+                          Text(model.data.shareCount.toString(),
+                              style: TextStyle(
+                                fontSize: 12,
+                              ))
+                        ],
+                      ),
+                      Container(
+                        height: 20,
+                        width: 0.5,
+                        color: Colors.grey[500],
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            ConstImgResource.share,
+                            color: Colors.black,
+                            width: 20,
+                          ),
+                          Text(model.data.shareCount.toString(),
+                              style: TextStyle(
+                                fontSize: 12,
+                              ))
                         ],
                       ),
                     ],
                   ),
                 ),
-              ],
-            ),
-            Padding(padding: EdgeInsets.only(top: 20)),
-            Container(
-              padding: EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
-              color: Colors.white,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Material(
-                    child: InkWell(
-                      //点击事件回调
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushNamed(RouteName.comment, arguments: id);
-                      },
-                      child: ListItem(
-                        image: ConstImgResource.comment,
-                        text: model.data == null
-                            ? ""
-                            : model.data.commentCount.toString(),
-                      ),
-                    ),
-                  ),
-                  ListItem(
-                    image: ConstImgResource.share,
-                    text: model.data == null
-                        ? ""
-                        : model.data.shareCount.toString(),
-                  ),
-                  ListItem(image: ConstImgResource.download, text: "下载"),
-                  ListItem(
-                      image: ConstImgResource.multipleSelection, text: "多选"),
-                ],
               ),
             ),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
 
@@ -284,10 +388,14 @@ class ListItem extends StatelessWidget {
 
 ///音乐列表头
 class MusicListHeader extends StatelessWidget implements PreferredSizeWidget {
+  PlayListModel model;
+
+  MusicListHeader(this.model);
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      borderRadius: BorderRadius.vertical(top: Radius.circular(0)),
       child: Material(
         color: Colors.white,
         elevation: 0,
@@ -308,10 +416,27 @@ class MusicListHeader extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 Padding(padding: EdgeInsets.only(left: 2)),
                 Text(
-                  "(共首)",
+                  "(共${model.data.tracks.length}首)",
                   style: Theme.of(context).textTheme.caption,
                 ),
                 Spacer(),
+
+                IconButton(
+                  icon: Image.asset(
+                    R.mipmap.download,
+                    color: Colors.black,
+                    width: 18,
+                  ),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: Image.asset(
+                    R.mipmap.multiple,
+                    color: Colors.black,
+                    width: 18,
+                  ),
+                  onPressed: () {},
+                )
               ]..removeWhere((v) => v == null),
             ),
           ),
@@ -342,8 +467,8 @@ class CustomWidget extends StatelessWidget {
             pinned: true,
 //            floating: true,
 //            snap: false,
-            expandedHeight: 320.0,
-            bottom: _buildListHeader(context),
+            expandedHeight: 380.0,
+            bottom: _buildListHeader(context, model),
             flexibleSpace: _PlaylistDetailHeader(model, id),
             actions: <Widget>[
               IconButton(
@@ -359,9 +484,7 @@ class CustomWidget extends StatelessWidget {
                   Icons.more_vert,
                   color: Colors.white,
                 ),
-                onPressed: () {
-
-                },
+                onPressed: () {},
               )
             ]),
         SliverList(
@@ -392,8 +515,9 @@ class CustomWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildListHeader(BuildContext context) {
-    return MusicListHeader();
+  Widget _buildListHeader(BuildContext context, PlayListModel model) {
+    _PlaylistDetailHeader(this.model, this.id);
+    return MusicListHeader(model);
   }
 
   void playSongs(

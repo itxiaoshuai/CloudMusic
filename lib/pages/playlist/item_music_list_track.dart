@@ -91,11 +91,14 @@ class TrackItem extends StatelessWidget {
           ),
           Container(
 //            color: Colors.blue,
-            child: IconButton(
-                iconSize: 25,
-                icon: ImageIcon(AssetImage("images/album/track_mv.png")),
-                color: Colors.grey[500],
-                onPressed: () {}),
+            child: Visibility(
+              visible: track.mv>0,
+              child: IconButton(
+                  iconSize: 25,
+                  icon: ImageIcon(AssetImage("images/album/track_mv.png")),
+                  color: Colors.grey[500],
+                  onPressed: () {}),
+            ),
           ),
           Container(
 //            color: Colors.red,
