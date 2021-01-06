@@ -39,6 +39,10 @@ class MipMap {
   String get listCycleSelect => 'images/icon_list_cycle_select.png';
 
   String get multiple => 'images/album/album_multiple_selection.png'; //多选
+
+  String get download => 'images/album/album_download.png';
+
+  String get share => 'images/album/album_share.png';
 }
 
 class MipMapText {

@@ -8,7 +8,7 @@ import 'package:cloud_music/provider/view_state_widget.dart';
 import 'package:cloud_music/r.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:cloud_music/data/protocol/Follow.dart';
 class FriendAttentionPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _FriendAttentionPageState();
