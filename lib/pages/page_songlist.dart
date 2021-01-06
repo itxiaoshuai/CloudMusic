@@ -131,35 +131,36 @@ class Choice {
 }
 
 const List<Choice> choices = const <Choice>[
-  const Choice(
-    title: '推荐 ',
-    categoryId: 1,
-  ),
+  // const Choice(
+  //   title: '推荐 ',
+  //   categoryId: 1,
+  // ),
   const Choice(
     title: '官方',
     categoryId: 2,
   ),
-  const Choice(
-    title: '精品',
-    categoryId: 3,
-  ),
+  // const Choice(
+  //   title: '精品',
+  //   categoryId: 3,
+  // ),
   const Choice(
     title: '华语',
-    categoryId: 4,
+    categoryId: 5001,
   ),
   const Choice(
     title: '流行',
-    categoryId: 5,
+    categoryId: 1,
   ),
   const Choice(
     title: '轻音乐',
-    categoryId: 6,
+    categoryId: 10001,
   ),
   const Choice(
     title: '摇滚',
-    categoryId: 7,
+    categoryId: 2,
   ),
   const Choice(
     title: '民谣',
+    categoryId: 1001,
   ),
 ];

@@ -46,7 +46,7 @@ class Playlist {
       this.commentCount});
 
   Playlist.fromJson(Map<String, dynamic> json) {
-    subscribed = json['subscribed'];
+    // subscribed = json['subscribed'];
     creator =
         json['creator'] != null ? new Creator.fromJson(json['creator']) : null;
     if (json['tracks'] != null) {
@@ -55,33 +55,33 @@ class Playlist {
         tracks.add(Tracks.fromJson(v));
       });
     }
-    if (json['trackIds'] != null) {
-      trackIds = <TrackIds>[];
-      json['trackIds'].forEach((v) {
-        trackIds.add(TrackIds.fromJson(v));
-      });
-    }
-
-    createTime = json['createTime'];
-    highQuality = json['highQuality'];
-    userId = json['userId'];
-    cloudTrackCount = json['cloudTrackCount'];
-    subscribedCount = json['subscribedCount'];
+    // if (json['trackIds'] != null) {
+    //   trackIds = <TrackIds>[];
+    //   json['trackIds'].forEach((v) {
+    //     trackIds.add(TrackIds.fromJson(v));
+    //   });
+    // }
+    //
+    // createTime = json['createTime'];
+    // highQuality = json['highQuality'];
+    // userId = json['userId'];
+    // cloudTrackCount = json['cloudTrackCount'];
+    // subscribedCount = json['subscribedCount'];
     coverImgUrl = json['coverImgUrl'];
-
+    //
     trackCount = json['trackCount'];
-
+    //
     playCount = json['playCount'];
-
+    //
     description = json['description'];
-    if (json['tags'] != null) {
-      tags = json['tags'].cast<String>();
-    }
-
+    // if (json['tags'] != null) {
+    //   tags = json['tags'].cast<String>();
+    // }
+    //
     name = json['name'];
     id = json['id'];
     shareCount = json['shareCount'];
-
+    //
     commentCount = json['commentCount'];
   }
 

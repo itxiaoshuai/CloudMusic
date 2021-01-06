@@ -183,6 +183,7 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
                       List.generate(model.data.data.dailySongs.length,
                           (int index) {
                         DailySongs song = model.data.data.dailySongs[index];
+                        print(song.name);
                         //返回 组件
                         return Container(
                           color: Colors.white,
@@ -284,8 +285,8 @@ class TrackItem extends StatelessWidget {
 
   String getText() {
     StringBuffer stringBuffer = new StringBuffer();
-    var length = song.artists.length;
-    song.artists.forEach((item) {
+    var length = song.ar.length;
+    song.ar.forEach((item) {
       if (length == 1) {
         stringBuffer.write(item.name);
       }
@@ -296,9 +297,9 @@ class TrackItem extends StatelessWidget {
 
       length--;
     });
-    if (song.album != null) {
-      if (song.album.name != null) stringBuffer.write('-');
-      stringBuffer.write(song.album.name);
+    if (song.al != null) {
+      if (song.al.name != null) stringBuffer.write('-');
+      stringBuffer.write(song.al.name);
     }
 
     return stringBuffer.toString();
@@ -315,8 +316,10 @@ class TrackItem extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5),
               child: CachedNetworkImage(
+                width: 40,
+                height: 40,
                 fit: BoxFit.fill,
-                imageUrl: song.album.picUrl,
+                imageUrl: song.al.picUrl,
                 placeholder: (context, url) => ProgressView(),
                 errorWidget: (context, url, error) => Icon(Icons.error),
               ),
@@ -374,7 +377,7 @@ class TrackItem extends StatelessWidget {
               maintainSize: true,
               maintainAnimation: true,
               maintainState: true,
-              visible: song.mvid > 0,
+              visible: song.mv > 0,
             ),
           ),
           Container(

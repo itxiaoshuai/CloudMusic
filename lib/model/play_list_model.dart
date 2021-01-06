@@ -19,6 +19,8 @@ class PlayListModel extends LayoutStateModel {
       Playlist.fromJson(response.data['playlist']);
       _playlist = playlistDetail;
       setState(LayoutState.SUCCESS);
-    } catch (e, s) {}
+    } catch (e, s) {
+      print(e);
+    }
   }
 }

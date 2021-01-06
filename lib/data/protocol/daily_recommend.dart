@@ -44,17 +44,20 @@ class DailySongs {
   String name;
   int id;
   List<Artists> artists;
-  Album album;
-  int mvid;
+  int mv;
+  Al al;
+  List<Ar> ar;
+
   static DailySongs fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
     DailySongs song = DailySongs();
     song.name = map['name'];
     song.id = map['id'];
-    song.mvid = map['mvid'];
+    song.mv = map['mv'];
     song.artists = []
       ..addAll((map['artists'] as List ?? []).map((o) => Artists.fromJson(o)));
-    song.album = Album.fromJson(map['album']);
+    song.al = Al.fromJson(map['al']);
+    song.ar = []..addAll((map['ar'] as List ?? []).map((o) => Ar.fromJson(o)));
     return song;
   }
 }
@@ -73,13 +76,27 @@ class Artists {
   }
 }
 
-class Album {
+class Ar {
+  String name;
+  int id;
+
+  static Ar fromJson(Map<String, dynamic> map) {
+    if (map == null) return null;
+    Ar ar = Ar();
+    ar.name = map['name'];
+    ar.id = map['id'];
+    return ar;
+  }
+}
+
+class Al {
   String name;
   int id;
   String picUrl;
-  static Album fromJson(Map<String, dynamic> map) {
+
+  static Al fromJson(Map<String, dynamic> map) {
     if (map == null) return null;
-    Album album = Album();
+    Al album = Al();
     album.name = map['name'];
     album.id = map['id'];
     album.picUrl = map['picUrl'];

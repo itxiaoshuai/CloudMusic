@@ -67,7 +67,10 @@ class RequestManager {
 
   //每日推荐
   static Future<DailyRecommend> fetchRecommend() async {
-    var response = await http.get('/recommend/songs');
+    Map<String, dynamic> formData = {
+      'cookie': "__csrf=b15aeab9a6e210089642b95851797fd1; Max-Age=1296010; Expires=Thu, 21 Jan 2021 05:59:25 GMT; Path=/;;MUSIC_U=ba34296e04ecdf04df0d8c22e024f30c82204af2d83c4ebe53c2658d1fa849ab33a649814e309366; Max-Age=1296000; Expires=Thu, 21 Jan 2021 05:59:15 GMT; Path=/;;__remember_me=true; Max-Age=1296000; Expires=Thu, 21 Jan 2021 05:59:15 GMT; Path=/;",
+    };
+    var response = await http.get('/recommend/songs', queryParameters: formData);
     return DailyRecommend.fromJson(response.data);
   }
 

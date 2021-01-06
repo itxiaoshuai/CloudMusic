@@ -73,6 +73,7 @@ class PlaylistCategoryPageState extends State<PlaylistCategoryPage>
         child: ListView(
           children: [
             Container(
+              // color: Colors.red,
 //      padding: const EdgeInsets.all(18.0),
               child: LayoutBuilder(builder: (context, constraints) {
                 int count = 3;

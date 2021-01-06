@@ -953,7 +953,7 @@ List<Menu> videoCategoryList = <Menu>[
   Menu(
     title: R.string.dailySpecial,
     img: R.mipmap.dailySpecial,
-    path: '',
+    path: RouteName.PAGE_DAILY_RECOMMEND,
   ),
   Menu(
     title: R.string.fm,
