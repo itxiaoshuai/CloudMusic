@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:cloud_music/base/storage_manager.dart';
+import 'package:cloud_music/data/api/apis.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'api.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
@@ -23,14 +25,20 @@ class Http extends BaseHttp {
     CookieJar cj = PersistCookieJar(dir: tempPath);
     interceptors..add(ApiInterceptor());
     interceptors.add(CookieManager(cj));
-
   }
 }
 
-/// 玩Android API
 class ApiInterceptor extends InterceptorsWrapper {
   @override
   onRequest(RequestOptions options) async {
+    if (!options.path.contains(MusicApi.LOGIN)) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      Map<String, dynamic> formData = {
+        'cookie': prefs.get('cookie'),
+      };
+      options.queryParameters = formData;
+    }
+
     debugPrint('---api-request--->url--> ${options.baseUrl}${options.path}' +
         ' queryParameters: ${options.queryParameters}' +
         ' data: ${options.data}');

@@ -2,14 +2,19 @@
 请求管理类
  */
 
+import 'dart:convert';
+
+import 'package:cloud_music/data/api/apis.dart';
 import 'package:cloud_music/data/protocol/LeaderboardModel.dart';
 import 'package:cloud_music/data/protocol/daily_recommend.dart';
 import 'package:cloud_music/data/protocol/new_album.dart';
 import 'package:cloud_music/data/protocol/radio_hot.dart';
+import 'package:cloud_music/data/protocol/user_info.dart';
 import 'package:cloud_music/data/protocol/yun_task.dart';
 import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/data/protocol/lyric.dart';
 import 'package:cloud_music/data/protocol/cloud_storage_bean.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class RequestManager {
   //获取榜单数据
   static Future<List<LeaderBoardList>> fetchTopList() async {
@@ -102,5 +107,41 @@ class RequestManager {
   static Future fetchRadioRank() async {
     var response = await http.get('/dj/toplist/popular?limit=3');
     return response;
+  }
+
+
+  static logoin(String phone, String password) async {
+    var result = await http.get(MusicApi.LOGIN,
+        queryParameters: {"phone": phone, "password": password});
+    if (result != null) {
+      print(result);
+      int uid = result.data['account']['id'];
+      int vipType = result.data['account']['vipType'];
+      int gender = result.data['profile']['gender'];
+      String backgroundUrl = result.data['profile']['backgroundUrl'];
+      String avatarUrl = result.data['profile']['avatarUrl'];
+      String nickname = result.data['profile']['nickname'];
+      String cookie = result.data['cookie'];
+      Map<String, dynamic> userInfoMap = {
+        "nickname": nickname,
+        "uid": uid,
+        "vipType": vipType,
+        "gender": gender,
+        "backgroundUrl": backgroundUrl,
+        "avatarUrl": avatarUrl,
+        "cookie": cookie
+      };
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString("cookie", cookie);
+      UserInfo userInfo = UserInfo.fromJson(userInfoMap);
+      var info = jsonEncode(userInfoMap);
+      save(info.toString());
+      print(info.toString());
+      return userInfo;
+    }
+  }
+
+  static save(String info) async {
+
   }
 }
