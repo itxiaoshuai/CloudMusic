@@ -93,9 +93,14 @@ class RequestManager {
     return NewAlbum.fromJson(response.data);
   }
 
-  //新碟上架
+  //电台
   static Future<HotRadio> fetchRadioById(int id) async {
     var response = await http.get('/dj/radio/hot?cateId=${id}');
     return HotRadio.fromJson(response.data);
+  }
+  //电台 - 最热主播榜
+  static Future fetchRadioRank() async {
+    var response = await http.get('/dj/toplist/popular?limit=3');
+    return response;
   }
 }
