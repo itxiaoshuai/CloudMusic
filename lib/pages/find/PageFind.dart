@@ -39,7 +39,9 @@ class FindPage extends StatefulWidget {
 }
 
 class _FindPageState extends State<FindPage>
-    with AutomaticKeepAliveClientMixin {
+    with AutomaticKeepAliveClientMixin<FindPage> {
+  @override
+  bool get wantKeepAlive => true;  //需要返回true
   List<Banners> _bannerData = [];
   List widgets = [];
 
@@ -275,8 +277,6 @@ class _FindPageState extends State<FindPage>
     return super.build(context);
   }
 
-  @override
-  bool get wantKeepAlive => true;
 }
 
 List<int> getDataList(int count) {

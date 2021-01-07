@@ -5,6 +5,7 @@
 import 'package:cloud_music/data/protocol/LeaderboardModel.dart';
 import 'package:cloud_music/data/protocol/daily_recommend.dart';
 import 'package:cloud_music/data/protocol/new_album.dart';
+import 'package:cloud_music/data/protocol/radio_hot.dart';
 import 'package:cloud_music/data/protocol/yun_task.dart';
 import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/data/protocol/lyric.dart';
@@ -90,5 +91,11 @@ class RequestManager {
   static Future<NewAlbum> fetchNewPlate() async {
     var response = await http.get('/album/newest');
     return NewAlbum.fromJson(response.data);
+  }
+
+  //新碟上架
+  static Future<HotRadio> fetchRadioById(int id) async {
+    var response = await http.get('/dj/radio/hot?cateId=${id}');
+    return HotRadio.fromJson(response.data);
   }
 }
