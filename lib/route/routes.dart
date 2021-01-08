@@ -1,4 +1,5 @@
 import 'package:cloud_music/pages/album/page_digital_album.dart';
+import 'package:cloud_music/pages/drawer/message/page_message_comment.dart';
 import 'package:cloud_music/pages/drawer/message/page_message_notice.dart';
 import 'package:cloud_music/pages/drawer/page_message.dart';
 import 'package:cloud_music/pages/drawer/page_yunbei.dart';
@@ -32,6 +33,7 @@ class RouteName {
   static const String PAGE_SETTING = 'page_setting'; //设置
   static const String PAGE_MESSAGE = 'page_message'; //消息
   static const String PAGE_NOTICE = 'page_notice'; //通知
+  static const String PAGE_NOTICE_COMMENT = 'page_notice_comment'; //评论
 }
 
 class Routers {
@@ -70,6 +72,8 @@ class Routers {
         return NoAnimRouteBuilder(MessagePage());
       case RouteName.PAGE_NOTICE:
         return NoAnimRouteBuilder(NoticePage());
+      case RouteName.PAGE_NOTICE_COMMENT:
+        return NoAnimRouteBuilder(MessageCommentPage());
       default:
         return CupertinoPageRoute(
             builder: (_) =>

@@ -64,69 +64,82 @@ class _NoticePageState extends State<NoticePage> {
                     Expanded(
                         child: ListView(
                       children: model.notices.map<Widget>((p) {
-                        return Container(
-                          child: Row(
-                            children: [
-                              Gaps.hGap15,
-                              Center(
-                                  child: Container(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(35),
-                                  child: CachedNetworkImage(
-                                    width: 35,
-                                    height: 35,
-                                    fit: BoxFit.fill,
-                                    imageUrl: json.decode(p['notice'])['user']
-                                        ['avatarUrl'],
-                                    placeholder: (context, url) =>
-                                        ProgressView(),
-                                    errorWidget: (context, url, error) =>
-                                        Icon(Icons.error),
-                                  ),
-                                ),
-                              )),
-                              Gaps.hGap15,
-                              Expanded(
-                                  child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                        return Material(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(RouteName.PAGE_NOTICE_COMMENT);
+                            },
+                            child: Container(
+                              child: Row(
                                 children: [
-                                  Gaps.vGap10,
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                  Gaps.hGap15,
+                                  Center(
+                                      child: Container(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(35),
+                                      child: CachedNetworkImage(
+                                        width: 35,
+                                        height: 35,
+                                        fit: BoxFit.fill,
+                                        imageUrl:
+                                            json.decode(p['notice'])['user']
+                                                ['avatarUrl'],
+                                        placeholder: (context, url) =>
+                                            ProgressView(),
+                                        errorWidget: (context, url, error) =>
+                                            Icon(Icons.error),
+                                      ),
+                                    ),
+                                  )),
+                                  Gaps.hGap15,
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Container(
-                                        child: Text(
-                                          json.decode(p['notice'])['user']
-                                              ['nickname'],
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(color: Colors.blue),
-                                        ),
-                                        constraints: BoxConstraints(
-                                          maxWidth: 80,
-
-                                        ),
+                                      Gaps.vGap10,
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            child: Text(
+                                              json.decode(p['notice'])['user']
+                                                  ['nickname'],
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style:
+                                                  TextStyle(color: Colors.blue),
+                                            ),
+                                            constraints: BoxConstraints(
+                                              maxWidth: 80,
+                                            ),
+                                          ),
+                                          Text(
+                                            getText(p),
+                                            style: TextStyle(fontSize: 12),
+                                          ),
+                                          Text(
+                                            '${DateUtil.formatDateMs(p['time'], format: 'yyyy年MM月dd日')}',
+                                            style: R.style.textGray10,
+                                          ),
+                                        ],
                                       ),
-                                      Text(getText(p),style: TextStyle(fontSize: 12),),
                                       Text(
-                                        '${DateUtil.formatDateMs(p['time'], format: 'yyyy年MM月dd日')}',
-                                        style: R.style.textGray10,
+                                        getTextContent(p),
+                                        maxLines: 1,
+                                        style: TextStyle(fontSize: 12),
+                                        overflow: TextOverflow.ellipsis,
                                       ),
+                                      Gaps.vGap10,
+                                      Gaps.line,
                                     ],
-                                  ),
-                                  Text(
-                                    getTextContent(p),
-                                    maxLines: 1,
-                                    style: TextStyle(fontSize: 12),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  Gaps.vGap10,
-                                  Gaps.line,
+                                  )),
+                                  Gaps.hGap15,
                                 ],
-                              )),
-                              Gaps.hGap15,
-                            ],
+                              ),
+                            ),
                           ),
                         );
                       }).toList(),
@@ -137,6 +150,7 @@ class _NoticePageState extends State<NoticePage> {
             }));
   }
 
+  ///自行扩展，这里只列举两种评论类型
   String getText(p) {
     if (json.decode(p['notice'])['type'] == 6) {
       //评论类型
@@ -148,6 +162,7 @@ class _NoticePageState extends State<NoticePage> {
     }
     return p.toString();
   }
+
   String getTextContent(p) {
     if (json.decode(p['notice'])['type'] == 6) {
       //评论类型
@@ -155,7 +170,8 @@ class _NoticePageState extends State<NoticePage> {
     }
     if (json.decode(p['notice'])['type'] == 1) {
       //赞了动态
-      return json.decode(p['notice'])['track']['info']['commentThread']['resourceInfo']['name'];
+      return json.decode(p['notice'])['track']['info']['commentThread']
+          ['resourceInfo']['name'];
     }
     return p.toString();
   }
