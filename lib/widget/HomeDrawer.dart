@@ -158,7 +158,7 @@ class _HomeDrawerState extends State {
         child: Container(
           child: Column(
             children: [
-              DrawerListItem(image: "images/setting.png", text: "设置"),
+              DrawerListItem(image: "images/setting.png", text: "设置",route: RouteName.PAGE_SETTING,),
               DrawerListItem(image: "images/night_mode.png", text: "夜间模式"),
               DrawerListItem(image: "images/timing.png", text: "定时关闭"),
               DrawerListItem(image: "images/drawer_skin.png", text: "个性装扮"),

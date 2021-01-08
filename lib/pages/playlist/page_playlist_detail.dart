@@ -536,8 +536,8 @@ class CustomWidget extends StatelessWidget {
     //       .toList(),
     //   index: index,
     // );
-    Navigator.of(context).pushNamed(
-      RouteName.PAGE_SONGS,
-    );
+    // Navigator.of(context).pushNamed(
+    //   RouteName.PAGE_SONGS,
+    // );
   }
 }

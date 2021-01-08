@@ -31,13 +31,13 @@ class Http extends BaseHttp {
 class ApiInterceptor extends InterceptorsWrapper {
   @override
   onRequest(RequestOptions options) async {
-    if (!options.path.contains(MusicApi.LOGIN)) {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      Map<String, dynamic> formData = {
-        'cookie': prefs.get('cookie'),
-      };
-      options.queryParameters = formData;
-    }
+    // if (!options.path.contains(MusicApi.LOGIN)) {
+    //   SharedPreferences prefs = await SharedPreferences.getInstance();
+    //   Map<String, dynamic> formData = {
+    //     'cookie': prefs.get('cookie'),
+    //   };
+    //   options.queryParameters = formData;
+    // }
 
     debugPrint('---api-request--->url--> ${options.baseUrl}${options.path}' +
         ' queryParameters: ${options.queryParameters}' +

@@ -1,5 +1,6 @@
 import 'package:cloud_music/pages/album/page_digital_album.dart';
 import 'package:cloud_music/pages/drawer/page_yunbei.dart';
+import 'package:cloud_music/pages/drawer/setting/page_setting.dart';
 import 'package:cloud_music/pages/find/PageDailySpecial.dart';
 import 'package:cloud_music/pages/login/page_phone_login.dart';
 import 'package:cloud_music/pages/my/page_friend.dart';
@@ -26,6 +27,7 @@ class RouteName {
   static const String PAGE_DIGITAL_ALBUM = 'page_digital_album'; //数字专辑
   static const String PAGE_RANKING_LIST = 'ranking_list'; //排行榜
   static const String PAGE_DAILY_RECOMMEND = 'daily_recommend'; //每日推荐
+  static const String PAGE_SETTING = 'page_setting'; //设置
 }
 
 class Routers {
@@ -58,6 +60,8 @@ class Routers {
         return NoAnimRouteBuilder(LeaderBoardPage());
       case RouteName.PAGE_DAILY_RECOMMEND:
         return NoAnimRouteBuilder(PageDailySpecial());
+      case RouteName.PAGE_SETTING:
+        return NoAnimRouteBuilder(SettingPage());
       default:
         return CupertinoPageRoute(
             builder: (_) =>

@@ -88,7 +88,11 @@ class RequestManager {
 
   //云呗任务
   static Future<YunCoinTask> fetchTasks() async {
-    var response = await http.get('/yunbei/tasks');
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    Map<String, dynamic> formData = {
+      'cookie': prefs.get('cookie'),
+    };
+    var response = await http.get('/yunbei/tasks',queryParameters: formData);
     return YunCoinTask.fromJson(response.data);
   }
 
