@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
             onGenerateRoute: Routers.generateRoute,
             theme: ThemeData(
               backgroundColor: Colors.grey[100],
-              // primarySwatch: Colors.red,
+              primarySwatch: Colors.red,
             ),
           ),
         ),

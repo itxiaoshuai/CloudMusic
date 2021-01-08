@@ -129,7 +129,7 @@ class _HomeDrawerState extends State {
       borderRadius: BorderRadius.all(Radius.circular(8)),
       child: Column(
         children: [
-          DrawerListItem(image: "images/drawer_music.png", text: "我的消息"),
+          DrawerListItem(image: "images/drawer_music.png", text: "我的消息",route: RouteName.PAGE_MESSAGE,),
           Gaps.line,
           DrawerListItem(image: "images/cloud_center.png", text: "云贝中心",route: RouteName.PAGE_CLOUD_COIN,),
         ],
