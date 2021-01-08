@@ -8,12 +8,27 @@ class MessageModel extends LayoutStateModel {
   HotRadio _hotRadio;
 
   var response;
+  var responseNotices;
+
   List get data => response.data['msgs'];
+
+  List get notices => responseNotices.data['notices'];
+
   loadData() async {
     setState(LayoutState.LOADING);
 
     response = await RequestManager.fetchMsg();
     if (response.data['code'] == 200) {
+      setState(LayoutState.SUCCESS);
+    }
+  }
+
+  loadNoticeData() async {
+    setState(LayoutState.LOADING);
+
+    responseNotices = await RequestManager.fetchNotices();
+
+    if (responseNotices.data['code'] == 200) {
       setState(LayoutState.SUCCESS);
     }
   }

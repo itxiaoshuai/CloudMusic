@@ -121,6 +121,15 @@ class RequestManager {
     var response = await http.get('/msg/private',queryParameters: formData);
     return response;
   }
+  //通知 - 私信
+  static Future fetchNotices() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    Map<String, dynamic> formData = {
+      'cookie': prefs.get('cookie'),
+    };
+    var response = await http.get('/msg/notices',queryParameters: formData);
+    return response;
+  }
   static logoin(String phone, String password) async {
     var result = await http.get(MusicApi.LOGIN,
         queryParameters: {"phone": phone, "password": password});
