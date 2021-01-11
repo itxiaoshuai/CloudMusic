@@ -15,6 +15,7 @@ import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/data/protocol/lyric.dart';
 import 'package:cloud_music/data/protocol/cloud_storage_bean.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 class RequestManager {
   //获取榜单数据
   static Future<List<LeaderBoardList>> fetchTopList() async {
@@ -74,9 +75,11 @@ class RequestManager {
   //每日推荐
   static Future<DailyRecommend> fetchRecommend() async {
     Map<String, dynamic> formData = {
-      'cookie': "__csrf=b15aeab9a6e210089642b95851797fd1; Max-Age=1296010; Expires=Thu, 21 Jan 2021 05:59:25 GMT; Path=/;;MUSIC_U=ba34296e04ecdf04df0d8c22e024f30c82204af2d83c4ebe53c2658d1fa849ab33a649814e309366; Max-Age=1296000; Expires=Thu, 21 Jan 2021 05:59:15 GMT; Path=/;;__remember_me=true; Max-Age=1296000; Expires=Thu, 21 Jan 2021 05:59:15 GMT; Path=/;",
+      'cookie':
+          "__csrf=b15aeab9a6e210089642b95851797fd1; Max-Age=1296010; Expires=Thu, 21 Jan 2021 05:59:25 GMT; Path=/;;MUSIC_U=ba34296e04ecdf04df0d8c22e024f30c82204af2d83c4ebe53c2658d1fa849ab33a649814e309366; Max-Age=1296000; Expires=Thu, 21 Jan 2021 05:59:15 GMT; Path=/;;__remember_me=true; Max-Age=1296000; Expires=Thu, 21 Jan 2021 05:59:15 GMT; Path=/;",
     };
-    var response = await http.get('/recommend/songs', queryParameters: formData);
+    var response =
+        await http.get('/recommend/songs', queryParameters: formData);
     return DailyRecommend.fromJson(response.data);
   }
 
@@ -92,7 +95,7 @@ class RequestManager {
     Map<String, dynamic> formData = {
       'cookie': prefs.get('cookie'),
     };
-    var response = await http.get('/yunbei/tasks',queryParameters: formData);
+    var response = await http.get('/yunbei/tasks', queryParameters: formData);
     return YunCoinTask.fromJson(response.data);
   }
 
@@ -107,29 +110,43 @@ class RequestManager {
     var response = await http.get('/dj/radio/hot?cateId=${id}');
     return HotRadio.fromJson(response.data);
   }
+
   //电台 - 最热主播榜
   static Future fetchRadioRank() async {
     var response = await http.get('/dj/toplist/popular?limit=3');
     return response;
   }
+
   //通知 - 私信
   static Future fetchMsg() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     Map<String, dynamic> formData = {
       'cookie': prefs.get('cookie'),
     };
-    var response = await http.get('/msg/private',queryParameters: formData);
+    var response = await http.get('/msg/private', queryParameters: formData);
     return response;
   }
+
   //通知 - 私信
   static Future fetchNotices() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     Map<String, dynamic> formData = {
       'cookie': prefs.get('cookie'),
     };
-    var response = await http.get('/msg/notices',queryParameters: formData);
+    var response = await http.get('/msg/notices', queryParameters: formData);
     return response;
   }
+
+  //数字专辑-语种风格馆
+  static Future fetchAlbumList(Map<String, dynamic> queryParameters) async {
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // Map<String, dynamic> formData = {
+    //   'cookie': prefs.get('cookie'),
+    // };
+    var response = await http.get('/album/list/style', queryParameters: queryParameters);
+    return response;
+  }
+
   static logoin(String phone, String password) async {
     var result = await http.get(MusicApi.LOGIN,
         queryParameters: {"phone": phone, "password": password});
@@ -161,7 +178,5 @@ class RequestManager {
     }
   }
 
-  static save(String info) async {
-
-  }
+  static save(String info) async {}
 }
