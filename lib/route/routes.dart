@@ -1,3 +1,4 @@
+import 'package:cloud_music/pages/album/page_album_detail.dart';
 import 'package:cloud_music/pages/album/page_digital_album.dart';
 import 'package:cloud_music/pages/album/page_language_album.dart';
 import 'package:cloud_music/pages/drawer/message/page_message_comment.dart';
@@ -37,6 +38,7 @@ class RouteName {
   static const String PAGE_NOTICE = 'page_notice'; //通知
   static const String PAGE_NOTICE_COMMENT = 'page_notice_comment'; //评论
   static const String PAGE_LANGUAGE_STYLE_MUSEUM = 'page_language_style_museum'; //语种风格馆
+  static const String PAGE_PAGE_ALBUM_DETAIL = 'page_album_detail'; //专辑详情
 }
 
 class Routers {
@@ -80,6 +82,9 @@ class Routers {
         return NoAnimRouteBuilder(MessageCommentPage(notice: notice));
       case RouteName.PAGE_LANGUAGE_STYLE_MUSEUM:
         return NoAnimRouteBuilder(LanguageAlbumPage());
+      case RouteName.PAGE_PAGE_ALBUM_DETAIL:
+        var albumId = settings.arguments;
+        return NoAnimRouteBuilder(AlbumDetailPage(albumId: albumId));
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(

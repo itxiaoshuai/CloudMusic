@@ -146,7 +146,15 @@ class RequestManager {
     var response = await http.get('/album/list/style', queryParameters: queryParameters);
     return response;
   }
+  static Future fetchAlbumDetail(Map<String, dynamic> queryParameters) async {
+    var response = await http.get('/album/detail', queryParameters: queryParameters);
+    return response;
+  }
 
+  static Future fetchAlbumComment(Map<String, dynamic> queryParameters) async {
+    var response = await http.get('/comment/album', queryParameters: queryParameters);
+    return response;
+  }
   static logoin(String phone, String password) async {
     var result = await http.get(MusicApi.LOGIN,
         queryParameters: {"phone": phone, "password": password});

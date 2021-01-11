@@ -46,6 +46,8 @@ class MipMap {
 
   String get fans => 'images/fans.png';
   String get message => 'images/message.png';
+  String get album => 'images/album.png';
+  String get logo => 'images/login_page_logo.png';
 }
 
 class MipMapText {
