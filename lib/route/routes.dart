@@ -1,4 +1,5 @@
 import 'package:cloud_music/pages/album/page_digital_album.dart';
+import 'package:cloud_music/pages/album/page_language_album.dart';
 import 'package:cloud_music/pages/drawer/message/page_message_comment.dart';
 import 'package:cloud_music/pages/drawer/message/page_message_notice.dart';
 import 'package:cloud_music/pages/drawer/page_message.dart';
@@ -18,6 +19,7 @@ import 'package:cloud_music/pages/user/page_user_home.dart';
 import 'package:cloud_music/route/page_route_anim.dart';
 import 'package:cloud_music/pages/my/page_cloud_storage.dart';
 import 'package:cloud_music/pages/leaderboard/LeaderboardPage.dart';
+
 class RouteName {
   static const String comment = 'comment';
   static const String RADIO_CATEGORY = 'radio_category';
@@ -34,6 +36,7 @@ class RouteName {
   static const String PAGE_MESSAGE = 'page_message'; //消息
   static const String PAGE_NOTICE = 'page_notice'; //通知
   static const String PAGE_NOTICE_COMMENT = 'page_notice_comment'; //评论
+  static const String PAGE_LANGUAGE_STYLE_MUSEUM = 'page_language_style_museum'; //语种风格馆
 }
 
 class Routers {
@@ -73,11 +76,13 @@ class Routers {
       case RouteName.PAGE_NOTICE:
         return NoAnimRouteBuilder(NoticePage());
       case RouteName.PAGE_NOTICE_COMMENT:
-        return NoAnimRouteBuilder(MessageCommentPage());
+        var notice = settings.arguments;
+        return NoAnimRouteBuilder(MessageCommentPage(notice: notice));
+      case RouteName.PAGE_LANGUAGE_STYLE_MUSEUM:
+        return NoAnimRouteBuilder(LanguageAlbumPage());
       default:
         return CupertinoPageRoute(
-            builder: (_) =>
-                Scaffold(
+            builder: (_) => Scaffold(
                   body: Center(
                     child: Text('No route defined for ${settings.name}'),
                   ),

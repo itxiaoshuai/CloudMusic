@@ -238,7 +238,7 @@ class _DigitalAlbumPageState extends State<DigitalAlbumPage> {
           FindBanner(bannerData: _bannerData),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: videoCategoryList.map((e) {
+            children: menuList.map((e) {
               return ListItem(
                 image: e.img,
                 text: e.title,
@@ -255,21 +255,21 @@ class _DigitalAlbumPageState extends State<DigitalAlbumPage> {
   }
 }
 
-List<Menu> videoCategoryList = <Menu>[
+List<Menu> menuList = <Menu>[
   Menu(
-    title: R.string.dailySpecial,
+    title: '畅销榜',
     img: R.mipmap.dailySpecial,
-    path: '',
+    path:RouteName.PAGE_LANGUAGE_STYLE_MUSEUM,
   ),
   Menu(
-    title: R.string.fm,
+    title:'语种风格馆',
     img: R.mipmap.fm,
-    path: '',
+    path:RouteName.PAGE_LANGUAGE_STYLE_MUSEUM,
   ),
   Menu(
-    title: R.string.playlist,
+    title: '已购',
     img: R.mipmap.playlist,
-    path: '',
+    path:RouteName.PAGE_LANGUAGE_STYLE_MUSEUM,
   ),
 ];
 

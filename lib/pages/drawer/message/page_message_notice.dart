@@ -68,7 +68,7 @@ class _NoticePageState extends State<NoticePage> {
                           child: InkWell(
                             onTap: () {
                               Navigator.of(context)
-                                  .pushNamed(RouteName.PAGE_NOTICE_COMMENT);
+                                  .pushNamed(RouteName.PAGE_NOTICE_COMMENT,arguments: p['notice']);
                             },
                             child: Container(
                               child: Row(
