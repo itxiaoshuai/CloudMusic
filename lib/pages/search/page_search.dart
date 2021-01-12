@@ -4,6 +4,7 @@ import 'package:cloud_music/pages/album/InfiniteGridView.dart';
 import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/provider_widget.dart';
 import 'package:cloud_music/provider/view_state_widget.dart';
+import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
@@ -64,29 +65,43 @@ class SearchPageState extends State<SearchPage> {
                     direction: Axis.horizontal,
                     children: model.searchHotList.map<Widget>((p) {
                       i++;
-                      return Container(
-                        padding: EdgeInsets.only(top: 5, bottom: 5),
-                        width: width,
-                        child: Row(
-                          children: [
-                            Text(
-                              "$i",
-                              style: i <= 3
-                                  ? TextStyle(color: Colors.red)
-                                  : TextStyle(color: Colors.grey),
-                            ),
-                            Gaps.hGap4,
-                            Text(
-                              "${p['searchWord']}",
-                              style: i <= 3
-                                  ? TextStyle(fontWeight: FontWeight.bold)
-                                  : TextStyle(),
-                            ),
-                            Image.network(
-                              p['iconUrl'] == null ? "" : p['iconUrl'],
-                              height: 12,
-                            )
-                          ],
+                      return InkWell(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed(RouteName.PAGE_SEARCH_LIST);
+                        },
+                        child: Container(
+                          padding: EdgeInsets.only(top: 5, bottom: 5),
+                          width: width,
+                          child: Row(
+                            children: [
+                              Text(
+                                "$i",
+                                style: i <= 3
+                                    ? TextStyle(color: Colors.red)
+                                    : TextStyle(color: Colors.grey),
+                              ),
+                              Gaps.hGap4,
+                              Text(
+                                "${p['searchWord']}",
+                                style: i <= 3
+                                    ? TextStyle(fontWeight: FontWeight.bold)
+                                    : TextStyle(),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              Gaps.hGap4,
+                              Expanded(
+                                  child: Container(
+                                child: Image.network(
+
+                                  p['iconUrl'] == null ? "" : p['iconUrl'],
+                                  height: 12,
+                                  alignment:Alignment.centerLeft,
+                                ),
+                              )),
+                            ],
+                          ),
                         ),
                       );
                     }).toList(),

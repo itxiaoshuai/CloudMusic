@@ -106,6 +106,11 @@ class Style {
       fontSize: Dimens.font_sp14,
       color: Colours.text_dark,
       fontWeight: FontWeight.bold);
+
+  get textGray14 => TextStyle(
+      fontSize: Dimens.font_sp14,
+      color: Colours.text_gray,
+     );
 }
 
 class R {

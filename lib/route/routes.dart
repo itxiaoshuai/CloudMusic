@@ -11,6 +11,7 @@ import 'package:cloud_music/pages/login/page_phone_login.dart';
 import 'package:cloud_music/pages/my/page_friend.dart';
 import 'package:cloud_music/pages/play_songs/page_play_songs.dart';
 import 'package:cloud_music/pages/search/page_search.dart';
+import 'package:cloud_music/pages/search/page_search_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_music/data/protocol/user_detail_bean.dart';
@@ -41,6 +42,7 @@ class RouteName {
   static const String PAGE_LANGUAGE_STYLE_MUSEUM = 'page_language_style_museum'; //语种风格馆
   static const String PAGE_PAGE_ALBUM_DETAIL = 'page_album_detail'; //专辑详情
   static const String PAGE_SEARCH = 'page_search'; //搜索页面
+  static const String PAGE_SEARCH_LIST = 'page_search_list'; //搜索list页面
 }
 
 class Routers {
@@ -89,6 +91,8 @@ class Routers {
         return NoAnimRouteBuilder(AlbumDetailPage(albumId: albumId));
       case RouteName.PAGE_SEARCH:
         return NoAnimRouteBuilder(SearchPage());
+      case RouteName.PAGE_SEARCH_LIST:
+        return NoAnimRouteBuilder(SearchListPage());
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(
