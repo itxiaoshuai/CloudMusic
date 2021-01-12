@@ -1,5 +1,6 @@
 import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/base/res/styles.dart';
+import 'package:cloud_music/pages/search/page_search_single_song.dart';
 import 'package:cloud_music/pages/yuncun/page_video_list.dart';
 import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,7 @@ class SearchListPageState extends State<SearchListPage>
         );
       }).toList(),
     );
-    Widget tabContainer = new DefaultTabController(
+    Widget tabContainer = DefaultTabController(
       length: choices.length,
       initialIndex: 0, //初始索引
       child: Column(
@@ -81,13 +82,19 @@ class SearchListPageState extends State<SearchListPage>
           Gaps.line,
           Expanded(
             child: TabBarView(
-              children: choices.map((Choice choice) {
-                return Container(
-                  child: Center(
-                    child: Text(choice.title),
-                  ),
-                );
-              }).toList(),
+              children: [
+                SearchSingleSongPage(),
+                SearchSingleSongPage(),
+                SearchSingleSongPage(),
+                SearchSingleSongPage(),
+                SearchSingleSongPage(),
+                SearchSingleSongPage(),
+                SearchSingleSongPage(),
+                SearchSingleSongPage(),
+                SearchSingleSongPage(),
+                SearchSingleSongPage(),
+                SearchSingleSongPage(),
+              ],
             ),
           ),
         ],

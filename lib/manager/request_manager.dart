@@ -156,10 +156,15 @@ class RequestManager {
     return response;
   }
   //热搜列表(简略)
-  static Future fetchSearch() async {
+  static Future fetchSearchHot() async {
     var response = await http.get('/search/hot/detail');
     return response;
   }
+  static Future fetchSearch(Map<String, dynamic> queryParameters) async {
+    var response = await http.get('/cloudsearch', queryParameters: queryParameters);
+    return response;
+  }
+
   static logoin(String phone, String password) async {
     var result = await http.get(MusicApi.LOGIN,
         queryParameters: {"phone": phone, "password": password});
