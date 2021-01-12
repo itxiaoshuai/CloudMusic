@@ -125,7 +125,9 @@ class _FindPageState extends State<FindPage>
             child: Material(
               color: Colors.grey[100],
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed(RouteName.PAGE_SEARCH);
+                },
                 child: Container(
                   padding: EdgeInsets.only(left: 15, right: 10),
                   height: 45.0,

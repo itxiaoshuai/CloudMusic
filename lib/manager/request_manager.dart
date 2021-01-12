@@ -155,6 +155,11 @@ class RequestManager {
     var response = await http.get('/comment/album', queryParameters: queryParameters);
     return response;
   }
+  //热搜列表(简略)
+  static Future fetchSearch() async {
+    var response = await http.get('/search/hot/detail');
+    return response;
+  }
   static logoin(String phone, String password) async {
     var result = await http.get(MusicApi.LOGIN,
         queryParameters: {"phone": phone, "password": password});
