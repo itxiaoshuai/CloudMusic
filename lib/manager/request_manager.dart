@@ -9,6 +9,7 @@ import 'package:cloud_music/data/protocol/LeaderboardModel.dart';
 import 'package:cloud_music/data/protocol/daily_recommend.dart';
 import 'package:cloud_music/data/protocol/new_album.dart';
 import 'package:cloud_music/data/protocol/radio_hot.dart';
+import 'package:cloud_music/data/protocol/user_detail_bean.dart';
 import 'package:cloud_music/data/protocol/user_info.dart';
 import 'package:cloud_music/data/protocol/yun_task.dart';
 import 'package:cloud_music/net/http.dart';
@@ -163,6 +164,10 @@ class RequestManager {
   static Future fetchSearch(Map<String, dynamic> queryParameters) async {
     var response = await http.get('/cloudsearch', queryParameters: queryParameters);
     return response;
+  }
+  static Future fetchUserInfo(Map<String, dynamic> queryParameters) async {
+    var response = await http.get('/user/detail', queryParameters: queryParameters);
+    return UserDetail.fromJsonMap(response.data);
   }
 
   static logoin(String phone, String password) async {

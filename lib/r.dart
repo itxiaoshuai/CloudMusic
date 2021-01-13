@@ -45,9 +45,14 @@ class MipMap {
   String get share => 'images/album/album_share.png';
 
   String get fans => 'images/fans.png';
+
   String get message => 'images/message.png';
+
   String get album => 'images/album.png';
+
   String get logo => 'images/login_page_logo.png';
+
+  String get triangle => 'images/icon_triangle.png';
 }
 
 class MipMapText {
@@ -82,6 +87,16 @@ class Style {
         color: Colours.text_dark,
       );
 
+  get textDark14 => TextStyle(
+        fontSize: Dimens.font_sp14,
+        color: Colours.text_dark,
+      );
+
+  get textDark12 => TextStyle(
+        fontSize: Dimens.font_sp12,
+        color: Colours.text_dark,
+      );
+
   get textRed16 => TextStyle(
         fontSize: Dimens.font_sp16,
         color: Colours.text_red,
@@ -108,9 +123,9 @@ class Style {
       fontWeight: FontWeight.bold);
 
   get textGray14 => TextStyle(
-      fontSize: Dimens.font_sp14,
-      color: Colours.text_gray,
-     );
+        fontSize: Dimens.font_sp14,
+        color: Colours.text_gray,
+      );
 }
 
 class R {
