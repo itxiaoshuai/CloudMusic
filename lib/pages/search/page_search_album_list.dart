@@ -1,23 +1,14 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_music/base/CommonLoading.dart';
 import 'package:cloud_music/base/res/gaps.dart';
-import 'package:cloud_music/base/res/styles.dart';
-import 'package:cloud_music/base/utils/number_utils.dart';
-import 'package:cloud_music/data/protocol/Follow.dart';
 import 'package:cloud_music/data/protocol/new_album.dart';
-import 'package:cloud_music/data/protocol/search_user.dart';
 import 'package:cloud_music/model/search_model.dart';
-import 'package:cloud_music/pages/my/PageMy.dart';
 import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/provider_widget.dart';
 import 'package:cloud_music/provider/view_state_widget.dart';
-import 'package:cloud_music/widget/head_widget.dart';
 import 'package:common_utils/common_utils.dart';
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../r.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchAlbumListPage extends StatefulWidget {
   SearchAlbumListPageState createState() => SearchAlbumListPageState();

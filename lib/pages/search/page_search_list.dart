@@ -1,12 +1,12 @@
+import 'dart:ui';
+
 import 'package:cloud_music/base/res/gaps.dart';
-import 'package:cloud_music/base/res/styles.dart';
 import 'package:cloud_music/pages/search/page_search_album_list.dart';
 import 'package:cloud_music/pages/search/page_search_single_list.dart';
 import 'package:cloud_music/pages/search/page_search_single_song.dart';
 import 'package:cloud_music/pages/search/page_search_song_list.dart';
 import 'package:cloud_music/pages/search/page_search_user_list.dart';
 import 'package:cloud_music/pages/search/page_search_video_list.dart';
-import 'package:cloud_music/pages/yuncun/page_video_list.dart';
 import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class SearchListPage extends StatefulWidget {
 class SearchListPageState extends State<SearchListPage>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   TabController _tabController;
-
+  TextEditingController _searchController = TextEditingController();
   @override
   void dispose() {
     _tabController.dispose();
@@ -105,10 +105,127 @@ class SearchListPageState extends State<SearchListPage>
       ),
     );
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Colors.black, //修改颜色
+        ),
+        backgroundColor: Colors.white,
+        title:Container(
+          child: Theme(
+            child: TextField(
+              controller: _searchController,
+              cursorColor: Colors.red,
+              textInputAction: TextInputAction.search,
+              onEditingComplete: () {
+               print(_searchController.text);
+              },
+              onChanged: (text) {//内容改变的回调
+                print('change $text');
+                setState(() {
+
+                });
+              },
+              onSubmitted: (text) {//内容提交(按回车)的回调
+                print('submit $text');
+              },
+              textAlignVertical: TextAlignVertical.center,
+              decoration: InputDecoration(
+                hintText: "Search",
+                hintStyle: R.style.textGray12,
+                suffixIcon: Visibility(
+                  visible: _searchController.text.length>0,
+                  child: IconButton(
+                      padding: EdgeInsets.zero,
+                      icon: Icon(
+                        Icons.clear,
+                        color: Colors.black87,
+                      ),
+                      onPressed: () {
+                        if (_searchController.text.isNotEmpty)
+                          setState(() {
+                            _searchController.text = "";
+                          });
+                      }),
+                ),
+              ),
+            ),
+            data: Theme.of(context).copyWith(primaryColor: Colors.black54),
+          ),
+        ),
+      ),
       body: tabContainer,
     );
     return super.build(context);
+  }
+}
+
+class SearchBarDemoPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => new _SearchBarDemoPageState();
+}
+
+class _SearchBarDemoPageState extends State<SearchBarDemoPage> {
+  final controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: Theme.of(context).primaryColor,
+        child: Padding(
+          padding: EdgeInsets.only(
+            top: MediaQueryData.fromWindow(window).padding.top,
+          ),
+          child: Container(
+            height: 52.0,
+            child: new Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: new Card(
+                    child: new Container(
+                  child: new Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      Icon(
+                        Icons.search,
+                        color: Colors.grey,
+                      ),
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: TextField(
+                            controller: controller,
+                            decoration: new InputDecoration(
+                                contentPadding: EdgeInsets.only(top: 0.0),
+                                hintText: 'Search',
+                                border: InputBorder.none),
+                            // onChanged: onSearchTextChanged,
+                          ),
+                        ),
+                      ),
+                      new IconButton(
+                        icon: new Icon(Icons.cancel),
+                        color: Colors.grey,
+                        iconSize: 18.0,
+                        onPressed: () {
+                          controller.clear();
+                          // onSearchTextChanged('');
+                        },
+                      ),
+                    ],
+                  ),
+                ))),
+          ),
+        ),
+      ),
+    );
   }
 }
 
