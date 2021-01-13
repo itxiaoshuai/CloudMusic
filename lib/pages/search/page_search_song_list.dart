@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_music/base/CommonLoading.dart';
+import 'package:cloud_music/base/utils/number_utils.dart';
 import 'package:cloud_music/model/search_model.dart';
 import 'package:cloud_music/pages/my/PageMy.dart';
 import 'package:cloud_music/provider/layout_state.dart';
@@ -47,7 +48,8 @@ class SearchSongListPageState extends State<SearchSongListPage> {
                 SliverList(
                   delegate: SliverChildListDelegate(
                     //返回组件集合
-                    List.generate(model.data['result']['playlists'].length, (int index) {
+                    List.generate(model.data['result']['playlists'].length,
+                        (int index) {
                       //返回 组件
                       return Container(
                         color: Colors.white,
@@ -60,8 +62,8 @@ class SearchSongListPageState extends State<SearchSongListPage> {
                             child: Container(
                               height: 60,
                               //不要在这里设置背景色，否则会遮挡水波纹效果,如果设置的话尽量设置Material下面的color来实现背景色
-                              margin: EdgeInsets.only(left: 15,right: 15),
-                              child:  Container(
+                              margin: EdgeInsets.only(left: 15, right: 15),
+                              child: Container(
                                 height: 60,
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -74,9 +76,13 @@ class SearchSongListPageState extends State<SearchSongListPage> {
                                           width: 40,
                                           height: 40,
                                           fit: BoxFit.fill,
-                                          imageUrl: model.data['result']['playlists'][index]['coverImgUrl'],
-                                          placeholder: (context, url) => ProgressView(),
-                                          errorWidget: (context, url, error) => Icon(Icons.error),
+                                          imageUrl: model.data['result']
+                                                  ['playlists'][index]
+                                              ['coverImgUrl'],
+                                          placeholder: (context, url) =>
+                                              ProgressView(),
+                                          errorWidget: (context, url, error) =>
+                                              Icon(Icons.error),
                                         ),
                                       ),
                                     ),
@@ -88,47 +94,49 @@ class SearchSongListPageState extends State<SearchSongListPage> {
                                             top: 10, bottom: 10, left: 8),
                                         child: Column(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment.spaceBetween,
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
                                             children: [
                                               Expanded(
                                                 child: Container(
 //                      color: Colors.green,
                                                     child: Center(
-                                                      child: Align(
-                                                        alignment: FractionalOffset
-                                                            .centerLeft,
-                                                        child: Text(
-                                                          model.data['result']['playlists'][index]['name'],
-                                                          style: TextStyle(
-                                                              fontSize: 12,
-                                                              color: Colors.black),
-                                                          overflow:
+                                                  child: Align(
+                                                    alignment: FractionalOffset
+                                                        .centerLeft,
+                                                    child: Text(
+                                                      model.data['result']
+                                                              ['playlists']
+                                                          [index]['name'],
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          color: Colors.black),
+                                                      overflow:
                                                           TextOverflow.ellipsis,
-                                                        ),
-                                                      ),
-                                                    )),
+                                                    ),
+                                                  ),
+                                                )),
                                               ),
                                               Expanded(
                                                 child: Container(
 //                                            color: Colors.green,
                                                     child: Center(
-                                                      child: Align(
-                                                        alignment: FractionalOffset
-                                                            .centerLeft,
-                                                        child: Text(
-                                                          '${model.data['result']['playlists'][index]['trackCount']}首,by ${model.data['result']['playlists'][index]['creator']['nickname']}',
-                                                          style: TextStyle(
-                                                              fontSize: 8,
-                                                              color:
+                                                  child: Align(
+                                                    alignment: FractionalOffset
+                                                        .centerLeft,
+                                                    child: Text(
+                                                      '${model.data['result']['playlists'][index]['trackCount']}首,by ${model.data['result']['playlists'][index]['creator']['nickname']}，播放${NumberUtils.amountConversion(model.data['result']['playlists'][index]['playCount'])}次',
+                                                      style: TextStyle(
+                                                          fontSize: 8,
+                                                          color:
                                                               Colors.grey[600]),
-                                                          overflow:
+                                                      overflow:
                                                           TextOverflow.ellipsis,
-                                                        ),
-                                                      ),
-                                                    )),
+                                                    ),
+                                                  ),
+                                                )),
                                               ),
                                             ]),
                                       ),

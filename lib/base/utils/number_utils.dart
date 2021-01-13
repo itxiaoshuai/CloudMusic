@@ -1,3 +1,5 @@
+import 'package:common_utils/common_utils.dart';
+
 class NumberUtils {
   static const double MILLION = 10000.0;
   static const double MILLIONS = 1000000.0;
@@ -16,12 +18,19 @@ class NumberUtils {
       if (amount == BILLION) {
         result = '${amount ~/ BILLION}$BILLION_UNIT';
       } else {
-        result = '${amount ~/ MILLION}$MILLION_UNIT';
+        // result = '${amount ~/ MILLION}$MILLION_UNIT';
+        result = (NumUtil.getNumByValueDouble(amount / MILLION, 1))
+                .toStringAsFixed(1) +
+            MILLION_UNIT;
       }
     }
+
     //金额大于1亿
     else if (amount > BILLION) {
-      result = '${amount ~/ BILLION}$BILLION_UNIT';
+      // result = '${amount / BILLION}$BILLION_UNIT';
+      result = (NumUtil.getNumByValueDouble(amount / BILLION, 1))
+              .toStringAsFixed(1) +
+          BILLION_UNIT;
     } else {
       result = amount.toString();
     }
@@ -58,9 +67,7 @@ class NumberUtils {
   }
 
   static String format(double num, int location) {
-    if ((num
-        .toString()
-        .length - num.toString().lastIndexOf(".") - 1) <
+    if ((num.toString().length - num.toString().lastIndexOf(".") - 1) <
         location) {
       //小数点后有几位小数
       return num.toStringAsFixed(location)
