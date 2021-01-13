@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_music/base/CommonLoading.dart';
+import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/model/search_model.dart';
 import 'package:cloud_music/pages/my/PageMy.dart';
 import 'package:cloud_music/provider/layout_state.dart';
@@ -7,11 +8,13 @@ import 'package:cloud_music/provider/provider_widget.dart';
 import 'package:cloud_music/provider/view_state_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../r.dart';
+
 class SearchSingleSongPage extends StatefulWidget {
   SearchSingleSongPageState createState() => SearchSingleSongPageState();
 }
 
-class SearchSingleSongPageState extends State<SearchSingleSongPage> {
+class SearchSingleSongPageState extends State<SearchSingleSongPage>  with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +49,60 @@ class SearchSingleSongPageState extends State<SearchSingleSongPage> {
                 SliverList(
                   delegate: SliverChildListDelegate(
                     //返回组件集合
+                    List.generate(1, (int index) {
+                      //返回 组件
+                      return Container(
+                        color: Colors.white,
+                        child: Material(
+                          child: InkWell(
+                            onTap: () {
+                              print(
+                                  '###########################点击了##################################');
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              color: Colors.cyan[100 * (index % 9)],
+                              child: Container(
+                                child: Row(
+                                  children: <Widget>[
+                                    Padding(padding: EdgeInsets.only(left: 16)),
+                                    IconButton(
+                                      icon: Image.asset(
+                                        'images/play.png',
+                                        width: 25,
+                                        color: Colors.red,
+                                      ),
+                                      onPressed: () {},
+                                    ),
+                                    Padding(padding: EdgeInsets.only(left: 4)),
+                                    Text(
+                                      "播放全部",
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
+                                    ),
+                                    Padding(padding: EdgeInsets.only(left: 2)),
+                                    Spacer(),
+                                    IconButton(
+                                        icon: Image.asset(
+                                          R.mipmap.multiple,
+                                          width: 20,
+                                          color: Colors.black,
+                                        ),
+                                        onPressed: () {}),
+                                    Gaps.hGap16,
+                                  ]..removeWhere((v) => v == null),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    //返回组件集合
                     List.generate(model.searchResultList.length, (int index) {
                       //返回 组件
                       return Container(
@@ -73,6 +130,9 @@ class SearchSingleSongPageState extends State<SearchSingleSongPage> {
           }),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class TrackItem extends StatefulWidget {

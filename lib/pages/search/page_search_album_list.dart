@@ -23,7 +23,7 @@ class SearchAlbumListPage extends StatefulWidget {
   SearchAlbumListPageState createState() => SearchAlbumListPageState();
 }
 
-class SearchAlbumListPageState extends State<SearchAlbumListPage> {
+class SearchAlbumListPageState extends State<SearchAlbumListPage>  with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,4 +132,8 @@ class SearchAlbumListPageState extends State<SearchAlbumListPage> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

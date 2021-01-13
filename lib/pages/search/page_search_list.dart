@@ -88,14 +88,13 @@ class SearchListPageState extends State<SearchListPage>
           Expanded(
             child: TabBarView(
               children: [
+                // SearchSingleSongPage(),
                 SearchSingleSongPage(),
-                SearchSongListPage(),
                 SearchSongListPage(),
                 SearchVideoListPage(),
-                SearchSingleSongPage(),
-                SearchSingleSongPage(),
-                SearchSingleSongPage(),
-                SearchSingleSongPage(),
+                // SearchSingleSongPage(),
+                // SearchSingleSongPage(),
+                // SearchSingleSongPage(),
                 SearchSingleListPage(),
                 SearchAlbumListPage(),
                 SearchUserListPage(),
@@ -121,10 +120,10 @@ class Choice {
 }
 
 const List<Choice> choices = const <Choice>[
-  const Choice(
-    title: '综合 ',
-    categoryId: 58100,
-  ),
+  // const Choice(
+  //   title: '综合 ',
+  //   categoryId: 58100,
+  // ),
   const Choice(
     title: '单曲',
     categoryId: 60100,
@@ -137,22 +136,19 @@ const List<Choice> choices = const <Choice>[
     title: '视频',
     categoryId: 58101,
   ),
-  const Choice(
-    title: '声音',
-    categoryId: 1,
-  ),
-  const Choice(
-    title: '播单',
-    categoryId: 1000,
-  ),
-  const Choice(
-    title: '生活',
-    categoryId: 2100,
-  ),
-  const Choice(
-    title: '云圈',
-    categoryId: 2103,
-  ),
+  // const Choice(
+  //   title: '声音',
+  //   categoryId: 1,
+  // ),
+  // const Choice(
+  //   title: '播单',
+  //   categoryId: 1000,
+  // ),
+
+  // const Choice(
+  //   title: '云圈',
+  //   categoryId: 2103,
+  // ),
   const Choice(
     title: '歌手',
     categoryId: 57104,

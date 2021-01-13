@@ -22,7 +22,8 @@ class SearchUserListPage extends StatefulWidget {
   SearchUserListPageState createState() => SearchUserListPageState();
 }
 
-class SearchUserListPageState extends State<SearchUserListPage> {
+class SearchUserListPageState extends State<SearchUserListPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,4 +135,8 @@ class SearchUserListPageState extends State<SearchUserListPage> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

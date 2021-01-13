@@ -13,12 +13,12 @@ import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../../r.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class SearchVideoListPage extends StatefulWidget {
   SearchVideoListPageState createState() => SearchVideoListPageState();
 }
 
-class SearchVideoListPageState extends State<SearchVideoListPage> {
+class SearchVideoListPageState extends State<SearchVideoListPage>  with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,6 +87,10 @@ class SearchVideoListPageState extends State<SearchVideoListPage> {
           }),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
 
 class VideoItem extends StatelessWidget {
@@ -134,7 +138,7 @@ class VideoItem extends StatelessWidget {
                     children: [
                       CachedNetworkImage(
                         fit: BoxFit.cover,
-                        height: 200,
+                        height: 390.h,
                         width: width,
                         imageUrl: img,
                         placeholder: (context, url) => ProgressView(),
