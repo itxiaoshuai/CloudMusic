@@ -4,6 +4,7 @@ import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/base/res/styles.dart';
 import 'package:cloud_music/base/utils/number_utils.dart';
 import 'package:cloud_music/data/protocol/Follow.dart';
+import 'package:cloud_music/data/protocol/artist.dart';
 import 'package:cloud_music/data/protocol/new_album.dart';
 import 'package:cloud_music/data/protocol/search_user.dart';
 import 'package:cloud_music/model/search_model.dart';
@@ -19,18 +20,18 @@ import 'package:flutter/material.dart';
 import '../../r.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SearchAlbumListPage extends StatefulWidget {
-  SearchAlbumListPageState createState() => SearchAlbumListPageState();
+class SearchSingleListPage extends StatefulWidget {
+  SearchSingleListPageState createState() => SearchSingleListPageState();
 }
 
-class SearchAlbumListPageState extends State<SearchAlbumListPage> {
+class SearchSingleListPageState extends State<SearchSingleListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ProviderWidget<SearchModel>(
           model: SearchModel(),
           onModelReady: (model) {
-            Map<String, dynamic> formData = {'keywords': "四季予你", "type": 10};
+            Map<String, dynamic> formData = {'keywords': "四季予你", "type": 100};
             model.loadSearchResult(formData);
           },
           builder: (context, model, child) {
@@ -56,8 +57,8 @@ class SearchAlbumListPageState extends State<SearchAlbumListPage> {
 
             return ListView.separated(
                 itemBuilder: (BuildContext context, int index) {
-                  Album album =
-                      Album.fromJson(model.data['result']['albums'][index]);
+                  Artist album =
+                      Artist.fromJson(model.data['result']['artists'][index]);
                   return _buildFriendItem(album);
                 },
                 separatorBuilder: (BuildContext context, int index) {
@@ -72,12 +73,12 @@ class SearchAlbumListPageState extends State<SearchAlbumListPage> {
                     ),
                   );
                 },
-                itemCount: model.data['result']['albums'].length);
+                itemCount: model.data['result']['artists'].length);
           }),
     );
   }
 
-  Widget _buildFriendItem(Album album) {
+  Widget _buildFriendItem(Artist artist) {
     return Container(
       padding: EdgeInsets.only(left: 46.w, right: 46.w, top: 10, bottom: 10),
       child: Row(
@@ -89,7 +90,10 @@ class SearchAlbumListPageState extends State<SearchAlbumListPage> {
               child: Container(
                 width: 110.w,
                 height: 110.w,
-                child: Image.network(album.blurPicUrl),
+                child: Image.network(
+                  artist.picUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
@@ -99,27 +103,11 @@ class SearchAlbumListPageState extends State<SearchAlbumListPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RichText(
-                  text: TextSpan(
-                      text: "${album.name}",
-                      style: R.style.textDark16,
-                      children: [
-                        TextSpan(
-                            text:  album.alias.length > 0
-                                ? "(${album.alias[0]})"
-                                : "",
-                            style: R.style.textGray14),
-                      ]),
-                  textDirection: TextDirection.ltr,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-
                 Visibility(
-                  visible: album.artist.name.length > 0,
+                  visible: artist.name.length > 0,
                   child: Text(
-                    '${album.artist.name}  ${DateUtil.formatDateMs(album.publishTime, format: 'yyyy.MM.dd')}',
-                    style: R.style.textGray10,
+                    '${artist.name}  ',
+                    style: R.style.textDark14,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
@@ -127,6 +115,23 @@ class SearchAlbumListPageState extends State<SearchAlbumListPage> {
               ],
             ),
           ),
+          artist.accountId == null || artist.accountId == 0
+              ? Container()
+              : Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Icon(
+                      Icons.account_circle,
+                      color: Colors.red,
+                      size: 30.w,
+                    ),
+                    Gaps.hGap5,
+                    Text(
+                      '已入驻',
+                      style: R.style.textGray12,
+                    ),
+                  ],
+                ),
           Gaps.hGap10,
         ],
       ),

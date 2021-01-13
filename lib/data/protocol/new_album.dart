@@ -1,3 +1,5 @@
+import 'package:cloud_music/data/protocol/artist.dart';
+
 class NewAlbum {
   int code;
 
@@ -33,13 +35,4 @@ class Album {
   }
 }
 
-class Artist {
-  String name;
 
-  static Artist fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
-    Artist data = Artist();
-    data.name = map['name'];
-    return data;
-  }
-}

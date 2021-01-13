@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       child: MultiProvider(
         providers: providers,
         child: ScreenUtilInit(
-          designSize: Size(1080, 2400),
+          designSize: Size(720, 1080),
           allowFontScaling: false,
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
