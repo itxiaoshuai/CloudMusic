@@ -2,6 +2,7 @@ import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/base/res/styles.dart';
 import 'package:cloud_music/pages/search/page_search_single_song.dart';
 import 'package:cloud_music/pages/search/page_search_song_list.dart';
+import 'package:cloud_music/pages/search/page_search_user_list.dart';
 import 'package:cloud_music/pages/search/page_search_video_list.dart';
 import 'package:cloud_music/pages/yuncun/page_video_list.dart';
 import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';
@@ -95,7 +96,7 @@ class SearchListPageState extends State<SearchListPage>
                 SearchSingleSongPage(),
                 SearchSingleSongPage(),
                 SearchSingleSongPage(),
-                SearchSingleSongPage(),
+                SearchUserListPage(),
               ],
             ),
           ),
