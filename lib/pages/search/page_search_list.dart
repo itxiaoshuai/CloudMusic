@@ -20,9 +20,12 @@ class SearchListPageState extends State<SearchListPage>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   TabController _tabController;
   TextEditingController _searchController = TextEditingController();
+  //实例化
+  FocusNode _focusNode = FocusNode();
   @override
   void dispose() {
     _tabController.dispose();
+    _focusNode.unfocus();
     super.dispose();
   }
 
@@ -37,6 +40,17 @@ class SearchListPageState extends State<SearchListPage>
         print('_tabControllerIndex' + _tabController.index.toString());
         setState(() {});
       });
+    //输入框焦点
+    _focusNode.addListener((){
+      if (!_focusNode.hasFocus) {
+       print('失去焦点');
+
+      }else{
+       print('得到焦点');
+
+
+      }
+    });
   }
 
   @override
@@ -116,7 +130,9 @@ class SearchListPageState extends State<SearchListPage>
             child: TextField(
               controller: _searchController,
               cursorColor: Colors.red,
+              focusNode: _focusNode,
               textInputAction: TextInputAction.search,
+              autofocus: false,//是否自动对焦
               onEditingComplete: () {
                print(_searchController.text);
               },
