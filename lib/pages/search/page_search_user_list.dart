@@ -4,6 +4,7 @@ import 'package:cloud_music/model/search_model.dart';
 import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/provider_widget.dart';
 import 'package:cloud_music/provider/view_state_widget.dart';
+import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -73,7 +74,10 @@ class SearchUserListPageState extends State<SearchUserListPage>
   Widget _buildFriendItem(SearchUser follow) {
     return Material(
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).pushNamed(RouteName.USER_HOME,
+              arguments: follow.userId);
+        },
         child: Container(
           padding:
               EdgeInsets.only(left: 46.w, right: 46.w, top: 10, bottom: 10),

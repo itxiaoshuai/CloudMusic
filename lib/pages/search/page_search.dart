@@ -82,24 +82,33 @@ class SearchPageState extends State<SearchPage> {
                                     : TextStyle(color: Colors.grey),
                               ),
                               Gaps.hGap4,
-                              Text(
-                                "${p['searchWord']}",
-                                style: i <= 3
-                                    ? TextStyle(fontWeight: FontWeight.bold)
-                                    : TextStyle(),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
+                              Expanded(
+                                child: Text(
+                                  "${p['searchWord']}",
+                                  style: i <= 3
+                                      ? TextStyle(fontWeight: FontWeight.bold)
+                                      : TextStyle(),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                               Gaps.hGap4,
-                              Expanded(
-                                  child: Container(
+                              Container(
                                 child: Image.network(
-
                                   p['iconUrl'] == null ? "" : p['iconUrl'],
                                   height: 12,
-                                  alignment:Alignment.centerLeft,
+                                  alignment: Alignment.centerLeft,
                                 ),
-                              )),
+                              ),
+
+                              // Expanded(
+                              //     child: Container(
+                              //   child: Image.network(
+                              //     p['iconUrl'] == null ? "" : p['iconUrl'],
+                              //     height: 12,
+                              //     alignment: Alignment.centerLeft,
+                              //   ),
+                              // )),
                             ],
                           ),
                         ),

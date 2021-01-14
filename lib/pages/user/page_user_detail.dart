@@ -1,9 +1,13 @@
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/pages/user/tan_dynamic.dart';
+import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/data/protocol/user_detail_bean.dart';
 import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/widget/flexible_app_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../r.dart';
 import 'tab_music.dart';
 
 ///用户详情页
@@ -61,17 +65,20 @@ class _DetailPage extends StatelessWidget {
             ];
           },
           body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  top: kToolbarHeight + kTextTabBarHeight),
-              child: TabBarView(children: <Widget>[
-                TabMusic(
-                  userDetail: user,
-                ),
-                TabMusic(
-                  userDetail: user,
-                ),
-              ]),
+            child: Container(
+              color: Colors.grey,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    top: kToolbarHeight + kTextTabBarHeight),
+                child: TabBarView(children: <Widget>[
+                  TabMusic(
+                    userDetail: user,
+                  ),
+                  TabDynamic(
+                    userDetail: user,
+                  ),
+                ]),
+              ),
             ),
           ),
         ),
@@ -87,7 +94,6 @@ class _UserDetailAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SliverAppBar(
       leading: GestureDetector(
         child: Icon(Icons.arrow_back),
@@ -110,7 +116,9 @@ class _UserDetailAppBar extends StatelessWidget {
             Icons.more_vert,
             color: Colors.white,
           ),
-          onPressed: null,
+          onPressed: (){
+
+          },
         )
       ],
       //右侧的内容和点击事件啥的
@@ -118,7 +126,7 @@ class _UserDetailAppBar extends StatelessWidget {
       //阴影的高度
       forceElevated: false,
       //是否显示阴影
-//      backgroundColor: Colors.green,
+     backgroundColor: Colors.transparent,
       //背景颜色
       brightness: Brightness.dark,
       //黑底白字，lignt 白底黑字
@@ -152,95 +160,124 @@ class _UserDetailAppBar extends StatelessWidget {
         ),
         content: Container(
           padding: EdgeInsets.only(left: 20, right: 20),
-          color: Colors.transparent,
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-                  Widget>[
-            Spacer(),
-            InkWell(
-              onTap: () {},
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Container(
-                  width: 56,
-                  height: 56,
-                  child: Image.network(user.profile.avatarUrl),
-                ),
-              ),
-            ),
-            Row(
-              children: <Widget>[],
-            ),
-            SizedBox(height: 10),
-            Text(user.profile.nickname,
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400)),
-            SizedBox(height: 6),
-            Row(children: <Widget>[
-              InkWell(child: Text('关注:${user.profile.follows}'), onTap: () {}),
-              VerticalDivider(),
-              InkWell(
-                child: Text('粉丝:${user.profile.followeds}'),
-                onTap: () {},
-              ),
-            ]),
-            SizedBox(height: 6),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  padding:
-                      EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
-                  child: Text(
-                    'Lv.${user.level}',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[400], // 底色
-                    shape: BoxShape.rectangle, // 默认值也是矩形
-                    borderRadius: BorderRadius.circular((20.0)), // 圆角度
-                  ),
-                ),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
                 Spacer(),
                 Container(
-                  padding:
-                      EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
-                  child: Text(
-                    "+关注",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    // 底色
+                    //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
+                    shape: BoxShape.rectangle,
+                    // 默认值也是矩形
+                    borderRadius: BorderRadius.circular((8.0)), // 圆角度
+                  ),
+                  margin: EdgeInsets.only(left: 15, right: 15),
+                  child: Container(
+                    padding: EdgeInsets.all(15),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          user.profile.nickname,
+                          style: R.style.textBoldDark18,
+                        ),
+                        Container(
+                          // color: Colors.blue,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${user.profile.follows} 关注',
+                                style: R.style.textDark14,
+                              ),
+                              Gaps.hGap8,
+                              Container(
+                                width: 0.5,
+                                height: 10,
+                                color: Colors.grey[500],
+                              ),
+                              Gaps.hGap8,
+                              Text(
+                                '${user.profile.followeds} 粉丝',
+                                style: R.style.textDark14,
+                              ),
+                              Gaps.hGap8,
+                              Container(
+                                width: 0.5,
+                                height: 10,
+                                color: Colors.grey[500],
+                              ),
+                              Gaps.hGap8,
+                              Text(
+                                'Lv.${user.level}',
+                                style: R.style.textDark14,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Gaps.vGap5,
+                        Text(
+                          '${user.profile.signature}',
+                          style: R.style.textGray14,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Gaps.vGap15,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: 160.w,
+                              height: 60.w,
+                              child: Center(
+                                child: Text(
+                                  "+关注",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                shape: BoxShape.rectangle, // 默认值也是矩形
+                                borderRadius:
+                                    BorderRadius.circular((20.0)), // 圆角度
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Container(
+                              width: 160.w,
+                              height: 60.w,
+                              padding: EdgeInsets.only(
+                                  left: 15, right: 15, top: 5, bottom: 5),
+                              child: Center(
+                                child: Text(
+                                  "私信",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: Colors.black, width: 0.5),
+                                color: Colors.transparent,
+                                shape: BoxShape.rectangle, // 默认值也是矩形
+                                borderRadius:
+                                    BorderRadius.circular((20.0)), // 圆角度
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.rectangle, // 默认值也是矩形
-                    borderRadius: BorderRadius.circular((20.0)), // 圆角度
-                  ),
                 ),
-                SizedBox(width: 3),
-                Container(
-                  padding:
-                      EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
-                  child: Text(
-                    "发私信",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.rectangle, // 默认值也是矩形
-                    borderRadius: BorderRadius.circular((20.0)), // 圆角度
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 10),
-          ]),
+              ]),
         ),
       ),
     );
@@ -263,12 +300,17 @@ class RoundedTabBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+      borderRadius: BorderRadius.vertical(top: Radius.circular(0)),
       child: Material(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: Colors.grey[100],
         child: TabBar(
-            indicator:
-                PrimaryTabIndicator(color: Theme.of(context).accentColor),
+            indicator: CustomUnderlineTabIndicator(
+                insets: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 15),
+                borderSide: BorderSide(
+                  width: 5,
+                  color: Color(0xff00cdd7),
+                )),
+
             indicatorSize: TabBarIndicatorSize.label,
             labelColor: Theme.of(context).textTheme.bodyText1.color,
             tabs: tabs),

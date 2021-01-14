@@ -70,7 +70,7 @@ class _CommentPageState extends State<CommentPage> {
                 separatorBuilder: (BuildContext context, int index) {
                   return Container(
                     margin: EdgeInsets.only(
-                        top: 0, bottom: 0, left: 184.w, right: 0),
+                        top: 0, bottom: 0, left: 110.w, right: 0),
                     child: Center(
                       child: Divider(
                         height: 0.6,
@@ -85,7 +85,7 @@ class _CommentPageState extends State<CommentPage> {
 
   Widget buildCommentItem(Comment comment) {
     return Container(
-      padding: EdgeInsets.only(left: 46.w, right: 46.w),
+      padding: EdgeInsets.only(left: 30.w, right: 30.w),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,14 +101,14 @@ class _CommentPageState extends State<CommentPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
-                    width: 108.w,
-                    height: 108.w,
+                    width: 70.w,
+                    height: 70.w,
                     color: Colors.blue,
                     child: Image.network(comment.user.avatarUrl),
                   ),
                 ),
               ),
-              SizedBox(width: 30.w),
+              SizedBox(width: 20.w),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -130,21 +130,20 @@ class _CommentPageState extends State<CommentPage> {
                     '${NumberUtils.amountConversion(comment.likedCount)}',
                     style: TextStyle(fontSize: 12, color: Colors.black38)),
               ),
-              SizedBox(width: 17.w),
+              SizedBox(width: 10.w),
               Image.asset(
                 ConstImgResource.praise,
-                width: 44.w,
-                height: 44.h,
+                width: 28.w,
                 color: Colors.grey,
               )
             ],
           ),
-          SizedBox(height: 30.h),
+          SizedBox(height: 30.w),
           Container(
-            margin: EdgeInsets.only(left: 138.w),
+            margin: EdgeInsets.only(left: 90.w),
             child: Text(comment.content),
           ),
-          SizedBox(height: 50.h),
+          SizedBox(height: 30.h),
         ],
       ),
     );

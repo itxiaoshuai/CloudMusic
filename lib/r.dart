@@ -122,6 +122,19 @@ class Style {
       color: Colours.text_dark,
       fontWeight: FontWeight.bold);
 
+  get textBoldDark16 => TextStyle(
+      fontSize: Dimens.font_sp16,
+      color: Colours.text_dark,
+      fontWeight: FontWeight.bold);
+
+  get textBoldDark18 => TextStyle(
+      fontSize: Dimens.font_sp18,
+      color: Colours.text_dark,
+      fontWeight: FontWeight.bold);
+  get textBoldDark20 => TextStyle(
+      fontSize: Dimens.font_sp20,
+      color: Colours.text_dark,
+      fontWeight: FontWeight.bold);
   get textGray14 => TextStyle(
         fontSize: Dimens.font_sp14,
         color: Colours.text_gray,

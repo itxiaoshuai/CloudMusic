@@ -144,30 +144,46 @@ class RequestManager {
     // Map<String, dynamic> formData = {
     //   'cookie': prefs.get('cookie'),
     // };
-    var response = await http.get('/album/list/style', queryParameters: queryParameters);
+    var response =
+        await http.get('/album/list/style', queryParameters: queryParameters);
     return response;
   }
+
   static Future fetchAlbumDetail(Map<String, dynamic> queryParameters) async {
-    var response = await http.get('/album/detail', queryParameters: queryParameters);
+    var response =
+        await http.get('/album/detail', queryParameters: queryParameters);
     return response;
   }
 
   static Future fetchAlbumComment(Map<String, dynamic> queryParameters) async {
-    var response = await http.get('/comment/album', queryParameters: queryParameters);
+    var response =
+        await http.get('/comment/album', queryParameters: queryParameters);
     return response;
   }
+
   //热搜列表(简略)
   static Future fetchSearchHot() async {
     var response = await http.get('/search/hot/detail');
     return response;
   }
+
   static Future fetchSearch(Map<String, dynamic> queryParameters) async {
-    var response = await http.get('/cloudsearch', queryParameters: queryParameters);
+    var response =
+        await http.get('/cloudsearch', queryParameters: queryParameters);
     return response;
   }
+
   static Future fetchUserInfo(Map<String, dynamic> queryParameters) async {
-    var response = await http.get('/user/detail', queryParameters: queryParameters);
+    var response =
+        await http.get('/user/detail', queryParameters: queryParameters);
     return UserDetail.fromJsonMap(response.data);
+  }
+
+  //获取用户动态
+  static Future fetchDynamic(Map<String, dynamic> queryParameters) async {
+    var response =
+        await http.get('/user/event', queryParameters: queryParameters);
+    return response;
   }
 
   static logoin(String phone, String password) async {
