@@ -45,13 +45,17 @@ dependencies:
   chewie: ^0.9.10
   video_player: ^0.10.11+2
   marquee_text: ^1.1.0
-  audioplayers: ^0.17.0
+  audioplayers: ^0.17.2
   oktoast: ^2.3.2
+  localstorage: ^3.0.6
+  flutter_html: ^1.0.0
+  cookie_jar: ^1.0.0
+  dio_cookie_manager: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  integration_test:
-    sdk: flutter
+#  integration_test:
+#    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
