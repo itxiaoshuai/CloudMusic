@@ -203,7 +203,6 @@ class _PlaySongsPageState extends State<PlaySongsPage>
           ),
         ],
       ));
-      ;
     });
   }
 
