@@ -153,7 +153,7 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
                                   Spacer(),
                                 ],
                               ),
-                              SizedBox(height: 80),
+                              SizedBox(height: 40),
                             ]),
                       ),
                     ),
@@ -183,6 +183,7 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
                       List.generate(model.data.data.dailySongs.length,
                           (int index) {
                         DailySongs song = model.data.data.dailySongs[index];
+                        print(song.name);
                         //返回 组件
                         return Container(
                           color: Colors.white,
@@ -376,7 +377,7 @@ class TrackItem extends StatelessWidget {
               maintainSize: true,
               maintainAnimation: true,
               maintainState: true,
-              visible: song.mvid > 0,
+              visible: song.mv > 0,
             ),
           ),
           Container(

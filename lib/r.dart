@@ -53,9 +53,6 @@ class MipMap {
   String get logo => 'images/login_page_logo.png';
 
   String get triangle => 'images/icon_triangle.png';
-
-  String get praise => 'images/icon_event_commend';
-
 }
 
 class MipMapText {
