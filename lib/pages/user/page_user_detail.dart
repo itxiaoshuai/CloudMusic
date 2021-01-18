@@ -57,11 +57,31 @@ class DetailPageWidget extends StatefulWidget {
 class _DetailPageWidgetState extends State<DetailPageWidget>
     with SingleTickerProviderStateMixin {
   TabController tabController;
+  bool isAppBarExpanded = true;
+  ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
     this.tabController = TabController(length: 2, vsync: this);
+    _scrollController = ScrollController()
+      ..addListener(() => setState(() {
+            // if (_scrollController.hasClients &&
+            //     _scrollController.offset > 0 &&
+            //     _scrollController.offset < (200 - kToolbarHeight)) {
+            //   radian =
+            //       6 - (_scrollController.offset / (200 - kToolbarHeight) * 6);
+            //   pixel = (_scrollController.offset / (200 - kToolbarHeight) * 12);
+            //   print('radian----${radian}');
+            // }
+            // print(_scrollController.offset);
+            isAppBarExpanded = _scrollController.hasClients &&
+                _scrollController.offset <=
+                    (450 -
+                        kToolbarHeight -
+                        MediaQuery.of(context).padding.top -
+                        50);
+          }));
   }
 
   @override
@@ -70,12 +90,13 @@ class _DetailPageWidgetState extends State<DetailPageWidget>
       body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
+          controller: _scrollController,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
               SliverOverlapAbsorber(
                   handle:
                       NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                  sliver: _UserDetailAppBar(widget.user))
+                  sliver: _UserDetailAppBar(widget.user, isAppBarExpanded))
             ];
           },
           body: SafeArea(
@@ -102,14 +123,53 @@ class _DetailPageWidgetState extends State<DetailPageWidget>
 }
 
 class _UserDetailAppBar extends StatelessWidget {
+  const _UserDetailAppBar(this.user, this.isAppBarExpanded, {Key key})
+      : super(key: key);
   final UserDetail user;
-
-  const _UserDetailAppBar(this.user, {Key key}) : super(key: key);
+  final bool isAppBarExpanded;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: Text('大标题'),
+      title: Offstage(
+        child: Container(
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(user.profile.nickname),
+                  Text(
+                    '${user.profile.followeds} 粉丝',
+                    style: TextStyle(color: Colors.white, fontSize: 12),
+                  ),
+                ],
+              ),
+              Spacer(),
+              Container(
+                width: 160.w,
+                height: 60.w,
+                child: Center(
+                  child: Text(
+                    "+关注",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  shape: BoxShape.rectangle, // 默认值也是矩形
+                  borderRadius: BorderRadius.circular(
+                      (20.0)), // 圆角度
+                ),
+              ),
+            ],
+          ),
+        ),
+        offstage: isAppBarExpanded,
+      ),
       actions: [
         IconButton(
           icon: Icon(
@@ -134,7 +194,7 @@ class _UserDetailAppBar extends StatelessWidget {
       //字体样式
       primary: true,
       // appbar是否显示在屏幕的最上面，为false是显示在最上面，为true就显示在状态栏的下面
-      titleSpacing: 16,
+      titleSpacing: 0,
       //标题两边的空白区域
       expandedHeight: 450,
       //默认高度是状态栏和导航栏的高度，如果有滚动视差的话，要大于前两者的高度
@@ -385,7 +445,6 @@ class BottomClipper extends CustomClipper<Path> {
 
   @override
   Path getClip(Size size) {
-    print('radian----->$radian');
     var paint = Paint();
 
     paint.color = Colors.lightBlue;

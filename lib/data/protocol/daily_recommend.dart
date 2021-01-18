@@ -44,7 +44,7 @@ class DailySongs {
   String name;
   int id;
   List<Artists> artists;
-  int mv;
+  int mvid;
   Al al;
   List<Ar> ar;
 
@@ -53,10 +53,10 @@ class DailySongs {
     DailySongs song = DailySongs();
     song.name = map['name'];
     song.id = map['id'];
-    song.mv = map['mv'];
+    song.mvid = map['mvid'];
     song.artists = []
       ..addAll((map['artists'] as List ?? []).map((o) => Artists.fromJson(o)));
-    song.al = Al.fromJson(map['al']);
+    song.al = Al.fromJson(map['album']);
     song.ar = []..addAll((map['ar'] as List ?? []).map((o) => Ar.fromJson(o)));
     return song;
   }

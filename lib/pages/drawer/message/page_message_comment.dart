@@ -60,7 +60,7 @@ class _MessageCommentPageState extends State<MessageCommentPage> {
                 Row(
                   children: [
                     Text('2'),
-                    Icon(Icons.present_to_all_sharp),
+                    Image.asset(R.mipmap.praise),
                   ],
                 ),
               ],
