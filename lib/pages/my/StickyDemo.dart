@@ -1,106 +1,84 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_music/base/CommonLoading.dart';
 
-class StickyDemo extends StatefulWidget {
+class MyScrv extends StatefulWidget {
   @override
-  _StickyDemoState createState() => _StickyDemoState();
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+
+    return new MyScrvState();
+  }
 }
 
-class _StickyDemoState extends State<StickyDemo>
-    with SingleTickerProviderStateMixin {
+class MyScrvState extends State<MyScrv> with SingleTickerProviderStateMixin {
+  List<String> _list = new List();
+  List<Color> myColors = new List();
+
   TabController tabController;
 
   @override
   void initState() {
     super.initState();
     this.tabController = TabController(length: 2, vsync: this);
+    _list.add("政府");
+    _list.add("部门11");
+    _list.add("部门22");
+    myColors.add(Colors.red);
+    myColors.add(Colors.lightBlue);
+    myColors.add(Colors.lightBlue);
   }
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            pinned: true,
-            elevation: 0,
-            expandedHeight: 250,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text('Sliver-sticky效果'),
-              background: Image.network(
-                'http://img1.mukewang.com/5c18cf540001ac8206000338.jpg',
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: StickyTabBarDelegate(
-              child: TabBar(
-                labelColor: Colors.black,
-                controller: this.tabController,
-                tabs: <Widget>[
-                  Tab(text: '创建歌单'),
-                  Tab(text: '收藏歌单'),
-                ],
-              ),
-            ),
-          ),
-          SliverFillRemaining(
-            child: ListView(
-              children: [
-                Container(
-                  child: Center(
-                      child: Container(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: CachedNetworkImage(
-                        fit: BoxFit.fill,
-                        imageUrl: "https://picsum.photos/id/0/800/800",
-                        placeholder: (context, url) => ProgressView(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-                    ),
-                  )),
-                ),
-                Container(
-                  child: Center(
-                      child: Container(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: CachedNetworkImage(
-                        fit: BoxFit.fill,
-                        imageUrl: "https://picsum.photos/id/0/800/800",
-                        placeholder: (context, url) => ProgressView(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-                    ),
-                  )),
-                ),
-                Container(
-                  child: Center(
-                      child: Container(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: CachedNetworkImage(
-                        fit: BoxFit.fill,
-                        imageUrl: "https://picsum.photos/id/0/800/800",
-                        placeholder: (context, url) => ProgressView(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-                    ),
-                  )),
-                )
-              ],
-            ),
-          ),
-        ],
+    // TODO: implement build
+    return new CustomScrollView(physics: ScrollPhysics(), slivers: <Widget>[
+      const SliverAppBar(
+        pinned: true,
+        expandedHeight: 250.0,
+        flexibleSpace: const FlexibleSpaceBar(
+          title: const Text('demo'),
+        ),
       ),
-    );
-  }
-}
+      SliverPersistentHeader(
+        pinned: true,
+        delegate: StickyTabBarDelegate(
+          child: TabBar(
+            indicator: CustomUnderlineTabIndicator(
+                insets:
+                EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 15),
+                borderSide: BorderSide(
+                  width: 5,
+                  color: Color(0xff00cdd7),
+                )),
+            labelColor: Colors.black,
+            controller: tabController,
+            indicatorSize: TabBarIndicatorSize.label,
+            tabs: <Widget>[
+              Tab(text: '主页'),
+              Tab(text: '动态'),
+            ],
+          ),
+        ),
+      ),
 
+      new SliverFixedExtentList(
+        itemExtent: 50.0,
+        delegate: new SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+            return new Container(
+              alignment: Alignment.center,
+              color: Colors.lightBlue[100 * (index % 9)],
+              child: new Text('list item $index'),
+            );
+          },
+        ),
+      ),
+    ]);
+  }
+
+
+}
 class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
   final TabBar child;
 

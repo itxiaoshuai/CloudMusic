@@ -47,6 +47,13 @@ dependencies:
   marquee_text: ^1.1.0
   audioplayers: ^0.17.0
   oktoast: ^2.3.2
+  dio_cookie_manager: ^1.0.0
+  cookie_jar: ^1.0.1
+  #path_provider
+  path_provider: ^1.6.11
+  # 本地json对象存储
+  localstorage: ^2.0.0
+  flutter_html: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -34,7 +34,7 @@ class _MainPageState extends State<MainPage>
     FindPage(), //发现
     PagePodcast(), //播客
     MyPage(),
-    CurvePage(),
+    MyScrv(),
     YunCunPage(),
   ];
 

@@ -68,7 +68,7 @@ class FlexibleDetailBar extends StatelessWidget {
       child: Opacity(
         opacity: 1 - t,
         child: Padding(
-          padding: EdgeInsets.only(bottom: bottomPadding),
+          padding: EdgeInsets.only(bottom: 0),
           child: Material(
               child: DefaultTextStyle(
                   style: Theme.of(context).primaryTextTheme.bodyText2,
