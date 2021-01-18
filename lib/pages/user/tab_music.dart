@@ -68,14 +68,17 @@ class _TabMusicState extends State<TabMusic>
                           "基本信息",
                           style: R.style.textBoldDark18,
                         ),
+                        Gaps.vGap10,
                         Text(
                           "村龄:${widget.userDetail.createDays ~/ 365}年(${DateUtil.formatDateMs(widget.userDetail.createTime, format: 'yyyy年MM月注册')})",
                           style: R.style.textDark14,
                         ),
+                        Gaps.vGap10,
                         Text(
                           "性别:${widget.userDetail.profile.gender == 2 ? '女' : '男'}",
                           style: R.style.textDark14,
                         ),
+                        Gaps.vGap10,
                         Text(
                           "年龄:${TimeUtils.getAgeGroup(widget.userDetail.profile.birthday)}${TimeUtils.getconstellation(widget.userDetail.profile.birthday)}",
                           style: R.style.textDark14,
