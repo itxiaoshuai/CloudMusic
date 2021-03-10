@@ -1,5 +1,9 @@
-name: flutter_app
-description: A new Flutter application.
+name: cloud_music
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -20,8 +24,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   # 轮播控件
   flutter_swiper: ^1.1.6
@@ -31,26 +33,35 @@ dependencies:
   build_runner: ^1.4.0
   json_serializable: ^3.0.0
   cached_network_image: ^2.2.0+1
-  fluttertoast: ^3.0.1
   flutter_webview_plugin: ^0.3.5
   #  一组加载指示器
   flutter_spinkit: "^3.1.0"
   shared_preferences: ^0.5.1+2
   pull_to_refresh: ^1.6.0
   provider: ^4.3.1
-  flutter_screenutil: ^2.3.1
+  flutter_screenutil: ^4.0.2+1
   date_format: ^1.0.8
   common_utils: ^1.2.1
   chewie: ^0.9.10
   video_player: ^0.10.11+2
   marquee_text: ^1.1.0
+  audioplayers: ^0.17.0
+  oktoast: ^2.3.2
+  dio_cookie_manager: ^1.0.0
+  cookie_jar: ^1.0.1
+  #path_provider
+  path_provider: ^1.6.11
+  # 本地json对象存储
+  localstorage: ^2.0.0
+  flutter_html: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  integration_test:
+    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
+# following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
@@ -60,74 +71,65 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  #   To add assets to your application, add an assets section, like this:
+  # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/subtitle.txt
+    - images/
 
-  - images/
-
-  - images/location.png
-  - images/timing.png
-  - images/alarm.png
-  - images/ticket.png
-  - images/shopping_cart.png
-  - images/coupon.png
-  - images/game.png
-  - images/broadcast.png
-  - images/music_free_flow.png
-  - images/drawer_message.png
-  - images/drawer_friend.png
-  - images/drawer_skin.png
-  - images/drawer_music.png
-  - images/pocket_ringtone.png
-  - images/night_mode.png
-  - images/day_mode.png
-  - images/setting.png
-  - images/app_shut_down.png
-  - images/about.png
-  - images/help.png
-  - images/cloud_center.png
-
-
-  # 我的页面图片资源
-  - images/my/shortcut_fm.png
-  - images/my/download_manager.png
-
-  # 发现页面图片资源
-
-  - images/find/t_dragonball_icn_daily.png
-  - images/find/t_dragonball_icn_look.png
-  - images/find/t_dragonball_icn_playlist.png
-  - images/find/t_dragonball_icn_radio.png
-  - images/find/t_dragonball_icn_rank.png
-  - images/find/bg_song_list.9.png
-  - images/t_dragonball_icn_rank.png
-  - images/t_dragonball_icn_digitalalbum.png
-
-  # 登入页
-  - images/wx.png
-  - images/qq.png
-  - images/weibo.png
-  - images/wangyi.png
-  - images/icon_checkbox.png
-  - images/icon_right.png
-  - images/login_page_logo.png
-
-  # 歌单详情
-  - images/album/album_comment.png
-  - images/album/album_share.png
-  - images/album/album_download.png
-  - images/album/album_multiple_selection.png
-  - images/album/track_mv.png
-  - images/album/track_more.png
+    - images/location.png
+    - images/timing.png
+    - images/alarm.png
+    - images/ticket.png
+    - images/shopping_cart.png
+    - images/coupon.png
+    - images/game.png
+    - images/broadcast.png
+    - images/music_free_flow.png
+    - images/drawer_message.png
+    - images/drawer_friend.png
+    - images/drawer_skin.png
+    - images/drawer_music.png
+    - images/pocket_ringtone.png
+    - images/night_mode.png
+    - images/day_mode.png
+    - images/setting.png
+    - images/app_shut_down.png
+    - images/about.png
+    - images/help.png
+    - images/cloud_center.png
 
 
+    # 我的页面图片资源
+    - images/my/shortcut_fm.png
+    - images/my/download_manager.png
 
+    # 发现页面图片资源
 
+    - images/find/t_dragonball_icn_daily.png
+    - images/find/t_dragonball_icn_look.png
+    - images/find/t_dragonball_icn_playlist.png
+    - images/find/t_dragonball_icn_radio.png
+    - images/find/t_dragonball_icn_rank.png
+    - images/find/bg_song_list.9.png
+    - images/t_dragonball_icn_rank.png
+    - images/t_dragonball_icn_digitalalbum.png
 
+    # 登入页
+    - images/wx.png
+    - images/qq.png
+    - images/weibo.png
+    - images/wangyi.png
+    - images/icon_checkbox.png
+    - images/icon_right.png
+    - images/login_page_logo.png
 
-
-
-
+    # 歌单详情
+    - images/album/album_comment.png
+    - images/album/album_share.png
+    - images/album/album_download.png
+    - images/album/album_multiple_selection.png
+    - images/album/track_mv.png
+    - images/album/track_more.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

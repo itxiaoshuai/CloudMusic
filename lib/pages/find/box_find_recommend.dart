@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/res/gaps.dart';
-import 'package:flutter_app/widget/base_song_img_item.dart';
-import 'package:flutter_app/widget/item/DrawerListItem.dart';
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/widget/base_song_img_item.dart';
+import 'package:cloud_music/widget/item/DrawerListItem.dart';
 
 import '../page_songlist.dart';
 class BoxFindRecommend extends StatefulWidget {

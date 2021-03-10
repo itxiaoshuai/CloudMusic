@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/route/routes.dart';
+import 'package:cloud_music/route/routes.dart';
 
 //圆形模块组件
 class MenuItem extends StatelessWidget {

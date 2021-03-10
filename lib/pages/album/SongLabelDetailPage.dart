@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/res/colors.dart';
-import 'package:flutter_app/base/res/gaps.dart';
-import 'package:flutter_app/base/res/styles.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
-import 'package:flutter_app/pages/playllist/page_category_song_list.dart';
-import 'package:flutter_app/pages/video/VideoList.dart';
+import 'package:cloud_music/base/res/colors.dart';
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/base/res/styles.dart';
+import 'package:cloud_music/net/http.dart';
+import 'package:cloud_music/pages/playlist/page_category_song_list.dart';
+import 'package:cloud_music/pages/video/VideoList.dart';
 
 class SongLabelDetailPage extends StatefulWidget {
   final String cat;

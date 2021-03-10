@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/video/VideoList.dart';
+import 'package:cloud_music/pages/video/VideoList.dart';
 
 class VideoPage extends StatefulWidget {
   @override

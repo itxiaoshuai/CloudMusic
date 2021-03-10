@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/res/gaps.dart';
-import 'package:flutter_app/base/res/styles.dart';
-import 'package:flutter_app/data/protocol/user_info.dart';
-import 'package:flutter_app/data/repository/music_repository.dart';
-import 'package:flutter_app/pages/main/page_main.dart';
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/base/res/styles.dart';
 
 import 'page_login_with_auth.dart';
 
@@ -113,14 +110,4 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  _getUserInfo(String phone, String password) async {
-    UserInfo userInfo = await MusicRepository.logoin(phone, password);
-    if (userInfo != null) {
-      Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(
-        builder: (BuildContext context) {
-          return MainPage();
-        },
-      ), (route) => route == null);
-    }
-  }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-
+import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'dimens.dart';
 
@@ -68,4 +68,17 @@ class TextStyles {
     fontSize: Dimens.font_sp14,
     color: Colours.text_gray_c,
   );
+  static const TextStyle smallWhiteTextStyle = const TextStyle(
+    fontSize: Dimens.font_sp12,
+    color: Colours.text_white,
+  );
+  static const TextStyle commonWhiteTextStyle = const TextStyle(
+    fontSize: Dimens.font_sp16,
+    color: Colours.text_white,
+  );
+  static const TextStyle smallWhite70TextStyle = const TextStyle(
+    fontSize: Dimens.font_sp12,
+    color: Colors.white70,
+  );
+
 }

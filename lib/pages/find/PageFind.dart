@@ -1,36 +1,36 @@
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_music/route/routes.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:date_format/date_format.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/CommonLoading.dart';
-import 'package:flutter_app/base/res/gaps.dart';
-import 'package:flutter_app/base/res/styles.dart';
-import 'package:flutter_app/data/api/apis.dart';
-import 'package:flutter_app/data/protocol/banner_model.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
-import 'package:flutter_app/pages/find/widget/FindBanner.dart';
-import 'package:flutter_app/pages/find/widget/LearnInkWell.dart';
-import 'package:flutter_app/pages/find/widget/SpinKitWaveType.dart';
-import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
-import 'package:flutter_app/pages/my/PageMy.dart';
-import 'package:flutter_app/pages/page_songlist.dart';
-import 'package:flutter_app/pages/radio/page_radio.dart';
-import 'package:flutter_app/pages/user/page_user_detail.dart';
-import 'package:flutter_app/pages/video/VideoPage.dart';
-import 'package:flutter_app/widget/ListItemCustom.dart';
-import 'package:flutter_app/widget/base_song_img_item.dart';
-import 'package:flutter_app/widget/item/DrawerListItem.dart';
+import 'package:cloud_music/base/CommonLoading.dart';
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/base/res/styles.dart';
+import 'package:cloud_music/data/api/apis.dart';
+import 'package:cloud_music/data/protocol/banner_model.dart';
+import 'package:cloud_music/net/http.dart';
+import 'package:cloud_music/pages/find/widget/FindBanner.dart';
+import 'package:cloud_music/pages/find/widget/LearnInkWell.dart';
+import 'package:cloud_music/pages/find/widget/SpinKitWaveType.dart';
+import 'package:cloud_music/pages/leaderboard/LeaderboardPage.dart';
+import 'package:cloud_music/pages/my/PageMy.dart';
+import 'package:cloud_music/pages/page_songlist.dart';
+import 'package:cloud_music/pages/radio/page_radio.dart';
+import 'package:cloud_music/pages/user/page_user_detail.dart';
+import 'package:cloud_music/pages/video/VideoPage.dart';
+import 'package:cloud_music/widget/ListItemCustom.dart';
+import 'package:cloud_music/widget/base_song_img_item.dart';
+import 'package:cloud_music/widget/item/DrawerListItem.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutter_app/widget/SAppBarSearch.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:cloud_music/widget/SAppBarSearch.dart';
 import '../../r.dart';
 import 'FutureBuilderPage.dart';
-import 'package:flutter_app/widget/HomeDrawer.dart';
-import 'package:flutter_app/pages/find/PageDailySpecial.dart';
-
+import 'package:cloud_music/widget/HomeDrawer.dart';
+import 'package:cloud_music/pages/find/PageDailySpecial.dart';
+import 'package:cloud_music/pages/leaderboard/LeaderboardPage.dart';
 import 'box_find_recommend.dart';
 
 class FindPage extends StatefulWidget {
@@ -39,7 +39,9 @@ class FindPage extends StatefulWidget {
 }
 
 class _FindPageState extends State<FindPage>
-    with AutomaticKeepAliveClientMixin {
+    with AutomaticKeepAliveClientMixin<FindPage> {
+  @override
+  bool get wantKeepAlive => true;  //需要返回true
   List<Banners> _bannerData = [];
   List widgets = [];
 
@@ -96,15 +98,17 @@ class _FindPageState extends State<FindPage>
           elevation: 0,
           primary: true,
           leading: IconButton(
-              icon: Icon(Icons.dehaze,color: Colors.black,),
-              onPressed: (){
+              icon: Icon(
+                Icons.dehaze,
+                color: Colors.black,
+              ),
+              onPressed: () {
                 Scaffold.of(context).openDrawer();
-              }
-          ),
+              }),
           //为false的时候会影响leading，actions、titile组件，导致向上偏移
           textTheme: TextTheme(//设置AppBar上面各种字体主题色
 //            title: TextStyle(color: Colors.red),
-          ),
+              ),
           actionsIconTheme: IconThemeData(color: Colors.blue, opacity: 0.6),
           //设置导航右边图标的主题色，此时iconTheme对于右边图标颜色会失效
           iconTheme: IconThemeData(color: Colors.black, opacity: 0.6),
@@ -122,12 +126,7 @@ class _FindPageState extends State<FindPage>
               color: Colors.grey[100],
               child: InkWell(
                 onTap: () {
-                  Fluttertoast.showToast(
-                      msg: "搜索",
-                      toastLength: Toast.LENGTH_SHORT,
-                      timeInSecForIos: 1,
-                      textColor: Colors.black12,
-                      gravity: ToastGravity.CENTER);
+                  Navigator.of(context).pushNamed(RouteName.PAGE_SEARCH);
                 },
                 child: Container(
                   padding: EdgeInsets.only(left: 15, right: 10),
@@ -161,7 +160,6 @@ class _FindPageState extends State<FindPage>
                 onPressed: () {}),
           ],
         ),
-
         body: ListView(
           children: <Widget>[
             FindBanner(bannerData: _bannerData),
@@ -247,7 +245,6 @@ class _FindPageState extends State<FindPage>
             height: 1,
             color: Colors.grey[300],
           ),
-
           Container(
 //            padding: EdgeInsets.only(left: 15, right: 0),
             height: 200,
@@ -282,10 +279,7 @@ class _FindPageState extends State<FindPage>
     return super.build(context);
   }
 
-  @override
-  bool get wantKeepAlive => true;
 }
-
 
 List<int> getDataList(int count) {
   List<int> list = [];
@@ -304,8 +298,6 @@ List<Widget> getWidgetList(List list) {
 Widget getItemContainer(String picUrl) {
   return ListItemCustom(img: picUrl);
 }
-
-
 
 _buildMenu(BuildContext context) {
   var i = 1; //排行榜名次
@@ -327,7 +319,11 @@ _buildMenu(BuildContext context) {
 
                   return Row(
                     children: [
-                      ListItem(image: e.img, text: e.title),
+                      ListItem(
+                        image: e.img,
+                        text: e.title,
+                        route: e.path,
+                      ),
                       i == widgets.length + 1 ? Gaps.hGap15 : Gaps.hGap15,
                     ],
                   );
@@ -337,16 +333,14 @@ _buildMenu(BuildContext context) {
           ),
         ]),
   );
-
 }
-
-
 
 class ListItem extends StatelessWidget {
   final String text;
   final String image;
+  final String route;
 
-  ListItem({this.image, this.text});
+  ListItem({this.image, this.text, this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -354,13 +348,7 @@ class ListItem extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: () {
-          // Navigator.push(context, MaterialPageRoute(builder: (context) {
-          //   return PageDailySpecial();
-          // }));
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (BuildContext context) {
-            return PageDailySpecial();
-          }));
+          Navigator.of(context).pushNamed(route);
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -967,7 +955,7 @@ List<Menu> videoCategoryList = <Menu>[
   Menu(
     title: R.string.dailySpecial,
     img: R.mipmap.dailySpecial,
-    path: '',
+    path: RouteName.PAGE_DAILY_RECOMMEND,
   ),
   Menu(
     title: R.string.fm,
@@ -977,12 +965,11 @@ List<Menu> videoCategoryList = <Menu>[
   Menu(
     title: R.string.playlist,
     img: R.mipmap.playlist,
-    path: '',
   ),
   Menu(
     title: R.string.rankingList,
     img: R.mipmap.rankingList,
-    path: '',
+    path: RouteName.PAGE_RANKING_LIST,
   ),
   Menu(
     title: R.string.liveStreaming,
@@ -992,7 +979,7 @@ List<Menu> videoCategoryList = <Menu>[
   Menu(
     title: R.string.digitalAlbum,
     img: R.mipmap.digitalAlbum,
-    path: '',
+    path: RouteName.PAGE_DIGITAL_ALBUM,
   ),
   Menu(
     title: '唱聊',

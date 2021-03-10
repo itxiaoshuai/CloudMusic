@@ -2,14 +2,14 @@ import 'package:chewie/chewie.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/base/ConstImg.dart';
-import 'package:flutter_app/base/res/colors.dart';
-import 'package:flutter_app/base/res/gaps.dart';
-import 'package:flutter_app/base/utils/number_utils.dart';
-import 'package:flutter_app/data/protocol/VideoDetailData.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
-import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
-import 'package:flutter_app/route/routes.dart';
+import 'package:cloud_music/base/ConstImg.dart';
+import 'package:cloud_music/base/res/colors.dart';
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/base/utils/number_utils.dart';
+import 'package:cloud_music/data/protocol/VideoDetailData.dart';
+import 'package:cloud_music/net/http.dart';
+import 'package:cloud_music/pages/playlist/page_playlist_detail.dart';
+import 'package:cloud_music/route/routes.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoDetailPage extends StatefulWidget {

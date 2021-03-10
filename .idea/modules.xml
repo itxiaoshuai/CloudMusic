@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CloudMusic.iml" filepath="$PROJECT_DIR$/CloudMusic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/src/debug/debug.iml" filepath="$PROJECT_DIR$/android/app/src/debug/debug.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/app/src/profile/profile.iml" filepath="$PROJECT_DIR$/android/app/src/profile/profile.iml" />
     </modules>
   </component>
 </project>

@@ -1,15 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app/data/protocol/LeaderboardModel.dart';
-import 'package:flutter_app/model/top_list_model.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
-import 'package:flutter_app/pages/playllist/page_playlist_detail.dart';
-import 'package:flutter_app/provider/provider_widget.dart';
-import 'package:flutter_app/widget/ListItemCustom.dart';
-import 'package:provider/provider.dart';
+import 'package:cloud_music/data/protocol/LeaderboardModel.dart';
+import 'package:cloud_music/model/top_list_model.dart';
+import 'package:cloud_music/pages/playlist/page_playlist_detail.dart';
+import 'package:cloud_music/provider/provider_widget.dart';
+import 'package:cloud_music/widget/ListItemCustom.dart';
 
-import 'LeaderboardDetailPage.dart';
 
 class LeaderBoardPage extends StatefulWidget {
   @override

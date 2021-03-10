@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/route/routes.dart';
-import 'package:flutter_app/widget/item/menu_item.dart';
+import 'package:cloud_music/route/routes.dart';
+import 'package:cloud_music/widget/item/menu_item.dart';
 
 class RadioPage extends StatefulWidget {
   @override

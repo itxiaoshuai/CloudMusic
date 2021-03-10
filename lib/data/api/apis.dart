@@ -14,4 +14,7 @@ class MusicApi {
 
   ///调用例子 : /login/cellphone?phone=xxx&password=yyy
   static const String LOGIN = "/login/cellphone";
+
+//数字专辑&数字单曲-榜单
+  static const String ALBUM_SONG_SALE_BOARD = "/album/songsaleboard";
 }

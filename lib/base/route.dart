@@ -1,7 +1,8 @@
+import 'package:cloud_music/pages/leaderboard/LeaderboardPage.dart';
+import 'package:cloud_music/pages/login/LoginMainPage.dart';
+import 'package:cloud_music/pages/main/page_main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/leaderboard/LeaderboardPage.dart';
-import 'package:flutter_app/pages/login/LoginMainPage.dart';
-import 'package:flutter_app/pages/main/page_main.dart';
+
 
 const ROUTE_MAIN = "/";
 const ROUTE_LOGIN = "/login";

@@ -11,7 +11,7 @@ class UserInfo {
   String toString() {
     return 'UserInfo{backgroundUrl: $backgroundUrl, nickname: $nickname, avatarUrl: $avatarUrl, uid: $uid, vipType: $vipType, gender: $gender}';
   }
-
+  String cookie;
   String nickname;
   String avatarUrl;
   int uid;
@@ -23,6 +23,7 @@ class UserInfo {
         this.avatarUrl,
         this.uid,
         this.vipType,
+        this.cookie,
    });
 
   UserInfo.fromJson(Map<String, dynamic> json) {
@@ -32,6 +33,7 @@ class UserInfo {
     uid = json['uid'];
     vipType = json['vipType'];
     gender = json['gender'];
+    cookie = json['cookie'];
   }
 
 

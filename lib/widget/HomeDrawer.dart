@@ -1,10 +1,11 @@
 import 'dart:convert';
 
+import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/res/gaps.dart';
-import 'package:flutter_app/data/protocol/user_info.dart';
-import 'package:flutter_app/pages/login/LoginMainPage.dart';
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/data/protocol/user_info.dart';
+import 'package:cloud_music/pages/login/LoginMainPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'item/DrawerListItem.dart';
 
@@ -128,9 +129,9 @@ class _HomeDrawerState extends State {
       borderRadius: BorderRadius.all(Radius.circular(8)),
       child: Column(
         children: [
-          DrawerListItem(image: "images/drawer_music.png", text: "我的消息"),
+          DrawerListItem(image: "images/drawer_music.png", text: "我的消息",route: RouteName.PAGE_MESSAGE,),
           Gaps.line,
-          DrawerListItem(image: "images/cloud_center.png", text: "云贝中心"),
+          DrawerListItem(image: "images/cloud_center.png", text: "云贝中心",route: RouteName.PAGE_CLOUD_COIN,),
         ],
       ),
     );
@@ -157,7 +158,7 @@ class _HomeDrawerState extends State {
         child: Container(
           child: Column(
             children: [
-              DrawerListItem(image: "images/setting.png", text: "设置"),
+              DrawerListItem(image: "images/setting.png", text: "设置",route: RouteName.PAGE_SETTING,),
               DrawerListItem(image: "images/night_mode.png", text: "夜间模式"),
               DrawerListItem(image: "images/timing.png", text: "定时关闭"),
               DrawerListItem(image: "images/drawer_skin.png", text: "个性装扮"),

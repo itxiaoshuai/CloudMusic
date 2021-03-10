@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app/manager/resource_mananger.dart';
+import 'package:cloud_music/manager/resource_mananger.dart';
 
 /// 加载中
 class ViewStateLoadingWidget extends StatelessWidget {

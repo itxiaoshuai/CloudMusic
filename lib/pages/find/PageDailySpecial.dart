@@ -1,10 +1,20 @@
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/data/protocol/daily_recommend.dart';
+import 'package:cloud_music/model/daily_recommend_model.dart';
+import 'package:cloud_music/model/friend_fans_list_model.dart';
+import 'package:cloud_music/pages/playlist/item_music_list_track.dart';
+import 'package:cloud_music/provider/layout_state.dart';
+import 'package:cloud_music/provider/provider_widget.dart';
+import 'package:cloud_music/provider/view_state_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_app/base/CommonLoading.dart';
-import 'package:flutter_app/widget/flexible_app_bar.dart';
+import 'package:cloud_music/base/CommonLoading.dart';
+import 'package:cloud_music/widget/flexible_app_bar.dart';
 import 'package:common_utils/common_utils.dart';
 import 'dart:ui';
-import 'package:flutter_app/base/ConstImg.dart';
+import 'package:cloud_music/base/ConstImg.dart';
+import 'package:cloud_music/widget/item/list_item.dart';
+import '../../r.dart';
 
 /// 每日推荐
 class PageDailySpecial extends StatefulWidget {
@@ -24,159 +34,181 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
 
     _scrollController = ScrollController()
       ..addListener(() => setState(() {
-            // radian=_scrollController.offset;
             if (_scrollController.hasClients &&
                 _scrollController.offset > 0 &&
                 _scrollController.offset < (200 - kToolbarHeight)) {
-              // print(
-              // 'Scroll view Listener is called offset ${_scrollController.offset}');
               radian =
                   6 - (_scrollController.offset / (200 - kToolbarHeight) * 6);
               pixel = (_scrollController.offset / (200 - kToolbarHeight) * 12);
               print('radian----${radian}');
             }
 
-            isAppBarExpanded=_scrollController.hasClients &&
+            isAppBarExpanded = _scrollController.hasClients &&
                 _scrollController.offset <= (200 - kToolbarHeight);
-            // if (_scrollController.hasClients &&
-            //     _scrollController.offset > (200 - kToolbarHeight)) {
-            //   radian = 10 / (200 - kToolbarHeight) * _scrollController.offset;
-            // } else {
-            //   radian = 10;
-            // }
-            // print(
-            // 'Scroll view Listener is called offset ${_scrollController.offset}');
           }));
-  }
-
-  bool get _changecolor {
-    return _scrollController.hasClients &&
-        _scrollController.offset <= (200 - kToolbarHeight);
   }
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      controller: _scrollController,
-      slivers: [
-        SliverAppBar(
-          elevation :0,
-          title: Offstage(
-            child: Text('每日推荐'),
-            offstage: isAppBarExpanded,
-          ),
-          pinned: true,
-          expandedHeight: 250.0,
-          flexibleSpace: FlexibleDetailBar(
-            background: PlayListHeaderBackground(
-              pixel: pixel,
-              imageUrl:
-                  'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg',
-            ),
-            content: Container(
-              padding: EdgeInsets.only(left: 20, right: 20),
-              color: Colors.transparent,
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Spacer(),
-                    RichText(
-                      text: TextSpan(
-                        text:
-                            '${DateUtil.formatDate(DateTime.now(), format: 'd')}',
-                        style: TextStyle(
-                            fontSize: 40,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                        children: <TextSpan>[
-                          TextSpan(
-                            text:
-                                '/${DateUtil.formatDate(DateTime.now(), format: 'M')}',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
+    return Material(
+        child: ProviderWidget<DailyRecommendModel>(
+            model: DailyRecommendModel(),
+            onModelReady: (model) {
+              // Map<String, dynamic> formData = {
+              //   'uid': 1521312765,
+              // };
+
+              model.loadData();
+            },
+            builder: (context, model, child) {
+              switch (model.layoutState) {
+                case LayoutState.IDLE:
+                  break;
+                case LayoutState.LOADING:
+                  return ViewStateLoadingWidget();
+                  break;
+                case LayoutState.EMPTY:
+                  // TODO: Handle this case.
+                  break;
+                case LayoutState.ERROR:
+                  // TODO: Handle this case.
+                  break;
+                case LayoutState.UNAUTHORIZED:
+                  // TODO: Handle this case.
+                  break;
+                case LayoutState.SUCCESS:
+                  // TODO: Handle this case.
+                  break;
+              }
+              return CustomScrollView(
+                controller: _scrollController,
+                slivers: [
+                  SliverAppBar(
+                    elevation: 0,
+                    title: Offstage(
+                      child: Text('每日推荐'),
+                      offstage: isAppBarExpanded,
+                    ),
+                    pinned: true,
+                    expandedHeight: 250.0,
+                    flexibleSpace: FlexibleDetailBar(
+                      background: PlayListHeaderBackground(
+                        pixel: pixel,
+                        imageUrl:
+                            'https://p1.music.126.net/owwmF9E88Rc_Gjf-XSUU5Q==/109951164132178640.jpg',
+                      ),
+                      content: Container(
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        color: Colors.transparent,
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Spacer(),
+                              RichText(
+                                text: TextSpan(
+                                  text:
+                                      '${DateUtil.formatDate(DateTime.now(), format: 'd')}',
+                                  style: TextStyle(
+                                      fontSize: 40,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text:
+                                          '/${DateUtil.formatDate(DateTime.now(), format: 'M')}',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 6),
+                              Row(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(30),
+                                    child: Material(
+                                      child: InkWell(
+                                        onTap: () {},
+                                        child: Container(
+                                          padding: EdgeInsets.only(
+                                              left: 8, right: 8),
+                                          child: Row(children: <Widget>[
+                                            Text(
+                                              '历史日推',
+                                              style: TextStyle(
+                                                  color: Colors.black),
+                                            ),
+                                            Image.asset(
+                                              'images/lp_vip.png',
+                                              width: 20,
+                                            ),
+                                          ]),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Spacer(),
+                                ],
+                              ),
+                              SizedBox(height: 40),
+                            ]),
                       ),
                     ),
-                    SizedBox(height: 6),
-                    Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
+                    actions: <Widget>[
+                      IconButton(
+                          icon: Icon(Icons.help_outline), onPressed: () {})
+                    ],
+                    bottom: MusicListHeader(
+                      30,
+                      radian: radian,
+                      tail: Container(
+                        margin: EdgeInsets.only(right: 15),
+                        child: IconButton(
+                          icon: Image.asset(
+                            ConstImgResource.multipleSelection,
+                            width: 20,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ),
+                  ),
+                  SliverList(
+                    delegate: SliverChildListDelegate(
+                      //返回组件集合
+                      List.generate(model.data.data.dailySongs.length,
+                          (int index) {
+                        DailySongs song = model.data.data.dailySongs[index];
+                        print(song.name);
+                        //返回 组件
+                        return Container(
+                          color: Colors.white,
                           child: Material(
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                print(
+                                    '###########################点击了##################################');
+                              },
                               child: Container(
-                                padding: EdgeInsets.only(left: 8, right: 8),
-                                child: Row(children: <Widget>[
-                                  Text(
-                                    '历史日推',
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                  Image.asset(
-                                    'images/lp_vip.png',
-                                    width: 20,
-                                  ),
-                                ]),
+                                height: 60,
+                                //不要在这里设置背景色，否则会遮挡水波纹效果,如果设置的话尽量设置Material下面的color来实现背景色
+                                margin: EdgeInsets.all(0.0),
+                                child: TrackItem(song),
                               ),
                             ),
                           ),
-                        ),
-                        Spacer(),
-                      ],
-                    ),
-                    SizedBox(height: 40),
-                  ]),
-            ),
-          ),
-          actions: <Widget>[
-            IconButton(icon: Icon(Icons.help_outline), onPressed: () {})
-          ],
-          bottom: MusicListHeader(
-            30,
-            radian: radian,
-            tail: Container(
-              margin: EdgeInsets.only(right: 15),
-              child: IconButton(
-                icon: Image.asset(
-                  ConstImgResource.multipleSelection,
-                  width: 20,
-                  color: Colors.black,
-                ),
-                onPressed: () {},
-              ),
-            ),
-          ),
-        ),
-        SliverList(
-          delegate: SliverChildListDelegate(
-            //返回组件集合
-            List.generate(20, (int index) {
-              //返回 组件
-              return Container(
-                color: Colors.white,
-                child: Material(
-                  child: InkWell(
-                    onTap: () {
-                      print(
-                          '###########################点击了##################################');
-                    },
-                    child: Container(
-                      height: 60,
-                      //不要在这里设置背景色，否则会遮挡水波纹效果,如果设置的话尽量设置Material下面的color来实现背景色
-                      margin: EdgeInsets.all(0.0),
-                      child: TrackItem(),
+                        );
+                      }),
                     ),
                   ),
-                ),
+                ],
               );
-            }),
-          ),
-        ),
-      ],
-    );
+              ;
+            }));
   }
 }
 
@@ -247,6 +279,32 @@ class BottomClipper extends CustomClipper<Path> {
 }
 
 class TrackItem extends StatelessWidget {
+  TrackItem(this.song);
+
+  final DailySongs song;
+
+  String getText() {
+    StringBuffer stringBuffer = new StringBuffer();
+    var length = song.ar.length;
+    song.ar.forEach((item) {
+      if (length == 1) {
+        stringBuffer.write(item.name);
+      }
+      if (length > 1) {
+        stringBuffer.write(item.name);
+        stringBuffer.write('/');
+      }
+
+      length--;
+    });
+    if (song.al != null) {
+      if (song.al.name != null) stringBuffer.write('-');
+      stringBuffer.write(song.al.name);
+    }
+
+    return stringBuffer.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -258,9 +316,10 @@ class TrackItem extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5),
               child: CachedNetworkImage(
+                width: 40,
+                height: 40,
                 fit: BoxFit.fill,
-                imageUrl:
-                    'https://p1.music.126.net/Jh1iS5wFR5Xz_GNML996VA==/109951165046243126.jpg',
+                imageUrl: song.al.picUrl,
                 placeholder: (context, url) => ProgressView(),
                 errorWidget: (context, url, error) => Icon(Icons.error),
               ),
@@ -282,7 +341,7 @@ class TrackItem extends StatelessWidget {
                         child: Align(
                           alignment: FractionalOffset.centerLeft,
                           child: Text(
-                            '会不会（吉他版）',
+                            song.name,
                             style: TextStyle(fontSize: 12, color: Colors.black),
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -296,7 +355,7 @@ class TrackItem extends StatelessWidget {
                         child: Align(
                           alignment: FractionalOffset.centerLeft,
                           child: Text(
-                            '刘大壮-会不会',
+                            getText(),
                             style:
                                 TextStyle(fontSize: 8, color: Colors.grey[600]),
                             overflow: TextOverflow.ellipsis,
@@ -309,11 +368,17 @@ class TrackItem extends StatelessWidget {
           ),
           Container(
 //            color: Colors.blue,
-            child: IconButton(
-                iconSize: 25,
-                icon: ImageIcon(AssetImage("images/album/track_mv.png")),
-                color: Colors.grey[500],
-                onPressed: () {}),
+            child: Visibility(
+              child: IconButton(
+                  iconSize: 25,
+                  icon: ImageIcon(AssetImage("images/album/track_mv.png")),
+                  color: Colors.grey[500],
+                  onPressed: () {}),
+              maintainSize: true,
+              maintainAnimation: true,
+              maintainState: true,
+              visible: song.mv > 0,
+            ),
           ),
           Container(
 //            color: Colors.red,
@@ -328,6 +393,7 @@ class TrackItem extends StatelessWidget {
                     builder: (BuildContext context) {
                       return Container(
                         height: 406.0,
+                        child: BottomSheetWidget(),
                       );
                     },
                   ).then((val) {

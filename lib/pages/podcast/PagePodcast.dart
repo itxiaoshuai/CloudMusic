@@ -1,6 +1,8 @@
+import 'package:cloud_music/pages/podcast/page_category.dart';
+import 'package:cloud_music/pages/podcast/page_recommend.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/widget/CustomUnderlineTabIndicator.dart';
-import 'package:flutter_app/widget/HomeDrawer.dart';
+import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';
+import 'package:cloud_music/widget/HomeDrawer.dart';
 class PagePodcast extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => PagePodcastState();
@@ -94,8 +96,9 @@ class PagePodcastState extends State<PagePodcast> with SingleTickerProviderState
               controller: _tabController,
               children: <Widget>[
                 Center(child: Text('听听')),
-                Center(child: Text('推荐')),
-                Center(child: Text('分类')),
+                PagePodcastRecommend(),
+                // Center(child: Text('分类')),
+                PagePodcastCategory(),
               ],
             )));
   }

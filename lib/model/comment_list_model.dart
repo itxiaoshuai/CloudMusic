@@ -1,7 +1,9 @@
-import 'package:flutter_app/data/protocol/comment_list.dart';
-import 'package:flutter_app/manager/request_manager.dart';
-import 'package:flutter_app/provider/layout_state.dart';
-import 'package:flutter_app/provider/layout_state_model.dart';
+
+
+import 'package:cloud_music/data/protocol/comment_list.dart';
+import 'package:cloud_music/manager/request_manager.dart';
+import 'package:cloud_music/provider/layout_state.dart';
+import 'package:cloud_music/provider/layout_state_model.dart';
 
 class CommentListModel extends LayoutStateModel {
   CommentList _commentList;

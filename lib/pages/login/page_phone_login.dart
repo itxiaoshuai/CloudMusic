@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_app/data/protocol/user_info.dart';
-import 'package:flutter_app/data/repository/music_repository.dart';
-import 'package:flutter_app/pages/main/page_main.dart';
 
+import 'package:cloud_music/manager/request_manager.dart';
+import 'package:flutter/material.dart';
+import 'package:cloud_music/data/protocol/user_info.dart';
+import 'package:cloud_music/pages/main/page_main.dart';
 
 class PhoneLoginPage extends StatefulWidget {
   @override
@@ -84,9 +84,10 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
   }
 
   _getUserInfo(String phone, String password) async {
-    UserInfo userInfo = await MusicRepository.logoin(phone, password);
+
+    UserInfo userInfo = await RequestManager.logoin(phone, password);
     if (userInfo != null) {
-      Navigator.pushAndRemoveUntil(context, new MaterialPageRoute(
+      Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(
         builder: (BuildContext context) {
           return MainPage();
         },

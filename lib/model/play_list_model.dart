@@ -1,13 +1,12 @@
-import 'package:flutter_app/data/protocol/playlist_detail.dart';
-import 'package:flutter_app/manager/request_manager.dart';
-import 'package:flutter_app/net/huyi_android_api.dart';
-import 'package:flutter_app/provider/layout_state.dart';
-import 'package:flutter_app/provider/layout_state_model.dart';
+import 'package:cloud_music/provider/layout_state_model.dart';
+import 'package:cloud_music/data/protocol/playlist.dart';
+import 'package:cloud_music/net/http.dart';
+import 'package:cloud_music/provider/layout_state.dart';
 
 class PlayListModel extends LayoutStateModel {
-  PlaylistDetail _playlistDetail;
+  Playlist _playlist;
 
-  PlaylistDetail get data => _playlistDetail;
+  Playlist get data => _playlist;
 
   loadData(int id) async {
     Map<String, dynamic> formData = {'id': id, "s": 8};
@@ -16,10 +15,12 @@ class PlayListModel extends LayoutStateModel {
       setState(LayoutState.LOADING);
       var response =
           await http.get('/playlist/detail', queryParameters: formData);
-      PlaylistDetail playlistDetail =
-          PlaylistDetail.fromJson(response.data['playlist']);
-      _playlistDetail = playlistDetail;
+      Playlist playlistDetail =
+      Playlist.fromJson(response.data['playlist']);
+      _playlist = playlistDetail;
       setState(LayoutState.SUCCESS);
-    } catch (e, s) {}
+    } catch (e, s) {
+      print(e);
+    }
   }
 }

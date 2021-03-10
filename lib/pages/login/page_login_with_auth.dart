@@ -1,9 +1,8 @@
+import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/base/res/gaps.dart';
-import 'package:flutter_app/base/res/styles.dart';
-import 'package:flutter_app/widget/cloud_password_input.dart';
-import 'package:flutter_app/widget/item/DrawerListItem.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/base/res/styles.dart';
+import 'package:cloud_music/widget/cloud_password_input.dart';
 
 class LoginWithAuth extends StatefulWidget {
   @override
@@ -35,7 +34,9 @@ class _LoginWithAuthState extends State<LoginWithAuth> {
               borderRadius: BorderRadius.all(Radius.circular(30)),
               child: Material(
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushNamed(RouteName.PAGE_LOGIN_PHONE);
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey, width: 0.5),
@@ -136,7 +137,7 @@ class _LoginWithAuthBodyState extends State<LoginWithAuthBody> {
             onChange: (text) {
               print(text);
               if (text.toString().length == 6) {
-                Fluttertoast.showToast(msg: "xxxxxxxxxxx");
+
               }
             },
           ),
