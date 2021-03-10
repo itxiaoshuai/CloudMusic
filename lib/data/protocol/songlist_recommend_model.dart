@@ -1,7 +1,4 @@
-
-
 ///歌单推荐
-
 
 class SongListRecommendModel {
   bool hasTaste;
@@ -9,22 +6,23 @@ class SongListRecommendModel {
   int category;
   List<Result> result;
 
-  SongListRecommendModel({this.hasTaste, this.code, this.category, this.result});
+  SongListRecommendModel(
+      {this.hasTaste, this.code, this.category, this.result});
 
   SongListRecommendModel.fromJson(Map<String, dynamic> json) {
     hasTaste = json['hasTaste'];
     code = json['code'];
     category = json['category'];
     if (json['result'] != null) {
-      result =  List<Result>();
+      result = <Result>[];
       json['result'].forEach((v) {
-        result.add( Result.fromJson(v));
+        result.add(Result.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['hasTaste'] = this.hasTaste;
     data['code'] = this.code;
     data['category'] = this.category;
@@ -73,7 +71,7 @@ class Result {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = this.id;
     data['type'] = this.type;
     data['name'] = this.name;

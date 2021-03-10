@@ -29,8 +29,6 @@ class BlocProvider<T extends BlocBase> extends StatefulWidget {
         context.findAncestorWidgetOfExactType<BlocProvider<T>>();
     return provider.bloc;
   }
-
-  static Type _typeOf<T>() => T;
 }
 
 class _BlocProviderState<T> extends State<BlocProvider<BlocBase>> {

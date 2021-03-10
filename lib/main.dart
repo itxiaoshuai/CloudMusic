@@ -5,8 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/screenutil_init.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
-import 'package:cloud_music/subtitle.dart';
-import 'package:cloud_music/subtitle_entry.dart';
 import 'base/route.dart';
 import 'manager/provider_manager.dart';
 
