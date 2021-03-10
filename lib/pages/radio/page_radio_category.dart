@@ -37,7 +37,6 @@ class RadioCategoryPageState extends State<RadioCategoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 720, height: 1080, allowFontScaling: false);
     int childCount = mData.length > 6
         ? mData.sublist(6, mData.length).length
         : mData.sublist(0, mData.length).length;

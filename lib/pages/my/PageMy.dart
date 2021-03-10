@@ -13,7 +13,6 @@ import 'package:flutter_app/widget/HomeDrawer.dart';
 import 'package:flutter_app/widget/base_song_img_item.dart';
 import 'package:flutter_app/widget/flexible_app_bar.dart';
 import 'package:flutter_app/widget/item/menu_item.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 import 'package:flutter_app/widget/RoundUnderlineTabIndicator.dart';
 import 'package:flutter_app/widget/CustomRRecTabIndicator.dart';
 import 'package:flutter_app/widget/CustomUnderlineTabIndicator.dart';
@@ -306,7 +305,6 @@ class _MyPageState extends State<MyPage>
             ),
           ),
         ),
-
       ],
     );
   }
@@ -563,7 +561,6 @@ class ImgItem extends StatelessWidget {
 class _UserDetailAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 720, height: 1080, allowFontScaling: false);
     return SliverAppBar(
 //      leading: GestureDetector(
 //        child: Icon(Icons.arrow_back),

@@ -4,7 +4,6 @@ import 'package:flutter_app/base/res/gaps.dart';
 import 'package:flutter_app/base/res/styles.dart';
 import 'package:flutter_app/data/protocol/playlist_detail.dart';
 import 'package:flutter_app/widget/item/list_item.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 
 ///单个歌曲(item)
 class TrackItem extends StatelessWidget {
