@@ -16,7 +16,6 @@ import 'package:cloud_music/widget/HomeDrawer.dart';
 import 'package:cloud_music/widget/base_song_img_item.dart';
 import 'package:cloud_music/widget/flexible_app_bar.dart';
 import 'package:cloud_music/widget/item/menu_item.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 import 'package:cloud_music/widget/RoundUnderlineTabIndicator.dart';
 import 'package:cloud_music/widget/CustomRRecTabIndicator.dart';
 import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';

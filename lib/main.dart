@@ -27,16 +27,18 @@ class MyApp extends StatelessWidget {
         child: ScreenUtilInit(
           designSize: Size(720, 1080),
           allowFontScaling: false,
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            initialRoute: '/',
-            routes: routes,
-            onGenerateRoute: Routers.generateRoute,
-            theme: ThemeData(
-              backgroundColor: Colors.grey[100],
-              primarySwatch: Colors.red,
-            ),
-          ),
+          builder: () {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              initialRoute: '/',
+              routes: routes,
+              onGenerateRoute: Routers.generateRoute,
+              theme: ThemeData(
+                backgroundColor: Colors.grey[100],
+                primarySwatch: Colors.red,
+              ),
+            );
+          },
         ),
       ),
     );

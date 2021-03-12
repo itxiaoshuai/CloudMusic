@@ -6,7 +6,6 @@ import 'package:cloud_music/manager/request_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/data/protocol/lyric.dart';
 import 'package:cloud_music/pages/play_songs/widget_lyric.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 import '../../r.dart';
 import '../../subtitle.dart';
 import '../../subtitle_entry.dart';
