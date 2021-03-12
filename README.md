@@ -25,3 +25,4 @@ A new Flutter project.
 <img src=https://raw.githubusercontent.com/itxiaoshuai/github_resouce/main/img/device-2021-03-11-145820.png width=200 height=400 />
 <img src=https://raw.githubusercontent.com/itxiaoshuai/github_resouce/main/img/device-2021-03-11-145933.png width=200 height=400 />
 
+[![Stargazers over time](https://starchart.cc/itxiaoshuai/CloudMusic.svg)](https://starchart.cc/itxiaoshuai/CloudMusic)
