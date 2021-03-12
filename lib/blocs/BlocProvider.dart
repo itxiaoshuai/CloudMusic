@@ -1,12 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 
 abstract class BlocBase {
-
   void dispose();
 }
-
 
 class BlocProvider<T extends BlocBase> extends StatefulWidget {
   BlocProvider({
@@ -22,14 +18,17 @@ class BlocProvider<T extends BlocBase> extends StatefulWidget {
 
   @override
   _BlocProviderState<T> createState() => _BlocProviderState<T>();
-
+  //过期方法：
+  // static T of<T extends BlocBase>(BuildContext context) {
+  //   final type = _typeOf<BlocProvider<T>>();
+  //   BlocProvider<T> provider = context.findAncestorWidgetOfExactType(type);
+  //   return provider.bloc;
+  // }
   static T of<T extends BlocBase>(BuildContext context) {
-    final type = _typeOf<BlocProvider<T>>();
-    BlocProvider<T> provider = context.ancestorWidgetOfExactType(type);
+    BlocProvider<T> provider =
+        context.findAncestorWidgetOfExactType<BlocProvider<T>>();
     return provider.bloc;
   }
-
-  static Type _typeOf<T>() => T;
 }
 
 class _BlocProviderState<T> extends State<BlocProvider<BlocBase>> {

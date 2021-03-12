@@ -56,7 +56,6 @@ class RequestManager {
       Map<String, dynamic> queryParameters) async {
     var response = await http.get('/lyric', queryParameters: queryParameters);
     return LyricData.fromJson(response.data);
-    ;
   }
 
   //获取用户关注列表

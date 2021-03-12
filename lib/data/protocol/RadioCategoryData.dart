@@ -6,9 +6,8 @@ class RadioCategoryData {
     if (map == null) return null;
     RadioCategoryData radioCategoryData = RadioCategoryData();
     radioCategoryData.code = map['code'];
-    radioCategoryData.categories = List()
-      ..addAll(
-          (map['categories'] as List ?? []).map((o) => Category.fromJson(o)));
+    radioCategoryData.categories = []..addAll(
+        (map['categories'] as List ?? []).map((o) => Category.fromJson(o)));
     return radioCategoryData;
   }
 }

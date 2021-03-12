@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_music/data/protocol/tracks.dart';
-import 'package:cloud_music/data/protocol/song.dart';
 import 'package:cloud_music/manager/request_manager.dart';
-import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 
 class AudioPlayManager extends ChangeNotifier {

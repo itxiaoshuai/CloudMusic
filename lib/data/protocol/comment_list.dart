@@ -11,7 +11,7 @@ class CommentList {
     if (map == null) return null;
     CommentList commentList = CommentList();
     commentList.code = map['code'];
-    commentList.comments = List()
+    commentList.comments = []
       ..addAll((map['comments'] as List ?? []).map((o) => Comment.fromJson(o)));
     return commentList;
   }

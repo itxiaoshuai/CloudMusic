@@ -19,7 +19,6 @@ abstract class BaseHttp extends DioForNative {
     interceptors..add(HeaderInterceptor());
 
     init();
-
   }
 
   void init();
@@ -32,13 +31,13 @@ class HeaderInterceptor extends InterceptorsWrapper {
     options.connectTimeout = 1000 * 45;
     options.receiveTimeout = 1000 * 45;
 
-   // var appVersion = await PlatformUtils.getAppVersion();
-   // var version = Map()
-   //   ..addAll({
-   //     'appVerison': appVersion,
-   //   });
-   options.headers['Cookie'] = 'NMTID=00O3WNr1ylHHtxelE_asskuaU9I3boAAAF2mPvfOQ; __remember_me=true; MUSIC_U=ba34296e04ecdf04df0d8c22e024f30c9536eedc12f37711e562c8307e594de433a649814e309366; __csrf=5446fa62605fb155f09a89410963cdbd';
-//    options.headers['platform'] = Platform.operatingSystem;
+    // var appVersion = await PlatformUtils.getAppVersion();
+    // var version = Map()
+    //   ..addAll({
+    //     'appVerison': appVersion,
+    //   });
+    options.headers['Cookie'] =
+        'NMTID=00O3WNr1ylHHtxelE_asskuaU9I3boAAAF2mPvfOQ; __remember_me=true; MUSIC_U=ba34296e04ecdf04df0d8c22e024f30c9536eedc12f37711e562c8307e594de433a649814e309366; __csrf=5446fa62605fb155f09a89410963cdbd';
     return options;
   }
 }

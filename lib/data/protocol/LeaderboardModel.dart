@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 
 class LeaderBoardModel {
   int code;
@@ -8,7 +7,7 @@ class LeaderBoardModel {
     if (map == null) return null;
     LeaderBoardModel newsBean = LeaderBoardModel();
     newsBean.code = map['code'];
-    newsBean.list = List()
+    newsBean.list = []
       ..addAll(
           (map['list'] as List ?? []).map((o) => LeaderBoardList.fromJson(o)));
     return newsBean;
@@ -33,7 +32,7 @@ class LeaderBoardList {
     product.playCount = map['playCount'];
     product.id = map['id'];
     product.coverImgUrl = map['coverImgUrl'];
-    product.tracks = List()
+    product.tracks = []
       ..addAll((map['tracks'] as List ?? []).map((o) => Track.fromJson(o)));
 
     return product;

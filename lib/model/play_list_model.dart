@@ -15,11 +15,10 @@ class PlayListModel extends LayoutStateModel {
       setState(LayoutState.LOADING);
       var response =
           await http.get('/playlist/detail', queryParameters: formData);
-      Playlist playlistDetail =
-      Playlist.fromJson(response.data['playlist']);
+      Playlist playlistDetail = Playlist.fromJson(response.data['playlist']);
       _playlist = playlistDetail;
       setState(LayoutState.SUCCESS);
-    } catch (e, s) {
+    } catch (e) {
       print(e);
     }
   }
