@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 ///
 class Subtitle extends StatefulWidget {
   Subtitle(
-      this.data, {
-        this.selectedTextStyle,
-        this.unSelectedTextStyle,
-        this.itemExtent = 45,
-        this.diameterRatio = 2.0,
-      });
+    this.data, {
+    this.selectedTextStyle,
+    this.unSelectedTextStyle,
+    this.itemExtent = 45,
+    this.diameterRatio = 2.0,
+  });
 
   ///
   /// 字幕数据
@@ -130,11 +130,10 @@ class _SubtitleState extends State<Subtitle> {
       childDelegate: ListWheelChildBuilderDelegate(
           builder: (context, index) {
             return Container(
-              padding: EdgeInsets.only(left: 30,right: 30),
+              padding: EdgeInsets.only(left: 30, right: 30),
               // color: Colors.amber,
               alignment: Alignment.center,
               child: Text(
-
                 '${widget.data[index].content}',
                 style: _currentIndex == index
                     ? widget.selectedTextStyle

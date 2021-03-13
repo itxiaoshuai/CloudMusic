@@ -1,3 +1,4 @@
+import 'package:cloud_music/pages/play_songs/page_play_songs.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/pages/find/PageFind.dart';
 import 'package:cloud_music/pages/my/CurvePage.dart';

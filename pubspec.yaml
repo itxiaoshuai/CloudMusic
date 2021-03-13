@@ -53,6 +53,7 @@ dependencies:
   flutter_html: ^1.0.0
   cookie_jar: ^1.0.0
   dio_cookie_manager: ^1.0.0
+  scrollable_positioned_list: ^0.1.10
 dev_dependencies:
   flutter_test:
     sdk: flutter

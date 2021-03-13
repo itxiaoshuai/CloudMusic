@@ -29,16 +29,17 @@ class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((call) {
-      curSongId = widget.model.curSong.id;
-      _request();
-      // loadData();
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((call) {
+    //   curSongId = widget.model.curSong.id;
+    //   _request();
+    //   // loadData();
+    // });
+    _request();
   }
 
   void _request() async {
     Map<String, dynamic> formData = {
-      'id': curSongId,
+      'id': 33894312,
     };
     _lyricData = await RequestManager.getLyricData(formData);
     // print('${_lyricData.lrc.lyric}');
@@ -83,9 +84,12 @@ class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
       child: StreamBuilder<String>(
         stream: widget.model.curPositionStream,
         builder: (context, snapshot) {
+          print('curPositionStream=====${widget.model.curPositionStream}');
           if (snapshot.hasData) {
             var curTime = double.parse(
                 snapshot.data.substring(0, snapshot.data.indexOf('-')));
+            print('curTime=====${curTime}');
+
             // 获取当前在哪一行
             int curLine = findLyricIndex(curTime, lyrics);
 

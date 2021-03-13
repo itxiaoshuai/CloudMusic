@@ -27,6 +27,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:cloud_music/widget/SAppBarSearch.dart';
 import '../../r.dart';
+import '../WebViewPage.dart';
 import 'FutureBuilderPage.dart';
 import 'package:cloud_music/widget/HomeDrawer.dart';
 import 'package:cloud_music/pages/find/PageDailySpecial.dart';
@@ -41,7 +42,7 @@ class FindPage extends StatefulWidget {
 class _FindPageState extends State<FindPage>
     with AutomaticKeepAliveClientMixin<FindPage> {
   @override
-  bool get wantKeepAlive => true;  //需要返回true
+  bool get wantKeepAlive => true; //需要返回true
   List<Banners> _bannerData = [];
   List widgets = [];
 
@@ -278,7 +279,6 @@ class _FindPageState extends State<FindPage>
     );
     return super.build(context);
   }
-
 }
 
 List<int> getDataList(int count) {
@@ -348,7 +348,17 @@ class ListItem extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushNamed(route);
+          if (text == '数字专辑') {
+            var arguments = {
+              "https://music.163.com/v/m/album/poly/detail",
+              "数字专辑"
+            };
+
+            Navigator.of(context)
+                .pushNamed(route, arguments: WebViewPage(text));
+          } else {
+            Navigator.of(context).pushNamed(route);
+          }
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -960,7 +970,7 @@ List<Menu> videoCategoryList = <Menu>[
   Menu(
     title: R.string.fm,
     img: R.mipmap.fm,
-    path: '',
+    path: RouteName.PAGE_SONGS,
   ),
   Menu(
     title: R.string.playlist,
@@ -979,7 +989,7 @@ List<Menu> videoCategoryList = <Menu>[
   Menu(
     title: R.string.digitalAlbum,
     img: R.mipmap.digitalAlbum,
-    path: RouteName.PAGE_DIGITAL_ALBUM,
+    path: RouteName.PAGE_WEB,
   ),
   Menu(
     title: '唱聊',

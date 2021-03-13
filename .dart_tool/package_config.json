@@ -117,15 +117,15 @@
     },
     {
       "name": "chewie",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/chewie-0.9.10",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/chewie-0.12.2",
       "packageUri": "lib/",
-      "languageVersion": "2.0"
+      "languageVersion": "2.7"
     },
     {
       "name": "chewie_audio",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/chewie_audio-1.0.0+1",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/chewie_audio-1.1.2",
       "packageUri": "lib/",
-      "languageVersion": "2.0"
+      "languageVersion": "2.8"
     },
     {
       "name": "cli_util",
@@ -189,9 +189,9 @@
     },
     {
       "name": "cupertino_icons",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/cupertino_icons-0.1.3",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/cupertino_icons-1.0.2",
       "packageUri": "lib/",
-      "languageVersion": "2.0"
+      "languageVersion": "2.12"
     },
     {
       "name": "dart_style",
@@ -273,9 +273,15 @@
     },
     {
       "name": "flutter_html",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_html-1.0.2",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_html-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.2"
+    },
+    {
+      "name": "flutter_layout_grid",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_layout_grid-0.10.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
     },
     {
       "name": "flutter_page_indicator",
@@ -297,7 +303,7 @@
     },
     {
       "name": "flutter_svg",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_svg-0.18.1",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_svg-0.19.3",
       "packageUri": "lib/",
       "languageVersion": "2.2"
     },
@@ -366,6 +372,12 @@
       "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/image-2.1.19",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "import_js_library",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/import_js_library-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
     },
     {
       "name": "intl",
@@ -460,12 +472,6 @@
     {
       "name": "oktoast",
       "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/oktoast-2.3.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.0"
-    },
-    {
-      "name": "open_iconic_flutter",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/open_iconic_flutter-0.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.0"
     },
@@ -602,10 +608,10 @@
       "languageVersion": "2.6"
     },
     {
-      "name": "screen",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/screen-0.0.5",
+      "name": "scrollable_positioned_list",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/scrollable_positioned_list-0.1.10",
       "packageUri": "lib/",
-      "languageVersion": "2.0"
+      "languageVersion": "2.3"
     },
     {
       "name": "shared_preferences",
@@ -759,9 +765,9 @@
     },
     {
       "name": "video_player",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.12+5",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-1.0.1",
       "packageUri": "lib/",
-      "languageVersion": "2.1"
+      "languageVersion": "2.8"
     },
     {
       "name": "video_player_platform_interface",
@@ -777,9 +783,21 @@
     },
     {
       "name": "wakelock",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/wakelock-0.1.4+2",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/wakelock-0.2.1+1",
       "packageUri": "lib/",
-      "languageVersion": "2.7"
+      "languageVersion": "2.8"
+    },
+    {
+      "name": "wakelock_platform_interface",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/wakelock_platform_interface-0.1.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.8"
+    },
+    {
+      "name": "wakelock_web",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/wakelock_web-0.1.0+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.8"
     },
     {
       "name": "watcher",
@@ -795,7 +813,7 @@
     },
     {
       "name": "webview_flutter",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter-0.3.24",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter-1.0.7",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     },
@@ -830,7 +848,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-03-06T15:40:59.975337Z",
+  "generated": "2021-03-13T04:56:25.462200Z",
   "generator": "pub",
   "generatorVersion": "2.12.0"
 }

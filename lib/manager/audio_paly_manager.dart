@@ -58,21 +58,24 @@ class AudioPlayManager extends ChangeNotifier {
     _tracks.insert(curIndex, track);
     play();
   }
+
   /// 跳转到固定时间
-  void seekPlay(int milliseconds){
+  void seekPlay(int milliseconds) {
     _audioPlayer.seek(Duration(milliseconds: milliseconds));
     resumePlay();
   }
+
   /// 播放
   void play() async {
-    var songId = this._tracks[curIndex].id;
+    // var songId = this._tracks[curIndex].id;
     Map<String, dynamic> formData = {
-      'id': songId,
+      'id': 33894312,
     };
     var url = await RequestManager.getMusicURL(formData);
     print('播放---->${this._tracks[curIndex].name}');
     print('播放---->${url}');
-    _audioPlayer.play(url);
+    _audioPlayer.play(
+        "http://m7.music.126.net/20210313161529/6570b6da89082d174f9c8077ad983028/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3");
   }
 
   /// 暂停、恢复

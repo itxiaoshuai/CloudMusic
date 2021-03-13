@@ -1,4 +1,5 @@
 import 'package:cloud_music/manager/audio_paly_manager.dart';
+import 'package:cloud_music/pages/play_songs/page_songplay.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/base/res/gaps.dart';
@@ -100,8 +101,7 @@ class _PlaySongsPageState extends State<PlaySongsPage>
           ),
           Container(
             margin: EdgeInsets.only(
-                top: kToolbarHeight +
-                    MediaQuery.of(context).padding.top),
+                top: kToolbarHeight + MediaQuery.of(context).padding.top),
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -119,7 +119,6 @@ class _PlaySongsPageState extends State<PlaySongsPage>
                     // });
                   },
                   child: Container(
-
                     child: IndexedStack(
                       index: switchIndex,
                       children: [
@@ -170,7 +169,7 @@ class _PlaySongsPageState extends State<PlaySongsPage>
                             ),
                           ],
                         ),
-                        LyricPage(model),
+                        SongPlay(model),
                       ],
                     ),
                   ),
