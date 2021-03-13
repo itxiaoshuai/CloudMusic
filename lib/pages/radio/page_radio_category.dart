@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/data/protocol/RadioCategoryData.dart';
 import 'package:cloud_music/net/http.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RadioCategoryPage extends StatefulWidget {
   @override

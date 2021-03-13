@@ -1,3 +1,4 @@
+import 'package:cloud_music/pages/WebViewPage.dart';
 import 'package:cloud_music/pages/album/page_album_detail.dart';
 import 'package:cloud_music/pages/album/page_digital_album.dart';
 import 'package:cloud_music/pages/album/page_language_album.dart';
@@ -10,6 +11,7 @@ import 'package:cloud_music/pages/find/PageDailySpecial.dart';
 import 'package:cloud_music/pages/login/page_phone_login.dart';
 import 'package:cloud_music/pages/my/page_friend.dart';
 import 'package:cloud_music/pages/play_songs/page_play_songs.dart';
+import 'package:cloud_music/pages/play_songs/page_songplay.dart';
 import 'package:cloud_music/pages/search/page_search.dart';
 import 'package:cloud_music/pages/search/page_search_list.dart';
 import 'package:flutter/material.dart';
@@ -39,10 +41,12 @@ class RouteName {
   static const String PAGE_MESSAGE = 'page_message'; //消息
   static const String PAGE_NOTICE = 'page_notice'; //通知
   static const String PAGE_NOTICE_COMMENT = 'page_notice_comment'; //评论
-  static const String PAGE_LANGUAGE_STYLE_MUSEUM = 'page_language_style_museum'; //语种风格馆
+  static const String PAGE_LANGUAGE_STYLE_MUSEUM =
+      'page_language_style_museum'; //语种风格馆
   static const String PAGE_PAGE_ALBUM_DETAIL = 'page_album_detail'; //专辑详情
   static const String PAGE_SEARCH = 'page_search'; //搜索页面
   static const String PAGE_SEARCH_LIST = 'page_search_list'; //搜索list页面
+  static const String PAGE_WEB = 'page_web'; //网页
 }
 
 class Routers {
@@ -93,6 +97,14 @@ class Routers {
         return NoAnimRouteBuilder(SearchPage());
       case RouteName.PAGE_SEARCH_LIST:
         return NoAnimRouteBuilder(SearchListPage());
+      case RouteName.PAGE_WEB:
+        var map = settings.arguments;
+        print(map);
+        return NoAnimRouteBuilder(WebViewPage(
+          "https://st.music.163.com/official-terms",
+          title: "网易云音乐隐私政策",
+        ));
+
       default:
         return CupertinoPageRoute(
             builder: (_) => Scaffold(
