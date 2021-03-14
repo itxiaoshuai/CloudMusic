@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_music/data/protocol/playlist.dart';
 import 'package:cloud_music/data/protocol/user_detail_bean.dart';
 import 'package:cloud_music/net/http.dart';
-
+import 'package:cloud_music/pages/user/page_user_base_info.dart';
 import '../../r.dart';
 
 class TabMusic extends StatefulWidget {
@@ -44,17 +44,19 @@ class _TabMusicState extends State<TabMusic>
       padding: EdgeInsets.only(left: 15, right: 15),
       child: ListView(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              // 底色
-              //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
-              shape: BoxShape.rectangle,
-              // 默认值也是矩形
-              borderRadius: BorderRadius.circular((15.0)), // 圆角度
-            ),
+          ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+            // decoration: BoxDecoration(
+            //   color: Colors.white,
+            //   // 底色
+            //   //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
+            //   shape: BoxShape.rectangle,
+            //   // 默认值也是矩形
+            //   borderRadius: BorderRadius.circular((15.0)), // 圆角度
+            // ),
             // margin: EdgeInsets.only(left: 15, right: 15),
             child: Container(
+              color: Colors.white,
               // margin: EdgeInsets.all(15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,17 +89,37 @@ class _TabMusicState extends State<TabMusic>
                     ),
                   ),
                   Gaps.line,
-                  Container(
-                    height: 40,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "查看全部",
-                          style: R.style.textDark14,
+                  Material(
+                    color: Colors.white,
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                        height: 45.0,
+                        child: Container(
+                          height: 40,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  return PageUserBaseInfo(
+                                    userDetail: widget.userDetail,
+                                  );
+                                },
+                              ));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "查看全部",
+                                  style: R.style.textDark14,
+                                ),
+                                Icon(Icons.chevron_right),
+                              ],
+                            ),
+                          ),
                         ),
-                        Icon(Icons.chevron_right),
-                      ],
+                      ),
                     ),
                   ),
                 ],
