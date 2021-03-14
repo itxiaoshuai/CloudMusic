@@ -32,8 +32,8 @@ file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/build_config-0.4.6/
 file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/build_config-0.4.6/lib/
 build_daemon
 2.11
-file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/build_daemon-2.1.9/
-file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/build_daemon-2.1.9/lib/
+file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/build_daemon-2.1.10/
+file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/build_daemon-2.1.10/lib/
 build_resolvers
 2.9
 file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/build_resolvers-1.5.3/
@@ -370,6 +370,10 @@ rxdart
 2.6
 file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/rxdart-0.24.1/
 file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/rxdart-0.24.1/lib/
+scrollable_positioned_list
+2.3
+file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/scrollable_positioned_list-0.1.10/
+file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/scrollable_positioned_list-0.1.10/lib/
 shared_preferences
 2.1
 file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.12+4/
@@ -504,8 +508,8 @@ file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter-1.0.7/
 file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter-1.0.7/lib/
 win32
 2.12
-file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/win32-2.0.2/
-file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/win32-2.0.2/lib/
+file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/win32-2.0.4/
+file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/win32-2.0.4/lib/
 xdg_directories
 2.3
 file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/xdg_directories-0.1.2/

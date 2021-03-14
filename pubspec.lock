@@ -63,7 +63,7 @@ packages:
       name: build_daemon
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.9"
+    version: "2.1.10"
   build_resolvers:
     dependency: transitive
     description:
@@ -667,6 +667,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.24.1"
+  scrollable_positioned_list:
+    dependency: "direct main"
+    description:
+      name: scrollable_positioned_list
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.10"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -909,7 +916,7 @@ packages:
       name: win32
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.2"
+    version: "2.0.4"
   xdg_directories:
     dependency: transitive
     description:

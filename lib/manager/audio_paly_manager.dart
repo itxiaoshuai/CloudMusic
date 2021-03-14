@@ -75,7 +75,7 @@ class AudioPlayManager extends ChangeNotifier {
     print('播放---->${this._tracks[curIndex].name}');
     print('播放---->${url}');
     _audioPlayer.play(
-        "http://m7.music.126.net/20210313161529/6570b6da89082d174f9c8077ad983028/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3");
+        "http://m7.music.126.net/20210313220743/cfc5a4bde3c8fe3436985342bcfb184f/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3");
   }
 
   /// 暂停、恢复

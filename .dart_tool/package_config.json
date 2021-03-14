@@ -51,7 +51,7 @@
     },
     {
       "name": "build_daemon",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/build_daemon-2.1.9",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/build_daemon-2.1.10",
       "packageUri": "lib/",
       "languageVersion": "2.11"
     },
@@ -578,6 +578,12 @@
       "languageVersion": "2.6"
     },
     {
+      "name": "scrollable_positioned_list",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/scrollable_positioned_list-0.1.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "shared_preferences",
       "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.12+4",
       "packageUri": "lib/",
@@ -783,7 +789,7 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/win32-2.0.2",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.flutter-io.cn/win32-2.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -812,7 +818,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-03-12T15:42:08.474048Z",
+  "generated": "2021-03-14T08:12:43.245667Z",
   "generator": "pub",
   "generatorVersion": "2.13.0-116.0.dev"
 }
