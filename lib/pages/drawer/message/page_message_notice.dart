@@ -10,6 +10,7 @@ import 'package:cloud_music/provider/view_state_widget.dart';
 import 'package:cloud_music/route/routes.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:oktoast/oktoast.dart';
 
 import '../../../r.dart';
 
@@ -67,8 +68,9 @@ class _NoticePageState extends State<NoticePage> {
                         return Material(
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context)
-                                  .pushNamed(RouteName.PAGE_NOTICE_COMMENT,arguments: p['notice']);
+                              Navigator.of(context).pushNamed(
+                                  RouteName.PAGE_NOTICE_COMMENT,
+                                  arguments: p['notice']);
                             },
                             child: Container(
                               child: Row(
@@ -76,20 +78,39 @@ class _NoticePageState extends State<NoticePage> {
                                   Gaps.hGap15,
                                   Center(
                                       child: Container(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(35),
-                                      child: CachedNetworkImage(
-                                        width: 35,
-                                        height: 35,
-                                        fit: BoxFit.fill,
-                                        imageUrl:
-                                            json.decode(p['notice'])['user']
-                                                ['avatarUrl'],
-                                        placeholder: (context, url) =>
-                                            ProgressView(),
-                                        errorWidget: (context, url, error) =>
-                                            Icon(Icons.error),
+                                    child: InkWell(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(35),
+                                        child: CachedNetworkImage(
+                                          width: 35,
+                                          height: 35,
+                                          fit: BoxFit.fill,
+                                          imageUrl:
+                                              json.decode(p['notice'])['user']
+                                                  ['avatarUrl'],
+                                          placeholder: (context, url) =>
+                                              ProgressView(),
+                                          errorWidget: (context, url, error) =>
+                                              Icon(Icons.error),
+                                        ),
                                       ),
+                                      onTap: () {
+
+                                        print('${ json.decode(p['notice'])['user']
+                                        ['avatarUrl']}');
+                                        print('${ json.decode(p['notice'])['user']
+                                        ['userId']}');
+                                        // var beRepliedUser = json.decode(
+                                        //     p['notice']['beRepliedUser']);
+                                        // print(beRepliedUser);
+                                        // print(
+                                        //     '${json.decode(p['notice']['beRepliedUser']['avatarUrl'])}');
+                                        // // print(json.decode(p['userId'])+"");
+                                        Navigator.of(context).pushNamed(
+                                            RouteName.USER_HOME,
+                                            arguments: json.decode(p['notice'])['user']
+                                            ['userId']);
+                                      },
                                     ),
                                   )),
                                   Gaps.hGap15,

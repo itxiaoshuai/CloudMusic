@@ -992,6 +992,7 @@ List<Menu> videoCategoryList = <Menu>[
     title: R.string.digitalAlbum,
     img: R.mipmap.digitalAlbum,
     path: RouteName.PAGE_WEB,
+    // path: RouteName.PAGE_DIGITAL_ALBUM,
   ),
   Menu(
     title: '唱聊',
