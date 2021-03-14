@@ -353,9 +353,11 @@ class ListItem extends StatelessWidget {
               "https://music.163.com/v/m/album/poly/detail",
               "数字专辑"
             };
-
-            Navigator.of(context)
-                .pushNamed(route, arguments: WebViewPage(text));
+            Map<String, dynamic> data = new Map<String, dynamic>();
+            data['url'] = "https://music.163.com/v/m/album/poly/detail";
+            data['title'] = "数字专辑";
+            Navigator.of(context).pushNamed(route,
+                arguments:data);
           } else {
             Navigator.of(context).pushNamed(route);
           }

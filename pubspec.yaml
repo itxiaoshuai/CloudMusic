@@ -34,7 +34,7 @@ dependencies:
   json_serializable: ^3.0.0
   cached_network_image: ^2.2.0+1
   flutter_webview_plugin: ^0.3.5
-  #  一组加载指示器
+#  #  一组加载指示器
   flutter_spinkit: "^3.1.0"
   shared_preferences: ^0.5.1+2
   pull_to_refresh: ^1.6.4
@@ -44,7 +44,7 @@ dependencies:
   common_utils: ^1.2.1
   # chewie的依赖
   video_player: ^1.0.1
-  # 视频播放
+#  # 视频播放
   chewie: ^0.12.2
   marquee_text: ^1.1.0
   audioplayers: ^0.17.4
@@ -54,6 +54,7 @@ dependencies:
   cookie_jar: ^1.0.0
   dio_cookie_manager: ^1.0.0
   scrollable_positioned_list: ^0.1.10
+  path_provider: ^1.6.22
 dev_dependencies:
   flutter_test:
     sdk: flutter

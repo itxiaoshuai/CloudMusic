@@ -72,10 +72,10 @@ class AudioPlayManager extends ChangeNotifier {
       'id': 33894312,
     };
     var url = await RequestManager.getMusicURL(formData);
-    print('播放---->${this._tracks[curIndex].name}');
+    // print('播放---->${this._tracks[curIndex].name}');
     print('播放---->${url}');
     _audioPlayer.play(
-        "http://m7.music.126.net/20210313220743/cfc5a4bde3c8fe3436985342bcfb184f/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3");
+        "http://m7.music.126.net/20210314210851/77e94a2570a0d0224c7fec4d0d3bac56/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3");
   }
 
   /// 暂停、恢复

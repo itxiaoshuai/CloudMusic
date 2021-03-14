@@ -98,11 +98,11 @@ class Routers {
       case RouteName.PAGE_SEARCH_LIST:
         return NoAnimRouteBuilder(SearchListPage());
       case RouteName.PAGE_WEB:
-        var map = settings.arguments;
-        print(map);
+        Map<String, dynamic>  map = settings.arguments;
+        print('map---->${map}');
         return NoAnimRouteBuilder(WebViewPage(
-          "https://st.music.163.com/official-terms",
-          title: "网易云音乐隐私政策",
+          map['url'],
+          title: map['title'],
         ));
 
       default:
