@@ -39,11 +39,19 @@ class _MessageCommentPageState extends State<MessageCommentPage> {
             ),
             Row(
               children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(json
-                      .decode(widget.notice)['comment']['user']['avatarUrl']),
-                  backgroundColor: Colors.black,
-                  radius: 15.0,
+                InkWell(
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(json
+                        .decode(widget.notice)['comment']['user']['avatarUrl']),
+                    backgroundColor: Colors.black,
+                    radius: 15.0,
+                  ),
+                  onTap: (){
+                    // Navigator.of(context).pushNamed(
+                    //     RouteName.USER_HOME,
+                    //     arguments: json.decode(p['notice'])['user']
+                    //     ['userId']);
+                  },
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

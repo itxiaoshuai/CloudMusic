@@ -78,19 +78,30 @@ class _PageCommentState extends State<PageComment> {
                                       children: [
                                         Center(
                                             child: Container(
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(35),
-                                            child: CachedNetworkImage(
-                                              width: 35,
-                                              height: 35,
-                                              fit: BoxFit.fill,
-                                              imageUrl: p['user']['avatarUrl'],
-                                              placeholder: (context, url) =>
-                                                  ProgressView(),
-                                              errorWidget:
-                                                  (context, url, error) =>
-                                                      Icon(Icons.error),
+                                          child: Material(
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).pushNamed(
+                                                    RouteName.USER_HOME,
+                                                    arguments: p['user']
+                                                        ['userId']);
+                                              },
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(35),
+                                                child: CachedNetworkImage(
+                                                  width: 35,
+                                                  height: 35,
+                                                  fit: BoxFit.fill,
+                                                  imageUrl: p['user']
+                                                      ['avatarUrl'],
+                                                  placeholder: (context, url) =>
+                                                      ProgressView(),
+                                                  errorWidget:
+                                                      (context, url, error) =>
+                                                          Icon(Icons.error),
+                                                ),
+                                              ),
                                             ),
                                           ),
                                           margin: EdgeInsets.only(left: 25),
