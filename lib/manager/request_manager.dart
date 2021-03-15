@@ -137,6 +137,16 @@ class RequestManager {
     return response;
   }
 
+  //通知 - 评论
+  static Future fetchComment() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    Map<String, dynamic> formData = {
+      'uid': 1521312765,
+    };
+    var response = await http.get('/msg/comments', queryParameters: formData);
+    return response;
+  }
+
   //数字专辑-语种风格馆
   static Future fetchAlbumList(Map<String, dynamic> queryParameters) async {
     // SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -208,6 +218,7 @@ class RequestManager {
       };
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString("cookie", cookie);
+      prefs.setInt("uid", uid);
       UserInfo userInfo = UserInfo.fromJson(userInfoMap);
       var info = jsonEncode(userInfoMap);
       save(info.toString());

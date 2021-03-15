@@ -78,25 +78,33 @@ class _MessagePageState extends State<MessagePage> {
                               Text('粉丝'),
                             ],
                           ),
-                          Column(
-                            children: [
-                              Container(
-                                width: 45,
-                                height: 45,
-                                decoration: BoxDecoration(
-                                  //圆形渐变
-                                  color: Colors.blue[400],
-                                  shape: BoxShape.circle,
-                                  // gradient: const LinearGradient(colors: [
-                                  //   Colors.redAccent,
-                                  //   Colors.redAccent,
-                                  //   Colors.red,
-                                  // ]),
-                                ),
-                                child: Icon(Icons.comment),
+                          Material(
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushNamed(RouteName.PAGE_MESSAGE_COMMENT);
+                              },
+                              child: Column(
+                                children: [
+                                  Container(
+                                    width: 45,
+                                    height: 45,
+                                    decoration: BoxDecoration(
+                                      //圆形渐变
+                                      color: Colors.blue[400],
+                                      shape: BoxShape.circle,
+                                      // gradient: const LinearGradient(colors: [
+                                      //   Colors.redAccent,
+                                      //   Colors.redAccent,
+                                      //   Colors.red,
+                                      // ]),
+                                    ),
+                                    child: Icon(Icons.comment),
+                                  ),
+                                  Text('评论'),
+                                ],
                               ),
-                              Text('评论'),
-                            ],
+                            ),
                           ),
                           Column(
                             children: [
