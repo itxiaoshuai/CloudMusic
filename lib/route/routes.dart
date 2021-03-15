@@ -4,6 +4,7 @@ import 'package:cloud_music/pages/album/page_digital_album.dart';
 import 'package:cloud_music/pages/album/page_language_album.dart';
 import 'package:cloud_music/pages/drawer/message/page_message_comment.dart';
 import 'package:cloud_music/pages/drawer/message/page_message_notice.dart';
+import 'package:cloud_music/pages/drawer/message/page_comment.dart';
 import 'package:cloud_music/pages/drawer/page_message.dart';
 import 'package:cloud_music/pages/drawer/page_yunbei.dart';
 import 'package:cloud_music/pages/drawer/setting/page_setting.dart';
@@ -41,6 +42,7 @@ class RouteName {
   static const String PAGE_MESSAGE = 'page_message'; //消息
   static const String PAGE_NOTICE = 'page_notice'; //通知
   static const String PAGE_NOTICE_COMMENT = 'page_notice_comment'; //评论
+  static const String PAGE_MESSAGE_COMMENT = 'page_message_comment'; //消息评论
   static const String PAGE_LANGUAGE_STYLE_MUSEUM =
       'page_language_style_museum'; //语种风格馆
   static const String PAGE_PAGE_ALBUM_DETAIL = 'page_album_detail'; //专辑详情
@@ -85,6 +87,8 @@ class Routers {
         return NoAnimRouteBuilder(MessagePage());
       case RouteName.PAGE_NOTICE:
         return NoAnimRouteBuilder(NoticePage());
+      case RouteName.PAGE_MESSAGE_COMMENT: //消息评论
+        return NoAnimRouteBuilder(PageComment());
       case RouteName.PAGE_NOTICE_COMMENT:
         var notice = settings.arguments;
         return NoAnimRouteBuilder(MessageCommentPage(notice: notice));
@@ -98,7 +102,7 @@ class Routers {
       case RouteName.PAGE_SEARCH_LIST:
         return NoAnimRouteBuilder(SearchListPage());
       case RouteName.PAGE_WEB:
-        Map<String, dynamic>  map = settings.arguments;
+        Map<String, dynamic> map = settings.arguments;
         print('map---->${map}');
         return NoAnimRouteBuilder(WebViewPage(
           map['url'],
