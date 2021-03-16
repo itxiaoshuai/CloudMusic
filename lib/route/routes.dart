@@ -13,6 +13,7 @@ import 'package:cloud_music/pages/login/page_phone_login.dart';
 import 'package:cloud_music/pages/my/page_friend.dart';
 import 'package:cloud_music/pages/play_songs/page_play_songs.dart';
 import 'package:cloud_music/pages/play_songs/page_songplay.dart';
+import 'package:cloud_music/pages/radio/page_radio_detail.dart';
 import 'package:cloud_music/pages/search/page_search.dart';
 import 'package:cloud_music/pages/search/page_search_list.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,8 @@ class RouteName {
   static const String PAGE_SEARCH = 'page_search'; //搜索页面
   static const String PAGE_SEARCH_LIST = 'page_search_list'; //搜索list页面
   static const String PAGE_WEB = 'page_web'; //网页
+  static const String PAGE_RADIO_DETAIL = 'page_radio_detail'; //电台详情
+
 }
 
 class Routers {
@@ -108,6 +111,8 @@ class Routers {
           map['url'],
           title: map['title'],
         ));
+      case RouteName.PAGE_RADIO_DETAIL:
+        return NoAnimRouteBuilder(PageRadioDetail());
 
       default:
         return CupertinoPageRoute(

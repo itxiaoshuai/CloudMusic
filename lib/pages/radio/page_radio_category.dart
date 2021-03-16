@@ -5,9 +5,6 @@ import 'package:cloud_music/data/protocol/RadioCategoryData.dart';
 import 'package:cloud_music/net/http.dart';
 
 class RadioCategoryPage extends StatefulWidget {
-  @override
-  Widget build(BuildContext context) {}
-
   RadioCategoryPageState createState() => RadioCategoryPageState();
 }
 
