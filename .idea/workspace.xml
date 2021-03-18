@@ -31,7 +31,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="422e3421-0863-4b35-913d-ccd6fe26d751" name="Default Changelist" comment="" />
+    <list default="true" id="422e3421-0863-4b35-913d-ccd6fe26d751" name="Default Changelist" comment="个人动态">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -327,7 +329,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615816413328</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="个人基本信息页创建">
+      <created>1615816819054</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1615816819054</updated>
+    </task>
+    <task id="LOCAL-00016" summary="个人动态">
+      <created>1615828061680</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1615828061680</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -373,7 +389,8 @@
     <MESSAGE value="数字专辑原生界面改为网页接入" />
     <MESSAGE value="通知界面头像点击跳转个人主页" />
     <MESSAGE value="个人基本信息页创建" />
-    <option name="LAST_COMMIT_MESSAGE" value="个人基本信息页创建" />
+    <MESSAGE value="个人动态" />
+    <option name="LAST_COMMIT_MESSAGE" value="个人动态" />
   </component>
   <component name="WindowStateProjectService">
     <state x="832" y="418" key="#Custom_Plugin_Repositories" timestamp="1610794915944">
@@ -408,10 +425,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="100" y="100" width="1720" height="840" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1615647505503" />
-    <state x="744" y="89" key="CommitChangelistDialog2" timestamp="1615816412848">
+    <state x="744" y="89" key="CommitChangelistDialog2" timestamp="1615828107964">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="744" y="89" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1615816412848" />
+    <state x="744" y="89" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1615828107964" />
     <state x="130" y="246" width="1536" height="861" key="DiffContextDialog" timestamp="1615725651068">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -420,22 +437,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1615704359067" />
-    <state width="1877" height="401" key="GridCell.Tab.0.bottom" timestamp="1615737649746">
+    <state width="1877" height="411" key="GridCell.Tab.0.bottom" timestamp="1615828221350">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="401" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615737649746" />
-    <state width="1877" height="401" key="GridCell.Tab.0.center" timestamp="1615737649746">
+    <state width="1877" height="411" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615828221350" />
+    <state width="1877" height="411" key="GridCell.Tab.0.center" timestamp="1615828221350">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="401" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615737649746" />
-    <state width="1877" height="401" key="GridCell.Tab.0.left" timestamp="1615737649746">
+    <state width="1877" height="411" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615828221350" />
+    <state width="1877" height="411" key="GridCell.Tab.0.left" timestamp="1615828221350">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="401" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615737649746" />
-    <state width="1877" height="401" key="GridCell.Tab.0.right" timestamp="1615737649746">
+    <state width="1877" height="411" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615828221350" />
+    <state width="1877" height="411" key="GridCell.Tab.0.right" timestamp="1615828221350">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="401" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615737649746" />
+    <state width="1877" height="411" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615828221350" />
     <state width="1340" height="366" key="GridCell.Tab.1.bottom" timestamp="1615643846665">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -484,10 +501,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="231" y="101" width="1426" height="800" key="VCS.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615728630327" />
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1615816428127">
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1615828193544">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1615816428127" />
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1615828193544" />
     <state x="754" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615816289661">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -500,10 +517,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="692" y="332" key="git4idea.merge.GitMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615816343900" />
-    <state x="604" y="332" key="git4idea.merge.GitPullDialog" timestamp="1615816809248">
+    <state x="604" y="332" key="git4idea.merge.GitPullDialog" timestamp="1615816883911">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="604" y="332" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615816809248" />
+    <state x="604" y="332" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615816883911" />
     <state x="686" y="445" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1615816357997">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -512,10 +529,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="242" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615639910582" />
-    <state x="623" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1615735367965">
+    <state x="623" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1615824919909">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="229" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615735367965" />
+    <state x="623" y="229" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615824919909" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CloudMusic$F__open_source_CloudMusic_android_app_build_gradle__1_.ic" NAME="$PROJECT_DIR$/android/app/build.gradle (1) Coverage Results" MODIFIED="1615709646549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
