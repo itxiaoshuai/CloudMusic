@@ -184,9 +184,13 @@ class _FindPageState extends State<FindPage>
               height: 1,
               color: Colors.grey[300],
             ),
-            BoxFindRecommend(),
+            BoxFindRecommend(
+              text: "推荐歌单",
+              route: RouteName.PAGE_DAILY_RECOMMEND,
+            ),
 
             Container(
+              // color: Colors.redAccent,
 //            padding: EdgeInsets.only(left: 15, right: 0),
               height: 200,
               child: ListView(
@@ -213,7 +217,15 @@ class _FindPageState extends State<FindPage>
                 ],
               ),
             ),
+            Container(
+              height: 10,
+              color: Colors.grey[300],
+            ),
             NewSongAndDiscWidget(),
+            BoxFindRecommend(
+              text: "音乐日历",
+              route: RouteName.PAGE_DAILY_RECOMMEND,
+            ),
           ],
         ),
       ),
@@ -356,8 +368,7 @@ class ListItem extends StatelessWidget {
             Map<String, dynamic> data = new Map<String, dynamic>();
             data['url'] = "https://music.163.com/v/m/album/poly/detail";
             data['title'] = "数字专辑";
-            Navigator.of(context).pushNamed(route,
-                arguments:data);
+            Navigator.of(context).pushNamed(route, arguments: data);
           } else {
             Navigator.of(context).pushNamed(route);
           }

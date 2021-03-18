@@ -1,6 +1,7 @@
 import 'package:cloud_music/data/protocol/RadioCategoryData.dart';
 import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/pages/podcast/widget_gridview_podcast.dart';
+import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/material.dart';
 
 class PagePodcastCategory extends StatefulWidget {
@@ -11,8 +12,9 @@ class PagePodcastCategory extends StatefulWidget {
 class PagePodcastCategoryStat extends State<PagePodcastCategory>
     with AutomaticKeepAliveClientMixin<PagePodcastCategory> {
   List<Category> mData = [];
+
   @override
-  bool get wantKeepAlive => true;  //需要返回true
+  bool get wantKeepAlive => true; //需要返回true
   @override
   void initState() {
     initData();
@@ -57,7 +59,10 @@ class PagePodcastCategoryStat extends State<PagePodcastCategory>
             child: Container(
               child: Material(
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context)
+                        .pushNamed(RouteName.PAGE_RADIO_DETAIL);
+                  },
                   child: Container(
                     child: Center(
                       child: Column(
