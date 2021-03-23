@@ -12,8 +12,8 @@ final Http http = Http();
 class Http extends BaseHttp {
   @override
   Future<void> init() async {
-    // options.baseUrl = "http://118.24.63.15:1020";
-    options.baseUrl = "http://192.168.191.2:3000";
+    options.baseUrl = "http://118.24.63.15:1020";
+    // options.baseUrl = "http://192.168.191.2:3000";
     // options.baseUrl = "http://172.16.25.80:3000";
     options.followRedirects = false;
 

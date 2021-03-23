@@ -48,7 +48,7 @@ class SongListPageState extends State<SongListPage>
         );
       }).toList(),
     );
-    Widget tabContainer = new DefaultTabController(
+    Widget tabContainer =  DefaultTabController(
       length: choices.length,
       initialIndex: 0, //初始索引
       child: Column(
