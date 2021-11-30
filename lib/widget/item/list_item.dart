@@ -5,7 +5,7 @@ class ListItem extends StatelessWidget {
   final String text;
   final String image;
 
-  ListItem({this.image, this.text});
+  ListItem({required this.image, required this.text});
 
   @override
   Widget build(BuildContext context) {

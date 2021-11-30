@@ -14,7 +14,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CommentPage extends StatefulWidget {
   CommentPage(
     this.playlistId,
-  ) : assert(playlistId != null, 'playlist id，can not be null');
+  );
   final int playlistId;
 
   @override
@@ -35,6 +35,7 @@ class _CommentPageState extends State<CommentPage> {
       appBar: AppBar(),
       body: ProviderWidget<CommentListModel>(
           model: CommentListModel(),
+          child: Container(),
           onModelReady: (model) {
             Map<String, dynamic> formData = {
               'id': widget.playlistId,

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_music/base/res/colors.dart';
-import 'package:cloud_music/base/res/gaps.dart';
-import 'package:cloud_music/base/res/styles.dart';
 import 'package:cloud_music/net/http.dart';
-import 'package:cloud_music/pages/video/VideoList.dart';
 
 import 'SongLabelDetailPage.dart';
 
@@ -46,7 +42,7 @@ class _SongLabelPageState extends State<SongLabelPage> {
           // 添加
           physics: NeverScrollableScrollPhysics(),
           // 添加
-          itemCount: list.length ?? 0,
+          itemCount: list.length ,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4, // 横轴元素个数
             mainAxisSpacing: 10.0, // 纵轴间距
@@ -57,10 +53,11 @@ class _SongLabelPageState extends State<SongLabelPage> {
             Sub sub = list[index];
             return GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) {
-                      return SongLabelDetailPage(cat: sub.name,);
-                    }));
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return SongLabelDetailPage(
+                    cat: sub.name,
+                  );
+                }));
               },
               child: getItemContainer(sub),
             );
@@ -113,9 +110,9 @@ class _SongLabelPageState extends State<SongLabelPage> {
 
 class Label {
   Label({
-    this.title,
-    this.category,
-    this.list,
+    required this.title,
+    required this.category,
+    required this.list,
   });
 
   String title; //这个参数是分类名称
@@ -152,12 +149,11 @@ List<Label> labelList = <Label>[
 ];
 
 class Sub {
-  bool hot;
-  int category;
-  String name;
+  late bool hot;
+  late int category;
+  late String name;
 
   static Sub fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Sub sub = Sub();
     sub.hot = map['hot'];
     sub.category = map['category'];

@@ -1,13 +1,13 @@
 import 'dart:convert' show json;
-import 'package:flutter/foundation.dart';
 
 class Lyric {
-  String lyric;
-  Duration startTime;
-  Duration endTime;
-  double offset;
+  late String lyric;
+  late Duration startTime;
+  late Duration endTime;
+  late double offset;
 
-  Lyric(this.lyric, {this.startTime, this.endTime, this.offset});
+  Lyric(this.lyric,
+      {required this.startTime, this.endTime = Duration.zero, this.offset = 0});
 
   @override
   String toString() {
@@ -16,24 +16,25 @@ class Lyric {
 }
 
 class LyricData {
-  TransUser transUser;
-  TransUser lyricUser;
-  Lrc lrc;
-  Klyric klyric;
-  Tlyric tlyric;
-  int code;
+  late TransUser? transUser;
+  late TransUser? lyricUser;
+  late Lrc lrc;
+  late Klyric klyric;
+  late Tlyric tlyric;
+  late int code;
 
   LyricData({
-    this.transUser,
-    this.lrc,
-    this.klyric,
-    this.tlyric,
-    this.code,
+    required this.transUser,
+    required this.lrc,
+    required this.klyric,
+    required this.tlyric,
+    required this.code,
   });
 
   LyricData.fromJson(Map<String, dynamic> json) {
-    transUser =
-        json['transUser'] != null ? TransUser.fromJson(json['transUser']) : null;
+    transUser = (json['transUser'] != null
+        ? TransUser.fromJson(json['transUser'])
+        : null)!;
     lrc = Lrc.fromJson(json['lrc']);
     klyric = Klyric.fromJson(json['klyric']);
     tlyric = Tlyric.fromJson(json['tlyric']);
@@ -54,20 +55,20 @@ class LyricData {
 }
 
 class LyricUser {
-  int id;
-  int status;
-  int demand;
-  int userid;
-  String nickname;
-  int uptime;
+  late int id;
+  late int status;
+  late int demand;
+  late int userid;
+  late String nickname;
+  late int uptime;
 
   LyricUser({
-    this.id,
-    this.status,
-    this.demand,
-    this.userid,
-    this.nickname,
-    this.uptime,
+    required this.id,
+    required this.status,
+    required this.demand,
+    required this.userid,
+    required this.nickname,
+    required this.uptime,
   });
 
   LyricUser.fromJson(Map<String, dynamic> json) {
@@ -95,20 +96,20 @@ class LyricUser {
 }
 
 class TransUser {
-  int id;
-  int status;
-  int demand;
-  int userid;
-  String nickname;
-  int uptime;
+  late int id;
+  late int status;
+  late int demand;
+  late int userid;
+  late String nickname;
+  late int uptime;
 
   TransUser({
-    this.id,
-    this.status,
-    this.demand,
-    this.userid,
-    this.nickname,
-    this.uptime,
+    required this.id,
+    required this.status,
+    required this.demand,
+    required this.userid,
+    required this.nickname,
+    required this.uptime,
   });
 
   TransUser.fromJson(Map<String, dynamic> json) {
@@ -136,12 +137,12 @@ class TransUser {
 }
 
 class Lrc {
-  int version;
-  String lyric;
+  late int version;
+  late String lyric;
 
   Lrc({
-    this.version,
-    this.lyric,
+    required this.version,
+    required this.lyric,
   });
 
   Lrc.fromJson(Map<String, dynamic> json) {
@@ -161,12 +162,12 @@ class Lrc {
 }
 
 class Klyric {
-  int version;
-  Object lyric;
+  late int version;
+  late Object lyric;
 
   Klyric({
-    this.version,
-    this.lyric,
+    required this.version,
+    required this.lyric,
   });
 
   Klyric.fromJson(Map<String, dynamic> json) {
@@ -186,12 +187,12 @@ class Klyric {
 }
 
 class Tlyric {
-  int version;
-  String lyric;
+  late int version;
+  late String lyric;
 
   Tlyric({
-    this.version,
-    this.lyric,
+    required this.version,
+    required this.lyric,
   });
 
   Tlyric.fromJson(Map<String, dynamic> json) {

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class ListItemCustom extends StatelessWidget {
   final List<Widget> children;
   final double height;
-  final Function onTap;
+  final Function() onTap;
   final bool divider;
 
   ListItemCustom(
-      {this.children, this.height = 54, this.onTap, this.divider = true});
+      {required this.children, this.height = 54, required this.onTap, this.divider = true});
 
   @override
   Widget build(BuildContext context) {

@@ -11,7 +11,7 @@ class ImageTapWidget extends StatefulWidget {
     this.imgNormal,
     this.imgTap,
     this.size, {
-    this.onTap,
+    required this.onTap,
   });
 
   @override

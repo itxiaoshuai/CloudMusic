@@ -44,7 +44,7 @@ class BarChartTween extends Tween<BarChart> {
   BarChartTween(BarChart begin, BarChart end) : super(begin: begin, end: end);
 
   @override
-  BarChart lerp(double t) => BarChart.lerp(begin, end, t);
+  BarChart lerp(double t) => BarChart.lerp(begin!, end!, t);
 }
 
 class Bar {
@@ -54,8 +54,8 @@ class Bar {
   final Color color;
 
   static Bar lerp(Bar begin, Bar end, double t) {
-    return Bar(lerpDouble(begin.height, end.height, t),
-        Color.lerp(begin.color, end.color, t));
+    return Bar(lerpDouble(begin.height, end.height, t)!,
+        Color.lerp(begin.color, end.color, t)!);
   }
 }
 
@@ -63,7 +63,7 @@ class BarTween extends Tween<Bar> {
   BarTween(Bar begin, Bar end) : super(begin: begin, end: end);
 
   @override
-  Bar lerp(double t) => Bar.lerp(begin, end, t);
+  Bar lerp(double t) => Bar.lerp(begin!, end!, t);
 }
 
 class BarChartPainter extends CustomPainter {

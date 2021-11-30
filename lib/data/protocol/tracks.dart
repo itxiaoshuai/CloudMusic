@@ -1,16 +1,16 @@
 class Tracks {
-  String name;
-  int id;
-  List<Ar> ar;
-  Al al;
-  int mv;
+  late String name;
+  late int id;
+  late List<Ar> ar;
+  late Al al;
+  late int mv;
 
   Tracks({
-    this.name,
-    this.id,
-    this.ar,
-    this.al,
-    this.mv,
+    required this.name,
+    required this.id,
+    required this.ar,
+    required this.al,
+    required this.mv,
   });
 
   Tracks.fromJson(Map<String, dynamic> json) {
@@ -22,8 +22,7 @@ class Tracks {
         ar.add(Ar.fromJson(v));
       });
     }
-
-    al = json['al'] != null ? Al.fromJson(json['al']) : null;
+    al = (json['al'] != null ? Al.fromJson(json['al']) : null)!;
 
     mv = json['mv'];
   }
@@ -32,13 +31,9 @@ class Tracks {
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['name'] = this.name;
     data['id'] = this.id;
-    if (this.ar != null) {
-      data['ar'] = this.ar.map((v) => v.toJson()).toList();
-    }
+    data['ar'] = this.ar.map((v) => v.toJson()).toList();
 
-    if (this.al != null) {
-      data['al'] = this.al.toJson();
-    }
+    data['al'] = this.al.toJson();
 
     data['mv'] = this.mv;
     return data;
@@ -46,12 +41,12 @@ class Tracks {
 }
 
 class Ar {
-  int id;
-  String name;
+ late int id;
+ late String name;
 
   Ar({
-    this.id,
-    this.name,
+    required this.id,
+    required this.name,
   });
 
   Ar.fromJson(Map<String, dynamic> json) {
@@ -68,14 +63,14 @@ class Ar {
 }
 
 class Al {
-  int id;
-  String name;
-  String picUrl;
+  late int id;
+  late String name;
+  late String picUrl;
 
   Al({
-    this.id,
-    this.name,
-    this.picUrl,
+    required this.id,
+    required this.name,
+    required this.picUrl,
   });
 
   Al.fromJson(Map<String, dynamic> json) {

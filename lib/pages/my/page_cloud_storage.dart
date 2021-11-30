@@ -16,7 +16,7 @@ class CloudStoragePage extends StatefulWidget {
 }
 
 class _CloudStoragePageState extends State {
-  CloudStorageBean _cloudStorageBean;
+  late CloudStorageBean _cloudStorageBean;
   CloudListModel _counterProvider = new CloudListModel();
 
   @override
@@ -164,8 +164,9 @@ class _CloudStoragePageState extends State {
           Map<String, dynamic> formData = {'limit': 30, "offset": 30};
           model.loadData(formData);
         },
+        child: Container(),
         builder: (context, model, child) {
-          debugPrint('---当前状态--> ${model}');
+          debugPrint('---当前状态--> $model');
           switch (model.layoutState) {
             case LayoutState.IDLE:
               return AppBar(

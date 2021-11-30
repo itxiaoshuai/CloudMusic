@@ -148,7 +148,7 @@ class _AlbumDigitalWidgetState extends State<AlbumDigitalWidget> {
                   ),
                   child: Text(
                     '支持',
-                    style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
                         color: Colors.red,
                         fontWeight: FontWeight.w100,
                         fontSize: 12),

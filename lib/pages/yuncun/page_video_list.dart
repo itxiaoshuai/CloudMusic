@@ -14,11 +14,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class VideoListPage extends StatefulWidget {
   final int categoryId;
-  int limit = 30;
-  int offset = 0;
+  late int limit = 30;
+  late int offset = 0;
 
   VideoListPage({
-    this.categoryId,
+    required this.categoryId,
   });
 
   @override
@@ -53,7 +53,7 @@ class VideoListPageState extends State<VideoListPage>
         enablePullUp: true,
         header: MaterialClassicHeader(),
         footer: CustomFooter(
-          builder: (BuildContext context, LoadStatus mode) {
+          builder: (BuildContext context, LoadStatus? mode) {
             Widget body;
             if (mode == LoadStatus.idle) {
               body = Text("上拉加载");
@@ -101,9 +101,8 @@ class VideoListPageState extends State<VideoListPage>
                           // playCount: p['playCount'],
                           img: p['data']['coverUrl'],
                           describe: p['data']['title'],
-                          durationms:p['data']['durationms'],
+                          durationms: p['data']['durationms'],
                           avatarUrl: p['data']['creator']['avatarUrl']);
-
                     }).toList(),
                   ),
                 );
@@ -161,17 +160,18 @@ class VideoItem extends StatelessWidget {
   final int id;
   final String avatarUrl;
   final int durationms;
+
   VideoItem({
-    this.width,
-    this.height,
+    this.width = 0,
+    this.height = 0,
     this.circular = 6.0,
     this.updateFrequency = "",
-    this.img,
+    required this.img,
     this.describe = '',
     this.playCount = 0,
-    this.id,
-    this.avatarUrl,
-    this.durationms,
+    required this.id,
+    required this.avatarUrl,
+    required this.durationms,
   });
 
   @override

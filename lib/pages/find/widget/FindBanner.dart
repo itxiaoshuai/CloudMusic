@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_music/data/protocol/BannerBean.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/base/CommonLoading.dart';
-import 'package:cloud_music/data/protocol/banner_model.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
 import '../../WebViewPage.dart';
 
@@ -10,9 +10,9 @@ double circular = 6;
 
 // 轮播图
 class FindBanner extends StatelessWidget {
-  final List<Banners> bannerData;
+  final List<BannerBean> bannerData;
 
-  FindBanner({this.bannerData});
+  FindBanner({required this.bannerData});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class FindBanner extends StatelessWidget {
 }
 
 class BannerParent extends StatelessWidget {
-  final List<Banners> bannerData;
+  final List<BannerBean> bannerData;
   final BuildContext context;
 
   BannerParent(this.bannerData, this.context);
@@ -31,7 +31,7 @@ class BannerParent extends StatelessWidget {
     if (bannerData != null && bannerData.length > 0) {
       widget = Swiper(
         itemBuilder: (BuildContext context, int index) {
-          Banners banner = bannerData[index];
+          BannerBean banner = bannerData[index];
           return BannerItem(banner: banner);
         },
         layout: SwiperLayout.DEFAULT,
@@ -78,8 +78,8 @@ _background(BuildContext context) {
         children: <Widget>[
           Expanded(
             child: Container(
-              // color: Theme.of(context).primaryColor, //这里使用主题色,随主题切换变化
-            ),
+                // color: Theme.of(context).primaryColor, //这里使用主题色,随主题切换变化
+                ),
           )
         ],
       ),
@@ -89,9 +89,9 @@ _background(BuildContext context) {
 
 //单个轮播图控件样式
 class BannerItem extends StatelessWidget {
-  final Banners banner;
+  final BannerBean banner;
 
-  BannerItem({this.banner});
+  BannerItem({required this.banner});
 
   @override
   Widget build(BuildContext context) {
@@ -173,6 +173,6 @@ class BannerItem extends StatelessWidget {
         break;
     }
 
-    return color;
+    return color = Colors.blue;
   }
 }

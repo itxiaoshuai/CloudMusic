@@ -1,11 +1,11 @@
-class LoadingEvent{
-  bool show;
+class LoadingEvent {
+  static bool isShow = false;
 
-  LoadingEvent.show() {
-    show = true;
+  static show() {
+    isShow = true;
   }
 
-  LoadingEvent.hide() {
-    show = false;
+  static hide() {
+    isShow = false;
   }
 }

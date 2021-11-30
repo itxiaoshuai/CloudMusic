@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_music/data/protocol/BannerBean.dart';
 import 'package:cloud_music/route/routes.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:date_format/date_format.dart';
@@ -9,29 +10,14 @@ import 'package:cloud_music/base/CommonLoading.dart';
 import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/base/res/styles.dart';
 import 'package:cloud_music/data/api/apis.dart';
-import 'package:cloud_music/data/protocol/banner_model.dart';
 import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/pages/find/widget/FindBanner.dart';
-import 'package:cloud_music/pages/find/widget/LearnInkWell.dart';
-import 'package:cloud_music/pages/find/widget/SpinKitWaveType.dart';
-import 'package:cloud_music/pages/leaderboard/LeaderboardPage.dart';
 import 'package:cloud_music/pages/my/PageMy.dart';
-import 'package:cloud_music/pages/page_songlist.dart';
-import 'package:cloud_music/pages/radio/page_radio.dart';
-import 'package:cloud_music/pages/user/page_user_detail.dart';
-import 'package:cloud_music/pages/video/VideoPage.dart';
 import 'package:cloud_music/widget/ListItemCustom.dart';
 import 'package:cloud_music/widget/base_song_img_item.dart';
-import 'package:cloud_music/widget/item/DrawerListItem.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:cloud_music/widget/SAppBarSearch.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import '../../r.dart';
-import '../WebViewPage.dart';
-import 'FutureBuilderPage.dart';
 import 'package:cloud_music/widget/HomeDrawer.dart';
-import 'package:cloud_music/pages/find/PageDailySpecial.dart';
-import 'package:cloud_music/pages/leaderboard/LeaderboardPage.dart';
 import 'box_find_recommend.dart';
 
 class FindPage extends StatefulWidget {
@@ -43,7 +29,7 @@ class _FindPageState extends State<FindPage>
     with AutomaticKeepAliveClientMixin<FindPage> {
   @override
   bool get wantKeepAlive => true; //需要返回true
-  List<Banners> _bannerData = [];
+  List<BannerBean> _bannerData = [];
   List widgets = [];
 
   @override
@@ -63,10 +49,10 @@ class _FindPageState extends State<FindPage>
     var response =
         await dio.get("http://www.mocky.io/v2/5cee0154300000592c6e9825");
 
-    List<Banners> banners = BannerModel.fromJson(response.data).banners;
+    List<BannerBean> banners = BannerList.fromJson(response.data).banners;
 
     _bannerData = banners;
-    if (banners != null && mounted) {
+    if (mounted) {
       setState(() {
         _bannerData = banners;
       });
@@ -308,7 +294,7 @@ List<Widget> getWidgetList(List list) {
 }
 
 Widget getItemContainer(String picUrl) {
-  return ListItemCustom(img: picUrl);
+  return ListItemCustom(img: picUrl, album: {},);
 }
 
 _buildMenu(BuildContext context) {
@@ -352,7 +338,7 @@ class ListItem extends StatelessWidget {
   final String image;
   final String route;
 
-  ListItem({this.image, this.text, this.route});
+  ListItem({required this.image, required this.text, required this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -383,7 +369,7 @@ class ListItem extends StatelessWidget {
                   width: 45.0,
                   decoration: BoxDecoration(
                     //圆形渐变
-                    color: Colors.pink[50].withOpacity(0.8),
+                    color: Colors.pink[50]!.withOpacity(0.8),
                     shape: BoxShape.circle,
                     // gradient: const LinearGradient(colors: [
                     //   Colors.redAccent,
@@ -431,7 +417,7 @@ class ListItem extends StatelessWidget {
               width: 45.0,
               decoration: BoxDecoration(
                 //圆形渐变
-                color: Colors.pink[50].withOpacity(0.8),
+                color: Colors.pink[50]!.withOpacity(0.8),
                 shape: BoxShape.circle,
                 // gradient: const LinearGradient(colors: [
                 //   Colors.redAccent,
@@ -889,19 +875,19 @@ class PagingScrollPhysics extends ScrollPhysics {
   final double maxSize; // 最大可滑动区域
 
   PagingScrollPhysics(
-      {this.maxSize,
-      this.leadingSpacing,
-      this.itemDimension,
-      ScrollPhysics parent})
+      {required this.maxSize,
+      required this.leadingSpacing,
+      required this.itemDimension,
+      required ScrollPhysics parent})
       : super(parent: parent);
 
   @override
-  PagingScrollPhysics applyTo(ScrollPhysics ancestor) {
+  PagingScrollPhysics applyTo(ScrollPhysics? ancestor) {
     return PagingScrollPhysics(
         maxSize: maxSize,
         itemDimension: itemDimension,
         leadingSpacing: leadingSpacing,
-        parent: buildParent(ancestor));
+        parent: buildParent(ancestor)!);
   }
 
   double _getPage(ScrollPosition position, double leading) {
@@ -912,12 +898,12 @@ class PagingScrollPhysics extends ScrollPhysics {
     return (page * itemDimension) - leading;
   }
 
-  double _getTargetPixels(
+  Future<double> _getTargetPixels(
     ScrollPosition position,
     Tolerance tolerance,
     double velocity,
     double leading,
-  ) {
+  ) async {
     double page = _getPage(position, leading);
 
     if (position.pixels < 0) {
@@ -936,10 +922,11 @@ class PagingScrollPhysics extends ScrollPhysics {
       }
       return _getPixels(page.roundToDouble(), leading);
     }
+    return 0;
   }
 
   @override
-  Simulation createBallisticSimulation(
+  Simulation? createBallisticSimulation(
       ScrollMetrics position, double velocity) {
     // If we're out of range and not headed back in range, defer to the parent
     // ballistics, which should put us back in range at a page boundary.
@@ -950,7 +937,7 @@ class PagingScrollPhysics extends ScrollPhysics {
     final Tolerance tolerance = this.tolerance;
 
     final double target =
-        _getTargetPixels(position, tolerance, velocity, leadingSpacing);
+        _getTargetPixels(position as ScrollPosition, tolerance, velocity, leadingSpacing) as double;
     if (target != position.pixels)
       return ScrollSpringSimulation(spring, position.pixels, target, velocity,
           tolerance: tolerance);
@@ -967,7 +954,7 @@ const List<int> TestDatas = const <int>[
 ];
 
 class Menu {
-  Menu({this.title, this.img, this.path});
+  Menu({required this.title, required this.img, required this.path});
 
   String title;
   String img;
@@ -987,7 +974,7 @@ List<Menu> videoCategoryList = <Menu>[
   ),
   Menu(
     title: R.string.playlist,
-    img: R.mipmap.playlist,
+    img: R.mipmap.playlist, path: '',
   ),
   Menu(
     title: R.string.rankingList,

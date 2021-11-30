@@ -13,10 +13,10 @@ class _LoadingWidgetState extends State<LoadingWidget>
   // Random([int seed ])：创建一个随机数生成器
   final random =  Random();
   int dataSet = 50;
-  AnimationController animation;
-  double startHeight;
-  double currentHeight;
-  double endHeight;
+  late AnimationController animation;
+ late double startHeight;
+ late double currentHeight;
+ late double endHeight;
 
   /*
  @protected
@@ -111,7 +111,7 @@ class BarChartPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint =  Paint()
-      ..color = Colors.blue[400]
+      ..color = Colors.blue.shade400
       ..style = PaintingStyle.fill;
     // drawRect：使用给定的Paint绘制一个矩形，是否填充或描边（或两者）是由Paint.style控制
     canvas.drawRect(

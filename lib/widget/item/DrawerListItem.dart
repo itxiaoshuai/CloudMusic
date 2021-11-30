@@ -4,9 +4,9 @@ import 'package:cloud_music/pages/find/FutureBuilderPage.dart';
 class DrawerListItem extends StatelessWidget {
   final String text;
   final String image;
-  final String route;
+  final String? route;
 
-  DrawerListItem({this.image, this.text, this.route});
+  DrawerListItem({required this.image, required this.text, this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class DrawerListItem extends StatelessWidget {
       color: Colors.white,
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushNamed(route);
+          Navigator.of(context).pushNamed(route!);
         },
         child: Container(
           padding: EdgeInsets.only(left: 15, right: 10),

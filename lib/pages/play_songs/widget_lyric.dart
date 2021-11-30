@@ -8,18 +8,17 @@ import 'package:cloud_music/data/protocol/lyric.dart';
 import '../../r.dart';
 
 class LyricWidget extends CustomPainter with ChangeNotifier {
-  List<Lyric> lyric;
-  List<TextPainter> lyricPaints = []; // 其他歌词
-  double _offsetY = 0;
-  int curLine;
-  Paint linePaint;
-  bool isDragging = false; // 是否正在人为拖动
-  double totalHeight = 0; // 总长度
-  TextPainter draggingLineTimeTextPainter; // 正在拖动中当前行的时间
-  Size canvasSize = Size.zero;
-  int dragLineTime;
+  late List<Lyric> lyric;
+  late List<TextPainter> lyricPaints = []; // 其他歌词
+  late double _offsetY = 0;
+  late int curLine;
+  late Paint linePaint;
+  late bool isDragging = false; // 是否正在人为拖动
+  late double totalHeight = 0; // 总长度
+  late TextPainter draggingLineTimeTextPainter; // 正在拖动中当前行的时间
+  late Size canvasSize = Size.zero;
+  late int dragLineTime;
 
-  get offsetY => _offsetY;
 
   set offsetY(double value) {
     // 判断如果是在拖动状态下

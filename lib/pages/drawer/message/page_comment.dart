@@ -39,7 +39,7 @@ class _PageCommentState extends State<PageComment> {
             model: CommentModel(),
             onModelReady: (model) {
               model.loadNoticeData();
-            },
+            },          child: Container(),
             builder: (context, model, child) {
               switch (model.layoutState) {
                 case LayoutState.IDLE:

@@ -12,7 +12,7 @@ class PlayBottomMenuWidget extends StatefulWidget {
 }
 
 class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
-  AudioPlayerMode _audioPlayerMode;
+  late AudioPlayerMode _audioPlayerMode;
 
   Widget _buildPlayModeWidget() {
     switch (_audioPlayerMode) {
@@ -109,14 +109,13 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
 
   Widget _buildPlayStateWidget(AudioPlayManager manager) {
     print('播放状态---->${manager.curState}');
-    if (manager.curState == AudioPlayerState.PAUSED ||
-        manager.curState == null) {
+    if (manager.curState == PlayerState.PAUSED) {
       return ImageTapWidget(
         R.mipmap.play,
         R.mipmap.playSelect,
         75,
         onTap: () {
-          if (manager.curState == null) {
+          if (manager.curState == PlayerState.STOPPED) {
             manager.play();
           } else {
             manager.togglePlay();

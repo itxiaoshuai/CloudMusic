@@ -21,14 +21,14 @@ class ImageHelper {
     return "assets/images/" + url;
   }
 
-  static Widget placeHolder({double width, double height}) {
+  static Widget placeHolder({required double width, required double height}) {
     return SizedBox(
         width: width,
         height: height,
         child: CupertinoActivityIndicator(radius: min(10.0, width / 3)));
   }
 
-  static Widget error({double width, double height, double size}) {
+  static Widget error({required double width, required double height, required double size}) {
     return SizedBox(
         width: width,
         height: height,

@@ -1,13 +1,16 @@
 ///歌单推荐
 
 class SongListRecommendModel {
-  bool hasTaste;
-  int code;
-  int category;
-  List<Result> result;
+  late bool hasTaste;
+  late int code;
+  late int category;
+  late List<Result> result;
 
   SongListRecommendModel(
-      {this.hasTaste, this.code, this.category, this.result});
+      {required this.hasTaste,
+      required this.code,
+      required this.category,
+      required this.result});
 
   SongListRecommendModel.fromJson(Map<String, dynamic> json) {
     hasTaste = json['hasTaste'];
@@ -26,36 +29,34 @@ class SongListRecommendModel {
     data['hasTaste'] = this.hasTaste;
     data['code'] = this.code;
     data['category'] = this.category;
-    if (this.result != null) {
-      data['result'] = this.result.map((v) => v.toJson()).toList();
-    }
+    data['result'] = this.result.map((v) => v.toJson()).toList();
     return data;
   }
 }
 
 class Result {
-  int id;
-  int type;
-  String name;
-  String copywriter;
-  String picUrl;
-  bool canDislike;
-  int playCount;
-  int trackCount;
-  bool highQuality;
-  String alg;
+  late int id;
+  late int type;
+  late String name;
+  late String copywriter;
+  late String picUrl;
+  late bool canDislike;
+  late int playCount;
+  late int trackCount;
+  late bool highQuality;
+  late String alg;
 
   Result(
-      {this.id,
-      this.type,
-      this.name,
-      this.copywriter,
-      this.picUrl,
-      this.canDislike,
-      this.playCount,
-      this.trackCount,
-      this.highQuality,
-      this.alg});
+      {required this.id,
+      required this.type,
+      required this.name,
+      required this.copywriter,
+      required this.picUrl,
+      required this.canDislike,
+      required this.playCount,
+      required this.trackCount,
+      required this.highQuality,
+      required this.alg});
 
   Result.fromJson(Map<String, dynamic> json) {
     id = json['id'];

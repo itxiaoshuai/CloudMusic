@@ -13,15 +13,16 @@ import 'tab_music.dart';
 ///用户详情页
 class UserDetailPage extends StatefulWidget {
   ///用户ID
-  final int userId;
+  final int? userId;
 
-  const UserDetailPage({Key key, @required this.userId}) : super(key: key);
+  const UserDetailPage({required Key key, required this.userId})
+      : super(key: key);
 
   State<StatefulWidget> createState() => UserDetailPageState();
 }
 
 class UserDetailPageState extends State<UserDetailPage> {
-  UserDetail user;
+  late UserDetail? user;
 
   @override
   void initState() {
@@ -31,7 +32,11 @@ class UserDetailPageState extends State<UserDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return user == null ? Container() : DetailPageWidget(user);
+    if (user == null) {
+      return Container();
+    } else {
+      return DetailPageWidget(user!);
+    }
   }
 
   Future<void> initData() async {
@@ -40,7 +45,7 @@ class UserDetailPageState extends State<UserDetailPage> {
     };
     var response = await http.get('/user/detail', queryParameters: formData);
     user = UserDetail.fromJsonMap(response.data);
-    print(user.level);
+    print(user?.level);
     setState(() {});
   }
 }
@@ -48,7 +53,7 @@ class UserDetailPageState extends State<UserDetailPage> {
 class DetailPageWidget extends StatefulWidget {
   final UserDetail user;
 
-  const DetailPageWidget(this.user, {Key key}) : super(key: key);
+  const DetailPageWidget(this.user) : super();
 
   @override
   _DetailPageWidgetState createState() => _DetailPageWidgetState();
@@ -56,9 +61,9 @@ class DetailPageWidget extends StatefulWidget {
 
 class _DetailPageWidgetState extends State<DetailPageWidget>
     with SingleTickerProviderStateMixin {
-  TabController tabController;
+  late TabController tabController;
   bool isAppBarExpanded = true;
-  ScrollController _scrollController;
+  late ScrollController _scrollController;
 
   @override
   void initState() {
@@ -123,7 +128,7 @@ class _DetailPageWidgetState extends State<DetailPageWidget>
 }
 
 class _UserDetailAppBar extends StatelessWidget {
-  const _UserDetailAppBar(this.user, this.isAppBarExpanded, {Key key})
+  const _UserDetailAppBar(this.user, this.isAppBarExpanded, {Key? key})
       : super(key: key);
   final UserDetail user;
   final bool isAppBarExpanded;
@@ -175,7 +180,6 @@ class _UserDetailAppBar extends StatelessWidget {
           builder: (context) {
             return PopupMenuButton<String>(
                 child: Container(
-
                   margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
                   child: Center(
                     child: IconButton(
@@ -242,6 +246,7 @@ class _UserDetailAppBar extends StatelessWidget {
       //只跟floating相对应，如果为true，floating必须为true，也就是向下滑动一点儿，整个大背景就会动画显示全部，网上滑动整个导航栏的内容就会消失
       flexibleSpace: FlexibleDetailBar(
           background: FlexShadowBackground(
+            key: ValueKey(FlexibleDetailBar),
             child: Image(
                 fit: BoxFit.cover,
                 image: NetworkImage(user.profile.backgroundUrl)),
@@ -438,7 +443,7 @@ class _UserDetailAppBar extends StatelessWidget {
 class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
   final TabBar child;
 
-  StickyTabBarDelegate({@required this.child});
+  StickyTabBarDelegate({required this.child});
 
   @override
   Widget build(
@@ -507,7 +512,7 @@ class BottomClipper extends CustomClipper<Path> {
 class RoundedTabBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget> tabs;
 
-  const RoundedTabBar({Key key, @required this.tabs}) : super(key: key);
+  const RoundedTabBar({required this.tabs}) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -523,7 +528,7 @@ class RoundedTabBar extends StatelessWidget implements PreferredSizeWidget {
                   color: Color(0xff00cdd7),
                 )),
             indicatorSize: TabBarIndicatorSize.label,
-            labelColor: Theme.of(context).textTheme.bodyText1.color,
+            labelColor: Theme.of(context).textTheme.bodyText1!.color,
             tabs: tabs),
       ),
     );

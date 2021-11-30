@@ -16,7 +16,7 @@ class TabMusic extends StatefulWidget {
   ///用户ID
   final UserDetail userDetail;
 
-  const TabMusic({Key key, @required this.userDetail}) : super(key: key);
+  const TabMusic({ required this.userDetail}) : super();
 
   @override
   _TabMusicState createState() => _TabMusicState();

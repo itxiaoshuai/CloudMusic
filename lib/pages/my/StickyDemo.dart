@@ -11,10 +11,10 @@ class MyScrv extends StatefulWidget {
 }
 
 class MyScrvState extends State<MyScrv> with SingleTickerProviderStateMixin {
-  List<String> _list = new List();
-  List<Color> myColors = new List();
+  List<String> _list = [];
+  List<Color> myColors = [];
 
-  TabController tabController;
+  late TabController tabController;
 
   @override
   void initState() {
@@ -27,7 +27,6 @@ class MyScrvState extends State<MyScrv> with SingleTickerProviderStateMixin {
     myColors.add(Colors.lightBlue);
     myColors.add(Colors.lightBlue);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +44,7 @@ class MyScrvState extends State<MyScrv> with SingleTickerProviderStateMixin {
         delegate: StickyTabBarDelegate(
           child: TabBar(
             indicator: CustomUnderlineTabIndicator(
-                insets:
-                EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 15),
+                insets: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 15),
                 borderSide: BorderSide(
                   width: 5,
                   color: Color(0xff00cdd7),
@@ -61,11 +59,10 @@ class MyScrvState extends State<MyScrv> with SingleTickerProviderStateMixin {
           ),
         ),
       ),
-
       new SliverFixedExtentList(
         itemExtent: 50.0,
         delegate: new SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
+          (BuildContext context, int index) {
             return new Container(
               alignment: Alignment.center,
               color: Colors.lightBlue[100 * (index % 9)],
@@ -76,13 +73,12 @@ class MyScrvState extends State<MyScrv> with SingleTickerProviderStateMixin {
       ),
     ]);
   }
-
-
 }
+
 class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
   final TabBar child;
 
-  StickyTabBarDelegate({@required this.child});
+  StickyTabBarDelegate({required this.child});
 
   @override
   Widget build(

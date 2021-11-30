@@ -29,7 +29,7 @@ class _MessagePageState extends State<MessagePage> {
             model: MessageModel(),
             onModelReady: (model) {
               model.loadData();
-            },
+            },          child: Container(),
             builder: (context, model, child) {
               switch (model.layoutState) {
                 case LayoutState.IDLE:

@@ -6,7 +6,7 @@ import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/layout_state_model.dart';
 
 class CommentListModel extends LayoutStateModel {
-  CommentList _commentList;
+  late CommentList _commentList;
 
   CommentList get data => _commentList;
   loadData(Map<String, dynamic> queryParameters) {

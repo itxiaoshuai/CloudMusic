@@ -9,7 +9,7 @@ class NestedScrollDemoPage extends StatefulWidget {
 
 class NestedScrollState extends State<NestedScrollDemoPage>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  late TabController _tabController;
 
   @override
   void dispose() {
@@ -94,7 +94,7 @@ class NestedScrollState extends State<NestedScrollDemoPage>
 class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
   final TabBar child;
 
-  StickyTabBarDelegate({@required this.child});
+  StickyTabBarDelegate({required this.child});
 
   @override
   Widget build(

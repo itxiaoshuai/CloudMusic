@@ -38,7 +38,7 @@ class _NoticePageState extends State<NoticePage> {
             model: MessageModel(),
             onModelReady: (model) {
               model.loadNoticeData();
-            },
+            },          child: Container(),
             builder: (context, model, child) {
               switch (model.layoutState) {
                 case LayoutState.IDLE:

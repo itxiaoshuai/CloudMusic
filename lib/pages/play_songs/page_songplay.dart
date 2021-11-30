@@ -23,9 +23,9 @@ final ItemPositionsListener itemPositionsListener =
     ItemPositionsListener.create();
 
 class _SongPlayState extends State<SongPlay> {
-  LyricData _lyricData;
-  List<Lyric> lyrics;
-  LyricWidget _lyricWidget;
+  late LyricData _lyricData;
+  late List<Lyric> lyrics;
+  late LyricWidget _lyricWidget;
   List<SubtitleEntry> _subtitleList = [];
 
   @override
@@ -78,7 +78,7 @@ class _SongPlayState extends State<SongPlay> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             var curTime = double.parse(
-                snapshot.data.substring(0, snapshot.data.indexOf('-')));
+                snapshot.data!.substring(0, snapshot.data!.indexOf('-')));
             print('curTime=====${curTime}');
 
             // 获取当前在哪一行

@@ -32,6 +32,7 @@ class PagePodcastCategoryModelStat extends State<PagePodcastCategoryModel>  {
 
               model.loadData(widget.id);
             },
+            child: Container(),
             builder: (context, model, child) {
               switch (model.layoutState) {
                 case LayoutState.IDLE:

@@ -12,13 +12,13 @@ class PlaySongsModel with ChangeNotifier{
 
   List<Song> _songs = [];
   int curIndex = 0;
-  Duration curSongDuration;
-  AudioPlayerState _curState;
+  late Duration curSongDuration;
+  late PlayerState _curState;
 
   List<Song> get allSongs => _songs;
   Song get curSong => _songs[curIndex];
   Stream<String> get curPositionStream => _curPositionController.stream;
-  AudioPlayerState get curState => _curState;
+  PlayerState get curState => _curState;
 
 
   void init() {
@@ -27,7 +27,7 @@ class PlaySongsModel with ChangeNotifier{
     _audioPlayer.onPlayerStateChanged.listen((state) {
       _curState = state;
       /// 先做顺序播放
-      if(state == AudioPlayerState.COMPLETED){
+      if(state == PlayerState.COMPLETED){
         nextPlay();
       }
       // 其实也只有在播放状态更新时才需要通知。
@@ -54,7 +54,7 @@ class PlaySongsModel with ChangeNotifier{
   }
 
   // 播放很多歌
-  void playSongs(List<Song> songs, {int index}) {
+  void playSongs(List<Song> songs, {required int index}) {
     this._songs = songs;
     if (index != null) curIndex = index;
     play();
@@ -76,7 +76,7 @@ class PlaySongsModel with ChangeNotifier{
 
   /// 暂停、恢复
   void togglePlay(){
-    if (_audioPlayer.state == AudioPlayerState.PAUSED) {
+    if (_audioPlayer.state == PlayerState.PAUSED) {
       resumePlay();
     } else {
       pausePlay();

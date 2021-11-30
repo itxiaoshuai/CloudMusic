@@ -1,9 +1,8 @@
 class VideoDetailData {
-  int code;
-  Data data;
+  late  int code;
+  late Data data;
 
   static VideoDetailData fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     VideoDetailData videoDetailData = VideoDetailData();
     videoDetailData.code = map['code'];
     videoDetailData.data = Data.fromJson(map['data']);
@@ -12,22 +11,21 @@ class VideoDetailData {
 }
 
 class Data {
-  String vid;
-  String coverUrl;
-  String title;
-  String description;
-  int praisedCount;
-  int commentCount;
-  int shareCount;
-  int subscribeCount;
-  int publishTime;
-  String avatarUrl;
-  int width;
-  int height;
-  Creator creator;
+late String vid;
+late String coverUrl;
+late String title;
+late String description;
+late int praisedCount;
+late int commentCount;
+late int shareCount;
+late int subscribeCount;
+late int publishTime;
+late String avatarUrl;
+late int width;
+late int height;
+late Creator creator;
 
   static Data fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Data data = Data();
     data.vid = map['vid'];
     data.coverUrl = map['coverUrl'];
@@ -47,15 +45,14 @@ class Data {
 }
 
 class Creator {
-  bool followed;
-  int userType;
-  int accountStatus;
-  int userId;
-  String nickname;
-  String avatarUrl;
+late bool followed;
+late int userType;
+late int accountStatus;
+late int userId;
+late String nickname;
+late String avatarUrl;
 
   static Creator fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Creator creator = Creator();
     creator.followed = map['followed'];
     creator.userType = map['userType'];

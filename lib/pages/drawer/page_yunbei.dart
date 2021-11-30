@@ -1,5 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_music/base/CommonLoading.dart';
 import 'package:cloud_music/data/protocol/yun_task.dart';
 import 'package:cloud_music/manager/request_manager.dart';
 import 'package:flutter/material.dart';
@@ -10,20 +8,17 @@ class YunBeiPage extends StatefulWidget {
 }
 
 class _YunBeiPageState extends State<YunBeiPage> {
-  YunCoinTask _task;
+  late YunCoinTask _task;
 
   @override
-  Future<void> initState() {
+  Future<void> initState() async {
     super.initState();
-    _refresh();
-  }
-
-  Future<YunCoinTask> _refresh() async {
     _task = await RequestManager.fetchTasks();
     setState(() {
       print('_taskccccccccccccccccccccccc');
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

@@ -13,11 +13,7 @@ import 'package:cloud_music/data/protocol/playlist.dart';
 import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/route/routes.dart';
 import 'package:cloud_music/widget/HomeDrawer.dart';
-import 'package:cloud_music/widget/base_song_img_item.dart';
-import 'package:cloud_music/widget/flexible_app_bar.dart';
 import 'package:cloud_music/widget/item/menu_item.dart';
-import 'package:cloud_music/widget/RoundUnderlineTabIndicator.dart';
-import 'package:cloud_music/widget/CustomRRecTabIndicator.dart';
 import 'package:cloud_music/widget/CustomUnderlineTabIndicator.dart';
 import '../../r.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -31,8 +27,8 @@ class MyPage extends StatefulWidget {
 
 class _MyPageState extends State<MyPage>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  Playlist playlist;
-  TabController tabController;
+  late Playlist playlist;
+  late TabController tabController;
   var tabs = <Tab>[];
   List<Playlist> mListData = [];
   List<Playlist> mCreatedListData = [];
@@ -642,7 +638,7 @@ class VerticalItem extends StatelessWidget {
   final String text;
   final String image;
 
-  VerticalItem({this.image, this.text});
+  VerticalItem({required this.image, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -666,7 +662,7 @@ class VerticalItem extends StatelessWidget {
 }
 
 class Menu {
-  const Menu({this.title, this.img, this.path});
+  const Menu({required this.title, required this.img, required this.path});
 
   final String title;
   final String img;

@@ -1,34 +1,32 @@
 class CommentList {
-  bool isMusician;
-  int userId;
-  bool moreHot;
-  int code;
-  int total;
-  bool more;
-  List<Comment> comments;
+  late bool isMusician;
+  late int userId;
+  late  bool moreHot;
+  late  int code;
+  late  int total;
+  late bool more;
+  late List<Comment> comments;
 
   static CommentList fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     CommentList commentList = CommentList();
     commentList.code = map['code'];
     commentList.comments = []
-      ..addAll((map['comments'] as List ?? []).map((o) => Comment.fromJson(o)));
+      ..addAll((map['comments'] as List).map((o) => Comment.fromJson(o)));
     return commentList;
   }
 }
 
 class Comment {
-  int likedCount;
-  int time;
-  bool liked;
-  int playCount;
-  int commentId;
-  String content;
+  late int likedCount;
+  late  int time;
+  late bool liked;
+  late  int playCount;
+  late  int commentId;
+  late  String content;
 
-  User user;
+  late User user;
 
   static Comment fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Comment comment = Comment();
     comment.likedCount = map['likedCount'];
     comment.time = map['time'];
@@ -42,15 +40,14 @@ class Comment {
 }
 
 class User {
-  String avatarUrl;
-  String nickname;
-  String remarkName;
-  int vipType;
-  int userId;
-  int userType;
+ late String avatarUrl;
+ late String nickname;
+ late String remarkName;
+ late  int vipType;
+ late int userId;
+ late int userType;
 
   static User fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     User user = User();
     user.avatarUrl = map['avatarUrl'];
     user.nickname = map['nickname'];

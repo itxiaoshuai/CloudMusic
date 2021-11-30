@@ -1,9 +1,7 @@
-import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/net/http.dart';
-import 'package:cloud_music/widget/ListItemCustom.dart';
 import 'package:cloud_music/widget/base_song_img_item.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -13,7 +11,7 @@ class PlaylistCategoryPage extends StatefulWidget {
   int offset = 0;
 
   PlaylistCategoryPage({
-    this.cat,
+    required this.cat,
   });
 
   @override
@@ -48,7 +46,7 @@ class PlaylistCategoryPageState extends State<PlaylistCategoryPage>
         enablePullUp: true,
         header: MaterialClassicHeader(),
         footer: CustomFooter(
-          builder: (BuildContext context, LoadStatus mode) {
+          builder: (BuildContext context, LoadStatus? mode) {
             Widget body;
             if (mode == LoadStatus.idle) {
               body = Text("上拉加载");

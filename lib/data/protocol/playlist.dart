@@ -1,54 +1,55 @@
 import 'tracks.dart';
 
 class Playlist {
-  Creator creator;
+  late Creator creator;
 
   @override
   String toString() {
     return 'PlaylistDetail{creator: $creator, tracks: $tracks, trackIds: $trackIds, createTime: $createTime, highQuality: $highQuality, userId: $userId, cloudTrackCount: $cloudTrackCount, subscribedCount: $subscribedCount, coverImgUrl: $coverImgUrl, trackCount: $trackCount, playCount: $playCount, description: $description, tags: $tags, name: $name, id: $id, shareCount: $shareCount, commentCount: $commentCount, subscribed: $subscribed}';
   }
 
-  List<Tracks> tracks;
-  List<TrackIds> trackIds;
-  int createTime;
-  bool highQuality;
-  int userId;
-  int cloudTrackCount; //云端歌曲数
-  int subscribedCount; //订阅数
-  String coverImgUrl;
-  int trackCount; //歌曲数
-  int playCount; //播放量
-  String description; //描述
-  List<String> tags; //标签[华语,流行,欧美]
-  String name; //标题
-  int id;
-  int shareCount; //分享次数
-  int commentCount; //评论数
-  bool subscribed; //是否收藏
+  late List<Tracks> tracks;
+  late List<TrackIds> trackIds;
+  late int createTime;
+  late bool highQuality;
+  late int userId;
+  late int cloudTrackCount; //云端歌曲数
+  late int subscribedCount; //订阅数
+  late String coverImgUrl;
+  late int trackCount; //歌曲数
+  late int playCount; //播放量
+  late String description; //描述
+  late List<String> tags; //标签[华语,流行,欧美]
+  late String name; //标题
+  late int id;
+  late int shareCount; //分享次数
+  late int commentCount; //评论数
+  late bool subscribed; //是否收藏
   Playlist(
-      {this.subscribed,
-      this.creator,
-      this.tracks,
-      this.trackIds,
-      this.createTime,
-      this.highQuality,
-      this.userId,
-      this.cloudTrackCount,
-      this.subscribedCount,
-      this.coverImgUrl,
-      this.trackCount,
-      this.playCount,
-      this.description,
-      this.tags,
-      this.name,
-      this.id,
-      this.shareCount,
-      this.commentCount});
+      {required this.subscribed,
+      required this.creator,
+      required this.tracks,
+      required this.trackIds,
+      required this.createTime,
+      required this.highQuality,
+      required this.userId,
+      required this.cloudTrackCount,
+      required this.subscribedCount,
+      required this.coverImgUrl,
+      required this.trackCount,
+      required this.playCount,
+      required this.description,
+      required this.tags,
+      required this.name,
+      required this.id,
+      required this.shareCount,
+      required this.commentCount});
 
-  Playlist.fromJson(Map<String, dynamic> json) {
+  Playlist.fromJson(Map<dynamic, dynamic> json) {
     // subscribed = json['subscribed'];
-    creator =
-        json['creator'] != null ? new Creator.fromJson(json['creator']) : null;
+    creator = (json['creator'] != null
+        ? new Creator.fromJson(json['creator'])
+        : null)!;
     if (json['tracks'] != null) {
       tracks = <Tracks>[];
       json['tracks'].forEach((v) {
@@ -114,26 +115,26 @@ class Playlist {
 }
 
 class Creator {
-  int province; //省(110000)
-  String avatarUrl; //头像
-  int gender; //性别
-  int city; //市
-  int birthday; //生日(时间戳装换毫秒值)
-  int userId; //用户id
-  String nickname; //鹿白川
-  String signature; //话少慢热不喜交际 / 不推广 勿扰
-  String backgroundUrl;
+  late int province; //省(110000)
+  late String avatarUrl; //头像
+  late int gender; //性别
+  late int city; //市
+  late int birthday; //生日(时间戳装换毫秒值)
+  late int userId; //用户id
+  late String nickname; //鹿白川
+  late String signature; //话少慢热不喜交际 / 不推广 勿扰
+  late String backgroundUrl;
 
   Creator({
-    this.province,
-    this.avatarUrl,
-    this.gender,
-    this.city,
-    this.birthday,
-    this.userId,
-    this.nickname,
-    this.signature,
-    this.backgroundUrl,
+    required this.province,
+    required this.avatarUrl,
+    required this.gender,
+    required this.city,
+    required this.birthday,
+    required this.userId,
+    required this.nickname,
+    required this.signature,
+    required this.backgroundUrl,
   });
 
   Creator.fromJson(Map<String, dynamic> json) {
@@ -164,9 +165,9 @@ class Creator {
 }
 
 class Experts {
-  String s2;
+  late String s2;
 
-  Experts({this.s2});
+  Experts({required this.s2});
 
   Experts.fromJson(Map<String, dynamic> json) {
     s2 = json['2'];
@@ -180,23 +181,20 @@ class Experts {
 }
 
 class TrackIds {
-  int id;
-  int v;
-  Null alg;
+  late int id;
+  late int v;
 
-  TrackIds({this.id, this.v, this.alg});
+  TrackIds({required this.id, required this.v});
 
   TrackIds.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     v = json['v'];
-    alg = json['alg'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['v'] = this.v;
-    data['alg'] = this.alg;
     return data;
   }
 }

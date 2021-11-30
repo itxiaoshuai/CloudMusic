@@ -26,6 +26,7 @@ class _FriendAttentionPageState extends State {
 
           model.loadData(formData);
         },
+        child: Container(),
         builder: (context, model, child) {
           switch (model.layoutState) {
             case LayoutState.IDLE:

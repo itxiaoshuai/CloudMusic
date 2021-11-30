@@ -22,13 +22,12 @@ class CloudPasswordInputTextField extends StatefulWidget {
   final TextStyle textStyle; //文本样式
   final CloudPasswordInputTextFieldBoxType boxType; //盒子类型
   const CloudPasswordInputTextField({
-    Key key,
     this.boxType = CloudPasswordInputTextFieldBoxType.BOX,
     this.type = CloudPasswordInputTextFieldType.BOXES,
-    this.onChange,
+    required this.onChange,
     this.length = 6,
-    this.controller,
-    this.node,
+    required this.controller,
+    required this.node,
     this.boxWidth = 40,
     this.boxHeight = 50,
     this.borderRaiuds = 5.0,
@@ -36,18 +35,19 @@ class CloudPasswordInputTextField extends StatefulWidget {
     this.spacing = 10,
     this.borderWidth = 1.0,
     this.obscureText = false,
-    this.textStyle,
+    required this.textStyle,
     this.obscureTextString = "●",
     this.fillColor = Colors.white,
     this.backgroundColor = Colors.white,
-  }) : super(key: key);
+  }) : super();
 
   @override
   _CloudPasswordInputTextFieldState createState() =>
       _CloudPasswordInputTextFieldState();
 }
 
-class _CloudPasswordInputTextFieldState extends State<CloudPasswordInputTextField> {
+class _CloudPasswordInputTextFieldState
+    extends State<CloudPasswordInputTextField> {
   List titles = [];
 
   Widget box() {
@@ -57,8 +57,8 @@ class _CloudPasswordInputTextFieldState extends State<CloudPasswordInputTextFiel
       if (titles.length > i) {
         title = widget.obscureText ? widget.obscureTextString : titles[i];
       }
-      Border border;
-      BorderRadius borderRadius;
+      Border? border;
+      BorderRadius? borderRadius;
       double itemWidth = widget.boxWidth;
       double itemHeight = widget.boxHeight;
       if (widget.type == CloudPasswordInputTextFieldType.BOXES) {
@@ -67,7 +67,7 @@ class _CloudPasswordInputTextFieldState extends State<CloudPasswordInputTextFiel
             Border.all(width: widget.borderWidth, color: widget.borderColor);
       } else if (widget.type == CloudPasswordInputTextFieldType.SEGMENTED) {
         BorderSide side =
-        BorderSide(width: widget.borderWidth, color: widget.borderColor);
+            BorderSide(width: widget.borderWidth, color: widget.borderColor);
         Radius radius = Radius.circular(widget.borderRaiuds);
         if (i == 0) {
           itemWidth += 5;
@@ -85,7 +85,7 @@ class _CloudPasswordInputTextFieldState extends State<CloudPasswordInputTextFiel
         }
       }
 
-      Widget item;
+      Widget item = Container();
       if (widget.boxType == CloudPasswordInputTextFieldBoxType.BOX) {
         item = Container(
           height: itemHeight,
@@ -117,7 +117,7 @@ class _CloudPasswordInputTextFieldState extends State<CloudPasswordInputTextFiel
 //              border: Border.all(color: Colors.grey,width: 0.5),
 
 //              borderRadius: BorderRadius.circular(5),
-            ));
+                ));
       }
 
       children.add(item);
@@ -160,14 +160,14 @@ class _CloudPasswordInputTextFieldState extends State<CloudPasswordInputTextFiel
                     decoration: decoration,
                     child: widget.type == CloudPasswordInputTextFieldType.BOXES
                         ? Wrap(
-                      alignment: WrapAlignment.center,
-                      spacing: widget.spacing,
-                      children: children,
-                    )
+                            alignment: WrapAlignment.center,
+                            spacing: widget.spacing,
+                            children: children,
+                          )
                         : Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: children,
-                    ))),
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: children,
+                          ))),
           ),
         ],
       ),

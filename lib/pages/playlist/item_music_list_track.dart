@@ -10,7 +10,7 @@ class TrackItem extends StatelessWidget {
   final int index;
   final Tracks track;
 
-  TrackItem({this.index, this.track});
+  TrackItem({required this.index, required this.track});
 
   String getText(Tracks tracks) {
     StringBuffer stringBuffer = new StringBuffer();

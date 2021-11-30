@@ -3,8 +3,6 @@ import 'package:cloud_music/route/routes.dart';
 import 'package:cloud_music/widget/item/menu_item.dart';
 
 class RadioPage extends StatefulWidget {
-  @override
-  Widget build(BuildContext context) {}
 
   RadioPageState createState() => RadioPageState();
 }

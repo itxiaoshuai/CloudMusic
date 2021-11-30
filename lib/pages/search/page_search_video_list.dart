@@ -14,11 +14,13 @@ import 'package:flutter/material.dart';
 
 import '../../r.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class SearchVideoListPage extends StatefulWidget {
   SearchVideoListPageState createState() => SearchVideoListPageState();
 }
 
-class SearchVideoListPageState extends State<SearchVideoListPage>  with AutomaticKeepAliveClientMixin{
+class SearchVideoListPageState extends State<SearchVideoListPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +29,7 @@ class SearchVideoListPageState extends State<SearchVideoListPage>  with Automati
           onModelReady: (model) {
             Map<String, dynamic> formData = {'keywords': "四季予你", "type": 1014};
             model.loadSearchResult(formData);
-          },
+          },     child: Container(),
           builder: (context, model, child) {
             switch (model.layoutState) {
               case LayoutState.IDLE:
@@ -75,6 +77,7 @@ class SearchVideoListPageState extends State<SearchVideoListPage>  with Automati
                             img: p['coverUrl'],
                             describe: p['title'],
                             durationms: p['durationms'],
+                            avatarUrl: '',
                             // avatarUrl: p['coverUrl']
                           );
                         }).toList(),
@@ -95,7 +98,7 @@ class SearchVideoListPageState extends State<SearchVideoListPage>  with Automati
 
 class VideoItem extends StatelessWidget {
   final double width; //宽
-  final double height; //高
+  final double height ; //高
   final double circular; //圆角
   final String img; //图片
   final String updateFrequency; //每周几更新
@@ -106,16 +109,16 @@ class VideoItem extends StatelessWidget {
   final int durationms;
 
   VideoItem({
-    this.width,
-    this.height,
+    required this.width,
+    this.height = 0,
     this.circular = 6.0,
     this.updateFrequency = "",
-    this.img,
+    required this.img,
     this.describe = '',
     this.playCount = 0,
-    this.id,
-    this.avatarUrl,
-    this.durationms,
+    required this.id,
+    required this.avatarUrl,
+    required this.durationms,
   });
 
   @override

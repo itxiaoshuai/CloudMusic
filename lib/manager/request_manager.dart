@@ -107,7 +107,7 @@ class RequestManager {
 
   //电台
   static Future<HotRadio> fetchRadioById(int id) async {
-    var response = await http.get('/dj/radio/hot?cateId=${id}');
+    var response = await http.get('/dj/radio/hot?cateId=$id');
     return HotRadio.fromJson(response.data);
   }
 
@@ -139,7 +139,7 @@ class RequestManager {
 
   //通知 - 评论
   static Future fetchComment() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
     Map<String, dynamic> formData = {
       'uid': 1521312765,
     };

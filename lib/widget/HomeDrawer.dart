@@ -15,7 +15,7 @@ class HomeDrawer extends StatefulWidget {
 }
 
 class _HomeDrawerState extends State {
-  UserInfo userInfo;
+  UserInfo userInfo = UserInfo();
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _HomeDrawerState extends State {
 
   _getLocalUser() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    String userInfoStr = pref.getString('userInfo');
+    String? userInfoStr = pref.getString('userInfo');
 
     if (userInfoStr != null) {
       setState(() {
@@ -52,7 +52,7 @@ class _HomeDrawerState extends State {
             Column(
               children: [
                 Row(
-                  crossAxisAlignment:CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +67,7 @@ class _HomeDrawerState extends State {
                             Text('立享超17项专属特权',
                                 style: Theme.of(context)
                                     .textTheme
-                                    .subtitle1
+                                    .subtitle1!
                                     .copyWith(
                                         color: Colors.grey[100],
                                         fontWeight: FontWeight.w100,
@@ -96,7 +96,7 @@ class _HomeDrawerState extends State {
                       ),
                       child: Text(
                         '会员中心',
-                        style: Theme.of(context).textTheme.subtitle1.copyWith(
+                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.w100,
                             fontSize: 12),
@@ -112,7 +112,7 @@ class _HomeDrawerState extends State {
             Row(
               children: [
                 Text('黑胶VIP仅5元！ 每天低至0.16...',
-                    style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
                         color: Colors.grey[100],
                         fontWeight: FontWeight.w100,
                         fontSize: 10)),
@@ -129,9 +129,17 @@ class _HomeDrawerState extends State {
       borderRadius: BorderRadius.all(Radius.circular(8)),
       child: Column(
         children: [
-          DrawerListItem(image: "images/drawer_music.png", text: "我的消息",route: RouteName.PAGE_MESSAGE,),
+          DrawerListItem(
+            image: "images/drawer_music.png",
+            text: "我的消息",
+            route: RouteName.PAGE_MESSAGE,
+          ),
           Gaps.line,
-          DrawerListItem(image: "images/cloud_center.png", text: "云贝中心",route: RouteName.PAGE_CLOUD_COIN,),
+          DrawerListItem(
+            image: "images/cloud_center.png",
+            text: "云贝中心",
+            route: RouteName.PAGE_CLOUD_COIN,
+          ),
         ],
       ),
     );
@@ -158,7 +166,11 @@ class _HomeDrawerState extends State {
         child: Container(
           child: Column(
             children: [
-              DrawerListItem(image: "images/setting.png", text: "设置",route: RouteName.PAGE_SETTING,),
+              DrawerListItem(
+                image: "images/setting.png",
+                text: "设置",
+                route: RouteName.PAGE_SETTING,
+              ),
               DrawerListItem(image: "images/night_mode.png", text: "夜间模式"),
               DrawerListItem(image: "images/timing.png", text: "定时关闭"),
               DrawerListItem(image: "images/drawer_skin.png", text: "个性装扮"),
@@ -281,13 +293,12 @@ class DrawerAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (BuildContext context) {
           return LoginMainPage(); //手机号登入
         }));
       },
-
       child: Container(
         child: Row(
           children: [
@@ -381,7 +392,7 @@ class ListItem extends StatelessWidget {
   final String text;
   final String image;
 
-  ListItem({this.image, this.text});
+  ListItem({required this.image, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -407,13 +418,13 @@ class LoginHead extends StatelessWidget {
   final UserInfo userInfo;
 
   LoginHead({
-    this.userInfo,
+    required this.userInfo,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[200].withOpacity(0.8),
+      color: Colors.grey[200]!.withOpacity(0.8),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -422,7 +433,7 @@ class LoginHead extends StatelessWidget {
             margin: EdgeInsets.only(top: 50, left: 15),
             child: InkWell(
               child: CircleAvatar(
-                backgroundImage: NetworkImage(userInfo.avatarUrl),
+                backgroundImage: NetworkImage(userInfo.avatarUrl!),
                 backgroundColor: Colors.black,
                 radius: 30.0,
               ),
@@ -434,7 +445,7 @@ class LoginHead extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   Text(
-                    userInfo.nickname,
+                    userInfo.nickname!,
                     style: TextStyle(
                         fontSize: 16,
                         color: Colors.black,
@@ -520,7 +531,7 @@ class UnLoginHead extends StatelessWidget {
     }
 
     return Container(
-        color: Colors.grey[200].withOpacity(0.8),
+        color: Colors.grey[200]!.withOpacity(0.8),
         child: Container(
           padding: EdgeInsets.only(top: 50),
           child: Column(

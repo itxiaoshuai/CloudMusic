@@ -31,10 +31,18 @@ class UserDetail {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['level'] = level;
     data['listenSongs'] = listenSongs;
-    data['userPoint'] = userPoint == null ? null : userPoint.toJson();
+    if (userPoint == null) {
+      data['userPoint'] = null;
+    } else {
+      data['userPoint'] = userPoint.toJson();
+    }
     data['mobileSign'] = mobileSign;
     data['pcSign'] = pcSign;
-    data['profile'] = profile == null ? null : profile.toJson();
+    if (profile == null) {
+      data['profile'] = null;
+    } else {
+      data['profile'] = profile.toJson();
+    }
     data['peopleCanSeeMyPlayRecord'] = peopleCanSeeMyPlayRecord;
     data['bindings'] =
         bindings != null ? this.bindings.map((v) => v.toJson()).toList() : null;

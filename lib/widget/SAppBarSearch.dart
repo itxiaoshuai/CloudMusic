@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 
 class SAppBarSearch extends StatefulWidget implements PreferredSizeWidget {
   SAppBarSearch({
-    Key key,
+    required Key key,
     this.autoFocus = false,
-    this.focusNode,
-    this.controller,
-    this.value,
-    this.leading,
-    this.suffix,
+    required this.focusNode,
+    required this.controller,
+    required this.value,
+    required this.leading,
+    required this.suffix,
     this.actions = const [],
-    this.hintText,
-    this.onTap,
-    this.onClear,
-    this.onCancel,
-    this.onChanged,
-    this.onSearch,
+    required this.hintText,
+    required this.onTap,
+    required this.onClear,
+    required this.onCancel,
+    required this.onChanged,
+    required this.onSearch,
   }) : super(key: key);
   final bool autoFocus;
-  final FocusNode focusNode;
-  final TextEditingController controller;
+  final FocusNode? focusNode;
+  final TextEditingController? controller;
 
   // 默认值
   final String value;
@@ -28,11 +28,11 @@ class SAppBarSearch extends StatefulWidget implements PreferredSizeWidget {
   final Widget leading;
 
   // 搜索框后缀组件
-  final Widget suffix;
+  final Widget? suffix;
   final List<Widget> actions;
 
   // 提示文字
-  final String hintText;
+  final String? hintText;
 
   // 输入框点击
   final VoidCallback onTap;
@@ -57,14 +57,14 @@ class SAppBarSearch extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _SAppBarSearchState extends State<SAppBarSearch> {
-  TextEditingController _controller;
-  FocusNode _focusNode;
+  late TextEditingController _controller;
+  late FocusNode _focusNode;
 
   @override
   void initState() {
     _controller = widget.controller ?? TextEditingController();
     _focusNode = widget.focusNode ?? FocusNode();
-    if (widget.value != null) _controller.text = widget.value;
+    _controller.text = widget.value;
     super.initState();
   }
 
@@ -73,7 +73,7 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
     setState(() {
       _controller.clear();
     });
-    if (widget.onClear != null) widget.onClear();
+    widget.onClear();
   }
 
   // 取消输入框编辑
@@ -111,7 +111,10 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
   List<Widget> _actions() {
     List<Widget> list = [
       IconButton(
-        icon: Icon(Icons.mic,color: Colors.black87,),
+        icon: Icon(
+          Icons.mic,
+          color: Colors.black87,
+        ),
         onPressed: () {
           Scaffold.of(context).openDrawer();
         },
@@ -138,12 +141,12 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
   @override
   Widget build(BuildContext context) {
     final ScaffoldState scaffold = Scaffold.of(context);
-    final ModalRoute<dynamic> parentRoute = ModalRoute.of(context);
+    final ModalRoute<Object?>? parentRoute = ModalRoute.of(context);
     final bool canPop = parentRoute?.canPop ?? false;
-    final bool hasDrawer = scaffold?.hasDrawer ?? false;
+    final bool hasDrawer = scaffold.hasDrawer;
     double left = 0;
     double right = 0;
-    if (!canPop && !hasDrawer && widget.leading == null) left = 15;
+    if (!canPop && !hasDrawer) left = 15;
     if (_controller.text.isEmpty && widget.actions.isEmpty) right = 15;
     return AppBar(
       titleSpacing: 0,

@@ -1,24 +1,22 @@
 class NewAlbumSale {
-  int code;
+  late int code;
 
-  List<Album> products;
+  late List<Album> products;
 
   static NewAlbumSale fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     NewAlbumSale newAlbum = NewAlbumSale();
     newAlbum.code = map['code'];
     newAlbum.products = []
-      ..addAll((map['products'] as List ?? []).map((o) => Album.fromJson(o)));
+      ..addAll((map['products'] as List).map((o) => Album.fromJson(o)));
     return newAlbum;
   }
 }
 
 class Album {
-  String albumName;
-  String coverUrl;
-  String artistName;
+  late String albumName;
+  late String coverUrl;
+  late String artistName;
   static Album fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Album data = Album();
     data.albumName = map['albumName'];
     data.coverUrl = map['coverUrl'];

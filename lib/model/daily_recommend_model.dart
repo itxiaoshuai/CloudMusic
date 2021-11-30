@@ -4,7 +4,7 @@ import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/layout_state_model.dart';
 
 class DailyRecommendModel extends LayoutStateModel {
-  DailyRecommend _dailyRecommend;
+  late DailyRecommend _dailyRecommend;
 
   DailyRecommend get data => _dailyRecommend;
   loadData() async {

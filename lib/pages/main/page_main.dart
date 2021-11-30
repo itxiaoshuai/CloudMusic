@@ -20,8 +20,8 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  TabController _tabController;
-  PageController _controller;
+  late TabController _tabController;
+  late PageController _controller;
   int _currentIndex = 0;
 
   @override

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class homePage extends StatefulWidget {
   final String title;
-  const homePage({Key key, this.title}) : super(key: key);
+  const homePage({required Key key, required this.title}) : super(key: key);
 
   @override
   _homePageState createState() => _homePageState();
@@ -10,7 +10,7 @@ class homePage extends StatefulWidget {
 
 class GoodsTab {
   //tab包装类
-  String text;
+  late String text;
 // GoodList goodList;
 }
 

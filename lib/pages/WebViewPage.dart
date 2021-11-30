@@ -1,15 +1,15 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPage extends StatefulWidget {
-  final flutterWebviewPlugin = FlutterWebviewPlugin();
-  final String url;
-  final AppBar appBar;
+  final String? url;
+
   final String title;
 
-  WebViewPage(this.url, {this.appBar, this.title = ""});
+  WebViewPage(this.url, {this.title = ""});
 
   @override
   State<StatefulWidget> createState() {
@@ -18,50 +18,32 @@ class WebViewPage extends StatefulWidget {
 }
 
 class _WebViewPage extends State<WebViewPage> {
-  final flutterWebviewPlugin = FlutterWebviewPlugin();
-  StreamSubscription<WebViewStateChanged> _onStateChanged;
   String webviewTitle = "";
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
 
   @override
   void initState() {
     super.initState();
-
-    _addListen();
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
 
   @override
   Widget build(BuildContext context) {
-    return WebviewScaffold(
-      url: widget.url,
+    return Scaffold(
       appBar: AppBar(
         title: Text(
           widget.title,
           style: TextStyle(fontSize: 16.0),
         ),
       ),
+      body: WebView(
+        initialUrl: widget.url!,
+        javascriptMode: JavascriptMode.unrestricted,
+        onWebViewCreated: (WebViewController webViewController) {
+          _controller.complete(webViewController);
+        },
+      ),
     );
-  }
-
-  _addListen() {
-    _addOnStateChanged();
-  }
-
-  _addOnStateChanged() {
-    _onStateChanged = flutterWebviewPlugin.onStateChanged
-        .listen((WebViewStateChanged state) async {
-      if (mounted) {
-        if (state.type == WebViewState.finishLoad) {
-//          webviewTitle = await flutterWebviewPlugin.evalJavascript("window.document.title");
-        }
-        setState(() {});
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _onStateChanged.cancel();
-    flutterWebviewPlugin.dispose();
-    super.dispose();
   }
 }

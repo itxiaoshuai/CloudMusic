@@ -17,8 +17,8 @@ class VideoDetailPage extends StatefulWidget {
   final String url;
 
   VideoDetailPage({
-    this.id,
-    this.url,
+    required this.id,
+    required this.url,
   });
 
   @override
@@ -27,9 +27,9 @@ class VideoDetailPage extends StatefulWidget {
 
 class _VideoDetailPageState extends State<VideoDetailPage> {
   List _commentList = [];
-  VideoPlayerController _controller;
-  bool _isPlaying = false;
-  VideoDetailData _videoDetail;
+  late VideoPlayerController _controller;
+  late bool _isPlaying = false;
+  late VideoDetailData _videoDetail;
 
   @override
   void initState() {

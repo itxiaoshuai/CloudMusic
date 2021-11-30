@@ -16,7 +16,7 @@ class TabDynamic extends StatefulWidget {
   ///用户ID
   final UserDetail userDetail;
 
-  const TabDynamic({Key key, @required this.userDetail}) : super(key: key);
+  const TabDynamic({Key? key, required this.userDetail}) : super(key: key);
 
   @override
   _TabDynamicState createState() => _TabDynamicState();
@@ -239,6 +239,7 @@ class _TabDynamicState extends State<TabDynamic>
     if (type == 57) {
       return Text('视频:');
     }
+    return Container();
   }
 
   Widget _buildItemType(int type, d) {
@@ -366,6 +367,7 @@ class _TabDynamicState extends State<TabDynamic>
     if (type == 57) {
       return Text('视频');
     }
+    return Container();
   }
 
   @override

@@ -23,7 +23,7 @@ class SearchSingleSongPageState extends State<SearchSingleSongPage>  with Automa
           onModelReady: (model) {
             Map<String, dynamic> formData = {'keywords': "四季予你", "type": 1};
             model.loadSearch(formData);
-          },
+          },     child: Container(),
           builder: (context, model, child) {
             switch (model.layoutState) {
               case LayoutState.IDLE:

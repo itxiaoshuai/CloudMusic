@@ -11,7 +11,7 @@ class YunCunPage extends StatefulWidget {
 
 class _YunCunPageState extends State<YunCunPage>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  TabController _tabController;
+  late TabController _tabController;
 
   @override
   void dispose() {

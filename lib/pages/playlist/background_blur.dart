@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class BackgroundBlur extends StatelessWidget {
   final Widget child;
   final String coverPic;
-  BackgroundBlur({this.coverPic,this.child});
+  BackgroundBlur({required this.coverPic,required this.child});
 
   @override
   Widget build(BuildContext context) {

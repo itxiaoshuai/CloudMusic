@@ -1,10 +1,10 @@
 class Song {
-  int id; // 歌曲id
-  String name; // 歌曲名称
-  String artists; // 演唱者
-  String picUrl; // 歌曲图片
+  late int id; // 歌曲id
+  late String name; // 歌曲名称
+  late String artists; // 演唱者
+  late String picUrl; // 歌曲图片
 
-  Song(this.id, {this.name, this.artists, this.picUrl});
+  Song(this.id, {required this.name, required this.artists, required this.picUrl});
 
   Song.fromJson(Map<String, dynamic> json)
       : id = json['id'],

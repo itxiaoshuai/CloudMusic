@@ -20,7 +20,7 @@ class PageUserHome extends StatefulWidget {
 }
 
 class PageUserHomeState extends State<PageUserHome> {
-  Playlist playlist;
+  late Playlist playlist;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +30,7 @@ class PageUserHomeState extends State<PageUserHome> {
         onModelReady: (model) {
           model.loadData(widget.playlistId);
         },
+        child: Container(),
         builder: (context, model, child) {
           debugPrint('---当前状态--> ${model}');
           switch (model.layoutState) {
@@ -150,7 +151,7 @@ class UserTabPageState extends State<PageUserHome> {
 class PlayListHeaderBackground extends StatelessWidget {
   final String imageUrl;
 
-  const PlayListHeaderBackground({Key key, @required this.imageUrl})
+  const PlayListHeaderBackground({Key? key, required this.imageUrl})
       : super(key: key);
 
   @override
@@ -284,7 +285,7 @@ class ListItem extends StatelessWidget {
   final String text;
   final String image;
 
-  ListItem({this.image, this.text});
+  ListItem({required this.image, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -414,7 +415,7 @@ class CustomWidget extends StatelessWidget {
             elevation: 0,
             pinned: true,
             expandedHeight: 320.0,
-            bottom: _buildListHeader(context),
+            bottom: _buildListHeader(context) as PreferredSizeWidget,
             flexibleSpace: _PlaylistDetailHeader(model, id),
             actions: <Widget>[
               IconButton(

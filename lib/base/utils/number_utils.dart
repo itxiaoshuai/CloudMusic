@@ -19,7 +19,7 @@ class NumberUtils {
         result = '${amount ~/ BILLION}$BILLION_UNIT';
       } else {
         // result = '${amount ~/ MILLION}$MILLION_UNIT';
-        result = (NumUtil.getNumByValueDouble(amount / MILLION, 1))
+        result = (NumUtil.getNumByValueDouble(amount / MILLION, 1))!
                 .toStringAsFixed(1) +
             MILLION_UNIT;
       }
@@ -28,7 +28,7 @@ class NumberUtils {
     //金额大于1亿
     else if (amount > BILLION) {
       // result = '${amount / BILLION}$BILLION_UNIT';
-      result = (NumUtil.getNumByValueDouble(amount / BILLION, 1))
+      result = (NumUtil.getNumByValueDouble(amount / BILLION, 1))!
               .toStringAsFixed(1) +
           BILLION_UNIT;
     } else {

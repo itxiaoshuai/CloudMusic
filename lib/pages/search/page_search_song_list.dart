@@ -22,7 +22,7 @@ class SearchSongListPageState extends State<SearchSongListPage>
           onModelReady: (model) {
             Map<String, dynamic> formData = {'keywords': "四季予你", "type": 1000};
             model.loadSearchResult(formData);
-          },
+          },     child: Container(),
           builder: (context, model, child) {
             switch (model.layoutState) {
               case LayoutState.IDLE:

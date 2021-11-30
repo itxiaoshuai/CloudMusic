@@ -1,12 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_music/base/CommonLoading.dart';
-import 'package:cloud_music/data/protocol/banner_model.dart';
+import 'package:cloud_music/data/protocol/BannerBean.dart';
 import 'package:cloud_music/data/protocol/new_album.dart';
 import 'package:cloud_music/manager/request_manager.dart';
-import 'package:cloud_music/pages/album/InfiniteGridView.dart';
 import 'package:cloud_music/pages/find/PageFind.dart';
 import 'package:cloud_music/route/routes.dart';
-import 'package:cloud_music/widget/base_song_img_item.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,8 +24,8 @@ bool isWeek = false; //新歌
 bool isTotal = false; //新歌
 
 class _DigitalAlbumPageState extends State<DigitalAlbumPage> {
-  List<Banners> _bannerData = [];
-  NewAlbum _album;
+  List<BannerBean> _bannerData = [];
+  late NewAlbum _album;
 
   @override
   void initState() {
@@ -41,7 +39,7 @@ class _DigitalAlbumPageState extends State<DigitalAlbumPage> {
     var response =
         await dio.get("http://www.mocky.io/v2/5cee0154300000592c6e9825");
 
-    List<Banners> banners = BannerModel.fromJson(response.data).banners;
+    List<BannerBean> banners = BannerList.fromJson(response.data).banners;
 
     _bannerData = banners;
     if (banners != null && mounted) {
@@ -278,7 +276,7 @@ class ListItem extends StatelessWidget {
   final String image;
   final String route;
 
-  ListItem({this.image, this.text, this.route});
+  ListItem({required this.image, required this.text, required this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -298,7 +296,7 @@ class ListItem extends StatelessWidget {
                   width: 45.0,
                   decoration: BoxDecoration(
                     //圆形渐变
-                    color: Colors.pink[50].withOpacity(0.8),
+                    color: Colors.pink[50]!.withOpacity(0.8),
                     shape: BoxShape.circle,
                     // gradient: const LinearGradient(colors: [
                     //   Colors.redAccent,

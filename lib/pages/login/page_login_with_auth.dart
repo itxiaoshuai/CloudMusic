@@ -103,7 +103,7 @@ class _LoginWithAuthBodyState extends State<LoginWithAuthBody> {
                       decoration: BoxDecoration(
                           border: Border(
                               bottom: BorderSide(
-                                  width: 1, color: Colors.grey[500]))),
+                                  width: 1, color: Colors.grey.shade500))),
                       child: Icon(
                         Icons.edit_outlined,
                         size: 12,

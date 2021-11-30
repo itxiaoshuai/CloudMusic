@@ -10,7 +10,7 @@ class BoxFindRecommend extends StatefulWidget {
   final String text;
   final String route;
 
-  BoxFindRecommend({this.text, this.route});
+  BoxFindRecommend({required this.text, required this.route});
   @override
   State<StatefulWidget> createState() => _BoxFindRecommendState();
 }
@@ -31,7 +31,7 @@ class _BoxFindRecommendState extends State<BoxFindRecommend> {
                 widget.text,
                 style: Theme.of(context)
                     .textTheme
-                    .subtitle1
+                    .subtitle1!
                     .copyWith(fontWeight: FontWeight.w800, fontSize: 18),
               ),
               ClipRRect(
@@ -61,7 +61,7 @@ class _BoxFindRecommendState extends State<BoxFindRecommend> {
                               '更多',
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle1
+                                  .subtitle1!
                                   .copyWith(
                                       fontWeight: FontWeight.w100,
                                       fontSize: 14),

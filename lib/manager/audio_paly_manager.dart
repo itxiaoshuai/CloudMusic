@@ -8,12 +8,12 @@ import 'package:flutter/material.dart';
 class AudioPlayManager extends ChangeNotifier {
   StreamController<String> _curPositionController =
       StreamController<String>.broadcast();
-  AudioPlayer _audioPlayer = AudioPlayer(); //播放器
-  List<Tracks> _tracks = []; //播放列表
-  int curIndex = 0;
-  int _totalDuration = 0;
+  late AudioPlayer _audioPlayer = AudioPlayer(); //播放器
+  late List<Tracks> _tracks = []; //播放列表
+  late int curIndex = 0;
+  late int _totalDuration = 0;
 
-  Duration curSongDuration;
+  late Duration curSongDuration;
 
   ///通过 Stream 实现每秒钟局部更新数据
 
@@ -23,9 +23,9 @@ class AudioPlayManager extends ChangeNotifier {
 
   Tracks get curSong => _tracks[curIndex];
 
-  AudioPlayerState _curState;
+  PlayerState _curState = PlayerState.STOPPED;
 
-  AudioPlayerState get curState => _curState;
+  PlayerState get curState => _curState;
 
   AudioPlayManager() {
     _audioPlayer.setReleaseMode(ReleaseMode.STOP);
@@ -73,14 +73,14 @@ class AudioPlayManager extends ChangeNotifier {
     };
     var url = await RequestManager.getMusicURL(formData);
     // print('播放---->${this._tracks[curIndex].name}');
-    print('播放---->${url}');
+    print('播放---->$url');
     _audioPlayer.play(
         "http://m7.music.126.net/20210314210851/77e94a2570a0d0224c7fec4d0d3bac56/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3");
   }
 
   /// 暂停、恢复
   void togglePlay() {
-    if (_audioPlayer.state == AudioPlayerState.PAUSED) {
+    if (_audioPlayer.state == PlayerState.PAUSED) {
       resumePlay();
     } else {
       pausePlay();

@@ -1,10 +1,9 @@
 class Artist {
-  int id;
-  String name;
-  String picUrl;
-  int accountId;
+  late int id;
+  late String name;
+  late String picUrl;
+  late int accountId;
   static Artist fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Artist follow = Artist();
     follow.name = map['name'];
     follow.picUrl = map['picUrl'];

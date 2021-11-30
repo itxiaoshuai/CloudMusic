@@ -7,7 +7,7 @@ import 'layout_state.dart';
 class LayoutStateModel with ChangeNotifier {
   LayoutState _layoutState;
 
-  LayoutStateModel({LayoutState layoutState})
+  LayoutStateModel({ LayoutState? layoutState})
       : _layoutState = layoutState ?? LayoutState.IDLE;
 
   LayoutState get layoutState => _layoutState;
@@ -22,7 +22,7 @@ class LayoutStateModel with ChangeNotifier {
   }
 
   /// [e]分类Error和Exception两种
-  void setError(e, stackTrace, {String message}) {
+  void setError(e, stackTrace, {required String message}) {
     ErrorType errorType = ErrorType.DEFAULT_ERROR;
   }
 

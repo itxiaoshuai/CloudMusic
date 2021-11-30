@@ -18,7 +18,7 @@ class SearchListPage extends StatefulWidget {
 
 class SearchListPageState extends State<SearchListPage>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  TabController _tabController;
+  late TabController _tabController;
   TextEditingController _searchController = TextEditingController();
   //实例化
   FocusNode _focusNode = FocusNode();
@@ -246,7 +246,7 @@ class _SearchBarDemoPageState extends State<SearchBarDemoPage> {
 }
 
 class Choice {
-  const Choice({this.title, this.categoryId});
+  const Choice({required this.title, required this.categoryId});
 
   final String title; //这个参数是分类名称
   final int categoryId; //这个适用于网络请求的参数，获取不同分类列表

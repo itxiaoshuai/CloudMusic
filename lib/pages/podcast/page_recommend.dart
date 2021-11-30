@@ -86,6 +86,7 @@ class PagePodcastRecommendRankState extends State with AutomaticKeepAliveClientM
             onModelReady: (model) {
               model.loadData();
             },
+            child: Container(),
             builder: (context, model, child) {
               switch (model.layoutState) {
                 case LayoutState.IDLE:

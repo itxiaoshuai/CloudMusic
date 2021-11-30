@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/screenutil_init.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'base/route.dart';
@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
         providers: providers,
         child: ScreenUtilInit(
           designSize: Size(720, 1080),
-          allowFontScaling: false,
           builder: () {
             return MaterialApp(
               debugShowCheckedModeBanner: false,

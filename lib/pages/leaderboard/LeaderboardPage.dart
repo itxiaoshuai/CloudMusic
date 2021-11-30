@@ -65,6 +65,7 @@ class _LeaderBoardPageState extends State {
           onModelReady: (model) {
             model.initData();
           },
+          child: Container(),
           builder: (context, model, child) {
             debugPrint('---当前状态--> ${model}');
             return CustomScrollView(
@@ -106,7 +107,7 @@ class _LeaderBoardPageState extends State {
                   img: item.coverImgUrl,
                   updateFrequency: item.updateFrequency,
                   id: item.id,
-                  tracks: item.tracks,
+                  tracks: item.tracks, text: '',
                 ),
               ),
             );
@@ -197,7 +198,7 @@ class _LeaderBoardPageState extends State {
               return Container(
                 child: ListItemCustom(
                   img: item.coverImgUrl,
-                  updateFrequency: item.updateFrequency,
+                  updateFrequency: item.updateFrequency, album: {},
                 ),
               );
             },
@@ -219,7 +220,7 @@ class _LeaderBoardPageState extends State {
               return Container(
                 child: ListItemCustom(
                   img: item.coverImgUrl,
-                  updateFrequency: item.updateFrequency,
+                  updateFrequency: item.updateFrequency, album: {},
                 ),
               );
             },
@@ -248,7 +249,7 @@ class _LeaderBoardPageState extends State {
               return Container(
                 child: ListItemCustom(
                   img: item.coverImgUrl,
-                  updateFrequency: item.updateFrequency,
+                  updateFrequency: item.updateFrequency, album: {},
                 ),
               );
             },
@@ -270,7 +271,7 @@ class _LeaderBoardPageState extends State {
               return Container(
                 child: ListItemCustom(
                   img: item.coverImgUrl,
-                  updateFrequency: item.updateFrequency,
+                  updateFrequency: item.updateFrequency, album: {},
                 ),
               );
             },
@@ -299,7 +300,7 @@ class _LeaderBoardPageState extends State {
               return Container(
                 child: ListItemCustom(
                   img: item.coverImgUrl,
-                  updateFrequency: item.updateFrequency,
+                  updateFrequency: item.updateFrequency, album: {},
                 ),
               );
             },
@@ -307,9 +308,10 @@ class _LeaderBoardPageState extends State {
           ),
         ),
       );
+      return widget;
     }
 
-    return widget;
+    return Container();
   }
 }
 
@@ -320,7 +322,7 @@ class ListItem extends StatefulWidget {
   final int id;
   final List<Track> tracks;
 
-  ListItem({this.text, this.img, this.updateFrequency, this.id, this.tracks});
+  ListItem({required this.text, required this.img, required this.updateFrequency, required this.id, required this.tracks});
 
   @override
   _ListItemState createState() => _ListItemState(
@@ -339,7 +341,7 @@ class _ListItemState extends State<ListItem> {
   final List<Track> tracks;
 
   _ListItemState(
-      {this.text, this.img, this.updateFrequency, this.id, this.tracks});
+      {required this.text,required this.img, required this.updateFrequency,required this.id,required this.tracks});
 
   @override
   Widget build(BuildContext context) {
@@ -354,7 +356,7 @@ class _ListItemState extends State<ListItem> {
           ),
           ListItemCustom(
             img: img,
-            updateFrequency: updateFrequency,
+            updateFrequency: updateFrequency, album: {},
           ),
           _buildTopThreeSongs(context),
           Container(

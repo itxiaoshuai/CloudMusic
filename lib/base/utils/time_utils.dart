@@ -18,7 +18,7 @@ class TimeUtils {
     return timeStr.toString();
   }
 
-  static String getAgeGroup(num agoTime) {
+  static String getAgeGroup(int agoTime) {
     StringBuffer timeStr = StringBuffer();
     String ageGroup = DateUtil.formatDateMs(agoTime, format: 'yyyy');
     if (int.parse(ageGroup) >= 1970 && int.parse(ageGroup) <= 1980) {
@@ -40,7 +40,7 @@ class TimeUtils {
     return timeStr.toString();
   }
 
-  static String getconstellation(num agoTime) {
+  static String getconstellation(int agoTime) {
     String monthS = DateUtil.formatDateMs(agoTime, format: 'MM');
     String dayS = DateUtil.formatDateMs(agoTime, format: 'dd');
     int month = int.parse(monthS);

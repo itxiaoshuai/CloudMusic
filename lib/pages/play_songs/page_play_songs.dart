@@ -19,9 +19,9 @@ class PlaySongsPage extends StatefulWidget {
 
 class _PlaySongsPageState extends State<PlaySongsPage>
     with TickerProviderStateMixin {
-  Animation<double> _stylusAnimation;
-  AnimationController _stylusController; //唱针控制器
-  AnimationController _controller; // 封面旋转控制器
+  late Animation<double> _stylusAnimation;
+  late AnimationController _stylusController; //唱针控制器
+  late AnimationController _controller; // 封面旋转控制器
   int switchIndex = 1; //用于切换歌词
   @override
   void initState() {
@@ -44,7 +44,7 @@ class _PlaySongsPageState extends State<PlaySongsPage>
   @override
   Widget build(BuildContext context) {
     return Consumer<AudioPlayManager>(builder: (context, model, child) {
-      if (model.curState == AudioPlayerState.PLAYING) {
+      if (model.curState == PlayerState.PLAYING) {
         // 如果当前状态是在播放当中，则唱片一直旋转，
         // 并且唱针是移除状态
         _controller.forward();
@@ -179,10 +179,10 @@ class _PlaySongsPageState extends State<PlaySongsPage>
                   stream: model.curPositionStream,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      var totalTime = snapshot.data
-                          .substring(snapshot.data.indexOf('-') + 1);
-                      var startTime = double.parse(snapshot.data
-                          .substring(0, snapshot.data.indexOf('-')));
+                      var totalTime = snapshot.data!
+                          .substring(snapshot.data!.indexOf('-') + 1);
+                      var startTime = double.parse(snapshot.data!
+                          .substring(0, snapshot.data!.indexOf('-')));
                       return _buildProgress(
                         startTime,
                         totalTime,

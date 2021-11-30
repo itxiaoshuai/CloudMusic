@@ -4,7 +4,7 @@ import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/layout_state_model.dart';
 
 class PodcastModel extends LayoutStateModel {
-  HotRadio _hotRadio;
+  late HotRadio _hotRadio;
 
   List<DjRadios> get data => _hotRadio.djRadios.sublist(0,6);
   loadData(int id) async {

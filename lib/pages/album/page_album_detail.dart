@@ -37,6 +37,7 @@ class _AlbumDetailPageState extends State<AlbumDetailPage> {
       appBar: AppBar(),
       body: ProviderWidget<DigitalAlbumModel>(
           model: DigitalAlbumModel(),
+          child: Container(),
           onModelReady: (model) {
             Map<String, dynamic> formData = {
               'id': widget.albumId,
@@ -209,6 +210,7 @@ class _AlbumDetailCommentPageState extends State<AlbumDetailCommentPage> {
 
               model.loadAlbumComment(formData);
             },
+            child: Container(),
             builder: (context, model, child) {
               switch (model.layoutState) {
                 case LayoutState.IDLE:

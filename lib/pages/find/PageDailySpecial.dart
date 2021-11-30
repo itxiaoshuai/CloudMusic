@@ -23,7 +23,7 @@ class PageDailySpecial extends StatefulWidget {
 }
 
 class _PageDailySpecialState extends State<PageDailySpecial> {
-  ScrollController _scrollController;
+  late ScrollController _scrollController;
   bool isAppBarExpanded = true;
   double radian = 6.0;
   double pixel = 0;
@@ -60,6 +60,7 @@ class _PageDailySpecialState extends State<PageDailySpecial> {
 
               model.loadData();
             },
+            child: Container(),
             builder: (context, model, child) {
               switch (model.layoutState) {
                 case LayoutState.IDLE:
@@ -217,12 +218,12 @@ class PlayListHeaderBackground extends StatelessWidget {
   final String imageUrl;
   double pixel;
 
-  PlayListHeaderBackground({@required this.imageUrl, Key key, this.pixel})
-      : super(key: key);
+  PlayListHeaderBackground({required this.imageUrl, required this.pixel})
+      : super();
 
   @override
   Widget build(BuildContext context) {
-    print('pixel----->${pixel}');
+    print("pixel----->$pixel");
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
@@ -246,7 +247,7 @@ class BottomClipper extends CustomClipper<Path> {
 
   @override
   Path getClip(Size size) {
-    print('radian----->${radian}');
+    print('radian----->$radian');
     var paint = Paint();
 
     paint.color = Colors.lightBlue;
@@ -408,7 +409,7 @@ class TrackItem extends StatelessWidget {
 }
 
 class MusicListHeader extends StatelessWidget implements PreferredSizeWidget {
-  MusicListHeader(this.count, {this.tail, this.radian});
+  MusicListHeader(this.count, {required this.tail, required this.radian});
 
   int count;
 

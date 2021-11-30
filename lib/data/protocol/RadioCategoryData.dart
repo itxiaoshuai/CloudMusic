@@ -1,24 +1,22 @@
 class RadioCategoryData {
-  int code;
-  List<Category> categories;
+  late int code;
+  late List<Category> categories;
 
   static RadioCategoryData fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     RadioCategoryData radioCategoryData = RadioCategoryData();
     radioCategoryData.code = map['code'];
     radioCategoryData.categories = []..addAll(
-        (map['categories'] as List ?? []).map((o) => Category.fromJson(o)));
+        (map['categories'] as List).map((o) => Category.fromJson(o)));
     return radioCategoryData;
   }
 }
 
 class Category {
-  String name;
-  int id;
-  String picIPadUrl;
+  late String name;
+  late int id;
+  late String picIPadUrl;
 
   static Category fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Category category = Category();
     category.name = map['name'];
     category.id = map['id'];

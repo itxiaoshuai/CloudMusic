@@ -6,11 +6,11 @@ enum SpinKitWaveType { start, end, center }
 
 class SpinKitWave extends StatefulWidget {
   SpinKitWave({
-    Key key,
-    this.color,
+    required Key key,
+    required this.color,
     this.type = SpinKitWaveType.start,
     this.size = 50.0,
-    this.itemBuilder,
+    required this.itemBuilder,
     this.duration = const Duration(milliseconds: 1200),
   })  : assert(
             !(itemBuilder is IndexedWidgetBuilder && color is Color) &&
@@ -32,7 +32,7 @@ class SpinKitWave extends StatefulWidget {
 
 class _SpinKitWaveState extends State<SpinKitWave>
     with SingleTickerProviderStateMixin {
-  AnimationController _scaleCtrl;
+  late AnimationController _scaleCtrl;
 
   @override
   void initState() {
@@ -49,7 +49,7 @@ class _SpinKitWaveState extends State<SpinKitWave>
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _bars;
+    List<Widget> _bars=[];
     if (widget.type == SpinKitWaveType.start) {
       _bars = [
         _bar(0, -1.2),
@@ -94,6 +94,7 @@ class _SpinKitWaveState extends State<SpinKitWave>
         end: 1.0,
         delay: delay,
       ).animate(_scaleCtrl),
+      key: ValueKey(ScaleYWidget),
       child: SizedBox.fromSize(
         size: Size(_size, widget.size),
         child: _itemBuilder(index),
@@ -114,16 +115,16 @@ class _SpinKitWaveState extends State<SpinKitWave>
 
 class ScaleYWidget extends AnimatedWidget {
   const ScaleYWidget({
-    Key key,
-    @required Animation<double> scaleY,
-    @required this.child,
+    required Key key,
+    required Animation<double> scaleY,
+    required this.child,
     this.alignment = Alignment.center,
   }) : super(key: key, listenable: scaleY);
 
   final Widget child;
   final Alignment alignment;
 
-  Animation<double> get scaleY => listenable;
+  get scaleY => listenable;
 
   @override
   Widget build(BuildContext context) {

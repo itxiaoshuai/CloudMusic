@@ -6,10 +6,10 @@ import 'package:cloud_music/pages/video/VideoDetailPage.dart';
 import 'package:cloud_music/route/routes.dart';
 
 class VideoList extends StatefulWidget {
-  final int id;
+  late final int id;
 
   VideoList({
-    this.id,
+    required this.id,
   });
 
   @override

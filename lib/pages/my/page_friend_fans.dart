@@ -26,6 +26,7 @@ class _FriendFansPageState extends State<FriendFansPage> {
 
           model.loadData(formData);
         },
+        child: Container(),
         builder: (context, model, child) {
           switch (model.layoutState) {
             case LayoutState.IDLE:
@@ -108,7 +109,7 @@ class _FriendFansPageState extends State<FriendFansPage> {
             ),
             child: Text(
               '+ 回关',
-              style: Theme.of(context).textTheme.subtitle1.copyWith(
+              style: Theme.of(context).textTheme.subtitle1!.copyWith(
                   color: Colors.red,
                   fontWeight: FontWeight.w100,
                   fontSize: 10),

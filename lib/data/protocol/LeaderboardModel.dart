@@ -1,30 +1,26 @@
-
 class LeaderBoardModel {
-  int code;
-  List<LeaderBoardList> list;
+  late int code;
+  late List<LeaderBoardList> list;
 
   static LeaderBoardModel fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     LeaderBoardModel newsBean = LeaderBoardModel();
     newsBean.code = map['code'];
-    newsBean.list = []
-      ..addAll(
-          (map['list'] as List ?? []).map((o) => LeaderBoardList.fromJson(o)));
+    newsBean.list = []..addAll(
+        (map['list'] as List).map((o) => LeaderBoardList.fromJson(o)));
     return newsBean;
   }
 }
 
 class LeaderBoardList {
-  String updateFrequency;
-  String description;
-  String name;
-  int playCount;
-  int id;
-  String coverImgUrl;
-  List<Track> tracks;
+  late String updateFrequency;
+  late String description;
+  late String name;
+  late int playCount;
+  late int id;
+  late String coverImgUrl;
+  late List<Track> tracks;
 
   static LeaderBoardList fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     LeaderBoardList product = LeaderBoardList();
     product.updateFrequency = map['updateFrequency'];
     product.description = map['description'];
@@ -33,18 +29,17 @@ class LeaderBoardList {
     product.id = map['id'];
     product.coverImgUrl = map['coverImgUrl'];
     product.tracks = []
-      ..addAll((map['tracks'] as List ?? []).map((o) => Track.fromJson(o)));
+      ..addAll((map['tracks'] as List).map((o) => Track.fromJson(o)));
 
     return product;
   }
 }
 
 class Track {
-  String first;
-  String second;
+  late String first;
+  late String second;
 
   static Track fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Track track = Track();
     track.first = map['first'];
     track.second = map['second'];

@@ -3,13 +3,13 @@ import 'dart:math';
 
 class ColorPalette {
   static final ColorPalette primary =  ColorPalette(<Color>[
-    Colors.blue[400],
-    Colors.red[400],
-    Colors.green[400],
-    Colors.yellow[400],
-    Colors.purple[400],
-    Colors.orange[400],
-    Colors.teal[400],
+    Colors.blue.shade400,
+    Colors.red.shade400,
+    Colors.green.shade400,
+    Colors.yellow.shade400,
+    Colors.purple.shade400,
+    Colors.orange.shade400,
+    Colors.teal.shade400,
   ]);
 
   ColorPalette(List<Color> colors) : _colors = colors {

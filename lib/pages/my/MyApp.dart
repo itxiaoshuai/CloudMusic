@@ -33,29 +33,22 @@ class _HomePageState extends State<HomePage> {
       List.generate(3, (i) => 'https://picsum.photos/id/$i/800/800');
 
   ScrollController _scrollController = ScrollController();
-  var globalKeyOne = GlobalKey();
-  var globalKeyTwo = GlobalKey();
-  var globalKeyThree = GlobalKey();
-  var oneY = 0.0;
-  var twoY = 0.0;
-  var threeY = 0.0;
+  // var globalKeyOne = GlobalKey();
+  // var globalKeyTwo = GlobalKey();
+  // var globalKeyThree = GlobalKey();
+  // var oneY = 0.0;
+  // var twoY = 0.0;
+  // var threeY = 0.0;
 
-  double getY(BuildContext buildContext) {
-    final RenderBox box = buildContext.findRenderObject();
-    final size = box.size;
-    ////代表的意思是说 button 组件中（0，0）点转换成全屏幕上的点的坐标值
-    final topLeftPosition = box.localToGlobal(Offset.zero);
-    return topLeftPosition.dy;
-  }
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((callback) {
-      oneY = getY(globalKeyOne.currentContext);
-      twoY = getY(globalKeyTwo.currentContext);
-      threeY = getY(globalKeyThree.currentContext);
-
-      print('one=$oneY=two=$twoY=three=$threeY');
+    WidgetsBinding.instance!.addPostFrameCallback((callback) {
+      // oneY = getY(globalKeyOne.currentContext);
+      // twoY = getY(globalKeyTwo.currentContext);
+      // threeY = getY(globalKeyThree.currentContext);
+      //
+      // print('one=$oneY=two=$twoY=three=$threeY');
     });
     super.initState();
   }
@@ -71,7 +64,6 @@ class _HomePageState extends State<HomePage> {
           controller: _scrollController,
           children: [
             Container(
-              key: globalKeyOne,
               child: Center(
                   child: Container(
                 child: ClipRRect(
@@ -86,7 +78,6 @@ class _HomePageState extends State<HomePage> {
               )),
             ),
             Container(
-              key: globalKeyTwo,
               child: Center(
                   child: Container(
                 child: ClipRRect(
@@ -101,7 +92,6 @@ class _HomePageState extends State<HomePage> {
               )),
             ),
             Container(
-              key: globalKeyThree,
               child: Center(
                   child: Container(
                 child: ClipRRect(

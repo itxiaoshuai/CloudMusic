@@ -18,43 +18,44 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.4
   # 轮播控件
-  flutter_swiper: ^1.1.6
+#  flutter_swiper: ^1.1.6
+  flutter_swiper_null_safety: ^1.0.2
   # dio是一个强大的Dart Http请求库
-  dio: ^3.0.10
-  event_bus: ^1.0.1
-  build_runner: ^1.4.0
-  json_serializable: ^3.0.0
-  cached_network_image: ^2.2.0+1
-  flutter_webview_plugin: ^0.3.5
+  dio: ^4.0.4
+  event_bus: ^2.0.0
+  build_runner: ^2.1.5
+  json_serializable: ^6.0.1
+  cached_network_image: ^3.1.0+1
+  webview_flutter: ^2.3.1
 #  #  一组加载指示器
   flutter_spinkit: "^3.1.0"
-  shared_preferences: ^0.5.1+2
-  pull_to_refresh: ^1.6.4
-  provider: ^4.3.1
-  flutter_screenutil: ^4.0.2+1
-  date_format: ^1.0.8
-  common_utils: ^1.2.1
+  shared_preferences: ^2.0.9
+  pull_to_refresh: ^2.0.0
+  provider: ^5.0.0
+  flutter_screenutil: ^5.0.1
+  date_format: ^2.0.4
+  common_utils: ^2.0.2
   # chewie的依赖
-  video_player: ^1.0.1
+  video_player: ^2.2.7
 #  # 视频播放
-  chewie: ^0.12.2
+  chewie: ^1.2.2
   marquee_text: ^1.1.0
-  audioplayers: ^0.17.4
-  oktoast: ^2.3.2
-  localstorage: ^3.0.6
-  flutter_html: ^1.0.0
-  cookie_jar: ^1.0.0
-  dio_cookie_manager: ^1.0.0
-  scrollable_positioned_list: ^0.1.10
-  path_provider: ^1.6.22
+  audioplayers: ^0.20.1
+  oktoast: ^3.1.5
+  localstorage: ^4.0.0+1
+  flutter_html: ^2.1.5
+  cookie_jar: ^3.0.1
+  dio_cookie_manager: ^2.0.0
+  scrollable_positioned_list: ^0.2.3
+  path_provider: ^2.0.7
 dev_dependencies:
   flutter_test:
     sdk: flutter

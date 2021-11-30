@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 class Subtitle extends StatefulWidget {
   Subtitle(
     this.data, {
-    this.selectedTextStyle,
-    this.unSelectedTextStyle,
+    required this.selectedTextStyle,
+    required this.unSelectedTextStyle,
     this.itemExtent = 45,
     this.diameterRatio = 2.0,
   });
@@ -44,7 +44,7 @@ class Subtitle extends StatefulWidget {
 }
 
 class _SubtitleState extends State<Subtitle> {
-  ScrollController _controller;
+  late ScrollController _controller;
   int _currentIndex = 0;
 
   @override

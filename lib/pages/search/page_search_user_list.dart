@@ -26,14 +26,13 @@ class SearchUserListPageState extends State<SearchUserListPage>
           onModelReady: (model) {
             Map<String, dynamic> formData = {'keywords': "四季予你", "type": 1002};
             model.loadSearchResult(formData);
-          },
+          },     child: Container(),
           builder: (context, model, child) {
             switch (model.layoutState) {
               case LayoutState.IDLE:
                 break;
               case LayoutState.LOADING:
                 return ViewStateLoadingWidget();
-                break;
               case LayoutState.EMPTY:
                 // TODO: Handle this case.
                 break;
@@ -135,8 +134,8 @@ class ImageTapWidget extends StatefulWidget {
 
   // final Widget child;
   ImageTapWidget({
-    this.onTap,
-    this.text,
+    required this.onTap,
+    required this.text,
   });
 
   @override
@@ -180,7 +179,7 @@ class _ImageTapWidgetState extends State<ImageTapWidget> {
                       widget.text,
                       style: Theme.of(context)
                           .textTheme
-                          .subtitle1
+                          .subtitle1!
                           .copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w100,
@@ -218,7 +217,7 @@ class _ImageTapWidgetState extends State<ImageTapWidget> {
                       widget.text,
                       style: Theme.of(context)
                           .textTheme
-                          .subtitle1
+                          .subtitle1!
                           .copyWith(
                           color: Colors.red,
                           fontWeight: FontWeight.w100,

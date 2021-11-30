@@ -12,7 +12,7 @@ class PageUserBaseInfo extends StatefulWidget {
   ///用户ID
   final UserDetail userDetail;
 
-  const PageUserBaseInfo({Key key, @required this.userDetail}) : super(key: key);
+  const PageUserBaseInfo({ Key? key, required this.userDetail}) : super(key: key);
   @override
   _PageUserBaseInfoState createState() => _PageUserBaseInfoState();
 }

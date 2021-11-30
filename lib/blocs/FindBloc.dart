@@ -1,14 +1,15 @@
 import 'dart:async';
 
-import 'package:cloud_music/data/protocol/banner_model.dart';
+
+import 'package:cloud_music/data/protocol/BannerBean.dart';
 
 import 'BlocProvider.dart';
 
 class FindBloc implements BlocBase {
-  StreamController<List<BannerModel>> _bannerStreamController =
-      StreamController<List<BannerModel>>();
+  StreamController<List<BannerBean>> _bannerStreamController =
+      StreamController<List<BannerBean>>();
 
-  get _bannerSink => _bannerStreamController.sink;
+  // get _bannerSink => _bannerStreamController.sink;
 
   get bannerStream => _bannerStreamController.stream;
 

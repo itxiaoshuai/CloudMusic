@@ -20,47 +20,38 @@ class Http extends BaseHttp {
     interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
     Directory tempDir = await getTemporaryDirectory();
     String tempPath = tempDir.path;
-    CookieJar cj = PersistCookieJar(dir: tempPath);
+    CookieJar cj = PersistCookieJar(storage: FileStorage(tempPath));
     interceptors..add(ApiInterceptor());
     interceptors.add(CookieManager(cj));
   }
 }
 
+
 class ApiInterceptor extends InterceptorsWrapper {
   @override
-  onRequest(RequestOptions options) async {
-    // if (!options.path.contains(MusicApi.LOGIN)) {
-    //   SharedPreferences prefs = await SharedPreferences.getInstance();
-    //   Map<String, dynamic> formData = {
-    //     'cookie': prefs.get('cookie'),
-    //   };
-    //   options.queryParameters = formData;
-    // }
-
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     debugPrint('---api-request--->url--> ${options.baseUrl}${options.path}' +
         ' queryParameters: ${options.queryParameters}' +
         ' data: ${options.data}');
-//    final jsonResponse = json.decode(options.data);
-//    debugPrint(jsonResponse);
-    return options;
+    super.onRequest(options, handler);
   }
 
   @override
-  Future onResponse(Response response) {
-//    debugPrint('${response.data}');
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
     ResponseData respData = ResponseData.fromJson(response.data);
     if (respData.success) {
       //请求成功
-      return super.onResponse(response);
+      super.onResponse(response, handler);
     } else {
       throw NotSuccessException.fromRespData(respData);
     }
+    super.onResponse(response, handler);
   }
 
   @override
-  Future onError(DioError err) {
-    debugPrint('${err}');
-    return super.onError(err);
+  void onError(DioError err, ErrorInterceptorHandler handler) {
+    debugPrint('$err');
+    super.onError(err, handler);
   }
 }
 

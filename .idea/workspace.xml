@@ -1,59 +1,186 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:CloudMusic_2020" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="422e3421-0863-4b35-913d-ccd6fe26d751" name="Default Changelist" comment="个人动态">
+    <list default="true" id="e57627d3-779c-4e5a-b65d-7860a411de80" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/protocol/BannerBean.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/version" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/android.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings_aar.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/base/storage_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/base/storage_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/base/utils/number_utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/base/utils/number_utils.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/base/utils/time_utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/base/utils/time_utils.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/blocs/BlocProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/blocs/BlocProvider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/blocs/FindBloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/blocs/FindBloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/event/LoadingEvent.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/event/LoadingEvent.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/Follow.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/Follow.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/LeaderboardDetailModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/LeaderboardDetailModel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/LeaderboardModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/LeaderboardModel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/RadioCategoryData.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/RadioCategoryData.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/VideoDetailData.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/VideoDetailData.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/artist.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/artist.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/banner_model.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/banner_model.g.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/cloud_storage_bean.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/cloud_storage_bean.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/comment_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/comment_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/daily_recommend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/daily_recommend.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/fans.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/fans.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/follows.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/follows.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/lyric.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/lyric.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/new_album.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/new_album.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/new_album_sale.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/new_album_sale.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/playlist.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/playlist.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/radio_hot.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/radio_hot.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/search_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/search_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/song.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/song.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/songlist_recommend_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/songlist_recommend_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/tracks.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/tracks.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/user_detail_bean.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/user_detail_bean.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/user_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/user_info.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/user_song_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/user_song_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/protocol/yun_task.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/yun_task.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/manager/audio_paly_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/manager/audio_paly_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/manager/request_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/manager/request_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/manager/resource_mananger.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/manager/resource_mananger.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/cloud_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/cloud_list_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/comment_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/comment_list_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/comment_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/comment_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/daily_recommend_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/daily_recommend_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/friend_attention_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/friend_attention_list_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/friend_fans_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/friend_fans_list_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/message_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/message_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/play_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/play_list_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/podcast_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/podcast_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/user_info_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/user_info_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/net/api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/net/api.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/net/http.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/net/http.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/WebViewPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/WebViewPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/album/SongLabelDetailPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/album/SongLabelDetailPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/album/SongLabelPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/album/SongLabelPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/album/album_digital.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/album/album_digital.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/album/comment_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/album/comment_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/album/page_album_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/album/page_album_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/album/page_digital_album.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/album/page_digital_album.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/album/page_language_album.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/album/page_language_album.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/drawer/message/page_comment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/drawer/message/page_comment.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/drawer/message/page_message_notice.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/drawer/message/page_message_notice.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/drawer/page_message.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/drawer/page_message.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/drawer/page_yunbei.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/drawer/page_yunbei.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/FutureBuilderPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/FutureBuilderPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/PageDailySpecial.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/PageDailySpecial.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/PageFind.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/PageFind.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/box_find_recommend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/box_find_recommend.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/widget/FindBanner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/widget/FindBanner.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/widget/LearnInkWell.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/widget/LearnInkWell.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/widget/SpinKitWave.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/widget/SpinKitWave.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/find/widget/SpinKitWaveType.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/find/widget/SpinKitWaveType.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/leaderboard/LeaderboardPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/leaderboard/LeaderboardPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login/page_login_with_auth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login/page_login_with_auth.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login/page_phone_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login/page_phone_login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/login/page_register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/login/page_register.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/main/page_main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/main/page_main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/MyApp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/MyApp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/PageMy.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/PageMy.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/StickyDemo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/StickyDemo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/page_cloud_storage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/page_cloud_storage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/page_friend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/page_friend.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/page_friend_attention.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/page_friend_attention.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/page_friend_fans.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/page_friend_fans.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/page_songlist.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/page_songlist.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/play_songs/lyric_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/play_songs/lyric_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/play_songs/page_play_songs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/play_songs/page_play_songs.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/play_songs/page_songplay.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/play_songs/page_songplay.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/play_songs/widget_lyric.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/play_songs/widget_lyric.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/playlist/background_blur.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/playlist/background_blur.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/playlist/item_music_list_track.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/playlist/item_music_list_track.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/playlist/music_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/playlist/music_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/playlist/page_category_song_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/playlist/page_category_song_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/playlist/page_playlist_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/playlist/page_playlist_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/podcast/PagePodcast.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/podcast/PagePodcast.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/podcast/page_category.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/podcast/page_category.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/podcast/page_recommend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/podcast/page_recommend.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/podcast/widget_gridview_podcast.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/podcast/widget_gridview_podcast.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/radio/page_radio.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/radio/page_radio.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/search/page_search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/search/page_search.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/search/page_search_album_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/search/page_search_album_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/search/page_search_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/search/page_search_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/search/page_search_single_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/search/page_search_single_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/search/page_search_single_song.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/search/page_search_single_song.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/search/page_search_song_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/search/page_search_song_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/search/page_search_user_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/search/page_search_user_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/search/page_search_video_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/search/page_search_video_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/user/page_user_base_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/user/page_user_base_info.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/user/page_user_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/user/page_user_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/user/page_user_home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/user/page_user_home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/user/tab_music.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/user/tab_music.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/user/tan_dynamic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/user/tan_dynamic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/video/VideoDetailPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/video/VideoDetailPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/video/VideoList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/video/VideoList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/video/VideoPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/video/VideoPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/yuncun/page_recommend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/yuncun/page_recommend.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/yuncun/page_video_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/yuncun/page_video_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/yuncun/page_yuncun.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/yuncun/page_yuncun.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/layout_state_list_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/layout_state_list_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/layout_state_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/layout_state_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/play_songs_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/play_songs_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/provider_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/provider_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/provider/view_state_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/provider/view_state_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/route/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/route/routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/subtitle.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/subtitle.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/CustomRRecTabIndicator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/CustomRRecTabIndicator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/CustomUnderlineTabIndicator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/CustomUnderlineTabIndicator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/HomeDrawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/HomeDrawer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/ListItemCustom.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/ListItemCustom.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/RoundUnderlineTabIndicator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/RoundUnderlineTabIndicator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/SAppBarSearch.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/SAppBarSearch.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/base_song_img_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/base_song_img_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/cloud_password_input.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/cloud_password_input.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/flexible_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/flexible_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/head_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/head_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/item/DrawerListItem.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/item/DrawerListItem.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/item/ListItemCustom.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/item/ListItemCustom.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/item/list_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/item/list_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/item/menu_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/item/menu_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/loading/bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/loading/bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/loading/color_palette.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/loading/color_palette.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/loading/loading_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/loading/loading_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/my_underline_indicator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/my_underline_indicator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/widget_img_menu.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/widget_img_menu.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/widget_play_bottom_menu.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/widget_play_bottom_menu.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widget/widget_round_img.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/widget_round_img.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <task path="$PROJECT_DIR$/android/build.gradle">
-          <activation />
-        </task>
-        <projects_view />
-      </state>
-    </system>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Administrator\.android\avd\7.6_Fold-in_with_outer_display_API_Sv2.avd]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Script" />
         <option value="Dart File" />
       </list>
     </option>
@@ -61,481 +188,64 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="hiddenUrls">
-      <set>
-        <option value="https://github.com/itxiaoshuai/CloudMusic.git" />
-      </set>
-    </option>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/lib/pages/user/tan_dynamic.dart" root0="SKIP_HIGHLIGHTING" />
-  </component>
-  <component name="ProjectId" id="1n8wAPnNE85EfHZclEWOAdZ81IP" />
+  <component name="ProjectId" id="21ZUt0dTO8YxDTGDk4BRO5DgA4b" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
-    <option name="foldersAlwaysOnTop" value="false" />
-    <option name="showExcludedFiles" value="false" />
+    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="ScreenshotViewer.SavePath" value="$USER_HOME$/Desktop" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="D:/SDK" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
-  <component name="RunManager" selected="Flutter.main.dart">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\Personal\CloudMusic" />
+    </key>
+  </component>
+  <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
     </configuration>
-    <configuration name="F:/open_source/CloudMusic/android/app/build.gradle (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/android/app/build.gradle" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="F:/open_source/CloudMusic/android/build.gradle [clean] (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/android/build.gradle" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="F:/open_source/CloudMusic/android/build.gradle [clean] (2)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/android/build.gradle" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="F:/open_source/CloudMusic/android/build.gradle [clean] (3)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/android/build.gradle" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="F:/open_source/CloudMusic/android/build.gradle [clean] (4)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/android/build.gradle" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="F:/open_source/CloudMusic/android/build.gradle [clean]" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/android/build.gradle" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.F:/open_source/CloudMusic/android/build.gradle [clean] (4)" />
-        <item itemvalue="Gradle.F:/open_source/CloudMusic/android/build.gradle [clean] (3)" />
-        <item itemvalue="Gradle.F:/open_source/CloudMusic/android/build.gradle [clean] (2)" />
-        <item itemvalue="Gradle.F:/open_source/CloudMusic/android/build.gradle [clean] (1)" />
-        <item itemvalue="Gradle.F:/open_source/CloudMusic/android/app/build.gradle (1)" />
-      </list>
-    </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="422e3421-0863-4b35-913d-ccd6fe26d751" name="Default Changelist" comment="" />
-      <created>1610784882611</created>
+      <changelist id="e57627d3-779c-4e5a-b65d-7860a411de80" name="Default Changelist" comment="" />
+      <created>1638148316195</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1610784882611</updated>
+      <updated>1638148316195</updated>
     </task>
-    <task id="LOCAL-00001" summary="0">
-      <created>1610793812188</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1610793812188</updated>
-    </task>
-    <task id="LOCAL-00002" summary="0">
-      <created>1610795147820</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1610795147820</updated>
-    </task>
-    <task id="LOCAL-00003" summary="个人首页调整">
-      <created>1610981875303</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1610981875303</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Revert &quot;个人首页调整&quot;&#10;&#10;This reverts commit 6db875bc">
-      <created>1610981994312</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1610981994312</updated>
-    </task>
-    <task id="LOCAL-00005" summary="个人首页调整右侧menu">
-      <created>1610985574878</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1610985574878</updated>
-    </task>
-    <task id="LOCAL-00006" summary="个人首页调整">
-      <created>1615563506891</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1615563506891</updated>
-    </task>
-    <task id="LOCAL-00007" summary="个人首页调整">
-      <created>1615563558019</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1615563558019</updated>
-    </task>
-    <task id="LOCAL-00008" summary="合并代码">
-      <created>1615563880808</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1615563880808</updated>
-    </task>
-    <task id="LOCAL-00009" summary="合并代码">
-      <created>1615639969180</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1615639969180</updated>
-    </task>
-    <task id="LOCAL-00010" summary="合并代码">
-      <created>1615710593867</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1615710593868</updated>
-    </task>
-    <task id="LOCAL-00011" summary="数字专辑原生界面改为网页接入">
-      <created>1615728585039</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1615728585039</updated>
-    </task>
-    <task id="LOCAL-00012" summary="通知界面头像点击跳转个人主页">
-      <created>1615732285594</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1615732285594</updated>
-    </task>
-    <task id="LOCAL-00013" summary="个人基本信息页创建">
-      <created>1615737478724</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1615737478724</updated>
-    </task>
-    <task id="LOCAL-00014" summary="个人基本信息页创建">
-      <created>1615816413328</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1615816413328</updated>
-    </task>
-    <task id="LOCAL-00015" summary="个人基本信息页创建">
-      <created>1615816819054</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1615816819054</updated>
-    </task>
-    <task id="LOCAL-00016" summary="个人动态">
-      <created>1615828061680</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1615828061680</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
     <servers />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="CloudMusic_2020" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="0" />
-    <MESSAGE value="Revert &quot;个人首页调整&quot;&#10;&#10;This reverts commit 6db875bc" />
-    <MESSAGE value="个人首页调整右侧menu" />
-    <MESSAGE value="个人首页调整" />
-    <MESSAGE value="合并代码" />
-    <MESSAGE value="数字专辑原生界面改为网页接入" />
-    <MESSAGE value="通知界面头像点击跳转个人主页" />
-    <MESSAGE value="个人基本信息页创建" />
-    <MESSAGE value="个人动态" />
-    <option name="LAST_COMMIT_MESSAGE" value="个人动态" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="832" y="418" key="#Custom_Plugin_Repositories" timestamp="1610794915944">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="832" y="418" key="#Custom_Plugin_Repositories/0.0.1920.1040@0.0.1920.1040" timestamp="1610794915944" />
-    <state x="586" y="198" key="#Inspections" timestamp="1615644989294">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1615644989294" />
-    <state x="695" y="342" key="#Notifications" timestamp="1615709255561">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="695" y="342" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1615709255561" />
-    <state x="552" y="160" key="#Plugins" timestamp="1610792549592">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="160" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1610792549592" />
-    <state x="398" y="155" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615648865567">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="398" y="155" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615648865567" />
-    <state x="640" y="254" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1614777177772">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="640" y="254" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1614777177772" />
-    <state x="692" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1615709793496">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="692" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615709793496" />
-    <state x="100" y="100" width="1720" height="840" key="AVDManager" timestamp="1615647505503">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="100" y="100" width="1720" height="840" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1615647505503" />
-    <state x="744" y="89" key="CommitChangelistDialog2" timestamp="1615828107964">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="744" y="89" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1615828107964" />
-    <state x="130" y="246" width="1536" height="861" key="DiffContextDialog" timestamp="1615725651068">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="130" y="246" width="1536" height="861" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615725651068" />
-    <state x="740" y="260" key="FileChooserDialogImpl" timestamp="1615704359067">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1615704359067" />
-    <state width="1877" height="411" key="GridCell.Tab.0.bottom" timestamp="1615828221350">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="411" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615828221350" />
-    <state width="1877" height="411" key="GridCell.Tab.0.center" timestamp="1615828221350">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="411" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615828221350" />
-    <state width="1877" height="411" key="GridCell.Tab.0.left" timestamp="1615828221350">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="411" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615828221350" />
-    <state width="1877" height="411" key="GridCell.Tab.0.right" timestamp="1615828221350">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="411" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615828221350" />
-    <state width="1340" height="366" key="GridCell.Tab.1.bottom" timestamp="1615643846665">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1340" height="366" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615643846665" />
-    <state width="1340" height="366" key="GridCell.Tab.1.center" timestamp="1615643846665">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1340" height="366" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615643846665" />
-    <state width="1340" height="366" key="GridCell.Tab.1.left" timestamp="1615643846665">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1340" height="366" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615643846665" />
-    <state width="1340" height="366" key="GridCell.Tab.1.right" timestamp="1615643846665">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1340" height="366" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615643846665" />
-    <state x="184" y="85" key="MergeDialog" timestamp="1610973368467">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="184" y="85" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1610973368467" />
-    <state x="595" y="280" key="MultipleFileMergeDialog" timestamp="1615639996817">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="595" y="280" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615639996817" />
-    <state x="600" y="223" key="NewModule_or_Project.wizard" timestamp="1610789592546">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="600" y="223" key="NewModule_or_Project.wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1610789592546" />
-    <state x="759" y="239" key="RollbackChangesDialog" timestamp="1615724961273">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="759" y="239" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615724961273" />
-    <state x="686" y="392" key="ScreenshotRecorder.Options.Dimensions" timestamp="1615726235867">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="686" y="392" key="ScreenshotRecorder.Options.Dimensions/0.0.1920.1040@0.0.1920.1040" timestamp="1615726235867" />
-    <state x="397" y="0" key="ScreenshotViewer.Dimensions" timestamp="1610873162830">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="397" y="0" key="ScreenshotViewer.Dimensions/0.0.1920.1040@0.0.1920.1040" timestamp="1610873162830" />
-    <state x="462" y="103" key="SettingsEditor" timestamp="1615816323374">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="462" y="103" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1615816323374" />
-    <state x="231" y="101" width="1426" height="800" key="VCS.FileHistoryDialog" timestamp="1615728630327">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="231" y="101" width="1426" height="800" key="VCS.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615728630327" />
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1615828193544">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1615828193544" />
-    <state x="754" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615816289661">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="754" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1615816289661" />
-    <state x="661" y="252" width="598" height="536" key="find.popup" timestamp="1610979851012">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="661" y="252" width="598" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1610979851012" />
-    <state x="692" y="332" key="git4idea.merge.GitMergeDialog" timestamp="1615816343900">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="692" y="332" key="git4idea.merge.GitMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615816343900" />
-    <state x="604" y="332" key="git4idea.merge.GitPullDialog" timestamp="1615816883911">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="604" y="332" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615816883911" />
-    <state x="686" y="445" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1615816357997">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="686" y="445" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615816357997" />
-    <state x="616" y="242" key="run.anything.popup" timestamp="1615639910582">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="242" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615639910582" />
-    <state x="623" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1615824919909">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="229" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615824919909" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CloudMusic$F__open_source_CloudMusic_android_app_build_gradle__1_.ic" NAME="$PROJECT_DIR$/android/app/build.gradle (1) Coverage Results" MODIFIED="1615709646549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/CloudMusic$F__open_source_CloudMusic_android_build_gradle__clean___4_.ic" NAME="$PROJECT_DIR$/android/build.gradle [clean] (4) Coverage Results" MODIFIED="1615724992929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -11,7 +11,7 @@ class FriendPage extends StatefulWidget {
 
 class _FriendPageState extends State<FriendPage>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  TabController tabController;
+  late TabController tabController;
   var tabs = <Tab>[];
 
   @override

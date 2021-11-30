@@ -1,16 +1,12 @@
-import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_music/base/CommonLoading.dart';
 import 'package:cloud_music/base/res/gaps.dart';
-import 'package:cloud_music/base/res/styles.dart';
 import 'package:cloud_music/model/digital_album_model.dart';
-import 'package:cloud_music/pages/yuncun/page_video_list.dart';
 import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/provider_widget.dart';
 import 'package:cloud_music/provider/view_state_widget.dart';
 import 'package:cloud_music/route/routes.dart';
-import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../../r.dart';
@@ -99,7 +95,7 @@ class _LanguageAlbumListPageState extends State<LanguageAlbumListPage>
             'area': widget.area,
           };
           model.loadData(formData);
-        },
+        },          child: Container(),
         builder: (context, model, child) {
           switch (model.layoutState) {
             case LayoutState.IDLE:
@@ -195,7 +191,7 @@ class _LanguageAlbumListPageState extends State<LanguageAlbumListPage>
 
 
 class Choice {
-  const Choice({this.title, this.area});
+  const Choice({required this.title, required this.area});
 
   final String title;
   final String area;

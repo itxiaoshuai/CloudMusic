@@ -8,7 +8,7 @@ class SpinKitWave extends StatefulWidget {
 
 class _SpinKitWaveState extends State<SpinKitWave>
     with SingleTickerProviderStateMixin {
-  AnimationController _scaleCtrl;
+  late AnimationController _scaleCtrl;
 
   @override
   void initState() {
@@ -53,20 +53,19 @@ class _SpinKitWaveState extends State<SpinKitWave>
 
 class ScaleYWidget extends AnimatedWidget {
   const ScaleYWidget({
-    Key key,
-    @required Animation<double> scaleY,
-    @required this.child,
+    required Animation<double> scaleY,
+    required this.child,
     this.alignment = Alignment.center,
-  }) : super(key: key, listenable: scaleY);
+  }) : super( listenable: scaleY);
 
   final Widget child;
   final Alignment alignment;
 
-  Animation<double> get scaleY => listenable;
+   get scaleY => listenable;
 
   @override
   Widget build(BuildContext context) {
-    final double scaleValue = scaleY.value;
+    final double scaleValue = scaleY!.value;
     final Matrix4 transform = Matrix4.identity()..scale(1.0, scaleValue, 1.0);
     return Transform(
       transform: transform,
@@ -78,9 +77,9 @@ class ScaleYWidget extends AnimatedWidget {
 
 class DelayTween extends Tween<double> {
   DelayTween({
-    double begin,
-    double end,
-    this.delay,
+    required double begin,
+    required double end,
+    required this.delay,
   }) : super(begin: begin, end: end);
 
   final double delay;
@@ -96,9 +95,9 @@ class DelayTween extends Tween<double> {
 
 class AngleDelayTween extends Tween<double> {
   AngleDelayTween({
-    double begin,
-    double end,
-    this.delay,
+    required double begin,
+    required double end,
+    required this.delay,
   }) : super(begin: begin, end: end);
 
   final double delay;

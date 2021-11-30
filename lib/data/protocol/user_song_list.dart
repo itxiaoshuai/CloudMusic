@@ -1,5 +1,5 @@
 //用户歌单
 class UserSongList {
-  bool more;
-  int code;
+ late bool more;
+ late int code;
 }

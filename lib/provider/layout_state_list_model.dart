@@ -21,7 +21,7 @@ abstract class LayoutStateListModel<T> extends LayoutStateModel {
   }
 
   // 下拉刷新
-  refresh({bool init = false, Map<String, dynamic> formData}) async {
+  refresh({bool init = false, required Map<String, dynamic> formData}) async {
     try {
       List<T> data = await loadData(formData);
       if (data.isEmpty) {
@@ -37,7 +37,7 @@ abstract class LayoutStateListModel<T> extends LayoutStateModel {
       if (init) list.clear();
       print(e);
       print('zzzzzzzzzzzzzzzzzzzzzz');
-      setError(e, s);
+      setError(e, s, message: '');
     }
   }
 }

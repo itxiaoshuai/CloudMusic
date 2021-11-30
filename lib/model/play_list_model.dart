@@ -4,7 +4,7 @@ import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/provider/layout_state.dart';
 
 class PlayListModel extends LayoutStateModel {
-  Playlist _playlist;
+  late Playlist _playlist;
 
   Playlist get data => _playlist;
 

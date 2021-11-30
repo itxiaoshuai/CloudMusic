@@ -10,8 +10,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  String phone;
-  String password;
+  late String phone;
+  late String password;
 
   @override
   Widget build(BuildContext context) {

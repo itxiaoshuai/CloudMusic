@@ -7,7 +7,7 @@ class MenuItem extends StatelessWidget {
   final String image;
   final String route;
 
-  MenuItem({this.image, this.text, this.route});
+  MenuItem({required this.image, required this.text,  this.route=''});
 
   @override
   Widget build(BuildContext context) {

@@ -10,8 +10,8 @@ class PhoneLoginPage extends StatefulWidget {
 }
 
 class _PhoneLoginPageState extends State<PhoneLoginPage> {
-  String phone;
-  String password;
+  late String phone;
+  late String password;
 
   @override
   Widget build(BuildContext context) {

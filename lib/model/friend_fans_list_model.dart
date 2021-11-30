@@ -3,7 +3,7 @@ import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/layout_state_model.dart';
 import 'package:cloud_music/data/protocol/fans.dart';
 class FriendFansModel extends LayoutStateModel {
-  Fans _follows;
+  late Fans _follows;
   Fans get data => _follows;
   loadData(Map<String, dynamic> queryParameters) {
     setState(LayoutState.LOADING);

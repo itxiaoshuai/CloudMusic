@@ -101,7 +101,7 @@ class PagePodcastCategoryStat extends State<PagePodcastCategory>
                     children: [
                       Text(
                         v.name,
-                        style: Theme.of(context).textTheme.subtitle1.copyWith(
+                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
                             fontWeight: FontWeight.w800, fontSize: 18),
                       ),
                       ClipRRect(
@@ -131,7 +131,7 @@ class PagePodcastCategoryStat extends State<PagePodcastCategory>
                                       '更多',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle1
+                                          .subtitle1!
                                           .copyWith(
                                               fontWeight: FontWeight.w100,
                                               fontSize: 14),

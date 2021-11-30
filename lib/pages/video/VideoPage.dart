@@ -45,10 +45,10 @@ class _VideoPageState extends State<VideoPage> {
 }
 
 class Video {
-  const Video({this.title, this.categoryId});
+   const Video({required this.title, required this.categoryId});
 
-  final String title; //这个参数是分类名称
-  final int categoryId; //这个适用于网络请求的参数，获取不同分类列表
+   final String title; //这个参数是分类名称
+   final int categoryId; //这个适用于网络请求的参数，获取不同分类列表
 }
 
 const List<Video> videoCategoryList = const <Video>[

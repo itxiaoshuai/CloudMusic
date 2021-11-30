@@ -1,25 +1,24 @@
 class HotRadio {
-  int code;
+  late int code;
 
-  List<DjRadios> djRadios;
+  late List<DjRadios> djRadios;
 
   static HotRadio fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     HotRadio hotRadio = HotRadio();
     hotRadio.code = map['code'];
-    hotRadio.djRadios = []
-      ..addAll((map['djRadios'] as List ?? []).map((o) => DjRadios.fromJson(o)));
+    hotRadio.djRadios = []..addAll(
+        (map['djRadios'] as List).map((o) => DjRadios.fromJson(o)));
     return hotRadio;
   }
 }
 
 class DjRadios {
-  int id;
-  String name;
-  String picUrl;
-  int subCount;
+  late int id;
+  late String name;
+  late String picUrl;
+  late int subCount;
+
   static DjRadios fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     DjRadios data = DjRadios();
     data.name = map['name'];
     data.picUrl = map['picUrl'];

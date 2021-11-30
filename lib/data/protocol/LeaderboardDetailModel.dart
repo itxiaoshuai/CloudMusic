@@ -1,93 +1,92 @@
 class LeaderBoardDetailModel {
-  Playlist playlist;
-  int code;
+  late Playlist playlist;
+  late int code;
 
   LeaderBoardDetailModel({
-    this.playlist,
-    this.code,
+    required this.playlist,
+    required this.code,
   });
 
   LeaderBoardDetailModel.fromJson(Map<String, dynamic> json) {
-    playlist =
-        json['playlist'] != null ? Playlist.fromJson(json['playlist']) : null;
+    playlist = (json['playlist'] != null
+        ? Playlist.fromJson(json['playlist'])
+        : null)!;
     code = json['code'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
-    if (this.playlist != null) {
-      data['playlist'] = this.playlist.toJson();
-    }
+    data['playlist'] = this.playlist.toJson();
     data['code'] = this.code;
     return data;
   }
 }
 
 class Playlist {
-  List<Subscribers> subscribers;
-  bool subscribed;
-  Creator creator;
-  List<Tracks> tracks;
-  int backgroundCoverId;
-  int trackUpdateTime;
-  int userId;
-  bool highQuality;
-  int specialType;
-  int updateTime;
-  int trackCount;
-  String commentThreadId;
-  int playCount;
-  int createTime;
-  int trackNumberUpdateTime;
-  int coverImgId;
-  String coverImgUrl;
-  int adType;
-  int privacy;
-  bool newImported;
-  int subscribedCount;
-  int cloudTrackCount;
-  String description;
-  bool ordered;
-  int status;
-  String name;
-  int id;
-  int shareCount;
-  String coverImgIdStr;
-  String toplistType;
-  int commentCount;
+  late List<Subscribers> subscribers;
+  late bool subscribed;
+  late Creator creator;
+  late List<Tracks> tracks;
+  late int backgroundCoverId;
+  late int trackUpdateTime;
+  late int userId;
+  late bool highQuality;
+  late int specialType;
+  late int updateTime;
+  late int trackCount;
+  late String commentThreadId;
+  late int playCount;
+  late int createTime;
+  late int trackNumberUpdateTime;
+  late int coverImgId;
+  late String coverImgUrl;
+  late int adType;
+  late int privacy;
+  late bool newImported;
+  late int subscribedCount;
+  late int cloudTrackCount;
+  late String description;
+  late bool ordered;
+  late int status;
+  late String name;
+  late int id;
+  late int shareCount;
+  late String coverImgIdStr;
+  late String toplistType;
+  late int commentCount;
 
   Playlist(
-      {this.subscribers,
-      this.subscribed,
-      this.creator,
-      this.tracks,
-      this.backgroundCoverId,
-      this.trackUpdateTime,
-      this.userId,
-      this.highQuality,
-      this.specialType,
-      this.updateTime,
-      this.trackCount,
-      this.commentThreadId,
-      this.playCount,
-      this.createTime,
-      this.trackNumberUpdateTime,
-      this.coverImgId,
-      this.coverImgUrl,
-      this.adType,
-      this.privacy,
-      this.newImported,
-      this.subscribedCount,
-      this.cloudTrackCount,
-      this.description,
-      this.ordered,
-      this.status,
-      this.name,
-      this.id,
-      this.shareCount,
-      this.coverImgIdStr,
-      this.toplistType,
-      this.commentCount});
+      {required this.subscribers,
+      required this.subscribed,
+      required this.creator,
+      required this.tracks,
+      required this.backgroundCoverId,
+      required this.trackUpdateTime,
+      required this.userId,
+      required this.highQuality,
+      required this.specialType,
+      required this.updateTime,
+      required this.trackCount,
+      required this.commentThreadId,
+      required this.playCount,
+      required this.createTime,
+      required this.trackNumberUpdateTime,
+      required this.coverImgId,
+      required this.coverImgUrl,
+      required this.adType,
+      required this.privacy,
+      required this.newImported,
+      required this.subscribedCount,
+      required this.cloudTrackCount,
+      required this.description,
+      required this.ordered,
+      required this.status,
+      required this.name,
+      required this.id,
+      required this.shareCount,
+      required this.coverImgIdStr,
+      required this.toplistType,
+      required this.commentCount});
 
   Playlist.fromJson(Map<String, dynamic> json) {
     if (json['subscribers'] != null) {
@@ -98,7 +97,7 @@ class Playlist {
     }
     subscribed = json['subscribed'];
     creator =
-        json['creator'] != null ? Creator.fromJson(json['creator']) : null;
+        (json['creator'] != null ? Creator.fromJson(json['creator']) : null)!;
     if (json['tracks'] != null) {
       tracks = <Tracks>[];
       json['tracks'].forEach((v) {
@@ -137,16 +136,10 @@ class Playlist {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
-    if (this.subscribers != null) {
-      data['subscribers'] = this.subscribers.map((v) => v.toJson()).toList();
-    }
+    data['subscribers'] = this.subscribers.map((v) => v.toJson()).toList();
     data['subscribed'] = this.subscribed;
-    if (this.creator != null) {
-      data['creator'] = this.creator.toJson();
-    }
-    if (this.tracks != null) {
-      data['tracks'] = this.tracks.map((v) => v.toJson()).toList();
-    }
+    data['creator'] = this.creator.toJson();
+    data['tracks'] = this.tracks.map((v) => v.toJson()).toList();
 
     data['backgroundCoverId'] = this.backgroundCoverId;
     data['trackUpdateTime'] = this.trackUpdateTime;
@@ -180,62 +173,62 @@ class Playlist {
 }
 
 class Subscribers {
-  bool defaultAvatar;
-  int province;
-  int authStatus;
-  bool followed;
-  String avatarUrl;
-  int accountStatus;
-  int gender;
-  int city;
-  int birthday;
-  int userId;
-  int userType;
-  String nickname;
-  String signature;
-  String description;
-  String detailDescription;
-  int avatarImgId;
-  int backgroundImgId;
-  String backgroundUrl;
-  int authority;
-  bool mutual;
-  Null expertTags;
-  Null experts;
-  int djStatus;
-  int vipType;
-  Null remarkName;
-  String backgroundImgIdStr;
-  String avatarImgIdStr;
+  late bool defaultAvatar;
+  late int province;
+  late int authStatus;
+  late bool followed;
+  late String avatarUrl;
+  late int accountStatus;
+  late int gender;
+  late int city;
+  late int birthday;
+  late int userId;
+  late int userType;
+  late String nickname;
+  late String signature;
+  late String description;
+  late String detailDescription;
+  late int avatarImgId;
+  late int backgroundImgId;
+  late String backgroundUrl;
+  late int authority;
+  late bool mutual;
+  late Null expertTags;
+  late Null experts;
+  late int djStatus;
+  late int vipType;
+  late Null remarkName;
+  late String backgroundImgIdStr;
+  late String avatarImgIdStr;
 
   Subscribers({
-    this.defaultAvatar,
-    this.province,
-    this.authStatus,
-    this.followed,
-    this.avatarUrl,
-    this.accountStatus,
-    this.gender,
-    this.city,
-    this.birthday,
-    this.userId,
-    this.userType,
-    this.nickname,
-    this.signature,
-    this.description,
-    this.detailDescription,
-    this.avatarImgId,
-    this.backgroundImgId,
-    this.backgroundUrl,
-    this.authority,
-    this.mutual,
-    this.expertTags,
-    this.experts,
-    this.djStatus,
-    this.vipType,
-    this.remarkName,
-    this.backgroundImgIdStr,
-    this.avatarImgIdStr,
+    required this.defaultAvatar,
+    required this.province,
+    required this.authStatus,
+    required this.followed,
+    required this.avatarUrl,
+    required this.accountStatus,
+    required this.gender,
+    required this.city,
+    required this.birthday,
+    required this.userId,
+    required this.userType,
+    required this.nickname,
+    required this.signature,
+    required this.description,
+    required this.detailDescription,
+    required this.avatarImgId,
+    required this.backgroundImgId,
+    required this.backgroundUrl,
+    required this.authority,
+    required this.mutual,
+    required this.expertTags,
+    required this.experts,
+    required this.djStatus,
+    required this.vipType,
+    required this.remarkName,
+    required this.backgroundImgIdStr,
+    required this.avatarImgIdStr,
   });
 
   Subscribers.fromJson(Map<String, dynamic> json) {
@@ -303,62 +296,62 @@ class Subscribers {
 }
 
 class Creator {
-  bool defaultAvatar;
-  int province;
-  int authStatus;
-  bool followed;
-  String avatarUrl;
-  int accountStatus;
-  int gender;
-  int city;
-  int birthday;
-  int userId;
-  int userType;
-  String nickname;
-  String signature;
-  String description;
-  String detailDescription;
-  int avatarImgId;
-  int backgroundImgId;
-  String backgroundUrl;
-  int authority;
-  bool mutual;
-  Null expertTags;
-  Null experts;
-  int djStatus;
-  int vipType;
-  Null remarkName;
-  String backgroundImgIdStr;
-  String avatarImgIdStr;
+  late bool defaultAvatar;
+  late int province;
+  late int authStatus;
+  late bool followed;
+  late String avatarUrl;
+  late int accountStatus;
+  late int gender;
+  late int city;
+  late int birthday;
+  late int userId;
+  late int userType;
+  late String nickname;
+  late String signature;
+  late String description;
+  late String detailDescription;
+  late int avatarImgId;
+  late int backgroundImgId;
+  late String backgroundUrl;
+  late int authority;
+  late bool mutual;
+  late Null expertTags;
+  late Null experts;
+  late int djStatus;
+  late int vipType;
+  late Null remarkName;
+  late String backgroundImgIdStr;
+  late String avatarImgIdStr;
 
   Creator(
-      {this.defaultAvatar,
-      this.province,
-      this.authStatus,
-      this.followed,
-      this.avatarUrl,
-      this.accountStatus,
-      this.gender,
-      this.city,
-      this.birthday,
-      this.userId,
-      this.userType,
-      this.nickname,
-      this.signature,
-      this.description,
-      this.detailDescription,
-      this.avatarImgId,
-      this.backgroundImgId,
-      this.backgroundUrl,
-      this.authority,
-      this.mutual,
-      this.expertTags,
-      this.experts,
-      this.djStatus,
-      this.vipType,
-      this.remarkName,
-      this.backgroundImgIdStr,
-      this.avatarImgIdStr});
+      {required this.defaultAvatar,
+      required this.province,
+      required this.authStatus,
+      required this.followed,
+      required this.avatarUrl,
+      required this.accountStatus,
+      required this.gender,
+      required this.city,
+      required this.birthday,
+      required this.userId,
+      required this.userType,
+      required this.nickname,
+      required this.signature,
+      required this.description,
+      required this.detailDescription,
+      required this.avatarImgId,
+      required this.backgroundImgId,
+      required this.backgroundUrl,
+      required this.authority,
+      required this.mutual,
+      required this.expertTags,
+      required this.experts,
+      required this.djStatus,
+      required this.vipType,
+      required this.remarkName,
+      required this.backgroundImgIdStr,
+      required this.avatarImgIdStr});
 
   Creator.fromJson(Map<String, dynamic> json) {
     defaultAvatar = json['defaultAvatar'];
@@ -424,58 +417,52 @@ class Creator {
 }
 
 class Tracks {
-  String name;
-  int id;
-  List<Ar> ar;
-
-  int pop;
-  int st;
-  String rt;
-  int fee;
-  int v;
-
-  String cf;
-
-  int dt;
-
-  String cd;
-  int no;
-
-  int ftype;
-  int djId;
-  int copyright;
-  int sId;
-  int mark;
-  int rtype;
-
-  int mst;
-  int cp;
-  int mv;
-  int publishTime;
+  late String name;
+  late int id;
+  late List<Ar> ar;
+  late int pop;
+  late int st;
+  late String rt;
+  late int fee;
+  late int v;
+  late String cf;
+  late int dt;
+  late String cd;
+  late int no;
+  late int ftype;
+  late int djId;
+  late int copyright;
+  late int sId;
+  late int mark;
+  late int rtype;
+  late int mst;
+  late int cp;
+  late int mv;
+  late int publishTime;
 
   Tracks(
-      {this.name,
-      this.id,
-      this.ar,
-      this.pop,
-      this.st,
-      this.rt,
-      this.fee,
-      this.v,
-      this.cf,
-      this.dt,
-      this.cd,
-      this.no,
-      this.ftype,
-      this.djId,
-      this.copyright,
-      this.sId,
-      this.mark,
-      this.rtype,
-      this.mst,
-      this.cp,
-      this.mv,
-      this.publishTime});
+      {required this.name,
+      required this.id,
+      required this.ar,
+      required this.pop,
+      required this.st,
+      required this.rt,
+      required this.fee,
+      required this.v,
+      required this.cf,
+      required this.dt,
+      required this.cd,
+      required this.no,
+      required this.ftype,
+      required this.djId,
+      required this.copyright,
+      required this.sId,
+      required this.mark,
+      required this.rtype,
+      required this.mst,
+      required this.cp,
+      required this.mv,
+      required this.publishTime});
 
   Tracks.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -542,12 +529,12 @@ class Tracks {
 }
 
 class Ar {
-  int id;
-  String name;
+  late int id;
+  late String name;
 
   Ar({
-    this.id,
-    this.name,
+    required this.id,
+    required this.name,
   });
 
   Ar.fromJson(Map<String, dynamic> json) {
@@ -565,38 +552,38 @@ class Ar {
 }
 
 class Privileges {
-  int id;
-  int fee;
-  int payed;
-  int st;
-  int pl;
-  int dl;
-  int sp;
-  int cp;
-  int subp;
-  bool cs;
-  int maxbr;
-  int fl;
-  bool toast;
-  int flag;
-  bool preSell;
+  late int id;
+  late int fee;
+  late int payed;
+  late int st;
+  late int pl;
+  late int dl;
+  late int sp;
+  late int cp;
+  late int subp;
+  late bool cs;
+  late int maxbr;
+  late int fl;
+  late bool toast;
+  late int flag;
+  late bool preSell;
 
   Privileges(
-      {this.id,
-      this.fee,
-      this.payed,
-      this.st,
-      this.pl,
-      this.dl,
-      this.sp,
-      this.cp,
-      this.subp,
-      this.cs,
-      this.maxbr,
-      this.fl,
-      this.toast,
-      this.flag,
-      this.preSell});
+      {required this.id,
+      required this.fee,
+      required this.payed,
+      required this.st,
+      required this.pl,
+      required this.dl,
+      required this.sp,
+      required this.cp,
+      required this.subp,
+      required this.cs,
+      required this.maxbr,
+      required this.fl,
+      required this.toast,
+      required this.flag,
+      required this.preSell});
 
   Privileges.fromJson(Map<String, dynamic> json) {
     id = json['id'];

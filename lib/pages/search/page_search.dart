@@ -27,6 +27,7 @@ class SearchPageState extends State<SearchPage> {
           onModelReady: (model) {
             model.loadSearchHot();
           },
+          child: Container(),
           builder: (context, model, child) {
             switch (model.layoutState) {
               case LayoutState.IDLE:

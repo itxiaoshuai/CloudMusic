@@ -12,17 +12,14 @@ import 'package:cloud_music/pages/find/PageDailySpecial.dart';
 import 'package:cloud_music/pages/login/page_phone_login.dart';
 import 'package:cloud_music/pages/my/page_friend.dart';
 import 'package:cloud_music/pages/play_songs/page_play_songs.dart';
-import 'package:cloud_music/pages/play_songs/page_songplay.dart';
 import 'package:cloud_music/pages/radio/page_radio_detail.dart';
 import 'package:cloud_music/pages/search/page_search.dart';
 import 'package:cloud_music/pages/search/page_search_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:cloud_music/data/protocol/user_detail_bean.dart';
 import 'package:cloud_music/pages/album/comment_page.dart';
 import 'package:cloud_music/pages/radio/page_radio_category.dart';
 import 'package:cloud_music/pages/user/page_user_detail.dart';
-import 'package:cloud_music/pages/user/page_user_home.dart';
 import 'package:cloud_music/route/page_route_anim.dart';
 import 'package:cloud_music/pages/my/page_cloud_storage.dart';
 import 'package:cloud_music/pages/leaderboard/LeaderboardPage.dart';
@@ -55,19 +52,20 @@ class RouteName {
 }
 
 class Routers {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
-    switch (settings.name) {
+  static Route<dynamic> generateRoute(RouteSettings? settings) {
+    switch (settings?.name) {
       case RouteName.comment:
-        int id = settings.arguments;
+        int id = settings!.arguments as int;
         return NoAnimRouteBuilder(CommentPage(id));
       case RouteName.RADIO_CATEGORY:
         return NoAnimRouteBuilder(RadioCategoryPage());
       case RouteName.USER_HOME:
-        var userId = settings.arguments;
-
+        var userId = settings!.arguments as int;
         return NoAnimRouteBuilder(UserDetailPage(
           userId: userId,
+          key: ValueKey(RouteName.USER_HOME),
         ));
+
       case RouteName.PAGE_SONGS:
         return NoAnimRouteBuilder(PlaySongsPage());
       case RouteName.PAGE_FRIEND:
@@ -93,20 +91,20 @@ class Routers {
       case RouteName.PAGE_MESSAGE_COMMENT: //消息评论
         return NoAnimRouteBuilder(PageComment());
       case RouteName.PAGE_NOTICE_COMMENT:
-        var notice = settings.arguments;
+        var notice = settings!.arguments;
         return NoAnimRouteBuilder(MessageCommentPage(notice: notice));
       case RouteName.PAGE_LANGUAGE_STYLE_MUSEUM:
         return NoAnimRouteBuilder(LanguageAlbumPage());
       case RouteName.PAGE_PAGE_ALBUM_DETAIL:
-        var albumId = settings.arguments;
+        var albumId = settings!.arguments;
         return NoAnimRouteBuilder(AlbumDetailPage(albumId: albumId));
       case RouteName.PAGE_SEARCH:
         return NoAnimRouteBuilder(SearchPage());
       case RouteName.PAGE_SEARCH_LIST:
         return NoAnimRouteBuilder(SearchListPage());
       case RouteName.PAGE_WEB:
-        Map<String, dynamic> map = settings.arguments;
-        print('map---->${map}');
+        Map map = settings?.arguments as Map;
+        print('map---->$map');
         return NoAnimRouteBuilder(WebViewPage(
           map['url'],
           title: map['title'],
@@ -118,7 +116,7 @@ class Routers {
         return CupertinoPageRoute(
             builder: (_) => Scaffold(
                   body: Center(
-                    child: Text('No route defined for ${settings.name}'),
+                    child: Text('No route defined for ${settings!.name}'),
                   ),
                 ));
     }
@@ -130,16 +128,16 @@ class PopRoute extends PopupRoute {
   final Duration _duration = Duration(milliseconds: 300);
   Widget child;
 
-  PopRoute({@required this.child});
+  PopRoute({required this.child});
 
   @override
-  Color get barrierColor => null;
+  Color? get barrierColor => null;
 
   @override
   bool get barrierDismissible => true;
 
   @override
-  String get barrierLabel => null;
+  String? get barrierLabel => null;
 
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,

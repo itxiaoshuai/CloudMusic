@@ -7,14 +7,12 @@ import 'package:cloud_music/base/ConstImg.dart';
 import 'package:cloud_music/base/utils/utils.dart';
 import 'package:cloud_music/data/protocol/playlist.dart';
 import 'package:cloud_music/model/play_list_model.dart';
-import 'package:cloud_music/pages/play_songs/page_play_songs.dart';
 import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/provider_widget.dart';
 import 'package:cloud_music/provider/view_state_widget.dart';
 import 'package:cloud_music/route/routes.dart';
 import 'package:cloud_music/widget/ListItemCustom.dart';
 import 'package:cloud_music/widget/flexible_app_bar.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../r.dart';
@@ -31,7 +29,7 @@ class PlaylistDetailPage extends StatefulWidget {
 }
 
 class _PlayListDetailState extends State<PlaylistDetailPage> {
-  Playlist playlist;
+  late Playlist playlist;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +39,7 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
         onModelReady: (model) {
           model.loadData(widget.playlistId);
         },
+        child: Container(),
         builder: (context, model, child) {
           debugPrint('---当前状态--> ${model}');
           switch (model.layoutState) {
@@ -74,8 +73,8 @@ class _PlayListDetailState extends State<PlaylistDetailPage> {
 class PlayListHeaderBackground extends StatelessWidget {
   final String imageUrl;
 
-  const PlayListHeaderBackground({Key key, @required this.imageUrl})
-      : super(key: key);
+  const PlayListHeaderBackground({ required this.imageUrl})
+      : super();
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +128,7 @@ class _PlaylistDetailHeader extends StatelessWidget {
                         ListItemCustom(
                           width: 120,
                           height: 120,
-                          img: model.data == null ? "" : model.data.coverImgUrl,
+                          img: model.data == null ? "" : model.data.coverImgUrl, album: {},
                         ),
                         SizedBox(width: 16),
                         Expanded(
@@ -364,7 +363,7 @@ class ListItem extends StatelessWidget {
   final String text;
   final String image;
 
-  ListItem({this.image, this.text});
+  ListItem({required this.image, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -412,7 +411,7 @@ class MusicListHeader extends StatelessWidget implements PreferredSizeWidget {
                 Padding(padding: EdgeInsets.only(left: 4)),
                 Text(
                   "播放全部",
-                  style: Theme.of(context).textTheme.body1,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 Padding(padding: EdgeInsets.only(left: 2)),
                 Text(
@@ -468,7 +467,8 @@ class CustomWidget extends StatelessWidget {
 //            floating: true,
 //            snap: false,
             expandedHeight: 380.0,
-            bottom: _buildListHeader(context, model),
+
+            bottom: _buildListHeader(context, model) as PreferredSizeWidget,
             flexibleSpace: _PlaylistDetailHeader(model, id),
             actions: <Widget>[
               IconButton(

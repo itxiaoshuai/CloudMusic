@@ -16,8 +16,8 @@ class ListItemCustom extends StatelessWidget {
       this.height = 100,
       this.circular = 6.0,
       this.updateFrequency = "",
-      this.img,
-      this.album});
+      required this.img,
+      required this.album});
 
   @override
   Widget build(BuildContext context) {

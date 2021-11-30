@@ -9,7 +9,7 @@ class PagePodcast extends StatefulWidget {
 }
 
 class PagePodcastState extends State<PagePodcast> with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  TabController _tabController;
+  late TabController _tabController;
   @override
   void dispose() {
     _tabController.dispose();

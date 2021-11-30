@@ -1,13 +1,12 @@
 class CloudStorageBean {
-  int code;
-  String size;
-  String maxSize;
-  int count;
-  bool hasMore;
-  List<Data> data;
+  late int code;
+  late String size;
+  late String maxSize;
+  late int count;
+  late bool hasMore;
+  late List<Data> data;
 
  static CloudStorageBean fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     CloudStorageBean cloudStorageBean = CloudStorageBean();
     cloudStorageBean.code = map['code'];
     cloudStorageBean.size = map['size'];
@@ -26,13 +25,12 @@ class CloudStorageBean {
 }
 
 class Data {
-  SimpleSong simpleSong;
-  String songName;
-  String album;
-  String artist;
+  late SimpleSong simpleSong;
+  late String songName;
+  late String album;
+  late String artist;
 
   static Data fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Data data = Data();
     if (map['simpleSong'] != null) {
       data.simpleSong = SimpleSong.fromJson(map['simpleSong']);
@@ -46,11 +44,10 @@ class Data {
 }
 
 class SimpleSong {
-  String name;
-  int id;
-  int mv;
+  late String name;
+  late int id;
+  late int mv;
   static SimpleSong fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     SimpleSong data = SimpleSong();
     data.name = map['name'];
     data.id = map['id'];

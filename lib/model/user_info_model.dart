@@ -4,7 +4,7 @@ import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/layout_state_model.dart';
 
 class UserInfoModel extends LayoutStateModel {
-  UserDetail _userDetail;
+  late UserDetail _userDetail;
   UserDetail get data => _userDetail;
   loadData(int id) async {
     Map<String, dynamic> formData = {'uid': id};

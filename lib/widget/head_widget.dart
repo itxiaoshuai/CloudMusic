@@ -1,8 +1,6 @@
-import 'package:cloud_music/model/search_model.dart';
 import 'package:cloud_music/model/user_info_model.dart';
 import 'package:cloud_music/provider/layout_state.dart';
 import 'package:cloud_music/provider/provider_widget.dart';
-import 'package:cloud_music/provider/view_state_widget.dart';
 import 'package:flutter/material.dart';
 
 class HeadPortraitWidget extends StatefulWidget {
@@ -19,6 +17,7 @@ class _HeadPortraitWidgetState extends State<HeadPortraitWidget> {
   Widget build(BuildContext context) {
     return ProviderWidget<UserInfoModel>(
         model: UserInfoModel(),
+        child: Container(),
         onModelReady: (model) {
           model.loadData(widget.id);
         },

@@ -34,6 +34,7 @@ class SearchSingleListPageState extends State<SearchSingleListPage>  with Automa
             Map<String, dynamic> formData = {'keywords': "四季予你", "type": 100};
             model.loadSearchResult(formData);
           },
+          child: Container(),
           builder: (context, model, child) {
             switch (model.layoutState) {
               case LayoutState.IDLE:

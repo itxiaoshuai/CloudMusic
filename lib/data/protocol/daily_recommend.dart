@@ -1,25 +1,23 @@
 class DailyRecommend {
-  int code;
-  List<Recommend> recommend;
-  Data data;
+  late int code;
+  late List<Recommend> recommend;
+  late Data data;
 
   static DailyRecommend fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     DailyRecommend dailyRecommend = DailyRecommend();
     dailyRecommend.code = map['code'];
     dailyRecommend.recommend = []..addAll(
-        (map['recommend'] as List ?? []).map((o) => Recommend.fromJson(o)));
+        (map['recommend'] as List).map((o) => Recommend.fromJson(o)));
     dailyRecommend.data = Data.fromJson(map['data']);
     return dailyRecommend;
   }
 }
 
 class Recommend {
-  String name;
-  int id;
+  late String name;
+  late int id;
 
   static Recommend fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Recommend recommend = Recommend();
     recommend.name = map['name'];
     recommend.id = map['id'];
@@ -29,45 +27,42 @@ class Recommend {
 }
 
 class Data {
-  List<DailySongs> dailySongs;
+  late List<DailySongs> dailySongs;
 
   static Data fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Data data = Data();
     data.dailySongs = []..addAll(
-        (map['dailySongs'] as List ?? []).map((o) => DailySongs.fromJson(o)));
+        (map['dailySongs'] as List).map((o) => DailySongs.fromJson(o)));
     return data;
   }
 }
 
 class DailySongs {
-  String name;
-  int id;
-  List<Artists> artists;
-  int mv;
-  Al al;
-  List<Ar> ar;
+  late String name;
+  late int id;
+  late List<Artists> artists;
+  late int mv;
+  late Al al;
+  late List<Ar> ar;
 
   static DailySongs fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     DailySongs song = DailySongs();
     song.name = map['name'];
     song.id = map['id'];
     song.mv = map['mv'];
     song.artists = []
-      ..addAll((map['artists'] as List ?? []).map((o) => Artists.fromJson(o)));
+      ..addAll((map['artists'] as List).map((o) => Artists.fromJson(o)));
     song.al = Al.fromJson(map['al']);
-    song.ar = []..addAll((map['ar'] as List ?? []).map((o) => Ar.fromJson(o)));
+    song.ar = []..addAll((map['ar'] as List).map((o) => Ar.fromJson(o)));
     return song;
   }
 }
 
 class Artists {
-  String name;
-  int id;
+  late String name;
+  late int id;
 
   static Artists fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Artists artists = Artists();
     artists.name = map['name'];
     artists.id = map['id'];
@@ -77,11 +72,10 @@ class Artists {
 }
 
 class Ar {
-  String name;
-  int id;
+  late String name;
+  late int id;
 
   static Ar fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Ar ar = Ar();
     ar.name = map['name'];
     ar.id = map['id'];
@@ -90,12 +84,11 @@ class Ar {
 }
 
 class Al {
-  String name;
-  int id;
-  String picUrl;
+  late String name;
+  late int id;
+  late String picUrl;
 
   static Al fromJson(Map<String, dynamic> map) {
-    if (map == null) return null;
     Al album = Al();
     album.name = map['name'];
     album.id = map['id'];

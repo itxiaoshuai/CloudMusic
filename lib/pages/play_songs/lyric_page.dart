@@ -20,10 +20,10 @@ class LyricPage extends StatefulWidget {
 }
 
 class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
-  int curSongId;
-  LyricData _lyricData;
-  List<Lyric> lyrics;
-  LyricWidget _lyricWidget;
+  late int curSongId;
+  late LyricData _lyricData;
+  late List<Lyric> lyrics;
+  late LyricWidget _lyricWidget;
   List<SubtitleEntry> _subtitleList = [];
 
   @override
@@ -50,7 +50,7 @@ class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
       List<String> list = _lyricData.lrc.lyric.split(RegExp('\n'));
 
       list.forEach((s) {
-        print('list----${s}');
+        print('list----$s');
         if (s.isNotEmpty) {
           String time = s.substring(0, s.indexOf(']'));
           String lyric = s.substring(s.indexOf(']') + 1);
@@ -87,7 +87,7 @@ class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
           print('curPositionStream=====${widget.model.curPositionStream}');
           if (snapshot.hasData) {
             var curTime = double.parse(
-                snapshot.data.substring(0, snapshot.data.indexOf('-')));
+                snapshot.data!.substring(0, snapshot.data!.indexOf('-')));
             print('curTime=====${curTime}');
 
             // 获取当前在哪一行

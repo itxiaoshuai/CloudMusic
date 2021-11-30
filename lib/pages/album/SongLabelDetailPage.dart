@@ -5,7 +5,7 @@ class SongLabelDetailPage extends StatefulWidget {
   final String cat;
 
   SongLabelDetailPage({
-    this.cat,
+    required this.cat,
   });
 
   @override

@@ -15,15 +15,16 @@ class BaseImgItem extends StatelessWidget {
   final String describe; //描述
   final int playCount;
   final int id;
+
   BaseImgItem({
-    this.width,
-    this.height,
+    this.width = 0,
+    this.height = 0,
     this.circular = 6.0,
     this.updateFrequency = "",
-    this.img,
+    this.img = "",
     this.describe = '',
     this.playCount = 0,
-    this.id,
+    this.id=0,
   });
 
   @override
@@ -51,17 +52,17 @@ class BaseImgItem extends StatelessWidget {
                       right: 0,
                       child: Center(
                           child: Container(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(circular),
-                              child: CachedNetworkImage(
-                                fit: BoxFit.fill,
-                                imageUrl: img,
-                                placeholder: (context, url) => ProgressView(),
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
-                              ),
-                            ),
-                          ))),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(circular),
+                          child: CachedNetworkImage(
+                            fit: BoxFit.fill,
+                            imageUrl: img,
+                            placeholder: (context, url) => ProgressView(),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
+                        ),
+                      ))),
                   Positioned(
                     top: 5,
                     right: 5,
@@ -74,7 +75,7 @@ class BaseImgItem extends StatelessWidget {
                         ),
                         Text('${NumberUtils.amountConversion(playCount)}',
                             style:
-                            TextStyle(fontSize: 10, color: Colors.white)),
+                                TextStyle(fontSize: 10, color: Colors.white)),
                       ],
                     ),
                   )
@@ -116,17 +117,17 @@ class BaseImgItem extends StatelessWidget {
                         right: 0,
                         child: Center(
                             child: Container(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(circular),
-                                child: CachedNetworkImage(
-                                  fit: BoxFit.fill,
-                                  imageUrl: img,
-                                  placeholder: (context, url) => ProgressView(),
-                                  errorWidget: (context, url, error) =>
-                                      Icon(Icons.error),
-                                ),
-                              ),
-                            ))),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(circular),
+                            child: CachedNetworkImage(
+                              fit: BoxFit.fill,
+                              imageUrl: img,
+                              placeholder: (context, url) => ProgressView(),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                            ),
+                          ),
+                        ))),
                     Positioned(
                       top: 5,
                       right: 5,
@@ -139,7 +140,7 @@ class BaseImgItem extends StatelessWidget {
                           ),
                           Text('${NumberUtils.amountConversion(playCount)}',
                               style:
-                              TextStyle(fontSize: 10, color: Colors.white)),
+                                  TextStyle(fontSize: 10, color: Colors.white)),
                         ],
                       ),
                     )

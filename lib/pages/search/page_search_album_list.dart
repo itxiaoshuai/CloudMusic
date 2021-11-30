@@ -24,6 +24,7 @@ class SearchAlbumListPageState extends State<SearchAlbumListPage>  with Automati
             Map<String, dynamic> formData = {'keywords': "四季予你", "type": 10};
             model.loadSearchResult(formData);
           },
+          child: Container(),
           builder: (context, model, child) {
             switch (model.layoutState) {
               case LayoutState.IDLE:
