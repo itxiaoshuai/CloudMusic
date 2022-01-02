@@ -108,6 +108,14 @@
       <option name="presentableId" value="Default" />
       <updated>1638148316195</updated>
     </task>
+    <task id="LOCAL-00001" summary="完成播放音乐功能">
+      <created>1641125306991</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1641125306992</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -131,5 +139,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="完成播放音乐功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成播放音乐功能" />
   </component>
 </project>
