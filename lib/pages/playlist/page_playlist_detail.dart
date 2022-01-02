@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:cloud_music/base/res/gaps.dart';
+import 'package:cloud_music/data/protocol/song.dart';
 import 'package:cloud_music/data/protocol/tracks.dart';
 import 'package:cloud_music/manager/audio_paly_manager.dart';
 import 'package:flutter/material.dart';
@@ -524,7 +525,9 @@ class CustomWidget extends StatelessWidget {
       BuildContext context, AudioPlayManager audioPlayManager, int index) {
     // model.data.tracks
     // audioPlayManager.
-    audioPlayManager.playSong(model.data.tracks[index]);
+    Navigator.of(context).pushNamed(RouteName.PAGE_SONGS);
+    audioPlayManager.addSongs(model.data.tracks);
+    audioPlayManager.playSongByIndex(index);
     // model.playSongs(
     //   model
     //       .map((r) => Song(

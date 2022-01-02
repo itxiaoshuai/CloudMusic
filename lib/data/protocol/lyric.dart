@@ -32,9 +32,7 @@ class LyricData {
   });
 
   LyricData.fromJson(Map<String, dynamic> json) {
-    transUser = (json['transUser'] != null
-        ? TransUser.fromJson(json['transUser'])
-        : null)!;
+    transUser = (json['transUser'] != null ? TransUser.fromJson(json['transUser']) : null);
     lrc = Lrc.fromJson(json['lrc']);
     klyric = Klyric.fromJson(json['klyric']);
     tlyric = Tlyric.fromJson(json['tlyric']);

@@ -18,7 +18,7 @@ class LyricWidget extends CustomPainter with ChangeNotifier {
   late TextPainter draggingLineTimeTextPainter; // 正在拖动中当前行的时间
   late Size canvasSize = Size.zero;
   late int dragLineTime;
-
+  get getOffsetY => _offsetY;
 
   set offsetY(double value) {
     // 判断如果是在拖动状态下

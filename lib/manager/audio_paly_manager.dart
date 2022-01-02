@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class AudioPlayManager extends ChangeNotifier {
   StreamController<String> _curPositionController =
       StreamController<String>.broadcast();
-  late AudioPlayer _audioPlayer = AudioPlayer(); //播放器
+  AudioPlayer _audioPlayer = AudioPlayer(); //播放器
   late List<Tracks> _tracks = []; //播放列表
   late int curIndex = 0;
   late int _totalDuration = 0;
@@ -59,6 +59,19 @@ class AudioPlayManager extends ChangeNotifier {
     play();
   }
 
+  Future<void> playSongByIndex(int index) async {
+    if (_tracks.length > index) {
+      curIndex = index;
+      play();
+    }
+  }
+
+  // 添加歌曲
+  void addSongs(List<Tracks> songs) {
+    this._tracks.clear();
+    this._tracks.addAll(songs);
+  }
+
   /// 跳转到固定时间
   void seekPlay(int milliseconds) {
     _audioPlayer.seek(Duration(milliseconds: milliseconds));
@@ -67,15 +80,17 @@ class AudioPlayManager extends ChangeNotifier {
 
   /// 播放
   void play() async {
-    // var songId = this._tracks[curIndex].id;
+    debugPrint("当前播放列表个数${_tracks.length}");
+    debugPrint("当前播放位置${curIndex}");
+    var songId = this._tracks[curIndex].id;
     Map<String, dynamic> formData = {
-      'id': 33894312,
+      'id': songId,
     };
     var url = await RequestManager.getMusicURL(formData);
     // print('播放---->${this._tracks[curIndex].name}');
     print('播放---->$url');
-    _audioPlayer.play(
-        "http://m7.music.126.net/20210314210851/77e94a2570a0d0224c7fec4d0d3bac56/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3");
+    _audioPlayer.setUrl(url);
+    _audioPlayer.play(url);
   }
 
   /// 暂停、恢复
@@ -95,6 +110,25 @@ class AudioPlayManager extends ChangeNotifier {
   /// 恢复播放
   void resumePlay() {
     _audioPlayer.resume();
+  }
+  void prePlay(){
+    print('上一曲');
+    if(curIndex <= 0){
+      curIndex = _tracks.length - 1;
+    }else{
+      curIndex--;
+    }
+    play();
+  }
+  /// 下一首
+  void nextPlay() {
+    print('下一曲');
+    if (curIndex >= _tracks.length) {
+      curIndex = 0;
+    } else {
+      curIndex++;
+    }
+    play();
   }
 
   @override

@@ -15,8 +15,8 @@ parseJson(String text) {
 abstract class BaseHttp extends DioForNative {
   BaseHttp() {
     /// 初始化 加入app通用处理
-    (transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
-    interceptors..add(HeaderInterceptor());
+    // (transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
+    // interceptors..add(HeaderInterceptor());
 
     init();
   }

@@ -15,6 +15,8 @@ import 'package:cloud_music/data/protocol/yun_task.dart';
 import 'package:cloud_music/net/http.dart';
 import 'package:cloud_music/data/protocol/lyric.dart';
 import 'package:cloud_music/data/protocol/cloud_storage_bean.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RequestManager {
@@ -31,8 +33,11 @@ class RequestManager {
     Map<String, dynamic> formData = {
       'id': id,
     };
+    // var response =
+    //     await http.get('/playlist/detail', queryParameters: formData);
+    var dio = Dio();
     var response =
-        await http.get('/playlist/detail', queryParameters: formData);
+    await dio.get("http://www.mocky.io/v2/5cee0154300000592c6e9825");
     return response.data;
   }
 
@@ -48,6 +53,7 @@ class RequestManager {
       Map<String, dynamic> queryParameters) async {
     var response =
         await http.get('/song/url', queryParameters: queryParameters);
+    debugPrint("response----"+response.data.toString());
     return response.data['data'][0]["url"];
   }
 

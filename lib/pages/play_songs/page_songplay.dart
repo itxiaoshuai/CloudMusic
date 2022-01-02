@@ -39,7 +39,7 @@ class _SongPlayState extends State<SongPlay> {
       'id': 33894312,
     };
     _lyricData = await RequestManager.getLyricData(formData);
-    // print('${_lyricData.lrc.lyric}');
+    print('${_lyricData.lrc.lyric}');
     setState(() {
       lyrics = formatLyric(_lyricData.lrc.lyric);
       _lyricWidget = LyricWidget(lyrics, 0);
@@ -79,7 +79,7 @@ class _SongPlayState extends State<SongPlay> {
           if (snapshot.hasData) {
             var curTime = double.parse(
                 snapshot.data!.substring(0, snapshot.data!.indexOf('-')));
-            print('curTime=====${curTime}');
+            // print('curTime=====${curTime}');
 
             // 获取当前在哪一行
             int curLine = findLyricIndex(curTime, lyrics);

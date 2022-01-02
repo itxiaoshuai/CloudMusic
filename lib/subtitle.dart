@@ -50,7 +50,7 @@ class _SubtitleState extends State<Subtitle> {
   @override
   void initState() {
     _controller = ScrollController();
-    // _startAni();
+    _startAni();
     super.initState();
   }
 

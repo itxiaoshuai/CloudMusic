@@ -12,7 +12,7 @@ class PlayBottomMenuWidget extends StatefulWidget {
 }
 
 class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
-  late AudioPlayerMode _audioPlayerMode;
+  AudioPlayerMode _audioPlayerMode = AudioPlayerMode.LIST_CYCLE;
 
   Widget _buildPlayModeWidget() {
     switch (_audioPlayerMode) {
@@ -109,7 +109,7 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
 
   Widget _buildPlayStateWidget(AudioPlayManager manager) {
     print('播放状态---->${manager.curState}');
-    if (manager.curState == PlayerState.PAUSED) {
+    if (manager.curState == PlayerState.PAUSED || manager.curState == PlayerState.STOPPED) {
       return ImageTapWidget(
         R.mipmap.play,
         R.mipmap.playSelect,
@@ -136,6 +136,44 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
 
   @override
   Widget build(BuildContext context) {
+    // return Consumer<AudioPlayManager>(builder: (context, model, child) {
+    //   return Container(
+    //     child: Row(
+    //       children: [
+    //         _buildPlayModeWidget(),
+    //         ImageTapWidget(
+    //           R.mipmap.prevNormal,
+    //           R.mipmap.prevSelect,
+    //           40,
+    //           onTap: () {
+    //             print('上一曲');
+    //           },
+    //         ),
+    //         ImageTapWidget(
+    //           R.mipmap.play,
+    //           R.mipmap.playSelect,
+    //           75,
+    //           onTap: () {},
+    //         ),
+    //         ImageTapWidget(
+    //           R.mipmap.nextNormal,
+    //           R.mipmap.nextSelect,
+    //           40,
+    //           onTap: () {
+    //             print('下一曲');
+    //           },
+    //         ),
+    //         ImageTapWidget(
+    //           R.mipmap.songsNormal,
+    //           R.mipmap.songsSelect,
+    //           40,
+    //           onTap: () {},
+    //         ),
+    //       ],
+    //     ),
+    //   );
+    // });
+
     return Consumer<AudioPlayManager>(builder: (context, model, child) {
       return Container(
         // color: Colors.yellow,
@@ -148,7 +186,7 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
               R.mipmap.prevSelect,
               40,
               onTap: () {
-                print('上一曲');
+                model.prePlay();
               },
             ),
             _buildPlayStateWidget(model),
@@ -163,7 +201,7 @@ class _PlayBottomMenuWidgetState extends State<PlayBottomMenuWidget> {
               R.mipmap.nextSelect,
               40,
               onTap: () {
-                print('上一曲');
+                model.nextPlay();
               },
             ),
             ImageTapWidget(

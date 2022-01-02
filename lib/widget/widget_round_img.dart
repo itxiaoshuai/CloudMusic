@@ -12,7 +12,7 @@ class RoundImgWidget extends StatelessWidget {
     return img.startsWith('http') || img.startsWith('https')
         ? CircleAvatar(
             backgroundImage: NetworkImage(
-              'http://p3.music.126.net/JL0hXL3TNcjcfi0uJTKM-A==/109951163300299605.jpg',
+              img,
             ),
             backgroundColor: Colors.black,
             radius: width / 2,

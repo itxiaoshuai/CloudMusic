@@ -12,24 +12,26 @@ final Http http = Http();
 class Http extends BaseHttp {
   @override
   Future<void> init() async {
-    options.baseUrl = "http://118.24.63.15:1020";
-    // options.baseUrl = "http://192.168.191.2:3000";
+    debugPrint("Http---->init");
+    // options.baseUrl = "http://118.24.63.15:1020";
+    options.baseUrl = "http://192.168.0.106:3000";
     // options.baseUrl = "http://172.16.25.80:3000";
     options.followRedirects = false;
-
-    interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
-    Directory tempDir = await getTemporaryDirectory();
-    String tempPath = tempDir.path;
-    CookieJar cj = PersistCookieJar(storage: FileStorage(tempPath));
+    //
+    // interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
+    // Directory tempDir = await getTemporaryDirectory();
+    // String tempPath = tempDir.path;
+    // CookieJar cj = PersistCookieJar(storage: FileStorage(tempPath));
     interceptors..add(ApiInterceptor());
-    interceptors.add(CookieManager(cj));
+    // interceptors.add(CookieManager(cj));
   }
 }
 
-
+//添加拦截器
 class ApiInterceptor extends InterceptorsWrapper {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    debugPrint("在请求之前的拦截信息");
     debugPrint('---api-request--->url--> ${options.baseUrl}${options.path}' +
         ' queryParameters: ${options.queryParameters}' +
         ' data: ${options.data}');
@@ -38,13 +40,14 @@ class ApiInterceptor extends InterceptorsWrapper {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    ResponseData respData = ResponseData.fromJson(response.data);
-    if (respData.success) {
-      //请求成功
-      super.onResponse(response, handler);
-    } else {
-      throw NotSuccessException.fromRespData(respData);
-    }
+    debugPrint("在响应之前的拦截信息");
+    // ResponseData respData = ResponseData.fromJson(response.data);
+    // if (respData.success) {
+    //   //请求成功
+    //   super.onResponse(response, handler);
+    // } else {
+    //   throw NotSuccessException.fromRespData(respData);
+    // }
     super.onResponse(response, handler);
   }
 
