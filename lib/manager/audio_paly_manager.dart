@@ -119,6 +119,7 @@ class AudioPlayManager extends ChangeNotifier {
       curIndex--;
     }
     play();
+    notifyListeners();
   }
   /// 下一首
   void nextPlay() {
@@ -137,4 +138,6 @@ class AudioPlayManager extends ChangeNotifier {
     _curPositionController.close();
     _audioPlayer.dispose();
   }
+
 }
+

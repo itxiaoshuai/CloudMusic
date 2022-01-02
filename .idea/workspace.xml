@@ -5,40 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e57627d3-779c-4e5a-b65d-7860a411de80" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/pages/page_lyric.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/widget/lyric/flutter_lyric.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/widget/lyric/lyric.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/widget/lyric/lyric_controller.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/widget/lyric/lyric_painter.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/widget/lyric/lyric_util.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/widget/lyric/lyric_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/version" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/version" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/protocol/lyric.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/protocol/lyric.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/manager/audio_paly_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/manager/audio_paly_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/manager/request_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/manager/request_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/net/api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/net/api.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/net/http.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/net/http.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/play_songs/lyric_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/play_songs/lyric_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/play_songs/page_play_songs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/play_songs/page_play_songs.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/play_songs/page_songplay.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/play_songs/page_songplay.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/play_songs/widget_lyric.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/play_songs/widget_lyric.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/playlist/page_playlist_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/playlist/page_playlist_detail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/user/page_user_base_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/user/page_user_base_info.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/subtitle.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/subtitle.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/widget_play_bottom_menu.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/widget_play_bottom_menu.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/widget_round_img.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/widget_round_img.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +53,7 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/base/utils" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -115,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641125306992</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="完成播放音乐功能">
+      <created>1641125376428</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1641125376428</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

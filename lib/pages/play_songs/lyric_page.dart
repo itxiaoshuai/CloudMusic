@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_music/base/utils/string.dart';
 import 'package:cloud_music/manager/audio_paly_manager.dart';
 import 'package:cloud_music/manager/request_manager.dart';
@@ -7,9 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:cloud_music/data/protocol/lyric.dart';
 import 'package:cloud_music/pages/play_songs/widget_lyric.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import '../../r.dart';
 import '../../subtitle.dart';
 import '../../subtitle_entry.dart';
+
+int curSongId = 0;
 
 class LyricPage extends StatefulWidget {
   final AudioPlayManager model;
@@ -21,7 +25,6 @@ class LyricPage extends StatefulWidget {
 }
 
 class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
-  late int curSongId;
   late LyricData _lyricData;
   List<Lyric> lyrics = [];
   late LyricWidget _lyricWidget;
@@ -43,9 +46,9 @@ class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
               // _lyricOffsetYController.dispose();
             }
           });
-    var curSong = widget.model.curSong;
+    curSongId = widget.model.curSong.id;
 
-    _request(curSong.id);
+    _request(curSongId);
   }
 
   void _request(int id) async {
@@ -88,34 +91,6 @@ class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
     setState(() {});
   }
 
-  // animationScrollY(currentLyricIndex, TickerProvider tickerProvider) {
-  //   var animationController =_lyricOffsetYController;
-  //   if (animationController != null) {
-  //     animationController.stop();
-  //   }
-  //   animationController = AnimationController(
-  //       vsync: tickerProvider, duration: Duration(milliseconds: 300))
-  //     ..addStatusListener((status) {
-  //       if (status == AnimationStatus.completed) {
-  //         animationController.dispose();
-  //       }
-  //     });
-  //   // 计算当前行偏移量
-  //   var currentRowOffset = computeScrollY(currentLyricIndex);
-  //   //如果偏移量相同不执行动画
-  //   if (currentRowOffset == widget.controller.previousRowOffset) {
-  //     return;
-  //   }
-  //   // 起始为上一行，结束点为当前行
-  //   Animation animation = Tween<double>(
-  //       begin:  _lyricWidget.getOffsetY, end: currentRowOffset)
-  //       .animate(animationController);
-  //   widget.controller.previousRowOffset = currentRowOffset;
-  //   animationController.addListener(() {
-  //     _lyricPainter.offset = -animation.value;
-  //   });
-  //   animationController.forward();
-  // }
   /// 开始下一行动画
   void startLineAnim(int curLine) {
     // 判断当前行和 customPaint 里的当前行是否一致，不一致才做动画
@@ -150,66 +125,79 @@ class _LyricPageState extends State<LyricPage> with TickerProviderStateMixin {
     }
   }
 
+  Widget _buildPlayStateWidget(AudioPlayManager manager) {
+    print('播放状态xxxxxxxxxxxxx---->${manager.curState}');
+    if (manager.curSong.id != curSongId) {
+      _request(manager.curSong.id);
+    }
+    return Container(
+      alignment: Alignment.center,
+      child: Text(
+        '歌词加载中...',
+        style: TextStyle(fontSize: 16, color: Colors.white),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-        body: lyrics.isEmpty
-            ? Container(
-                alignment: Alignment.center,
-                child: Text(
-                  '歌词加载中...',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
-                ),
-              )
-            : Container(
-                color: Colors.transparent,
-                child: StreamBuilder<String>(
-                  stream: widget.model.curPositionStream,
-                  builder: (context, snapshot) {
-                    // print(
-                    //     'curPositionStream=====${widget.model.curPositionStream}');
-                    if (snapshot.hasData) {
-                      var curTime = double.parse(snapshot.data!
-                          .substring(0, snapshot.data!.indexOf('-')));
-                      // print('curTime=====${curTime}');
-
-                      // 获取当前在哪一行
-                      int curLine = findLyricIndex(curTime, lyrics);
-                      if (!_lyricWidget.isDragging) {
-                        startLineAnim(curLine);
+    return Consumer<AudioPlayManager>(builder: (context, model, child) {
+      return Scaffold(
+          backgroundColor: Colors.transparent,
+          body: lyrics.isEmpty
+              ? _buildPlayStateWidget(model)
+              : Container(
+                  color: Colors.transparent,
+                  child: StreamBuilder<String>(
+                    stream: widget.model.curPositionStream,
+                    builder: (context, snapshot) {
+                      // print(
+                      //     'curPositionStream=====${widget.model.curPositionStream}');
+                      if (snapshot.hasData) {
+                        var curTime = double.parse(snapshot.data!
+                            .substring(0, snapshot.data!.indexOf('-')));
+                        // print('curTime=====${curTime}');
+                        if (model.curSong.id != curSongId) {
+                          curSongId = model.curSong.id;
+                          _request(curSongId);
+                        }
+                        // 获取当前在哪一行
+                        int curLine = findLyricIndex(curTime, lyrics);
+                        if (!_lyricWidget.isDragging) {
+                          startLineAnim(curLine);
+                        }
+                        // 给 customPaint 赋值当前行
+                        _lyricWidget.curLine = curLine;
+                        return CustomPaint(
+                          size: Size(
+                              MediaQuery.of(context).size.width,
+                              MediaQuery.of(context).size.height -
+                                  kToolbarHeight -
+                                  ScreenUtil().setWidth(150) -
+                                  ScreenUtil().setWidth(50) -
+                                  MediaQuery.of(context).padding.top -
+                                  ScreenUtil().setWidth(120)),
+                          painter: _lyricWidget,
+                        );
+                        return Subtitle(
+                          _subtitleList,
+                          diameterRatio: 20,
+                          selectedTextStyle: R.style.commonWhiteTextStyle,
+                          unSelectedTextStyle: R.style.commonWhite70TextStyle,
+                          itemExtent: 30,
+                        );
+                      } else {
+                        return Subtitle(
+                          _subtitleList,
+                          diameterRatio: 20,
+                          selectedTextStyle: R.style.commonWhiteTextStyle,
+                          unSelectedTextStyle: R.style.commonWhite70TextStyle,
+                          itemExtent: 30,
+                        );
                       }
-                      // 给 customPaint 赋值当前行
-                      _lyricWidget.curLine = curLine;
-                      return CustomPaint(
-                        size: Size(
-                            MediaQuery.of(context).size.width,
-                            MediaQuery.of(context).size.height -
-                                kToolbarHeight -
-                                ScreenUtil().setWidth(150) -
-                                ScreenUtil().setWidth(50) -
-                                MediaQuery.of(context).padding.top -
-                                ScreenUtil().setWidth(120)),
-                        painter: _lyricWidget,
-                      );
-                      return Subtitle(
-                        _subtitleList,
-                        diameterRatio: 20,
-                        selectedTextStyle: R.style.commonWhiteTextStyle,
-                        unSelectedTextStyle: R.style.commonWhite70TextStyle,
-                        itemExtent: 30,
-                      );
-                    } else {
-                      return Subtitle(
-                        _subtitleList,
-                        diameterRatio: 20,
-                        selectedTextStyle: R.style.commonWhiteTextStyle,
-                        unSelectedTextStyle: R.style.commonWhite70TextStyle,
-                        itemExtent: 30,
-                      );
-                    }
-                  },
-                ),
-              ));
+                    },
+                  ),
+                ));
+    });
   }
 }
