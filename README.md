@@ -19,6 +19,6 @@ A new Flutter project.
 <img src=https://img-blog.csdnimg.cn/20210315135417269.png width=200 height=400 /><img src=https://img-blog.csdnimg.cn/202103151354175.png width=200 height=400 />
 <img src=https://img-blog.csdnimg.cn/20210315135415551.png width=200 height=400 /><img src=https://img-blog.csdnimg.cn/20210315135412636.png width=200 height=400 />
 <img src=https://img-blog.csdnimg.cn/20210315135412554.png width=200 height=400 /><img src=https://img-blog.csdnimg.cn/20210315135411104.png width=200 height=400 />
-<img src=https://img-blog.csdnimg.cn/20210315135437288.png width=200 height=400 /><img src=https://starchart.cc/itxiaoshuai/CloudMusic.svg width=800 height=400 />
+<img src=https://img-blog.csdnimg.cn/20210315135437288.png width=200 height=400 /><img src=https://img-blog.csdnimg.cn/9083779b2d3c4010bc43662b8bab432e.png width=200 height=400 />
 <!-- 
 [![Stargazers over time](https://starchart.cc/itxiaoshuai/CloudMusic.svg)](https://starchart.cc/itxiaoshuai/CloudMusic) -->
