@@ -22,7 +22,7 @@ class UserDetailPage extends StatefulWidget {
 }
 
 class UserDetailPageState extends State<UserDetailPage> {
-  late UserDetail? user;
+  UserDetail? user;
 
   @override
   void initState() {
@@ -136,44 +136,50 @@ class _UserDetailAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: Offstage(
-        child: Container(
-          child: Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(user.profile.nickname),
-                  Text(
-                    '${user.profile.followeds} 粉丝',
-                    style: TextStyle(color: Colors.white, fontSize: 12),
-                  ),
-                ],
-              ),
-              Spacer(),
-              Container(
-                width: 160.w,
-                height: 60.w,
-                child: Center(
-                  child: Text(
-                    "+关注",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white,
+      title: Container(
+          child: Offstage(
+            child: Container(
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  user.profile.nickname,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 16),
+                                ),
+                                Text(
+                                  '${user.profile.followeds} 粉丝',
+                                  style: TextStyle(color: Colors.white, fontSize: 12),
+                                ),
+                              ],
+                            ))),
+                    Container(
+                      width: 160.w,
+                      height: 60.w,
+                      child: Center(
+                        child: Text(
+                          "+关注",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.rectangle, // 默认值也是矩形
+                        borderRadius: BorderRadius.circular((20.0)), // 圆角度
+                      ),
                     ),
-                  ),
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  shape: BoxShape.rectangle, // 默认值也是矩形
-                  borderRadius: BorderRadius.circular((20.0)), // 圆角度
-                ),
-              ),
-            ],
-          ),
-        ),
-        offstage: isAppBarExpanded,
-      ),
+                  ],
+                )),
+            offstage: isAppBarExpanded,
+          )),
 
       actions: <Widget>[
         Builder(

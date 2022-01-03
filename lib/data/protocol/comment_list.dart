@@ -1,9 +1,9 @@
 class CommentList {
   late bool isMusician;
   late int userId;
-  late  bool moreHot;
-  late  int code;
-  late  int total;
+  late bool moreHot;
+  late int code;
+  late int total;
   late bool more;
   late List<Comment> comments;
 
@@ -18,11 +18,11 @@ class CommentList {
 
 class Comment {
   late int likedCount;
-  late  int time;
+  late int time;
   late bool liked;
-  late  int playCount;
-  late  int commentId;
-  late  String content;
+  late int playCount;
+  late int commentId;
+  late String content;
 
   late User user;
 
@@ -31,7 +31,7 @@ class Comment {
     comment.likedCount = map['likedCount'];
     comment.time = map['time'];
     comment.liked = map['liked'];
-    comment.playCount = map['playCount'];
+    // comment.playCount = map['playCount'];
     comment.commentId = map['commentId'];
     comment.content = map['content'];
     comment.user = User.fromJson(map['user']);
@@ -40,18 +40,18 @@ class Comment {
 }
 
 class User {
- late String avatarUrl;
- late String nickname;
- late String remarkName;
- late  int vipType;
- late int userId;
- late int userType;
+  late String avatarUrl;
+  late String nickname;
+  late String remarkName;
+  late int vipType;
+  late int userId;
+  late int userType;
 
   static User fromJson(Map<String, dynamic> map) {
     User user = User();
     user.avatarUrl = map['avatarUrl'];
     user.nickname = map['nickname'];
-    user.remarkName = map['remarkName'];
+    user.remarkName = map['remarkName'] == null ? "" : map['remarkName'];
     user.vipType = map['vipType'];
     user.userId = map['userId'];
     user.userType = map['userType'];

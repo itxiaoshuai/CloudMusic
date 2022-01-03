@@ -74,16 +74,24 @@ class Playlist {
     //
     playCount = json['playCount'];
     //
-    description = json['description'];
+    if (json['description'] != null) {
+      description = json['description'];
+    }
+
     // if (json['tags'] != null) {
     //   tags = json['tags'].cast<String>();
     // }
     //
     name = json['name'];
     id = json['id'];
-    shareCount = json['shareCount'];
-    //
-    commentCount = json['commentCount'];
+    if (json['shareCount'] != null) {
+      shareCount = json['shareCount'];
+    }
+
+    if (json['commentCount'] != null) {
+      commentCount = json['commentCount'];
+    }
+
   }
 
   Map<String, dynamic> toJson() {

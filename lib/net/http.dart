@@ -18,12 +18,12 @@ class Http extends BaseHttp {
     // options.baseUrl = "http://172.16.25.80:3000";
     options.followRedirects = false;
     //
-    // interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
-    // Directory tempDir = await getTemporaryDirectory();
-    // String tempPath = tempDir.path;
-    // CookieJar cj = PersistCookieJar(storage: FileStorage(tempPath));
-    interceptors..add(ApiInterceptor());
-    // interceptors.add(CookieManager(cj));
+    interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+    CookieJar cj = PersistCookieJar(storage: FileStorage(tempPath));
+    // interceptors..add(ApiInterceptor());
+    interceptors.add(CookieManager(cj));
   }
 }
 

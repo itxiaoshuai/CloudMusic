@@ -110,7 +110,6 @@ class Profile {
   final String backgroundUrl;
   final String signature;
   final int authority;
-  final List<Object> artistIdentity;
   final int followeds;
   final int follows;
   final int cCount;
@@ -143,14 +142,13 @@ class Profile {
         backgroundImgId = map["backgroundImgId"],
         userType = map["userType"],
         mutual = map["mutual"],
-        remarkName = map["remarkName"],
-        expertTags = map["expertTags"],
+        remarkName = map["remarkName"]==null?"":map["remarkName"],
+        expertTags = map["expertTags"]==null?"":map["expertTags"],
         authStatus = map["authStatus"],
         description = map["description"],
         backgroundUrl = map["backgroundUrl"],
         signature = map["signature"],
         authority = map["authority"],
-        artistIdentity = map["artistIdentity"],
         followeds = map["followeds"],
         follows = map["follows"],
         cCount = map["cCount"],
@@ -191,7 +189,6 @@ class Profile {
     data['backgroundUrl'] = backgroundUrl;
     data['signature'] = signature;
     data['authority'] = authority;
-    data['artistIdentity'] = artistIdentity;
     data['followeds'] = followeds;
     data['follows'] = follows;
     data['cCount'] = cCount;
@@ -210,7 +207,6 @@ class Bindings {
   final int refreshTime;
   final int expiresIn;
   final int userId;
-  final Object tokenJsonStr;
   final String url;
   final bool expired;
   final int bindingTime;
@@ -221,7 +217,6 @@ class Bindings {
       : refreshTime = map["refreshTime"],
         expiresIn = map["expiresIn"],
         userId = map["userId"],
-        tokenJsonStr = map["tokenJsonStr"],
         url = map["url"],
         expired = map["expired"],
         bindingTime = map["bindingTime"],
@@ -233,7 +228,6 @@ class Bindings {
     data['refreshTime'] = refreshTime;
     data['expiresIn'] = expiresIn;
     data['userId'] = userId;
-    data['tokenJsonStr'] = tokenJsonStr;
     data['url'] = url;
     data['expired'] = expired;
     data['bindingTime'] = bindingTime;

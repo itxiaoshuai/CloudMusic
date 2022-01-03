@@ -6,8 +6,8 @@ class DailyRecommend {
   static DailyRecommend fromJson(Map<String, dynamic> map) {
     DailyRecommend dailyRecommend = DailyRecommend();
     dailyRecommend.code = map['code'];
-    dailyRecommend.recommend = []..addAll(
-        (map['recommend'] as List).map((o) => Recommend.fromJson(o)));
+    // dailyRecommend.recommend = []..addAll(
+    //     (map['data']['dailySongs'] as List).map((o) => Recommend.fromJson(o)));
     dailyRecommend.data = Data.fromJson(map['data']);
     return dailyRecommend;
   }
@@ -50,8 +50,8 @@ class DailySongs {
     song.name = map['name'];
     song.id = map['id'];
     song.mv = map['mv'];
-    song.artists = []
-      ..addAll((map['artists'] as List).map((o) => Artists.fromJson(o)));
+    // song.artists = []
+    //   ..addAll((map['artists'] as List).map((o) => Artists.fromJson(o)));
     song.al = Al.fromJson(map['al']);
     song.ar = []..addAll((map['ar'] as List).map((o) => Ar.fromJson(o)));
     return song;
