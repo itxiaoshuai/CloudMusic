@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:cloud_music/base/CommonLoading.dart';
 import 'package:cloud_music/pages/playlist/item_music_list_track.dart';
+import 'package:cloud_music/pages/playlist/music_list.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/base/ConstImg.dart';
 import 'package:cloud_music/base/res/colors.dart';
@@ -88,24 +89,24 @@ class _MyPageState extends State<MyPage>
 
   //底部导航栏显示的内容
   final List<Widget> bottomNavItems = [
-    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "本地/下载"),
-    MenuItem(
+    BaseMenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "本地/下载"),
+    BaseMenuItem(
       image: "images/find/t_dragonball_icn_daily.png",
       text: "云盘",
       route: RouteName.PAGE_CLOUD_STORAGE,
     ),
-    MenuItem(
+    BaseMenuItem(
       image: "images/find/t_dragonball_icn_daily.png",
       text: "已购",
     ),
-    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "最近播放"),
-    MenuItem(
+    BaseMenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "最近播放"),
+    BaseMenuItem(
       image: "images/find/t_dragonball_icn_daily.png",
       text: "我的好友",
       route: RouteName.PAGE_FRIEND,
     ),
-    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "收藏和赞"),
-    MenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "我的播客"),
+    BaseMenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "收藏和赞"),
+    BaseMenuItem(image: "images/find/t_dragonball_icn_daily.png", text: "我的播客"),
   ];
 
   _buildMenu(BuildContext context) {

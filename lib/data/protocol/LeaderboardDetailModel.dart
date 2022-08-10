@@ -501,9 +501,7 @@ class Tracks {
     data['name'] = this.name;
     data['id'] = this.id;
 
-    if (this.ar != null) {
-      data['ar'] = this.ar.map((v) => v.toJson()).toList();
-    }
+    data['ar'] = this.ar.map((v) => v.toJson()).toList();
 
     data['pop'] = this.pop;
     data['st'] = this.st;

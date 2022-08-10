@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_music/route/routes.dart';
 
 //圆形模块组件
-class MenuItem extends StatelessWidget {
+class BaseMenuItem extends StatelessWidget {
   final String text;
   final String image;
   final String route;
 
-  MenuItem({required this.image, required this.text,  this.route=''});
-
+  BaseMenuItem({required this.image, required this.text,  this.route=''});
   @override
   Widget build(BuildContext context) {
     return InkWell(

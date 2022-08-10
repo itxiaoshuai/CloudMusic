@@ -30,9 +30,6 @@ class RequestManager {
 
   //获取榜单详情
   static Future fetchPlayList(int id) async {
-    Map<String, dynamic> formData = {
-      'id': id,
-    };
     // var response =
     //     await http.get('/playlist/detail', queryParameters: formData);
     var dio = Dio();

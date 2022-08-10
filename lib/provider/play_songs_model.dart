@@ -22,12 +22,12 @@ class PlaySongsModel with ChangeNotifier{
 
 
   void init() {
-    _audioPlayer.setReleaseMode(ReleaseMode.STOP);
+    _audioPlayer.setReleaseMode(ReleaseMode.stop);
     // 播放状态监听
     _audioPlayer.onPlayerStateChanged.listen((state) {
       _curState = state;
       /// 先做顺序播放
-      if(state == PlayerState.COMPLETED){
+      if(state == PlayerState.completed){
         nextPlay();
       }
       // 其实也只有在播放状态更新时才需要通知。
@@ -37,7 +37,7 @@ class PlaySongsModel with ChangeNotifier{
       curSongDuration = d;
     });
     // 当前播放进度监听
-    _audioPlayer.onAudioPositionChanged.listen((Duration p) {
+    _audioPlayer.onPositionChanged.listen((Duration p) {
       sinkProgress(p.inMilliseconds > curSongDuration.inMilliseconds ? curSongDuration.inMilliseconds : p.inMilliseconds);
     });
   }
@@ -76,7 +76,7 @@ class PlaySongsModel with ChangeNotifier{
 
   /// 暂停、恢复
   void togglePlay(){
-    if (_audioPlayer.state == PlayerState.PAUSED) {
+    if (_audioPlayer.state == PlayerState.paused) {
       resumePlay();
     } else {
       pausePlay();

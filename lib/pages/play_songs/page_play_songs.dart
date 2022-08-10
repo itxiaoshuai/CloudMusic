@@ -68,7 +68,7 @@ class _PlaySongsPageState extends State<PlaySongsPage>
     }
     return Consumer<AudioPlayManager>(builder: (context, model, child) {
       var curSong = model.curSong;
-      if (model.curState == PlayerState.PLAYING) {
+      if (model.curState == PlayerState.playing) {
         // 如果当前状态是在播放当中，则唱片一直旋转，
         // 并且唱针是移除状态
         _controller.forward();

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:cloud_music/route/routes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/base/res/gaps.dart';
 import 'package:cloud_music/data/protocol/user_info.dart';
@@ -550,21 +549,22 @@ class UnLoginHead extends StatelessWidget {
                   ]),
               Container(
                 margin: EdgeInsets.only(top: 14, bottom: 50),
-                child: OutlineButton(
+                child: OutlinedButton(
                   onPressed: _login,
 
-                  padding: EdgeInsets.only(left: 45, right: 45),
+                  // padding: EdgeInsets.only(left: 45, right: 45),
                   child: Text(
                     "立即登录",
                     style: TextStyle(
                       color: Colors.black.withOpacity(0.5),
                     ),
                   ),
-                  shape: StadiumBorder(
-                    side: BorderSide(width: 16.0, color: Colors.grey),
-                  ),
+                  // shape: StadiumBorder(
+                  //   side: BorderSide(width: 16.0, color: Colors.grey),
+                  // ),
+
                   //一个边框，适合体育场形状的边框（两端有半圆的框），适用于它所应用的小部件的矩形
-                  borderSide: BorderSide(color: Colors.grey), //默认边框颜色
+                  // borderSide: BorderSide(color: Colors.grey), //默认边框颜色
                 ),
               )
             ],

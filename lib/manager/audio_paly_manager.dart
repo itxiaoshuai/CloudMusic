@@ -23,12 +23,12 @@ class AudioPlayManager extends ChangeNotifier {
 
   Tracks get curSong => _tracks[curIndex];
 
-  PlayerState _curState = PlayerState.STOPPED;
+  PlayerState _curState = PlayerState.stopped;
 
   PlayerState get curState => _curState;
 
   AudioPlayManager() {
-    _audioPlayer.setReleaseMode(ReleaseMode.STOP);
+    _audioPlayer.setReleaseMode(ReleaseMode.stop);
     // 播放状态监听
     _audioPlayer.onPlayerStateChanged.listen((state) {
       _curState = state;
@@ -41,7 +41,7 @@ class AudioPlayManager extends ChangeNotifier {
       //   '播放时长${DateUtil.formatDateMs(d.inMilliseconds, format: "mm:ss")}',
       // );
     });
-    _audioPlayer.onAudioPositionChanged.listen((Duration duration) {
+    _audioPlayer.onPositionChanged.listen((Duration duration) {
       sinkProgress(duration.inMilliseconds > curSongDuration.inMilliseconds
           ? curSongDuration.inMilliseconds
           : duration.inMilliseconds);
@@ -89,13 +89,13 @@ class AudioPlayManager extends ChangeNotifier {
     var url = await RequestManager.getMusicURL(formData);
     // print('播放---->${this._tracks[curIndex].name}');
     print('播放---->$url');
-    _audioPlayer.setUrl(url);
-    _audioPlayer.play(url);
+    _audioPlayer.setSourceUrl(url);
+    _audioPlayer.play(UrlSource(url));
   }
 
   /// 暂停、恢复
   void togglePlay() {
-    if (_audioPlayer.state == PlayerState.PAUSED) {
+    if (_audioPlayer.state == PlayerState.paused) {
       resumePlay();
     } else {
       pausePlay();
@@ -111,16 +111,18 @@ class AudioPlayManager extends ChangeNotifier {
   void resumePlay() {
     _audioPlayer.resume();
   }
-  void prePlay(){
+
+  void prePlay() {
     print('上一曲');
-    if(curIndex <= 0){
+    if (curIndex <= 0) {
       curIndex = _tracks.length - 1;
-    }else{
+    } else {
       curIndex--;
     }
     play();
     notifyListeners();
   }
+
   /// 下一首
   void nextPlay() {
     print('下一曲');
@@ -138,6 +140,4 @@ class AudioPlayManager extends ChangeNotifier {
     _curPositionController.close();
     _audioPlayer.dispose();
   }
-
 }
-

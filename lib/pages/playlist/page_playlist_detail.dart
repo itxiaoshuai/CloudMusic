@@ -22,7 +22,7 @@ import 'item_music_list_track.dart';
 class PlaylistDetailPage extends StatefulWidget {
   PlaylistDetailPage(
     this.playlistId,
-  ) : assert(playlistId != null, 'playlist id，can not be null');
+  );
   final int playlistId;
 
   @override

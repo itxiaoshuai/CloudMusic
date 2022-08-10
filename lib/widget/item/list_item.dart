@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_music/pages/find/FutureBuilderPage.dart';
 
 class ListItem extends StatelessWidget {
   final String text;

@@ -97,15 +97,9 @@ class Playlist {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['subscribed'] = this.subscribed;
-    if (this.creator != null) {
-      data['creator'] = this.creator.toJson();
-    }
-    if (this.tracks != null) {
-      data['tracks'] = this.tracks.map((v) => v.toJson()).toList();
-    }
-    if (this.trackIds != null) {
-      data['trackIds'] = this.trackIds.map((v) => v.toJson()).toList();
-    }
+    data['creator'] = this.creator.toJson();
+    data['tracks'] = this.tracks.map((v) => v.toJson()).toList();
+    data['trackIds'] = this.trackIds.map((v) => v.toJson()).toList();
     data['userId'] = this.userId;
     data['cloudTrackCount'] = this.cloudTrackCount;
     data['subscribedCount'] = this.subscribedCount;

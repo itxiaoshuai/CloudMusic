@@ -15,16 +15,16 @@ class RadioPageState extends State<RadioPage> {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           //将自由空间均匀地放置在孩子之间以及第一个和最后一个孩子之前和之后
           children: [
-            MenuItem(
+            BaseMenuItem(
               image: "images/find/t_dragonball_icn_daily.png",
               text: "电台分类",
               route: RouteName.RADIO_CATEGORY,
             ),
-            MenuItem(
+            BaseMenuItem(
                 image: "images/find/t_dragonball_icn_daily.png", text: "电台排行"),
-            MenuItem(
+            BaseMenuItem(
                 image: "images/find/t_dragonball_icn_daily.png", text: "付费精品"),
-            MenuItem(
+            BaseMenuItem(
                 image: "images/find/t_dragonball_icn_daily.png", text: "主播学院"),
           ]),
     );
