@@ -476,25 +476,25 @@ class DrawerTopLogin extends StatelessWidget {
             ),
             Gaps.vGap15,
             Container(
-              child: RaisedButton(
+              child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (BuildContext context) {
                     return LoginMainPage(); //手机号登入
                   }));
                 },
-                color: Colors.red,
-                padding: EdgeInsets.only(left: 30, right: 30),
+                style: ButtonStyle(
+                    padding: MaterialStateProperty.all(
+                        EdgeInsets.symmetric(horizontal: 30.0, vertical: 30.0)),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                    ))),
                 child: Text(
                   "立即登录",
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.white,
                   ),
-                ),
-
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
                 ),
                 //一个边框，适合体育场形状的边框（两端有半圆的框），适用于它所应用的小部件的矩形
               ),

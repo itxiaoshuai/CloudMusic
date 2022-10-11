@@ -35,7 +35,7 @@ class _homePageState extends State<homePage>
   Widget _widget_menu_item(Map v) {
     return Container(
       width: MediaQuery.of(context).size.width / 4 - 4,
-      child: new FlatButton(
+      child: new TextButton(
         onPressed: null,
         child: new Container(
           padding: EdgeInsets.fromLTRB(2, 8, 2, 8),

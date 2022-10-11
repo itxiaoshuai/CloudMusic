@@ -64,7 +64,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Gaps.line,
             Container(
               margin: EdgeInsets.only(top: 32),
-              child: FlatButton(
+              child: TextButton(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -80,11 +80,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     return LoginWithAuth(); //手机号登入
                   }));
                 },
-                shape: StadiumBorder(),
-                color: Theme.of(context).primaryColor,
-                textColor: Colors.white,
-                padding: EdgeInsets.only(top: 12, bottom: 12),
-              ),
+                  style: TextButton.styleFrom(
+                      padding: const EdgeInsets.only(top: 12, bottom: 12),
+                      primary: Colors.white,
+                      textStyle:
+                      const TextStyle(fontSize: 20, color: Colors.white),
+                      shape: StadiumBorder())),
             )
           ],
         ),

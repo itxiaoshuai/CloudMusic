@@ -1,4 +1,3 @@
-
 import 'package:cloud_music/manager/request_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/data/protocol/user_info.dart';
@@ -37,24 +36,25 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
             }, true),
             Container(
               margin: EdgeInsets.only(top: 32),
-              child: FlatButton(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      '登录',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
-                onPressed: () {
-                  _getUserInfo(phone, password);
-                },
-                shape: StadiumBorder(),
-                color: Theme.of(context).primaryColor,
-                textColor: Colors.white,
-                padding: EdgeInsets.only(top: 12, bottom: 12),
-              ),
+              child: TextButton(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        '登录',
+                        style: TextStyle(fontSize: 16),
+                      )
+                    ],
+                  ),
+                  onPressed: () {
+                    _getUserInfo(phone, password);
+                  },
+                  style: TextButton.styleFrom(
+                      padding: const EdgeInsets.only(top: 12, bottom: 12),
+                      primary: Colors.white,
+                      textStyle:
+                          const TextStyle(fontSize: 20, color: Colors.white),
+                      shape: StadiumBorder())),
             )
           ],
         ),
@@ -84,10 +84,9 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
   }
 
   _getUserInfo(String phone, String password) async {
-
     UserInfo userInfo = await RequestManager.logoin(phone, password);
     if (userInfo != null) {
-      Navigator.pushAndRemoveUntil(context,  MaterialPageRoute(
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
         builder: (BuildContext context) {
           return MainPage();
         },

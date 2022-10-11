@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((callback) {
+    WidgetsBinding.instance.addPostFrameCallback((callback) {
       // oneY = getY(globalKeyOne.currentContext);
       // twoY = getY(globalKeyTwo.currentContext);
       // threeY = getY(globalKeyThree.currentContext);

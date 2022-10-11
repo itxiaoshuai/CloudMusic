@@ -49,7 +49,7 @@ class ChoiceSongSheetPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      FlatButton(
+                      TextButton(
                         onPressed: () {},
                         child: Row(
                           children: <Widget>[
@@ -83,7 +83,7 @@ class ChoiceSongSheetPage extends StatelessWidget {
           Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                FlatButton(
+                TextButton(
                   onPressed: () {},
                   child: Row(
                     children: <Widget>[Text('全部歌单'), Icon(Icons.chevron_right)],

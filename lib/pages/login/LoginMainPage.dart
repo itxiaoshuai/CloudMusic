@@ -39,7 +39,7 @@ class LoginMainPage extends StatelessWidget {
                           child: Container(
                             height: 40,
                             padding: EdgeInsets.only(left: 45, right: 45),
-                            child: RaisedButton(
+                            child: ElevatedButton(
                               onPressed: () {
                                 if (visible) {
                                   showToast("请先勾选同意 《用户协议》 《隐私政策》 《儿童隐私政策》");
@@ -50,14 +50,20 @@ class LoginMainPage extends StatelessWidget {
                                   }));
                                 }
                               },
-                              color: Colors.white,
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(Colors.white),
+                                  shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                    ),
+                                  ),
+                                ),
                               child: Text(
                                 ConstStringResource.login,
                                 style: TextStyle(
                                     fontSize: 18, color: Colors.redAccent),
                               ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25.0)),
+
                             ),
                           ),
                         ),

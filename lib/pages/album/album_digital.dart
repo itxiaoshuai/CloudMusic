@@ -22,6 +22,7 @@ class _AlbumDigitalWidgetState extends State<AlbumDigitalWidget> {
 
   @override
   void initState() {
+
     // getNewSongList();
     // getNewAlbumList();
     getAlbumList();
