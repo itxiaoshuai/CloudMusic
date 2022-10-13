@@ -356,6 +356,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "get",
+      "rootUri": "file:///C:/Users/admin/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/get-4.6.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "glob",
       "rootUri": "file:///C:/Users/admin/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/glob-2.1.0",
       "packageUri": "lib/",
@@ -926,7 +932,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-10-11T02:12:26.657510Z",
+  "generated": "2022-10-13T03:20:18.459436Z",
   "generator": "pub",
   "generatorVersion": "2.19.0-81.0.dev"
 }

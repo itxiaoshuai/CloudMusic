@@ -36,6 +36,19 @@ class TextStyles {
       fontSize: Dimens.font_sp16,
       color: Colours.text_dark,
       fontWeight: FontWeight.bold);
+
+  static const TextStyle textBoldDark16_0 = const TextStyle(
+      fontSize: Dimens.font_sp16,
+      color: Colours.text_dark0,
+      fontWeight: FontWeight.bold);
+
+
+
+
+
+
+
+
   static const TextStyle textBoldDark18 = const TextStyle(
       fontSize: Dimens.font_sp18,
       color: Colours.text_dark,

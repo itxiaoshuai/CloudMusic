@@ -14,7 +14,8 @@ class Http extends BaseHttp {
   Future<void> init() async {
     debugPrint("Http---->init");
     // options.baseUrl = "http://118.24.63.15:1020";
-    options.baseUrl = "http://192.168.0.106:3000";
+    // options.baseUrl = "http://192.168.0.106:3000";
+    options.baseUrl = "http://192.168.21.106:3000";
     // options.baseUrl = "http://172.16.25.80:3000";
     options.followRedirects = false;
     //
