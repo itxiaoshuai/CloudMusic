@@ -42,7 +42,7 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
                     children: <Widget>[
                       Text(
                         '登录',
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: 16,color: Colors.white),
                       )
                     ],
                   ),
@@ -51,7 +51,7 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
                   },
                   style: TextButton.styleFrom(
                       padding: const EdgeInsets.only(top: 12, bottom: 12),
-                      primary: Colors.white,
+                      backgroundColor: Theme.of(context).primaryColor,
                       textStyle:
                           const TextStyle(fontSize: 20, color: Colors.white),
                       shape: StadiumBorder())),

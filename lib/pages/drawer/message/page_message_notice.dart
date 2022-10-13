@@ -10,7 +10,6 @@ import 'package:cloud_music/provider/view_state_widget.dart';
 import 'package:cloud_music/route/routes.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:oktoast/oktoast.dart';
 
 import '../../../r.dart';
 
@@ -38,14 +37,14 @@ class _NoticePageState extends State<NoticePage> {
             model: MessageModel(),
             onModelReady: (model) {
               model.loadNoticeData();
-            },          child: Container(),
+            },
+            child: Container(),
             builder: (context, model, child) {
               switch (model.layoutState) {
                 case LayoutState.IDLE:
                   break;
                 case LayoutState.LOADING:
                   return ViewStateLoadingWidget();
-                  break;
                 case LayoutState.EMPTY:
                   // TODO: Handle this case.
                   break;
@@ -71,6 +70,7 @@ class _NoticePageState extends State<NoticePage> {
                               Navigator.of(context).pushNamed(
                                   RouteName.PAGE_NOTICE_COMMENT,
                                   arguments: p['notice']);
+                              debugPrint("详情页面Json数据" + p['notice']);
                             },
                             child: Container(
                               child: Row(
@@ -95,11 +95,10 @@ class _NoticePageState extends State<NoticePage> {
                                         ),
                                       ),
                                       onTap: () {
-
-                                        print('${ json.decode(p['notice'])['user']
-                                        ['avatarUrl']}');
-                                        print('${ json.decode(p['notice'])['user']
-                                        ['userId']}');
+                                        print(
+                                            '${json.decode(p['notice'])['user']['avatarUrl']}');
+                                        print(
+                                            '${json.decode(p['notice'])['user']['userId']}');
                                         // var beRepliedUser = json.decode(
                                         //     p['notice']['beRepliedUser']);
                                         // print(beRepliedUser);
@@ -108,8 +107,9 @@ class _NoticePageState extends State<NoticePage> {
                                         // // print(json.decode(p['userId'])+"");
                                         Navigator.of(context).pushNamed(
                                             RouteName.USER_HOME,
-                                            arguments: json.decode(p['notice'])['user']
-                                            ['userId']);
+                                            arguments:
+                                                json.decode(p['notice'])['user']
+                                                    ['userId']);
                                       },
                                     ),
                                   )),
@@ -139,7 +139,9 @@ class _NoticePageState extends State<NoticePage> {
                                           ),
                                           Text(
                                             getText(p),
-                                            style: TextStyle(fontSize: 12),
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey),
                                           ),
                                           Text(
                                             '${DateUtil.formatDateMs(p['time'], format: 'yyyy年MM月dd日')}',
@@ -149,6 +151,14 @@ class _NoticePageState extends State<NoticePage> {
                                       ),
                                       Text(
                                         getTextContent(p),
+                                        maxLines: 1,
+                                        style: TextStyle(fontSize: 12),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      Text(
+                                        json
+                                            .decode(p['notice'])['type']
+                                            .toString(),
                                         maxLines: 1,
                                         style: TextStyle(fontSize: 12),
                                         overflow: TextOverflow.ellipsis,
@@ -191,8 +201,9 @@ class _NoticePageState extends State<NoticePage> {
     }
     if (json.decode(p['notice'])['type'] == 1) {
       //赞了动态
-      return json.decode(p['notice'])['track']['info']['commentThread']
-          ['resourceInfo']['name'];
+      return "我" +
+          json.decode(p['notice'])['track']['info']['commentThread']
+              ['resourceInfo']['name'];
     }
     return p.toString();
   }

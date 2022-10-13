@@ -29,14 +29,14 @@ class _MessagePageState extends State<MessagePage> {
             model: MessageModel(),
             onModelReady: (model) {
               model.loadData();
-            },          child: Container(),
+            },
+            child: Container(),
             builder: (context, model, child) {
               switch (model.layoutState) {
                 case LayoutState.IDLE:
                   break;
                 case LayoutState.LOADING:
                   return ViewStateLoadingWidget();
-                  break;
                 case LayoutState.EMPTY:
                   // TODO: Handle this case.
                   break;
@@ -185,12 +185,17 @@ class _MessagePageState extends State<MessagePage> {
                                   child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Gaps.vGap10,
+                                  Gaps.vGap15,
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(p['fromUser']['nickname']),
+                                      Expanded(
+                                          child: Container(
+                                        child: Text(p['fromUser']['nickname'],
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis),
+                                      )),
                                       Text(
                                         '${DateUtil.formatDateMs(p['lastMsgTime'], format: 'yyyy年MM月dd日')}',
                                         style: R.style.textGray10,
@@ -203,7 +208,7 @@ class _MessagePageState extends State<MessagePage> {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                  Gaps.vGap10,
+                                  Gaps.vGap15,
                                   Gaps.line,
                                 ],
                               )),

@@ -26,7 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.only(left: 16, right: 16, top: 35),
+        padding: EdgeInsets.only(left: 16, right: 16, top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
